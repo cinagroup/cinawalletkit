@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@rainbow-me/rainbowkit": "workspace:*",
+    "@cinagroup/cinawalletkit": "workspace:*",
     "@tanstack/react-query": "^5.55.3",
     "next": "^16.2.4",
     "react": "^19.2.5",
