@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/legacy/image';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from '@cinagroup/cinawalletkit';
 import type { GetServerSideProps, NextPage } from 'next';
 import {
   useAccount,
@@ -8,12 +8,12 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from 'wagmi';
-import { rainbowKitNftAbi } from '../../contract/abi/';
+import { CinaWalletKitNftAbi } from '../../contract/abi/';
 import FlipCard, { BackCard, FrontCard } from '../../components/FlipCard';
 
 const contractConfig = {
   address: '0x566cbBf5D5c7c1C14f91fBD05910A539515603f2',
-  abi: rainbowKitNftAbi,
+  abi: CinaWalletKitNftAbi,
 } as const;
 
 const Home: NextPage = () => {
@@ -108,7 +108,7 @@ const Home: NextPage = () => {
                 src="/nft.png"
                 width="500"
                 height="500"
-                alt="RainbowKit Demo NFT"
+                alt="CinaWalletKit Demo NFT"
                 priority
               />
               <h1 style={{ marginTop: 24 }}>Rainbow NFT</h1>
@@ -120,7 +120,7 @@ const Home: NextPage = () => {
                   src="/nft.png"
                   width="80"
                   height="80"
-                  alt="RainbowKit Demo NFT"
+                  alt="CinaWalletKit Demo NFT"
                   style={{ borderRadius: 8 }}
                   priority
                 />

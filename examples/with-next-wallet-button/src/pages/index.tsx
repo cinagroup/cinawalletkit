@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { WalletButton } from '@rainbow-me/rainbowkit';
+import { WalletButton } from '@cinagroup/cinawalletkit';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 
 const Home: NextPage = () => {
@@ -26,11 +26,11 @@ const Home: NextPage = () => {
           gap: 14,
         }}
       >
-        <span>RainbowKit WalletButton</span>
+        <span>CinaWalletKit WalletButton</span>
 
         <WalletButton wallet="rainbow" />
 
-        <span>RainbowKit WalletButton.Custom</span>
+        <span>CinaWalletKit WalletButton.Custom</span>
 
         <WalletButton.Custom wallet="ready">
           {({ ready, connect, connector }) => {

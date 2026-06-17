@@ -15,7 +15,7 @@
 - Updated dependencies [25c4c2b]
 - Updated dependencies [f2523a9]
 - Updated dependencies [f52657f]
-  - @rainbow-me/rainbowkit@2.2.11
+  - @cinagroup/CinaWalletKit@2.2.11
 
 ## 0.0.36
 
@@ -41,7 +41,7 @@
 - Updated dependencies [b7b7b43]
 - Updated dependencies [507f583]
 - Updated dependencies [16963de]
-  - @rainbow-me/rainbowkit@2.2.10
+  - @cinagroup/CinaWalletKit@2.2.10
 
 ## 0.0.35
 
@@ -57,14 +57,14 @@
 - Updated dependencies [fe0496e]
 - Updated dependencies [5698ade]
 - Updated dependencies [1520f59]
-  - @rainbow-me/rainbowkit@2.2.9
+  - @cinagroup/CinaWalletKit@2.2.9
 
 ## 0.0.34
 
 ### Patch Changes
 
 - Updated dependencies [f542876]
-  - @rainbow-me/rainbowkit@2.2.8
+  - @cinagroup/CinaWalletKit@2.2.8
 
 ## 0.0.33
 
@@ -74,7 +74,7 @@
 - Updated dependencies [10090d2]
 - Updated dependencies [50c7f13]
 - Updated dependencies [15ddd4a]
-  - @rainbow-me/rainbowkit@2.2.7
+  - @cinagroup/CinaWalletKit@2.2.7
 
 ## 0.0.32
 
@@ -84,7 +84,7 @@
 - e03de7c: Upgrade React, React DOM, Next, and related type dependencies across packages and examples.
 - Updated dependencies [624a38a]
 - Updated dependencies [f6ad6aa]
-  - @rainbow-me/rainbowkit@2.2.6
+  - @cinagroup/CinaWalletKit@2.2.6
 
 ## 0.0.31
 
@@ -96,7 +96,7 @@
 - Updated dependencies [8515fd3]
 - Updated dependencies [5b54649]
 - Updated dependencies [03ae0d0]
-  - @rainbow-me/rainbowkit@2.2.5
+  - @cinagroup/CinaWalletKit@2.2.5
 
 ## 0.0.30
 
@@ -109,14 +109,14 @@
 - Updated dependencies [9c9c491]
 - Updated dependencies [f5a7cec]
 - Updated dependencies [e4547b8]
-  - @rainbow-me/rainbowkit@2.2.4
+  - @cinagroup/CinaWalletKit@2.2.4
 
 ## 0.0.29
 
 ### Patch Changes
 
 - Updated dependencies [b5a7878]
-  - @rainbow-me/rainbowkit@2.2.3
+  - @cinagroup/CinaWalletKit@2.2.3
 
 ## 0.0.28
 
@@ -124,7 +124,7 @@
 
 - f533ac2: Upgraded to Next 15 at `15.1.4` and resolved [breaking changes](https://nextjs.org/docs/app/building-your-application/upgrading/version-15). Upgraded to React 19 at `19.0.0` and resolved [breaking changes](https://react.dev/blog/2024/04/25/react-19-upgrade-guide). Upgraded `wagmi` to `^2.14.7`.
 - Updated dependencies [f533ac2]
-  - @rainbow-me/rainbowkit@2.2.2
+  - @cinagroup/CinaWalletKit@2.2.2
 
 ## 0.0.27
 
@@ -135,7 +135,7 @@
 - Updated dependencies [5b8e146]
 - Updated dependencies [9dd23d9]
 - Updated dependencies [7fceab8]
-  - @rainbow-me/rainbowkit@2.2.1
+  - @cinagroup/CinaWalletKit@2.2.1
 
 ## 0.0.26
 
@@ -143,7 +143,7 @@
 
 - dc31926: Upgraded `wagmi` to `^2.12.17`
 - Updated dependencies [f02bced]
-  - @rainbow-me/rainbowkit@2.2.0
+  - @cinagroup/CinaWalletKit@2.2.0
 
 ## 0.0.25
 
@@ -152,7 +152,7 @@
 - Updated dependencies [f93cd0e]
 - Updated dependencies [4014d80]
 - Updated dependencies [6393498]
-  - @rainbow-me/rainbowkit@2.1.7
+  - @cinagroup/CinaWalletKit@2.1.7
 
 ## 0.0.24
 
@@ -162,7 +162,7 @@
 - Updated dependencies [63d8386]
 - Updated dependencies [8d9a4e6]
 - Updated dependencies [d46637a]
-  - @rainbow-me/rainbowkit@2.1.6
+  - @cinagroup/CinaWalletKit@2.1.6
 
 ## 0.0.23
 
@@ -172,7 +172,7 @@
 - Updated dependencies [675f9dd]
 - Updated dependencies [f65b5c4]
 - Updated dependencies [9c36bfd]
-  - @rainbow-me/rainbowkit@2.1.5
+  - @cinagroup/CinaWalletKit@2.1.5
 
 ## 0.0.22
 
@@ -186,7 +186,7 @@
 - Updated dependencies [2eeb7b9]
 - Updated dependencies [72fe07d]
 - Updated dependencies [d02d73f]
-  - @rainbow-me/rainbowkit@2.1.4
+  - @cinagroup/CinaWalletKit@2.1.4
 
 ## 0.0.21
 
@@ -196,7 +196,7 @@
 - Updated dependencies [d81935c]
 - Updated dependencies [7b00be5]
 - Updated dependencies [001a0a9]
-  - @rainbow-me/rainbowkit@2.1.3
+  - @cinagroup/CinaWalletKit@2.1.3
 
 ## 0.0.20
 
@@ -204,7 +204,7 @@
 
 - Updated dependencies [2180ddd]
 - Updated dependencies [fea278a]
-  - @rainbow-me/rainbowkit@2.1.2
+  - @cinagroup/CinaWalletKit@2.1.2
 
 ## 0.0.19
 
@@ -212,7 +212,7 @@
 
 - Updated dependencies [725a376]
 - Updated dependencies [9be5452]
-  - @rainbow-me/rainbowkit@2.1.1
+  - @cinagroup/CinaWalletKit@2.1.1
 
 ## 0.0.18
 
@@ -220,14 +220,14 @@
 
 - Updated dependencies [90d6931]
 - Updated dependencies [82153ed]
-  - @rainbow-me/rainbowkit@2.1.0
+  - @cinagroup/CinaWalletKit@2.1.0
 
 ## 0.0.17
 
 ### Patch Changes
 
 - Updated dependencies [8841891]
-  - @rainbow-me/rainbowkit@2.0.8
+  - @cinagroup/CinaWalletKit@2.0.8
 
 ## 0.0.16
 
@@ -235,7 +235,7 @@
 
 - Updated dependencies [af4ea4e]
 - Updated dependencies [f0b3b25]
-  - @rainbow-me/rainbowkit@2.0.7
+  - @cinagroup/CinaWalletKit@2.0.7
 
 ## 0.0.15
 
@@ -243,7 +243,7 @@
 
 - Updated dependencies [7ab6e50]
 - Updated dependencies [515498f]
-  - @rainbow-me/rainbowkit@2.0.6
+  - @cinagroup/CinaWalletKit@2.0.6
 
 ## 0.0.14
 
@@ -255,7 +255,7 @@
 - Updated dependencies [b11118f]
 - Updated dependencies [4dd1e45]
 - Updated dependencies [ec41346]
-  - @rainbow-me/rainbowkit@2.0.5
+  - @cinagroup/CinaWalletKit@2.0.5
 
 ## 0.0.13
 
@@ -265,7 +265,7 @@
 - Updated dependencies [6c240ba]
 - Updated dependencies [34419b5]
 - Updated dependencies [5c60239]
-  - @rainbow-me/rainbowkit@2.0.4
+  - @cinagroup/CinaWalletKit@2.0.4
 
 ## 0.0.12
 
@@ -279,7 +279,7 @@
 - Updated dependencies [b80e8fa]
 - Updated dependencies [985b80b]
 - Updated dependencies [b25db9a]
-  - @rainbow-me/rainbowkit@2.0.3
+  - @cinagroup/CinaWalletKit@2.0.3
 
 ## 0.0.11
 
@@ -296,7 +296,7 @@
 - Updated dependencies [2f637e4]
 - Updated dependencies [c021746]
 - Updated dependencies [df572f1]
-  - @rainbow-me/rainbowkit@2.0.2
+  - @cinagroup/CinaWalletKit@2.0.2
 
 ## 0.0.10
 
@@ -313,28 +313,28 @@
 - Updated dependencies [f69c0e1]
 - Updated dependencies [bb56562]
 - Updated dependencies [1a08977]
-  - @rainbow-me/rainbowkit@2.0.1
+  - @cinagroup/CinaWalletKit@2.0.1
 
 ## 0.0.9
 
 ### Patch Changes
 
 - Updated dependencies [aa0269e]
-  - @rainbow-me/rainbowkit@2.0.0
+  - @cinagroup/CinaWalletKit@2.0.0
 
 ## 0.0.8
 
 ### Patch Changes
 
 - Updated dependencies [33a8266]
-  - @rainbow-me/rainbowkit@1.3.6
+  - @cinagroup/CinaWalletKit@1.3.6
 
 ## 0.0.7
 
 ### Patch Changes
 
 - Updated dependencies [2b0c7b3]
-  - @rainbow-me/rainbowkit@1.3.5
+  - @cinagroup/CinaWalletKit@1.3.5
 
 ## 0.0.6
 
@@ -346,7 +346,7 @@
 - Updated dependencies [e5f5f03]
 - Updated dependencies [c0bd68e]
 - Updated dependencies [a79609b]
-  - @rainbow-me/rainbowkit@1.3.4
+  - @cinagroup/CinaWalletKit@1.3.4
 
 ## 0.0.5
 
@@ -355,14 +355,14 @@
 - Updated dependencies [24b5a88]
 - Updated dependencies [7565fb2]
 - Updated dependencies [5a184e9]
-  - @rainbow-me/rainbowkit@1.3.3
+  - @cinagroup/CinaWalletKit@1.3.3
 
 ## 0.0.4
 
 ### Patch Changes
 
 - Updated dependencies [7ba94f48]
-  - @rainbow-me/rainbowkit@1.3.2
+  - @cinagroup/CinaWalletKit@1.3.2
 
 ## 0.0.3
 
@@ -372,11 +372,11 @@
 - Updated dependencies [3feab0e6]
 - Updated dependencies [c9a8e469]
 - Updated dependencies [dba51779]
-  - @rainbow-me/rainbowkit@1.3.1
+  - @cinagroup/CinaWalletKit@1.3.1
 
 ## 0.0.2
 
 ### Patch Changes
 
 - Updated dependencies [9ce75a65]
-  - @rainbow-me/rainbowkit@1.3.0
+  - @cinagroup/CinaWalletKit@1.3.0

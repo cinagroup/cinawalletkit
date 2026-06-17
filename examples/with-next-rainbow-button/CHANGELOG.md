@@ -5,7 +5,7 @@
 ### Patch Changes
 
 - Updated dependencies [f52657f]
-  - @rainbow-me/rainbow-button@0.2.28
+  - @cinagroup/rainbow-button@0.2.28
 
 ## 0.0.36
 
@@ -24,7 +24,7 @@
   - Next.js: 15.3.3 → 15.3.6
 
 - eb72c37: Upgrade wagmi to ^2.19.3 and viem to 2.38.0.
-  - @rainbow-me/rainbow-button@0.2.27
+  - @cinagroup/rainbow-button@0.2.27
 
 ## 0.0.35
 
@@ -32,19 +32,19 @@
 
 - d92a6c7: Upgrade wagmi to ^2.17.4 and viem to 2.31.7.
 - Updated dependencies [87257e6]
-  - @rainbow-me/rainbow-button@0.2.26
+  - @cinagroup/rainbow-button@0.2.26
 
 ## 0.0.34
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.25
+- @cinagroup/rainbow-button@0.2.25
 
 ## 0.0.33
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.24
+- @cinagroup/rainbow-button@0.2.24
 
 ## 0.0.32
 
@@ -52,14 +52,14 @@
 
 - 77de527: Upgraded `wagmi` to `^2.15.5`.
 - e03de7c: Upgrade React, React DOM, Next, and related type dependencies across packages and examples.
-  - @rainbow-me/rainbow-button@0.2.23
+  - @cinagroup/rainbow-button@0.2.23
 
 ## 0.0.31
 
 ### Patch Changes
 
 - 5e16367: Upgraded `wagmi` to `^2.15.2` and `viem` to `2.29.2`
-  - @rainbow-me/rainbow-button@0.2.22
+  - @cinagroup/rainbow-button@0.2.22
 
 ## 0.0.30
 
@@ -67,51 +67,51 @@
 
 - 182440a: Upgraded `wagmi` to `^2.14.11` and `viem` to `2.23.3`
 - 3f82fe8: Adopted Biome formatting, modernized tsconfig
-  - @rainbow-me/rainbow-button@0.2.21
+  - @cinagroup/rainbow-button@0.2.21
 
 ## 0.0.29
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.20
+- @cinagroup/rainbow-button@0.2.20
 
 ## 0.0.28
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.19
+- @cinagroup/rainbow-button@0.2.19
 
 ## 0.0.27
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.18
+- @cinagroup/rainbow-button@0.2.18
 
 ## 0.0.26
 
 ### Patch Changes
 
 - dc31926: Upgraded `wagmi` to `^2.12.17`
-  - @rainbow-me/rainbow-button@0.2.17
+  - @cinagroup/rainbow-button@0.2.17
 
 ## 0.0.25
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.16
+- @cinagroup/rainbow-button@0.2.16
 
 ## 0.0.24
 
 ### Patch Changes
 
 - 17c22b2: Upgraded `wagmi` to `^2.12.9`
-  - @rainbow-me/rainbow-button@0.2.15
+  - @cinagroup/rainbow-button@0.2.15
 
 ## 0.0.23
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.14
+- @cinagroup/rainbow-button@0.2.14
 
 ## 0.0.22
 
@@ -120,62 +120,62 @@
 - 4cff94d: - updated `wagmi` to `^2.12.0`
   - updated `viem` to `2.17.0`
   - update `@tanstack/react-query` to `^5.51.11`
-  - @rainbow-me/rainbow-button@0.2.13
+  - @cinagroup/rainbow-button@0.2.13
 
 ## 0.0.21
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.12
+- @cinagroup/rainbow-button@0.2.12
 
 ## 0.0.20
 
 ### Patch Changes
 
 - Updated dependencies [9694368]
-  - @rainbow-me/rainbow-button@0.2.11
+  - @cinagroup/rainbow-button@0.2.11
 
 ## 0.0.19
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.10
+- @cinagroup/rainbow-button@0.2.10
 
 ## 0.0.18
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.9
+- @cinagroup/rainbow-button@0.2.9
 
 ## 0.0.17
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.8
+- @cinagroup/rainbow-button@0.2.8
 
 ## 0.0.16
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.7
+- @cinagroup/rainbow-button@0.2.7
 
 ## 0.0.15
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.6
+- @cinagroup/rainbow-button@0.2.6
 
 ## 0.0.14
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.5
+- @cinagroup/rainbow-button@0.2.5
 
 ## 0.0.13
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.2.4
+- @cinagroup/rainbow-button@0.2.4
 
 ## 0.0.12
 
@@ -186,7 +186,7 @@
   - viem to `^2.8.12`
   - @tanstack/react-query to `^5.28.4`
   - typescript to `5.4.2`
-  - @rainbow-me/rainbow-button@0.2.3
+  - @cinagroup/rainbow-button@0.2.3
 
 ## 0.0.11
 
@@ -198,7 +198,7 @@
   - `eslint-config-next` to `^14.1.3`
   - `@types/react` to `^18.2.64`
   - `@types/react` to `^18.2.64`
-  - @rainbow-me/rainbow-button@0.2.2
+  - @cinagroup/rainbow-button@0.2.2
 
 ## 0.0.10
 
@@ -208,54 +208,54 @@
   - wagmi to `^2.5.7`
   - viem to `^2.7.12`
   - @tanstack/react-query to `^5.22.2`
-  - @rainbow-me/rainbow-button@0.2.1
+  - @cinagroup/rainbow-button@0.2.1
 
 ## 0.0.9
 
 ### Patch Changes
 
 - Updated dependencies [aa0269e]
-  - @rainbow-me/rainbow-button@0.2.0
+  - @cinagroup/rainbow-button@0.2.0
 
 ## 0.0.8
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.1.6
+- @cinagroup/rainbow-button@0.1.6
 
 ## 0.0.7
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.1.5
+- @cinagroup/rainbow-button@0.1.5
 
 ## 0.0.6
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.1.4
+- @cinagroup/rainbow-button@0.1.4
 
 ## 0.0.5
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.1.3
+- @cinagroup/rainbow-button@0.1.3
 
 ## 0.0.4
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.1.2
+- @cinagroup/rainbow-button@0.1.2
 
 ## 0.0.3
 
 ### Patch Changes
 
-- @rainbow-me/rainbow-button@0.1.1
+- @cinagroup/rainbow-button@0.1.1
 
 ## 0.0.2
 
 ### Patch Changes
 
 - Updated dependencies [9ce75a65]
-  - @rainbow-me/rainbow-button@0.1.0
+  - @cinagroup/rainbow-button@0.1.0

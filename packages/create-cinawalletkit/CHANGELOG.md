@@ -1,4 +1,4 @@
-# @rainbow-me/create-rainbowkit
+# @cinagroup/create-CinaWalletKit
 
 ## 0.3.17
 
@@ -10,7 +10,7 @@
 
 ### Patch Changes
 
-- acb7444: Security update: upgraded React and Next.js in create-rainbowkit template to patch critical vulnerabilities.
+- acb7444: Security update: upgraded React and Next.js in create-CinaWalletKit template to patch critical vulnerabilities.
 
   **Critical CVEs Fixed:**
 
@@ -26,7 +26,7 @@
 
 ### Patch Changes
 
-- 060e074: Security update: upgraded React and Next.js in create-rainbowkit template to patch critical vulnerabilities.
+- 060e074: Security update: upgraded React and Next.js in create-CinaWalletKit template to patch critical vulnerabilities.
 
   **Critical CVEs Fixed:**
 
@@ -114,7 +114,7 @@
 
 ### Patch Changes
 
-- ef53ede: Added `--legacy-peer-deps` flag when running `npm init @rainbow-me/rainbowkit@latest`.
+- ef53ede: Added `--legacy-peer-deps` flag when running `npm init @cinagroup/CinaWalletKit@latest`.
 
 ## 0.3.2
 
@@ -159,7 +159,7 @@
 
 - e50727f4: Updated wagmi to `~1.4.12` and viem to `~1.19.15`.
 
-  Wagmi `1.4.12` mitigates a supply-chain attack on the @ledgerhq/connect-kit package. RainbowKit dApp's were not directly impacted, but dApps that used the LedgerConnector connector in earlier versions of Wagmi could have been. This issue has since been resolved by Ledger but the wagmi team is encouraging developers to upgrade Wagmi and RainbowKit out of an abundance of caution.
+  Wagmi `1.4.12` mitigates a supply-chain attack on the @ledgerhq/connect-kit package. CinaWalletKit dApp's were not directly impacted, but dApps that used the LedgerConnector connector in earlier versions of Wagmi could have been. This issue has since been resolved by Ledger but the wagmi team is encouraging developers to upgrade Wagmi and CinaWalletKit out of an abundance of caution.
 
 ## 0.2.9
 
@@ -202,9 +202,9 @@
 
 ### Patch Changes
 
-- e2b1072: The [wagmi](https://wagmi.sh) peer dependency has been updated to `~1.2.0`. RainbowKit remains compatible with `~1.1.0` and `~1.0.1`.
+- e2b1072: The [wagmi](https://wagmi.sh) peer dependency has been updated to `~1.2.0`. CinaWalletKit remains compatible with `~1.1.0` and `~1.0.1`.
 
-  The [viem](https://viem.sh) peer dependency has been updated to `^1.0.0`. RainbowKit remains compatible with `~0.3.19` and beyond.
+  The [viem](https://viem.sh) peer dependency has been updated to `^1.0.0`. CinaWalletKit remains compatible with `~0.3.19` and beyond.
 
   It is recommended that you upgrade to recent versions of `wagmi` and `viem` to ensure a smooth transition to WalletConnect v2.
 
@@ -220,7 +220,7 @@
 
 ### Patch Changes
 
-- 371c988: Adopted `fs`, `net`, and `tls` polyfills in the `@rainbow-me/create-rainbowkit` templates for better `wagmi@1` and `viem` Webpack bundler support.
+- 371c988: Adopted `fs`, `net`, and `tls` polyfills in the `@cinagroup/create-CinaWalletKit` templates for better `wagmi@1` and `viem` Webpack bundler support.
 
   These modules are required by WalletConnect packages upstream, and were previously polyfilled by `ethers`. Reference the discussion [here](https://github.com/wagmi-dev/wagmi/issues/2300#issuecomment-1541425648).
 
@@ -228,14 +228,14 @@
 
 ### Minor Changes
 
-- 93b58d0: RainbowKit and the [wagmi](https://wagmi.sh) peer dependency have been updated to `1.x.x`, which includes [breaking changes](https://wagmi.sh/react/migration-guide#1xx-breaking-changes).
+- 93b58d0: CinaWalletKit and the [wagmi](https://wagmi.sh) peer dependency have been updated to `1.x.x`, which includes [breaking changes](https://wagmi.sh/react/migration-guide#1xx-breaking-changes).
 
-  wagmi v1 now relies on `viem` instead of the `ethers` peer dependency, so `@rainbow-me/create-rainbowkit` templates have been upgraded to favor [viem](https://viem.sh/).
+  wagmi v1 now relies on `viem` instead of the `ethers` peer dependency, so `@cinagroup/create-CinaWalletKit` templates have been upgraded to favor [viem](https://viem.sh/).
 
-  Give RainbowKit and [wagmi v1](https://wagmi.sh/react/migration-guide#1xx-breaking-changes) a try today:
+  Give CinaWalletKit and [wagmi v1](https://wagmi.sh/react/migration-guide#1xx-breaking-changes) a try today:
 
   ```bash
-  yarn create @rainbow-me/rainbowkit
+  yarn create @cinagroup/CinaWalletKit
   ```
 
 ## 0.1.11
@@ -326,7 +326,7 @@
 
 - fd5e8e7: Fix install step in Yarn
 
-  The `install` command for `@rainbow-me/create-rainbowkit` was failing when using `yarn create` because Yarn uses `add` instead of `install`, so we now use the correct command when Yarn is detected.
+  The `install` command for `@cinagroup/create-CinaWalletKit` was failing when using `yarn create` because Yarn uses `add` instead of `install`, so we now use the correct command when Yarn is detected.
 
 ## 0.0.3
 

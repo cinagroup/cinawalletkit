@@ -1,11 +1,11 @@
 import { createConfig, http } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
-import { rainbowConnector } from '@rainbow-me/rainbow-button';
+import { rainbowConnector } from '@cinagroup/cinawalletkit-button';
 
 export const config = createConfig({
   connectors: [
     rainbowConnector({
-      appName: 'RainbowKit demo',
+      appName: 'CinaWalletKit demo',
       projectId: 'YOUR_PROJECT_ID',
     }),
   ],

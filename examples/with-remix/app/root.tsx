@@ -16,10 +16,10 @@ import type {
 } from '@remix-run/node';
 
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   ConnectButton,
   getDefaultConfig,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/cinawalletkit';
 import { WagmiProvider } from 'wagmi';
 import type { Chain } from 'wagmi/chains';
 import {
@@ -32,7 +32,7 @@ import {
 } from 'wagmi/chains';
 
 import globalStylesUrl from './styles/global.css';
-import rainbowStylesUrl from '@rainbow-me/rainbowkit/styles.css';
+import rainbowStylesUrl from '@cinagroup/cinawalletkit/styles.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type Env = { PUBLIC_ENABLE_TESTNETS?: string };
@@ -42,7 +42,7 @@ type LoaderData = { ENV: Env };
 export const meta: MetaFunction = () => [
   {
     charset: 'utf-8',
-    title: 'RainbowKit Remix Example',
+    title: 'CinaWalletKit Remix Example',
     viewport: 'width=device-width,initial-scale=1',
   },
 ];
@@ -86,7 +86,7 @@ export default function App() {
     ];
 
     const config = getDefaultConfig({
-      appName: 'RainbowKit Remix Example',
+      appName: 'CinaWalletKit Remix Example',
       projectId: 'YOUR_PROJECT_ID',
       chains,
       ssr: true,
@@ -108,7 +108,7 @@ export default function App() {
         {config && chains ? (
           <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
-              <RainbowKitProvider>
+              <CinaWalletKitProvider>
                 <div
                   style={{
                     display: 'flex',
@@ -118,7 +118,7 @@ export default function App() {
                 >
                   <ConnectButton />
                 </div>
-              </RainbowKitProvider>
+              </CinaWalletKitProvider>
               <Outlet />
             </QueryClientProvider>
           </WagmiProvider>

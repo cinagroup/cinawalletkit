@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     foundry({
       project: './',
-      include: ['RainbowKitNFT.sol/**'],
+      include: ['CinaWalletKitNFT.sol/**'],
     }),
   ],
 });

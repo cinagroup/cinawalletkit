@@ -1,5 +1,5 @@
 import '../styles/global.css';
-import '@rainbow-me/rainbowkit/styles.css';
+import '@cinagroup/cinawalletkit/styles.css';
 
 function RootLayout({ children }: { children: React.ReactNode }) {
   return children;

@@ -1,4 +1,4 @@
-# @rainbow-me/rainbowkit-siwe-next-auth
+# @cinagroup/CinaWalletKit-siwe-next-auth
 
 ## 0.6.0
 
@@ -16,11 +16,11 @@
 
   Migration guide:
 
-  1. Upgrade `next-auth` to v5 and upgrade `@rainbow-me/rainbowkit-siwe-next-auth`.
+  1. Upgrade `next-auth` to v5 and upgrade `@cinagroup/CinaWalletKit-siwe-next-auth`.
 
   ```diff
-  - npm install next-auth@^4 @rainbow-me/rainbowkit-siwe-next-auth
-  + npm install next-auth@5.0.0-beta.31 @rainbow-me/rainbowkit-siwe-next-auth
+  - npm install next-auth@^4 @cinagroup/CinaWalletKit-siwe-next-auth
+  + npm install next-auth@5.0.0-beta.31 @cinagroup/CinaWalletKit-siwe-next-auth
   ```
 
   2. Update your NextAuth server configuration to the v5 API.
@@ -91,7 +91,7 @@
   + }
   ```
 
-  5. If upgrading from before `@rainbow-me/rainbowkit-siwe-next-auth@0.5.0`, also follow the `0.5.0` changelog entry for the `viem/siwe` migration and the `0.3.0` changelog entry for the earlier `getCsrfToken` request-shape change.
+  5. If upgrading from before `@cinagroup/CinaWalletKit-siwe-next-auth@0.5.0`, also follow the `0.5.0` changelog entry for the `viem/siwe` migration and the `0.3.0` changelog entry for the earlier `getCsrfToken` request-shape change.
 
 ## 0.5.0
 
@@ -109,10 +109,10 @@
   npm uninstall siwe ethers
   ```
 
-  2. Upgrade RainbowKit, `rainbowkit-siwe-next-auth`, and `viem`
+  2. Upgrade CinaWalletKit, `CinaWalletKit-siwe-next-auth`, and `viem`
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^2.2.0 rainbow-me/rainbowkit-siwe-next-auth@^0.5.0 viem@^2.12.0
+  npm i @cinagroup/CinaWalletKit@^2.2.0 rainbow-me/CinaWalletKit-siwe-next-auth@^0.5.0 viem@^2.12.0
   ```
 
   3. Create a Public Client
@@ -174,59 +174,59 @@
   }
   ```
 
-  Reference the [with-next-siwe-next-auth](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) example for more guidance.
+  Reference the [with-next-siwe-next-auth](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-next-auth) example for more guidance.
 
 ### Patch Changes
 
 - Updated dependencies [f02bced]
-  - @rainbow-me/rainbowkit@2.2.0
+  - @cinagroup/CinaWalletKit@2.2.0
 
 ## 0.4.1
 
 ### Patch Changes
 
 - Updated dependencies [82153ed]
-  - @rainbow-me/rainbowkit@2.1.0
+  - @cinagroup/CinaWalletKit@2.1.0
 
 ## 0.4.0
 
 ### Minor Changes
 
-- aa0269e: RainbowKit has reached v2 alongside [wagmi](https://wagmi.sh), which includes [breaking changes](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
+- aa0269e: CinaWalletKit has reached v2 alongside [wagmi](https://wagmi.sh), which includes [breaking changes](https://wagmi.sh/react/guides/migrate-from-v1-to-v2).
 
-  `0.4.x` now requires `@rainbow-me/rainbowkit` v2, specifically: `2.x.x`.
+  `0.4.x` now requires `@cinagroup/CinaWalletKit` v2, specifically: `2.x.x`.
 
 ## 0.3.4
 
 ### Patch Changes
 
-- Peer dependency support for RainbowKit `1.3.x`
+- Peer dependency support for CinaWalletKit `1.3.x`
 
 - Updated dependencies [9ce75a65]
-  - @rainbow-me/rainbowkit@1.3.0
+  - @cinagroup/CinaWalletKit@1.3.0
 
 ## 0.3.3
 
 ### Patch Changes
 
 - 2f56ab23: Adopted `'use client'` directive for safe App Router usage
-- 9dfe0531: Added strict peer incompatibility with `next-auth@5`. RainbowKit will support `next-auth` v5 in a future release with improved App Router support.
+- 9dfe0531: Added strict peer incompatibility with `next-auth@5`. CinaWalletKit will support `next-auth` v5 in a future release with improved App Router support.
 
 ## 0.3.2
 
 ### Patch Changes
 
 - Updated dependencies [ef64a229]
-  - @rainbow-me/rainbowkit@1.2.0
+  - @cinagroup/CinaWalletKit@1.2.0
 
 ## 0.3.1
 
 ### Patch Changes
 
-- Peer dependency support for RainbowKit `1.1.x`
+- Peer dependency support for CinaWalletKit `1.1.x`
 
 - Updated dependencies [b37f5d68]
-  - @rainbow-me/rainbowkit@1.1.0
+  - @cinagroup/CinaWalletKit@1.1.0
 
 ## 0.3.0
 
@@ -249,9 +249,9 @@
 
 ### Minor Changes
 
-- 93b58d0: RainbowKit has reached v1 alongside [wagmi](https://wagmi.sh), which includes [breaking changes](https://wagmi.sh/react/migration-guide#1xx-breaking-changes).
+- 93b58d0: CinaWalletKit has reached v1 alongside [wagmi](https://wagmi.sh), which includes [breaking changes](https://wagmi.sh/react/migration-guide#1xx-breaking-changes).
 
-  `0.2.x` now requires `@rainbow-me/rainbowkit` v1, specifically: `1.0.x`.
+  `0.2.x` now requires `@cinagroup/CinaWalletKit` v1, specifically: `1.0.x`.
 
   While wagmi v1 now relies on `viem` instead of the `ethers` peer dependency, `siwe` will still require `ethers` as a peer dependency. Ensure that you have installed a compatible `ethers` version, including: `^5.6.8 || ^6.0.8`.
 
@@ -263,7 +263,7 @@
 
   Specified maximum `next-auth` peer dependency as `4.20.1` due to known issues introduced in later versions.
 
-  Updated [Authentication docs](https://www.rainbowkit.com/docs/authentication) and examples to support modern `next-auth` types.
+  Updated [Authentication docs](https://www.CinaWalletKit.com/docs/authentication) and examples to support modern `next-auth` types.
 
 ## 0.1.9
 
@@ -276,53 +276,53 @@
 ### Patch Changes
 
 - Updated dependencies [1876ba0]
-  - @rainbow-me/rainbowkit@0.11.0
+  - @cinagroup/CinaWalletKit@0.11.0
 
 ## 0.1.7
 
 ### Patch Changes
 
 - Updated dependencies [355402b]
-  - @rainbow-me/rainbowkit@0.10.0
+  - @cinagroup/CinaWalletKit@0.10.0
 
 ## 0.1.6
 
 ### Patch Changes
 
 - Updated dependencies [49f0ec9]
-  - @rainbow-me/rainbowkit@0.9.0
+  - @cinagroup/CinaWalletKit@0.9.0
 
 ## 0.1.5
 
 ### Patch Changes
 
-- 6b37050: Added `@rainbow-me/rainbowkit@0.8.x` as a peer dependency
+- 6b37050: Added `@cinagroup/CinaWalletKit@0.8.x` as a peer dependency
 
 ## 0.1.4
 
 ### Patch Changes
 
-- 2e6bb8f: Include `v0.7.x` in RainbowKit peer dependency range
+- 2e6bb8f: Include `v0.7.x` in CinaWalletKit peer dependency range
 
 ## 0.1.3
 
 ### Patch Changes
 
-- 62fd332: Include RainbowKit v0.6.x in peer dependency range
+- 62fd332: Include CinaWalletKit v0.6.x in peer dependency range
 
 ## 0.1.2
 
 ### Patch Changes
 
 - Updated dependencies [3f9013f]
-  - @rainbow-me/rainbowkit@0.5.2
+  - @cinagroup/CinaWalletKit@0.5.2
 
 ## 0.1.1
 
 ### Patch Changes
 
 - Updated dependencies [8060ccd]
-  - @rainbow-me/rainbowkit@0.5.1
+  - @cinagroup/CinaWalletKit@0.5.1
 
 ## 0.1.0
 
@@ -333,4 +333,4 @@
 ### Patch Changes
 
 - Updated dependencies [488c5a1]
-  - @rainbow-me/rainbowkit@0.5.0
+  - @cinagroup/CinaWalletKit@0.5.0

@@ -1,10 +1,10 @@
 import '../styles/global.css';
-import '@rainbow-me/rainbow-button/styles.css';
+import '@cinagroup/cinawalletkit-button/styles.css';
 import type { AppProps } from 'next/app';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
-import { RainbowButtonProvider } from '@rainbow-me/rainbow-button';
+import { RainbowButtonProvider } from '@cinagroup/cinawalletkit-button';
 
 import { config } from '../wagmi';
 

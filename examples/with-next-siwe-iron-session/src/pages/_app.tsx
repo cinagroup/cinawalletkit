@@ -1,18 +1,18 @@
 // This example is based on the wagmi SIWE tutorial
 // https://wagmi.sh/examples/sign-in-with-ethereum
 import '../styles/global.css';
-import '@rainbow-me/rainbowkit/styles.css';
+import '@cinagroup/cinawalletkit/styles.css';
 import type { AppProps } from 'next/app';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
+  CinaWalletKitAuthenticationProvider,
   type AuthenticationStatus,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/cinawalletkit';
 import { createSiweMessage } from 'viem/siwe';
 
 import { config } from '../wagmi';
@@ -106,14 +106,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authAdapter}
           status={authStatus}
         >
-          <RainbowKitProvider>
+          <CinaWalletKitProvider>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

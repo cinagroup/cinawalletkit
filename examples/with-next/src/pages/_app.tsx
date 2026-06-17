@@ -1,11 +1,11 @@
 import '../styles/global.css';
-import '@rainbow-me/rainbowkit/styles.css';
+import '@cinagroup/cinawalletkit/styles.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
-import { RainbowKitProvider, type Locale } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, type Locale } from '@cinagroup/cinawalletkit';
 
 import { config } from '../wagmi';
 
@@ -16,9 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider locale={locale}>
+        <CinaWalletKitProvider locale={locale}>
           <Component {...pageProps} />
-        </RainbowKitProvider>
+        </CinaWalletKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

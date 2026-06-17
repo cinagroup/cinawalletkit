@@ -1,11 +1,11 @@
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
-import { rainbowWallet, readyWallet } from '@rainbow-me/rainbowkit/wallets';
+import { connectorsForWallets } from '@cinagroup/cinawalletkit';
+import { rainbowWallet, readyWallet } from '@cinagroup/cinawalletkit/wallets';
 import { createConfig, http } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import { baseAccount, metaMask } from 'wagmi/connectors';
 
 const projectId = 'YOUR_PROJECT_ID';
-const appName = 'RainbowKit demo';
+const appName = 'CinaWalletKit demo';
 
 const connectors = connectorsForWallets(
   [

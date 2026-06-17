@@ -3,7 +3,7 @@ import { useAccount, useDisconnect } from 'wagmi';
 import {
   RainbowButton,
   useRainbowConnectModal,
-} from '@rainbow-me/rainbow-button';
+} from '@cinagroup/cinawalletkit-button';
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();

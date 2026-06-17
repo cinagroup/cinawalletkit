@@ -15,7 +15,7 @@
 - Updated dependencies [25c4c2b]
 - Updated dependencies [f2523a9]
 - Updated dependencies [f52657f]
-  - @rainbow-me/rainbowkit@2.2.11
+  - @cinagroup/CinaWalletKit@2.2.11
 
 ## 0.0.6
 
@@ -42,7 +42,7 @@
 - Updated dependencies [b7b7b43]
 - Updated dependencies [507f583]
 - Updated dependencies [16963de]
-  - @rainbow-me/rainbowkit@2.2.10
+  - @cinagroup/CinaWalletKit@2.2.10
 
 ## 0.0.5
 
@@ -58,14 +58,14 @@
 - Updated dependencies [fe0496e]
 - Updated dependencies [5698ade]
 - Updated dependencies [1520f59]
-  - @rainbow-me/rainbowkit@2.2.9
+  - @cinagroup/CinaWalletKit@2.2.9
 
 ## 0.0.4
 
 ### Patch Changes
 
 - Updated dependencies [f542876]
-  - @rainbow-me/rainbowkit@2.2.8
+  - @cinagroup/CinaWalletKit@2.2.8
 
 ## 0.0.3
 
@@ -76,7 +76,7 @@
 - Updated dependencies [10090d2]
 - Updated dependencies [50c7f13]
 - Updated dependencies [15ddd4a]
-  - @rainbow-me/rainbowkit@2.2.7
+  - @cinagroup/CinaWalletKit@2.2.7
 
 ## 0.0.2
 
@@ -86,7 +86,7 @@
 - e03de7c: Upgrade React, React DOM, Next, and related type dependencies across packages and examples.
 - Updated dependencies [624a38a]
 - Updated dependencies [f6ad6aa]
-  - @rainbow-me/rainbowkit@2.2.6
+  - @cinagroup/CinaWalletKit@2.2.6
 
 ## 0.0.1
 
@@ -98,7 +98,7 @@
 - Updated dependencies [8515fd3]
 - Updated dependencies [5b54649]
 - Updated dependencies [03ae0d0]
-  - @rainbow-me/rainbowkit@2.2.5
+  - @cinagroup/CinaWalletKit@2.2.5
 
 ## 0.0.1
 

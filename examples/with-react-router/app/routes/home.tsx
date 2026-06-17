@@ -1,6 +1,6 @@
 import { Welcome } from '../welcome/welcome';
 import { Providers } from '~/providers';
-import '@rainbow-me/rainbowkit/styles.css';
+import '@cinagroup/cinawalletkit/styles.css';
 
 export function meta() {
   return [

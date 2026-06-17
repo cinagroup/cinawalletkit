@@ -4,16 +4,16 @@ import type React from 'react';
 import { SessionProvider } from 'next-auth/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/cinawalletkit';
 import {
-  RainbowKitSiweNextAuthProvider,
+  CinaWalletKitSiweNextAuthProvider,
   type GetSiweMessageOptions,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
+} from '@cinagroup/cinawalletkit-siwe-next-auth';
 
 import { config } from '../wagmi';
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
-  statement: 'Sign in to the RainbowKit + SIWE example app',
+  statement: 'Sign in to the CinaWalletKit + SIWE example app',
 });
 
 const queryClient = new QueryClient();
@@ -23,11 +23,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <SessionProvider refetchInterval={0}>
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
-          <RainbowKitSiweNextAuthProvider
+          <CinaWalletKitSiweNextAuthProvider
             getSiweMessageOptions={getSiweMessageOptions}
           >
-            <RainbowKitProvider>{children}</RainbowKitProvider>
-          </RainbowKitSiweNextAuthProvider>
+            <CinaWalletKitProvider>{children}</CinaWalletKitProvider>
+          </CinaWalletKitSiweNextAuthProvider>
         </QueryClientProvider>
       </WagmiProvider>
     </SessionProvider>

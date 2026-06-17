@@ -1,4 +1,4 @@
-# @rainbow-me/rainbowkit
+# @cinagroup/CinaWalletKit
 
 ## 2.2.11
 
@@ -7,7 +7,7 @@
 - a40b1f4: Migrate the Base connector to canonical `base` naming, while preserving backwards-compatible aliases `baseAccount` and `coinbaseWallet`.
 - 3672dc6: Added Anchorage Digital wallet support with the `anchorageDigitalWallet` wallet connector.
 - 1043d88: Added MeCo Wallet support with `mecoWallet` wallet connector.
-- f52657f: Exposed `RainbowKitProviderProps` and `WalletButtonRendererProps` as public type exports to support Custom Wallet Button scenarios.
+- f52657f: Exposed `CinaWalletKitProviderProps` and `WalletButtonRendererProps` as public type exports to support Custom Wallet Button scenarios.
 - 4f2de17: Fixed a crash that could occur when selecting a wallet while multiple browser wallet extensions were installed and the specific injected wallet was missing. Wallet-specific injected connectors now bind only to their matching provider instead of falling back to available defaults.
 - bc4625c: Fix recent transaction tracking so failed transactions no longer prevent an app's own transaction receipt wait from settling.
 - 25c4c2b: Improved SSR safety to prevent WalletConnect initialization warnings and mitigate localStorage API availability changes in Node.js v25 and above.
@@ -81,7 +81,7 @@
 
   Added Gemini Wallet as a supported wallet connector with proper icon and configuration.
 
-- 5698ade: fix monad logo in rainbowkit package and include monad testnet in the example
+- 5698ade: fix monad logo in CinaWalletKit package and include monad testnet in the example
 - 1520f59: Fixed unintended forwarding of the `errorCorrection` prop to SVG elements used by the QRCode component to prevent React warning.
 
 ## 2.2.8
@@ -106,7 +106,7 @@
 - 624a38a: The `coinbaseWallet` connector now supports additional SDK configuration options to enable [Paymasters](https://docs.base.org/identity/smart-wallet/guides/paymasters) and [Sub Accounts](https://docs.base.org/identity/smart-wallet/guides/sub-accounts) for your dapp.
 
   ```tsx
-  import { coinbaseWallet } from "@rainbow-me/rainbowkit/wallets";
+  import { coinbaseWallet } from "@cinagroup/CinaWalletKit/wallets";
 
   // Configure Paymaster for gas sponsorship
   coinbaseWallet.paymasterUrls = {
@@ -173,7 +173,7 @@
 
 - f02bced: The Authentication API now supports ERC-1271 and ERC-6492 for smart contract signature verification to enable Sign-in with Ethereum for Smart Contract Wallets, including Coinbase Smart Wallet and Argent.
 
-  We have also deprecated the `siwe` and `ethers` peer dependencies in favor of `viem/siwe` to make RainbowKit even more seamless.
+  We have also deprecated the `siwe` and `ethers` peer dependencies in favor of `viem/siwe` to make CinaWalletKit even more seamless.
 
   No changes are necessary for dApps that don't rely on the Authentication API.
 
@@ -187,10 +187,10 @@
   npm uninstall siwe ethers
   ```
 
-  2. Upgrade RainbowKit, `rainbowkit-siwe-next-auth`, and `viem`
+  2. Upgrade CinaWalletKit, `CinaWalletKit-siwe-next-auth`, and `viem`
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^2.2.0 rainbow-me/rainbowkit-siwe-next-auth@^0.5.0 viem@^2.12.0
+  npm i @cinagroup/CinaWalletKit@^2.2.0 rainbow-me/CinaWalletKit-siwe-next-auth@^0.5.0 viem@^2.12.0
   ```
 
   3. Create a Public Client
@@ -252,7 +252,7 @@
   }
   ```
 
-  Reference the [with-next-siwe-next-auth](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) example for more guidance.
+  Reference the [with-next-siwe-next-auth](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-next-auth) example for more guidance.
 
   **Custom Authentication**
 
@@ -262,10 +262,10 @@
   npm uninstall siwe ethers
   ```
 
-  2. Upgrade RainbowKit and `viem`
+  2. Upgrade CinaWalletKit and `viem`
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^2.2.0 viem@^2.12.0
+  npm i @cinagroup/CinaWalletKit@^2.2.0 viem@^2.12.0
   ```
 
   3. Create a Public Client
@@ -349,7 +349,7 @@
   +   return res.status(422).json({ message: 'Invalid nonce.' });
   ```
 
-  Reference the [with-next-siwe-iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session) example for more guidance.
+  Reference the [with-next-siwe-iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session) example for more guidance.
 
 ## 2.1.7
 
@@ -373,7 +373,7 @@
 
 - c08f620: Added `zh-HK` and `zh-TW` locales for Traditional Chinese language support. You can also specify `zh-Hans` and `zh-Hant` locales to refer to the writing systems directly.
 
-  Reference [our guide](https://www.rainbowkit.com/docs/localization) to learn more about Localization.
+  Reference [our guide](https://www.CinaWalletKit.com/docs/localization) to learn more about Localization.
 
 - 675f9dd: Add icon for Gnosis Chain
 - f65b5c4: Add icon for Celo chain
@@ -409,7 +409,7 @@
   Developers can test Smart Wallet with `sepolia` and `baseSepolia` chains today by setting `smartWalletOnly` like so:
 
   ```tsx
-  import { coinbaseWallet } from "@rainbow-me/rainbowkit/wallets";
+  import { coinbaseWallet } from "@cinagroup/CinaWalletKit/wallets";
 
   // Enable Coinbase Smart Wallet for testing
   coinbaseWallet.preference = "smartWalletOnly";
@@ -433,7 +433,7 @@
 ### Patch Changes
 
 - 725a376: Added Magic Eden Wallet support with `magicEdenWallet` wallet connector
-- 9be5452: Resolved an issue with the Enhanced Provider when using RainbowKit in Vite without a `process.env` polyfill
+- 9be5452: Resolved an issue with the Enhanced Provider when using CinaWalletKit in Vite without a `process.env` polyfill
 
 ## 2.1.0
 
@@ -441,24 +441,24 @@
 
 - 82153ed: Upgraded compatible `wagmi` and `@coinbase/wallet-sdk` versions to support [Coinbase Smart Wallet](https://www.smartwallet.dev/why).
 
-  Smart Wallet enables users to create a new wallet in seconds with Passkeys, without installing an app or extension. Smart Wallet users can use the same account and address across all onchain apps with RainbowKit.
+  Smart Wallet enables users to create a new wallet in seconds with Passkeys, without installing an app or extension. Smart Wallet users can use the same account and address across all onchain apps with CinaWalletKit.
 
   Smart Wallet and the underlying smart contract is fully compatible with Wagmi, but dApps need to ensure that their offchain signature validation is [ERC-6492](https://eips.ethereum.org/EIPS/eip-6492) compliant to support smart contract wallets. Follow [this guide](https://www.smartwallet.dev/guides/signature-verification) for more information.
 
-  Coinbase Wallet users on desktop and mobile will now interact with a new connection flow in RainbowKit alongside Smart Wallet.
+  Coinbase Wallet users on desktop and mobile will now interact with a new connection flow in CinaWalletKit alongside Smart Wallet.
 
 - 90d6931: Introduced the Enhanced Provider to handle fallback resolutions when a Mainnet provider transport is unavailable.
 
-  ENS names for dApps without a Mainnet provider will now properly resolve. Additional conveniences will be soon be rolling out in RainbowKit.
+  ENS names for dApps without a Mainnet provider will now properly resolve. Additional conveniences will be soon be rolling out in CinaWalletKit.
 
 ## 2.0.8
 
 ### Patch Changes
 
-- 8841891: Added real-time balance fetching based on the [Recent Transaction](https://www.rainbowkit.com/docs/recent-transactions) API. As a transaction is confirmed on-chain, the user's gas balance will be updated to reflect the transaction.
+- 8841891: Added real-time balance fetching based on the [Recent Transaction](https://www.CinaWalletKit.com/docs/recent-transactions) API. As a transaction is confirmed on-chain, the user's gas balance will be updated to reflect the transaction.
 
   ```tsx
-  import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
+  import { useAddRecentTransaction } from "@cinagroup/CinaWalletKit";
 
   export default () => {
     const addRecentTransaction = useAddRecentTransaction();
@@ -551,10 +551,10 @@
 
   Follow the steps below to migrate.
 
-  **1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
+  **1. Upgrade CinaWalletKit, `wagmi`, and `viem` to their latest versions**
 
   ```bash
-  npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
+  npm i @cinagroup/CinaWalletKit@2 wagmi@2 viem@2.x
   ```
 
   **2. Install `@tanstack/react-query` peer dependency**
@@ -567,10 +567,10 @@
   npm i @tanstack/react-query
   ```
 
-  **3. Upgrade your RainbowKit and Wagmi configurations**
+  **3. Upgrade your CinaWalletKit and Wagmi configurations**
 
   ```diff
-    import '@rainbow-me/rainbowkit/styles.css'
+    import '@cinagroup/CinaWalletKit/styles.css'
 
   + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
   - import { createPublicClient, http } from 'viem'
@@ -578,13 +578,13 @@
   + import { WagmiProvider, http } from 'wagmi'
   - import { configureChains, createConfig } from 'wagmi'
     import { mainnet } from 'wagmi/chains'
-    import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-  - import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
-  + import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+    import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit'
+  - import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit'
+  + import { getDefaultConfig } from '@cinagroup/CinaWalletKit'
 
     /* getDefaultWallets is now optional */
   - const { wallets } = getDefaultWallets({
-  -   appName: 'RainbowKit demo',
+  -   appName: 'CinaWalletKit demo',
   -   projectId: 'YOUR_PROJECT_ID',
   -   chains,
   - })
@@ -604,7 +604,7 @@
 
     /* New API that includes Wagmi's createConfig and bundles getDefaultWallets and connectorsForWallets */
   + const config = getDefaultConfig({
-  +   appName: 'RainbowKit demo',
+  +   appName: 'CinaWalletKit demo',
   +   projectId: 'YOUR_PROJECT_ID',
   +   chains: [mainnet],
   +   transports: {
@@ -619,10 +619,10 @@
   -     <WagmiConfig config={config}>
   +     <WagmiProvider config={config}>
   +       <QueryClientProvider client={queryClient}>
-  -         <RainbowKitProvider chains={chains}>
-  +         <RainbowKitProvider>
+  -         <CinaWalletKitProvider chains={chains}>
+  +         <CinaWalletKitProvider>
               {/* Your App */}
-            </RainbowKitProvider>
+            </CinaWalletKitProvider>
   +       </QueryClientProvider>
   -     </WagmiConfig>
   +     </WagmiProvider>
@@ -630,7 +630,7 @@
     }
   ```
 
-  [You can read an in-depth migration guide here](https://rainbowkit.com/guides/rainbowkit-wagmi-v2).
+  [You can read an in-depth migration guide here](https://CinaWalletKit.com/guides/CinaWalletKit-wagmi-v2).
 
   **4. Check for breaking changes in `wagmi` and `viem`**
 
@@ -661,7 +661,7 @@
 
   Removed back button for wide size modal entirely when selecting `DownloadOptions` wallet step to prevent incorrect wallet step switching.
 
-- e5f5f03: Removed external `i18n-js` dependency to reduce RainbowKit bundle sizes.
+- e5f5f03: Removed external `i18n-js` dependency to reduce CinaWalletKit bundle sizes.
 - c0bd68e: Fixed a bug in the account modal transactions section where transactions that were not found or cancelled were incorrectly shown as 'pending' instead of 'failed'.
 - a79609b: Fixed a bug that allowed users to hold-press or cursor select wallet icons on iOS, which interrupted the connection experiencce.
 
@@ -671,9 +671,9 @@
 
 - 7565fb2: Added `uk-UA` and `ua` locale support for the Ukrainian language.
 
-  Reference [our guide](https://www.rainbowkit.com/docs/localization) to learn more about Localization.
+  Reference [our guide](https://www.CinaWalletKit.com/docs/localization) to learn more about Localization.
 
-- 24b5a88: Improved support for `NodeNext` module resolution to resolve `"@rainbow-me/rainbowkit"' has no exported member 'RainbowKitProvider'` TypeScript warnings
+- 24b5a88: Improved support for `NodeNext` module resolution to resolve `"@cinagroup/CinaWalletKit"' has no exported member 'CinaWalletKitProvider'` TypeScript warnings
 
 - 5a184e9: Fixed a bug where `eth_getBalance` would be called when `showBalance` was set to `false`. Optimized additional provider calls to fetch wallet balances only when a user interacts with the Account modal.
 
@@ -687,7 +687,7 @@
 
 ### Patch Changes
 
-- 3feab0e6: Support for Wagmi `1.4.12` to mitigate a supply-chain attack on the `@ledgerhq/connect-kit` package. RainbowKit dApp's were not directly impacted, but dApps that used the `LedgerConnector` connector in earlier versions of Wagmi could have been. This issue has since been resolved [by Ledger](https://x.com/Ledger/status/1735326240658100414?s=20) but the [wagmi team](https://x.com/wevm_dev/status/1735300109879963685?s=20) is encouraging developers to upgrade Wagmi and RainbowKit out of an abundance of caution.
+- 3feab0e6: Support for Wagmi `1.4.12` to mitigate a supply-chain attack on the `@ledgerhq/connect-kit` package. CinaWalletKit dApp's were not directly impacted, but dApps that used the `LedgerConnector` connector in earlier versions of Wagmi could have been. This issue has since been resolved [by Ledger](https://x.com/Ledger/status/1735326240658100414?s=20) but the [wagmi team](https://x.com/wevm_dev/status/1735300109879963685?s=20) is encouraging developers to upgrade Wagmi and CinaWalletKit out of an abundance of caution.
 - c9a8e469: Improved Korean localization. Thanks @Hyun2!
 - dba51779: Added support for `arbitrumSepolia`, `baseSepolia`, `optimismSepolia`, `zoraSepolia` testnet chains
 
@@ -695,10 +695,10 @@
 
 ### Minor Changes
 
-- 9ce75a65: The new `WalletButton` component helps dApps with custom wallet list implementations adopt RainbowKit and all of it's maintenance-free benefits.
+- 9ce75a65: The new `WalletButton` component helps dApps with custom wallet list implementations adopt CinaWalletKit and all of it's maintenance-free benefits.
 
   ```tsx
-  import { WalletButton } from '@rainbow-me/rainbowkit';
+  import { WalletButton } from '@cinagroup/CinaWalletKit';
 
   <WalletButton wallet="rainbow" />
   <WalletButton wallet="metamask" />
@@ -719,7 +719,7 @@
   </WalletButton.Custom>
   ```
 
-  Most dApps are best served by the [ConnectButton](https://www.rainbowkit.com/docs/connect-button). Reference the docs [here](https://www.rainbowkit.com/docs/wallet-button) for more information about `WalletButton` adoption and usecases.
+  Most dApps are best served by the [ConnectButton](https://www.CinaWalletKit.com/docs/connect-button). Reference the docs [here](https://www.CinaWalletKit.com/docs/wallet-button) for more information about `WalletButton` adoption and usecases.
 
 ## 1.2.1
 
@@ -733,8 +733,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { tokenaryWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { tokenaryWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -754,10 +754,10 @@
 
 - ef64a229: **Improved desktop wallet download support**
 
-  RainbowKit wallet connectors now support desktop download links and desktop
+  CinaWalletKit wallet connectors now support desktop download links and desktop
   wallet instructions.
 
-  Dapps that utilize the Custom Wallets API can reference the updated docs [here](https://www.rainbowkit.com/docs/custom-wallets).
+  Dapps that utilize the Custom Wallets API can reference the updated docs [here](https://www.CinaWalletKit.com/docs/custom-wallets).
 
   ```ts
   {
@@ -812,8 +812,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { safepalWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { safepalWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -832,8 +832,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { subWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { subWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains, projectId });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -852,8 +852,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { oktoWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { oktoWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, projectId, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -872,8 +872,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { zealWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { zealWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -892,8 +892,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { clvWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { clvWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -912,8 +912,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { desigWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { desigWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains, projectId });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -942,17 +942,17 @@
 
 ### Minor Changes
 
-- b37f5d68: RainbowKit is now localized in 13 languages and counting 🌎
+- b37f5d68: CinaWalletKit is now localized in 13 languages and counting 🌎
 
-  A user's preferred language is automatically detected and the wallet linking experience will be fully localized out of the box, including the `ConnectButton`. Developers can always customize the language selection or allow their users to choose a different language by passing a `locale` prop to `RainbowKitProvider` like so:
+  A user's preferred language is automatically detected and the wallet linking experience will be fully localized out of the box, including the `ConnectButton`. Developers can always customize the language selection or allow their users to choose a different language by passing a `locale` prop to `CinaWalletKitProvider` like so:
 
   ```tsx
-  <RainbowKitProvider locale="zh-CN">
+  <CinaWalletKitProvider locale="zh-CN">
   ```
 
-  RainbowKit's localization support works even better alongside i18n support in Next.js, so that locale selection can be specified with custom domains or a subpath like `/zh-CN/`. Reference [our guide](https://rainbowkit.com/docs/localization#using-with-nextjs) to learn more.
+  CinaWalletKit's localization support works even better alongside i18n support in Next.js, so that locale selection can be specified with custom domains or a subpath like `/zh-CN/`. Reference [our guide](https://CinaWalletKit.com/docs/localization#using-with-nextjs) to learn more.
 
-  If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
+  If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/CinaWalletKit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
 
 ## 1.0.12
 
@@ -961,7 +961,7 @@
 - 5b8d8219: Resolved an issue where dApps that supported many chains would cause an interface overflow on mobile. The Chains Modal is now scrollable.
 - fb9405a4: Resolved an issue that prevented overriding `iconUrl` and `iconBackground` during Chain customization
 - 7643e706: Deprecated `bitKeepWallet` connector in favor of `bitgetWallet`. The BitKeep Wallet connector will continue to be available without breaking changes.
-- 252f02e8: Resolved an issue with the Authentication modal where a user's wallet would remain connected if the modal was dismissed with the Close button rather than explicitly using the Cancel button. This fix ensures that dApps can reliably require a user to complete Authentication before RainbowKit enters a connected state.
+- 252f02e8: Resolved an issue with the Authentication modal where a user's wallet would remain connected if the modal was dismissed with the Close button rather than explicitly using the Cancel button. This fix ensures that dApps can reliably require a user to complete Authentication before CinaWalletKit enters a connected state.
 
 ## 1.0.11
 
@@ -973,7 +973,7 @@
 
 ### Patch Changes
 
-- a129cb04: Resolved an issue that prevented some PNG icons within RainbowKit from rendering.
+- a129cb04: Resolved an issue that prevented some PNG icons within CinaWalletKit from rendering.
 
 ## 1.0.9
 
@@ -987,8 +987,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { bifrostWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { bifrostWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1007,8 +1007,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { uniswapWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { uniswapWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1027,8 +1027,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { coin98Wallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { coin98Wallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1047,8 +1047,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { enkryptWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { enkryptWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1067,8 +1067,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { frameWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { frameWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1087,8 +1087,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { oneKeyWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { oneKeyWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, projectId, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1107,8 +1107,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { foxWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { foxWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, projectId, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1125,16 +1125,16 @@
 
 - eb319f3: Improved warnings and error handling for dApps with an invalid or missing `projectId`.
 
-  Improved the developer experience for RainbowKit examples and templates with a bundled development `projectId`. It is required that every dApp obtains a unique `projectId` before entering production to avoid throttling and issues for end users.
+  Improved the developer experience for CinaWalletKit examples and templates with a bundled development `projectId`. It is required that every dApp obtains a unique `projectId` before entering production to avoid throttling and issues for end users.
 
-  Read our WalletConnect v2 [Migration Guide](https://www.rainbowkit.com/guides/walletconnect-v2#:~:text=2.%20Supplying%20a%20projectId) for more information.
+  Read our WalletConnect v2 [Migration Guide](https://www.CinaWalletKit.com/guides/walletconnect-v2#:~:text=2.%20Supplying%20a%20projectId) for more information.
 
 ## 1.0.7
 
 ### Patch Changes
 
 - d303a3b9: Added `base` chain support
-- f1e98e84: RainbowKit now adopts standardized colloquial chain names like `Arbitrum` and `Optimism` for mainnet chains to simplify the chain switching experience
+- f1e98e84: CinaWalletKit now adopts standardized colloquial chain names like `Arbitrum` and `Optimism` for mainnet chains to simplify the chain switching experience
 
 ## 1.0.6
 
@@ -1148,8 +1148,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { coreWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { coreWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, projectId, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1168,8 +1168,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { talismanWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { talismanWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1188,8 +1188,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { safeheronWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { safeheronWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1208,8 +1208,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { frontierWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { frontierWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1228,8 +1228,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { bitKeepWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { bitKeepWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, projectId, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1248,8 +1248,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { tokenPocketWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { tokenPocketWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, projectId, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1264,7 +1264,7 @@
 
 ### Patch Changes
 
-- 08e3f4c: Decoupled `chains` between `WagmiConfig` and `RainbowKitProvider` so that dApps can now supply a subset of supported chains to `RainbowKitProvider` to limit the chains a user can switch between, while maintaining a shared `WagmiConfig`.
+- 08e3f4c: Decoupled `chains` between `WagmiConfig` and `CinaWalletKitProvider` so that dApps can now supply a subset of supported chains to `CinaWalletKitProvider` to limit the chains a user can switch between, while maintaining a shared `WagmiConfig`.
 - cb3614e: Added `cronos` and `cronosTestnet` chain support
 - 53d96bc: Fixed an issue with MetaMask Mobile's connector that blocked WalletConnect pairings
 - bfab830: Updated BNB Smart Chain icon.
@@ -1285,19 +1285,19 @@
 
 ### Patch Changes
 
-- e2b1072: Support for WalletConnect v2 is now standard in RainbowKit.
+- e2b1072: Support for WalletConnect v2 is now standard in CinaWalletKit.
 
   Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
 
   This must be completed before WalletConnect v1 bridge servers are shutdown on June 28, 2023.
 
-  Upgrade RainbowKit and provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+  Upgrade CinaWalletKit and provide the `projectId` to `getDefaultWallets` and individual CinaWalletKit wallet connectors like the following:
 
   ```ts
   const projectId = "YOUR_PROJECT_ID";
 
   const { wallets } = getDefaultWallets({
-    appName: "My RainbowKit App",
+    appName: "My CinaWalletKit App",
     projectId,
     chains,
   });
@@ -1315,7 +1315,7 @@
   ]);
   ```
 
-  You can read the full migration guide [here](https://www.rainbowkit.com/guides/walletconnect-v2).
+  You can read the full migration guide [here](https://www.CinaWalletKit.com/guides/walletconnect-v2).
 
   **Advanced options**
 
@@ -1348,11 +1348,11 @@
   });
   ```
 
-  Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
+  Reference the [docs](https://www.CinaWalletKit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
 
-- e2b1072: The [wagmi](https://wagmi.sh) peer dependency has been updated to `~1.2.0`. RainbowKit remains compatible with `~1.1.0` and `~1.0.1`.
+- e2b1072: The [wagmi](https://wagmi.sh) peer dependency has been updated to `~1.2.0`. CinaWalletKit remains compatible with `~1.1.0` and `~1.0.1`.
 
-  The [viem](https://viem.sh) peer dependency has been updated to `^1.0.0`. RainbowKit remains compatible with `~0.3.19` and beyond.
+  The [viem](https://viem.sh) peer dependency has been updated to `^1.0.0`. CinaWalletKit remains compatible with `~0.3.19` and beyond.
 
   It is recommended that you upgrade to recent versions of `wagmi` and `viem` to ensure a smooth transition to WalletConnect v2.
 
@@ -1382,10 +1382,10 @@
 
   Follow the steps below to migrate.
 
-  **1. Upgrade RainbowKit and `wagmi` to their latest version**
+  **1. Upgrade CinaWalletKit and `wagmi` to their latest version**
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^1 wagmi@^1
+  npm i @cinagroup/CinaWalletKit@^1 wagmi@^1
   ```
 
   **2. Install `viem` peer dependency**
@@ -1396,7 +1396,7 @@
   npm i viem
   ```
 
-  Note: wagmi no longer uses the `ethers` package internally. But if you rely on the [Authentication](https://www.rainbowkit.com/docs/authentication) API, `siwe` will still require `ethers` as a peer dependency.
+  Note: wagmi no longer uses the `ethers` package internally. But if you rely on the [Authentication](https://www.CinaWalletKit.com/docs/authentication) API, `siwe` will still require `ethers` as a peer dependency.
 
   **3. Check for breaking changes in `wagmi`**
 
@@ -1418,11 +1418,11 @@
 
 - 0f8e87e: **Improved extension store support**
 
-  RainbowKit wallet connectors now support multiple browser extension download URLs, and RainbowKit will automatically direct users to the appropriate extension store.
+  CinaWalletKit wallet connectors now support multiple browser extension download URLs, and CinaWalletKit will automatically direct users to the appropriate extension store.
 
   Users will also experience an improved download flow for extensions, including support for Arc, Opera, and Safari browsers.
 
-  dApps that utilize the `Custom Wallets` API can reference the updated docs [here](https://www.rainbowkit.com/docs/custom-wallets).
+  dApps that utilize the `Custom Wallets` API can reference the updated docs [here](https://www.CinaWalletKit.com/docs/custom-wallets).
 
   ```tsx
   {
@@ -1438,7 +1438,7 @@
 
 - 6eab54d: Detecting MetaMask in `window.ethereum.providers` for wallets that support the `ethereum.providers` standard.
 
-  Overriding Wagmi's `getProvider` logic for MetaMask to ensure that MetaMask is preferred when available, and RainbowKit's MetaMask button continues to act as a fallback for users that rely on wallets that override `window.ethereum`.
+  Overriding Wagmi's `getProvider` logic for MetaMask to ensure that MetaMask is preferred when available, and CinaWalletKit's MetaMask button continues to act as a fallback for users that rely on wallets that override `window.ethereum`.
 
 ## 0.12.12
 
@@ -1461,7 +1461,7 @@
   });
   ```
 
-  Reference the [docs](https://www.rainbowkit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
+  Reference the [docs](https://www.CinaWalletKit.com/docs/custom-wallet-list#walletconnect) for additional supported options.
 
 ## 0.12.11
 
@@ -1479,8 +1479,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { phantomWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { phantomWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, projectId, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1499,8 +1499,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { rabbyWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { rabbyWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1521,8 +1521,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { trustWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { trustWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, projectId, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1541,8 +1541,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { xdefiWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { xdefiWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, projectId, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1561,17 +1561,17 @@
 
   Every dApp that relies on WalletConnect now needs to obtain a `projectId` from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is absolutely free and only takes a few minutes.
 
-  RainbowKit will enable WalletConnect v2 for supported wallets when `projectId` is specified. If `projectId` is unspecified, RainbowKit will quietly prefer WalletConnect v1.
+  CinaWalletKit will enable WalletConnect v2 for supported wallets when `projectId` is specified. If `projectId` is unspecified, CinaWalletKit will quietly prefer WalletConnect v1.
 
   This must be completed before WalletConnect v1 bridge servers are shutdown on June 28, 2023.
 
-  Provide the `projectId` to `getDefaultWallets` and individual RainbowKit wallet connectors like the following:
+  Provide the `projectId` to `getDefaultWallets` and individual CinaWalletKit wallet connectors like the following:
 
   ```ts
   const projectId = "YOUR_PROJECT_ID";
 
   const { wallets } = getDefaultWallets({
-    appName: "My RainbowKit App",
+    appName: "My CinaWalletKit App",
     projectId,
     chains,
   });
@@ -1615,8 +1615,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { zerionWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { zerionWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1635,8 +1635,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { tahoWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { tahoWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1655,8 +1655,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { okxWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { okxWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1675,8 +1675,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { dawnWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { dawnWallet } from "@cinagroup/CinaWalletKit/wallets";
   const { wallets } = getDefaultWallets({ appName, chains });
   const connectors = connectorsForWallets([
     ...wallets,
@@ -1698,14 +1698,14 @@
 ### Patch Changes
 
 - e7f1bec: `injectedWallet` now has a friendlier name and icon
-- fe4f356: RainbowKit dApps that use `getDefaultWallets` or `injectedWallet` will now more eagerly display the fallback `injectedWallet` connector to better support dApp Browsers when a branded connector is unavailable.
+- fe4f356: CinaWalletKit dApps that use `getDefaultWallets` or `injectedWallet` will now more eagerly display the fallback `injectedWallet` connector to better support dApp Browsers when a branded connector is unavailable.
 
 ## 0.12.2
 
 ### Patch Changes
 
-- 2a1d230: Fixed `shimDisconnect` wallet connector option to maintain default Wagmi disconnect behavior when `shimDisconnect` is unspecified. RainbowKit wallet connectors now also accept all `InjectedConnectorOptions` options.
-- 429a3c7: Improvements to RainbowKit UX on iPad
+- 2a1d230: Fixed `shimDisconnect` wallet connector option to maintain default Wagmi disconnect behavior when `shimDisconnect` is unspecified. CinaWalletKit wallet connectors now also accept all `InjectedConnectorOptions` options.
+- 429a3c7: Improvements to CinaWalletKit UX on iPad
 
 ## 0.12.1
 
@@ -1719,8 +1719,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { bitskiWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { bitskiWallet } from "@cinagroup/CinaWalletKit/wallets";
   const connectors = connectorsForWallets([
     ...wallets,
     {
@@ -1743,8 +1743,8 @@
   import {
     getDefaultWallets,
     connectorsForWallets,
-  } from "@rainbow-me/rainbowkit";
-  import { mewWallet } from "@rainbow-me/rainbowkit/wallets";
+  } from "@cinagroup/CinaWalletKit";
+  import { mewWallet } from "@cinagroup/CinaWalletKit/wallets";
   const connectors = connectorsForWallets([
     ...wallets,
     {
@@ -1765,16 +1765,16 @@
 
 - 9838acf: The wagmi peer dependency has been updated to `0.12.x`.
 
-  RainbowKit has adopted the `WalletConnectLegacyConnector` connector in `wagmi` for continued WalletConnect v1 support. Support for WalletConnect v2 and `WalletConnectConnector` will soon be available as a patch release, without breaking changes.
+  CinaWalletKit has adopted the `WalletConnectLegacyConnector` connector in `wagmi` for continued WalletConnect v1 support. Support for WalletConnect v2 and `WalletConnectConnector` will soon be available as a patch release, without breaking changes.
 
   Wallets will be transitioned automatically in future releases.
 
   Follow the steps below to migrate.
 
-  #### 1. Upgrade RainbowKit and `wagmi` to their latest version
+  #### 1. Upgrade CinaWalletKit and `wagmi` to their latest version
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
+  npm i @cinagroup/CinaWalletKit@^0.12.0 wagmi@^0.12.0
   ```
 
 ## 0.11.1
@@ -1798,7 +1798,7 @@
   Follow the steps below to migrate.
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
+  npm i @cinagroup/CinaWalletKit@^0.11.0 wagmi@^0.11.0
   ```
 
   If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
@@ -1814,7 +1814,7 @@
   Follow the steps below to migrate.
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
+  npm i @cinagroup/CinaWalletKit@^0.10.0 wagmi@^0.10.0
   ```
 
   If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
@@ -1830,7 +1830,7 @@
   Follow the steps below to migrate.
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
+  npm i @cinagroup/CinaWalletKit@^0.9.0 wagmi@^0.9.0
   ```
 
   If you use `wagmi` hooks in your application, you will need to check if your application has been affected by the breaking changes in `wagmi`.
@@ -1845,10 +1845,10 @@
 
   Follow the steps below to migrate.
 
-  #### 1. Upgrade RainbowKit and `wagmi` to their latest version:
+  #### 1. Upgrade CinaWalletKit and `wagmi` to their latest version:
 
   ```bash
-  npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
+  npm i @cinagroup/CinaWalletKit@^0.9.0 wagmi@^0.9.0
   ```
 
   #### 2. Check for breaking changes in `wagmi`
@@ -1918,28 +1918,28 @@
 ### Patch Changes
 
 - 6b6a73b: Ensure loading spinner is not visible on install prompt
-- 5ddc813: Fix package.json exports field backwards compatibility for `@rainbow-me/rainbowkit/wallets`
+- 5ddc813: Fix package.json exports field backwards compatibility for `@cinagroup/CinaWalletKit/wallets`
 
 ## 0.7.0
 
 ### Minor Changes
 
-- 2e6bb8f: Support tree shaking of individual wallets by exposing them as separate imports via the new `@rainbow-me/rainbowkit/wallets` entry point.
+- 2e6bb8f: Support tree shaking of individual wallets by exposing them as separate imports via the new `@cinagroup/CinaWalletKit/wallets` entry point.
 
   In order to reduce bundle size, you can now select the individual wallets you want to import into your application.
 
   Note that since wallets are no longer namespaced via the `wallet` object, all wallets now have a `Wallet` suffix.
 
   ```diff
-  -import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
-  +import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+  -import { connectorsForWallets, wallet } from '@cinagroup/CinaWalletKit';
+  +import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
   +import {
   +  injectedWallet,
   +  rainbowWallet,
   +  metaMaskWallet,
   +  coinbaseWallet,
   +  walletConnectWallet,
-  +} from '@rainbow-me/rainbowkit/wallets';
+  +} from '@cinagroup/CinaWalletKit/wallets';
 
   const wallets = [
   -  wallet.injected({ chains }),
@@ -1955,11 +1955,11 @@
   ];
   ```
 
-- 2e6bb8f: The Steakwallet backwards compatibility layer has been removed. Omni should be used instead, available via the new `@rainbow-me/rainbowkit/wallets` entry point.
+- 2e6bb8f: The Steakwallet backwards compatibility layer has been removed. Omni should be used instead, available via the new `@cinagroup/CinaWalletKit/wallets` entry point.
 
   ```diff
-  -import { wallet } from '@rainbow-me/rainbowkit';
-  +import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+  -import { wallet } from '@cinagroup/CinaWalletKit';
+  +import { omniWallet } from '@cinagroup/CinaWalletKit/wallets';
 
   const wallets = [
   -  wallet.steak({ chains }),
@@ -1971,7 +1971,7 @@
 
 ### Patch Changes
 
-- ecd7209: The new Wallet installation flows add two new colors to RainbowKit's `colors` property in the custom `theme` object: `downloadBottomCardBackground` and `downloadTopCardBackground`. Additionally, we now include the optional `iconAccent` prop in the `Wallet` object, specifically for wallets with both a browser extension and an app, to use as the accent color for the new download installation flows.
+- ecd7209: The new Wallet installation flows add two new colors to CinaWalletKit's `colors` property in the custom `theme` object: `downloadBottomCardBackground` and `downloadTopCardBackground`. Additionally, we now include the optional `iconAccent` prop in the `Wallet` object, specifically for wallets with both a browser extension and an app, to use as the accent color for the new download installation flows.
 - 248a1cb: Generate a new QR code when WalletConnect request is rejected
 
 ## 0.6.1
@@ -1994,7 +1994,7 @@
   This is an example of a custom wallet that hides itself if another injected connector is available.
 
   ```ts
-  import type Wallet from "@rainbow-me/rainbowkit";
+  import type Wallet from "@cinagroup/CinaWalletKit";
   import { InjectedConnector } from "wagmi/connectors/injected";
 
   const myCustomWallet: Wallet = {
@@ -2033,7 +2033,7 @@
       wallets: [
         wallet.rainbow({ chains }),
         wallet.metaMask({ chains }),
-        wallet.coinbase({ appName: "My RainbowKit App", chains }),
+        wallet.coinbase({ appName: "My CinaWalletKit App", chains }),
         wallet.metaMask({ chains }),
         ...(needsInjectedWalletFallback ? [wallet.injected({ chains })] : []),
       ],
@@ -2050,7 +2050,7 @@
       wallets: [
         wallet.rainbow({ chains }),
         wallet.metaMask({ chains }),
-        wallet.coinbase({ appName: "My RainbowKit App", chains }),
+        wallet.coinbase({ appName: "My CinaWalletKit App", chains }),
         wallet.metaMask({ chains }),
         wallet.injected({ chains }),
       ],
@@ -2068,7 +2068,7 @@
         wallet.injected({ chains }),
         wallet.rainbow({ chains }),
         wallet.metaMask({ chains }),
-        wallet.coinbase({ appName: "My RainbowKit App", chains }),
+        wallet.coinbase({ appName: "My CinaWalletKit App", chains }),
         wallet.metaMask({ chains }),
       ],
     },
@@ -2091,15 +2091,15 @@
 
 ### Patch Changes
 
-- 12912b3: Fix the `@rainbow-me/rainbowkit/styles.css` import for Jest, and other tooling that doesn't support the `exports` field in `package.json`.
+- 12912b3: Fix the `@cinagroup/CinaWalletKit/styles.css` import for Jest, and other tooling that doesn't support the `exports` field in `package.json`.
 
-  Jest currently has issues when importing RainbowKit styles due to lack of support for the `exports` field, which we use to publicly alias `@rainbow-me/rainbowkit/dist/index.css` as `@rainbow-me/rainbowkit/styles.css`. To fix this, we now include a `styles.css` _directory_ in the RainbowKit package containing a `package.json` file whose `main` field points to `"../dist/index.css"`.
+  Jest currently has issues when importing CinaWalletKit styles due to lack of support for the `exports` field, which we use to publicly alias `@cinagroup/CinaWalletKit/dist/index.css` as `@cinagroup/CinaWalletKit/styles.css`. To fix this, we now include a `styles.css` _directory_ in the CinaWalletKit package containing a `package.json` file whose `main` field points to `"../dist/index.css"`.
 
 - fcfc13d: Improve accessibility in Chain switcher button
 - 3f9013f: Rename Steakwallet to Omni and leave `steak` as a deprecated wallet.
 
   ```
-  import { wallet } from '@rainbow-me/rainbowkit';
+  import { wallet } from '@cinagroup/CinaWalletKit';
 
   const omni = wallet.omni({ chains });
   ```
@@ -2118,9 +2118,9 @@
 
 - 737a1d6: Added support for authentication.
 
-  RainbowKit now provides first-class support for [Sign-In with Ethereum](https://login.xyz) and [NextAuth.js](https://next-auth.js.org) via the `@rainbow-me/rainbowkit-siwe-next-auth` package, as well as lower-level APIs for integrating with custom back-ends and message formats.
+  CinaWalletKit now provides first-class support for [Sign-In with Ethereum](https://login.xyz) and [NextAuth.js](https://next-auth.js.org) via the `@cinagroup/CinaWalletKit-siwe-next-auth` package, as well as lower-level APIs for integrating with custom back-ends and message formats.
 
-  For more information on how to integrate this feature into your application, check out the full [RainbowKit authentication guide.](https://www.rainbowkit.com/docs/authentication)
+  For more information on how to integrate this feature into your application, check out the full [CinaWalletKit authentication guide.](https://www.CinaWalletKit.com/docs/authentication)
 
   **Migration guide for custom ConnectButton implementations**
 
@@ -2162,7 +2162,7 @@
   </ConnectButton.Custom>
   ```
 
-  For a more complete example and API documentation, check out the [custom ConnectButton documentation.](https://www.rainbowkit.com/docs/custom-connect-button)
+  For a more complete example and API documentation, check out the [custom ConnectButton documentation.](https://www.CinaWalletKit.com/docs/custom-connect-button)
 
 ### Patch Changes
 
@@ -2172,7 +2172,7 @@
 
 ### Patch Changes
 
-- 4333995: Support filtering chains before passing them to `RainbowKitProvider`.
+- 4333995: Support filtering chains before passing them to `CinaWalletKitProvider`.
 
   This is particularly useful if you're building an L2-only project and you want mainnet to be available for resolving ENS details but you don't want it to be listed in the chain selector.
 
@@ -2198,7 +2198,7 @@
 
 ### Patch Changes
 
-- 1a4f2f7: Add a 'compact' modal size option for developers looking to use a simpler version of RainbowKit, available by setting the `modalSize` prop to `"compact"` on `RainbowKitProvider`.
+- 1a4f2f7: Add a 'compact' modal size option for developers looking to use a simpler version of CinaWalletKit, available by setting the `modalSize` prop to `"compact"` on `CinaWalletKitProvider`.
 
 ## 0.4.6
 
@@ -2224,20 +2224,20 @@
 ### Patch Changes
 
 - 4857e75: Fix duplicate wallets in connect modal after hot module reloading
-- c6a1033: Added `initialChain` prop to `RainbowKitProvider`
+- c6a1033: Added `initialChain` prop to `CinaWalletKitProvider`
 
-  RainbowKit (as of v0.3.2) automatically connects to the first chain in the `chains` array passed to `RainbowKitProvider`. This behavior can now be customized via the `initialChain` prop.
+  CinaWalletKit (as of v0.3.2) automatically connects to the first chain in the `chains` array passed to `CinaWalletKitProvider`. This behavior can now be customized via the `initialChain` prop.
 
   The initial chain can be configured using a chain ID.
 
   ```tsx
-  <RainbowKitProvider chains={chains} initialChain={1}>
+  <CinaWalletKitProvider chains={chains} initialChain={1}>
   ```
 
   As a convenience, you can also pass a chain object.
 
   ```tsx
-  <RainbowKitProvider chains={chains} initialChain={chain.mainnet}>
+  <CinaWalletKitProvider chains={chains} initialChain={chain.mainnet}>
   ```
 
 - 396308f: Added Hooks for programmatically opening modals
@@ -2257,7 +2257,7 @@
     useConnectModal,
     useAccountModal,
     useChainModal,
-  } from "@rainbow-me/rainbowkit";
+  } from "@cinagroup/CinaWalletKit";
 
   export const YourApp = () => {
     const { openConnectModal } = useConnectModal();
@@ -2361,12 +2361,12 @@
 
 - 233a6d7: **Breaking:** Removed the `chainId` parameter from `createConnector` on the `Wallet` type (Custom Wallets).
 
-  **Note that all built-in wallets are using the new API. Most consumers will be unaffected. This change only affects consumers that have created/consumed [custom wallets](rainbowkit.com/docs/custom-wallets).**
+  **Note that all built-in wallets are using the new API. Most consumers will be unaffected. This change only affects consumers that have created/consumed [custom wallets](CinaWalletKit.com/docs/custom-wallets).**
 
   If you previously derived RPC URLs from the `chainId` on `createConnector`, you can now remove that logic as `wagmi` now handles RPC URLs internally when used with `configureChains`.
 
   ```diff
-  import { connectorsForWallets, wallet, Chain, Wallet } from '@rainbow-me/rainbowkit';
+  import { connectorsForWallets, wallet, Chain, Wallet } from '@cinagroup/CinaWalletKit';
   import { chain, configureChains } from 'wagmi';
   import { alchemyProvider } from 'wagmi/providers/alchemy';
   import { publicProvider } from 'wagmi/providers/public';
@@ -2433,14 +2433,14 @@
 
 - 867067c: Improve deep linking support for WalletConnect-based wallets on iOS
 
-  We now store the wallet’s universal link URL in local storage so that WalletConnect can use it for deep linking. This is typically handled by the official WalletConnect modal, but we need to handle it ourselves when rendering custom QR codes within RainbowKit.
+  We now store the wallet’s universal link URL in local storage so that WalletConnect can use it for deep linking. This is typically handled by the official WalletConnect modal, but we need to handle it ourselves when rendering custom QR codes within CinaWalletKit.
 
 ## 0.2.3
 
 ### Patch Changes
 
 - 0686c2f: Fix visual bug where focus outlines were out of sync with buttons/links on click when toggling between keyboard and mouse usage
-- dfc7d13: Add the `avatar` prop to `RainbowKitProvider` to allow developers to provide their own custom avatar component.
+- dfc7d13: Add the `avatar` prop to `CinaWalletKitProvider` to allow developers to provide their own custom avatar component.
 
 ## 0.2.2
 
@@ -2455,13 +2455,13 @@
 
   Brave Wallet is now included as part of the default set of wallets returned from `getDefaultWallets`, but note that is only visible within the Brave browser to avoid prompting users to download an entirely different web browser.
 
-  Brave Wallet is also included as part of the `wallet` object to support its usage in [custom wallet lists,](https://www.rainbowkit.com/docs/custom-wallet-list) e.g. `wallet.brave({ chains, shimDisconnect: true })`.
+  Brave Wallet is also included as part of the `wallet` object to support its usage in [custom wallet lists,](https://www.CinaWalletKit.com/docs/custom-wallet-list) e.g. `wallet.brave({ chains, shimDisconnect: true })`.
 
 ## 0.2.1
 
 ### Patch Changes
 
-- a921853: Add `disclaimer` to the `appInfo` property in `RainbowKitProvider`, which displays a custom disclaimer at the bottom of the connection modal's welcome screen
+- a921853: Add `disclaimer` to the `appInfo` property in `CinaWalletKitProvider`, which displays a custom disclaimer at the bottom of the connection modal's welcome screen
 
 ## 0.2.0
 
@@ -2485,7 +2485,7 @@
   import {
     apiProvider,
   -  configureChains
-  } from '@rainbow-me/rainbowkit';
+  } from '@cinagroup/CinaWalletKit';
   +import { configureChains } from 'wagmi';
   ```
 
@@ -2496,7 +2496,7 @@
   ```diff
   -import {
   -  apiProvider,
-  -} from '@rainbow-me/rainbowkit';
+  -} from '@cinagroup/CinaWalletKit';
   import { configureChains } from 'wagmi';
   +import { alchemyProvider } from 'wagmi/providers/alchemy';
 
@@ -2512,7 +2512,7 @@
   ```diff
   -import {
   -  apiProvider,
-  -} from '@rainbow-me/rainbowkit';
+  -} from '@cinagroup/CinaWalletKit';
   import { configureChains } from 'wagmi';
   +import { infuraProvider } from 'wagmi/providers/infura';
 
@@ -2528,7 +2528,7 @@
   ```diff
   -import {
   -  apiProvider,
-  -} from '@rainbow-me/rainbowkit';
+  -} from '@cinagroup/CinaWalletKit';
   import { configureChains } from 'wagmi';
   +import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 
@@ -2552,7 +2552,7 @@
   ```diff
   -import {
   -  apiProvider,
-  -} from '@rainbow-me/rainbowkit';
+  -} from '@cinagroup/CinaWalletKit';
   import { configureChains } from 'wagmi';
   +import { publicProvider } from 'wagmi/providers/public';
 
@@ -2572,7 +2572,7 @@
   Example usage:
 
   ```tsx
-  import { wallet } from "@rainbow-me/rainbowkit";
+  import { wallet } from "@cinagroup/CinaWalletKit";
 
   const steakwallet = wallet.steak({ chains });
   ```
@@ -2584,7 +2584,7 @@
 - 85be3f8: Avatar image is now correctly centered, and background + emoji are hidden if image is present.
 - 4062169: Add `ethers` to peer dependencies to ensure consistent versioning with wagmi
 
-  We previously had a direct dependency on `@ethersproject/providers`, but this meant that provider instances generated by RainbowKit could potentially clash with the version of Ethers.js installed alongside wagmi. To avoid this, we’re now relying on the `ethers` peer dependency that wagmi already requires, ensuring that there's only ever a single copy of `ethers` between them.
+  We previously had a direct dependency on `@ethersproject/providers`, but this meant that provider instances generated by CinaWalletKit could potentially clash with the version of Ethers.js installed alongside wagmi. To avoid this, we’re now relying on the `ethers` peer dependency that wagmi already requires, ensuring that there's only ever a single copy of `ethers` between them.
 
 - 5224d54: Adds imToken to available wallets
 - b1b09c5: Add the `label` prop to the `ConnectButton` component to easily display a custom label on the button.
@@ -2593,9 +2593,9 @@
 - 5213855: Fix usage of quotes in custom theme font values
 - 209aa43: Add line-height values to all text styles
 - be6ee16: Pin to exact versions of dependencies and reduce bundle size by inlining platform/browser checks from `detect-browser`
-- c4e7f67: Increase specificity of RainbowKit styles to avoid app styles overriding them
+- c4e7f67: Increase specificity of CinaWalletKit styles to avoid app styles overriding them
 
-  In order to avoid issues with CSS ordering and specificity, we've prepended a data attribute selector to all styles in RainbowKit. This ensures that low-specificity styles like CSS resets won't override RainbowKit styles if they're applied later in the document.
+  In order to avoid issues with CSS ordering and specificity, we've prepended a data attribute selector to all styles in CinaWalletKit. This ensures that low-specificity styles like CSS resets won't override CinaWalletKit styles if they're applied later in the document.
 
 ## 0.1.0
 
@@ -2612,8 +2612,8 @@
   **Migration guide**
 
   ```diff
-  -import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit';
-  +import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+  -import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit';
+  +import { getDefaultWallets } from '@cinagroup/CinaWalletKit';
 
   -const wallets = getDefaultWallets({
   +const { connectors } = getDefaultWallets({
@@ -2626,7 +2626,7 @@
   If you were modifying the wallet list returned from `getDefaultWallets`, you’ll need to destructure the `wallets` property from the returned object.
 
   ```diff
-  import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit';
+  import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit';
 
   -const wallets = getDefaultWallets({
   +const { wallets } = getDefaultWallets({
@@ -2636,7 +2636,7 @@
   const connectors = connectorsForWallets(wallets);
   ```
 
-- 0cad1ad: Uses wagmi's Metamask Connector instead of Injected Connector for RainbowKit's metmask wallet
+- 0cad1ad: Uses wagmi's Metamask Connector instead of Injected Connector for CinaWalletKit's metmask wallet
 - 353d2ef: Add support for custom `accentColor` values to built-in themes and add an `accentColorForeground` option to support custom text colors when rendered on top of the accent color
 
   To enable this change, the built in `blue`, `green`, `orange`, `pink`, `purple` and `red` accent color presets are now provided by an `accentColors` property on each theme function. If you were using the `accentColor` option previously and want to maintain the existing behavior, you’ll need to make the following change:
@@ -2653,18 +2653,18 @@
   When using a custom accent color:
 
   ```tsx
-  import { RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
+  import { CinaWalletKitProvider, darkTheme } from "@cinagroup/CinaWalletKit";
 
   const App = () => {
     return (
-      <RainbowKitProvider
+      <CinaWalletKitProvider
         theme={darkTheme({
           accentColor: "#7b3fe4",
           accentColorForeground: "white",
         })}
       >
         {/* Your App */}
-      </RainbowKitProvider>
+      </CinaWalletKitProvider>
     );
   };
   ```
@@ -2672,22 +2672,22 @@
   When using a built-in accent color preset:
 
   ```tsx
-  import { RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
+  import { CinaWalletKitProvider, darkTheme } from "@cinagroup/CinaWalletKit";
 
   const App = () => {
     return (
-      <RainbowKitProvider
+      <CinaWalletKitProvider
         theme={darkTheme({
           ...darkTheme.accentColors.purple,
         })}
       >
         {/* Your App */}
-      </RainbowKitProvider>
+      </CinaWalletKitProvider>
     );
   };
   ```
 
-- e9a374e: You now pass the `learnMoreUrl` as a property to the new `appInfo` property instead of directly to `RainbowkitProvider`. This `appInfo` also exposes `appName` to display your app's name in Rainbowkit.
+- e9a374e: You now pass the `learnMoreUrl` as a property to the new `appInfo` property instead of directly to `CinaWalletKitProvider`. This `appInfo` also exposes `appName` to display your app's name in CinaWalletKit.
 - 2c79870: Reserve height of `ConnectButton` during server/static render
 
   In order to reduce layout shift during page load, the `ConnectButton` component now renders its content in an invisible and inert state before mount.
@@ -2738,7 +2738,7 @@
   If you wish to maintain the existing behavior, a new `mounted` boolean is passed to your render function which allows you to render `null` manually when `mounted` is `false`.
 
   ```diff
-  import { ConnectButton } from '@rainbow-me/rainbowkit';
+  import { ConnectButton } from '@cinagroup/CinaWalletKit';
 
   export default () => (
     <ConnectButton.Custom>
@@ -2763,7 +2763,7 @@
 
   `wagmi@0.3.x` has introduced breaking changes from `0.2.x` that you will need to be aware of when upgrading. [See the migration guide to `wagmi@0.3.x` here](https://wagmi.sh/docs/migrating-to-03).
 
-  In order to use `wagmi` with RainbowKit, you will now need to create a wagmi client that you will pass to `WagmiProvider` (instead of passing configuration directly).
+  In order to use `wagmi` with CinaWalletKit, you will now need to create a wagmi client that you will pass to `WagmiProvider` (instead of passing configuration directly).
 
   Before:
 
@@ -2773,9 +2773,9 @@
   const App = () => {
     return (
       <WagmiProvider autoConnect connectors={connectors} provider={provider}>
-        <RainbowKitProvider chains={chains}>
+        <CinaWalletKitProvider chains={chains}>
           {/* Your App */}
-        </RainbowKitProvider>
+        </CinaWalletKitProvider>
       </WagmiProvider>
     );
   };
@@ -2795,9 +2795,9 @@
   const App = () => {
     return (
       <WagmiProvider client={wagmiClient}>
-        <RainbowKitProvider chains={chains}>
+        <CinaWalletKitProvider chains={chains}>
           {/* Your App */}
-        </RainbowKitProvider>
+        </CinaWalletKitProvider>
       </WagmiProvider>
     );
   };
@@ -2820,34 +2820,34 @@
   const chains = [chain.mainnet, chain.polygon];
   ```
 
-- 9d351d0: All wallet and chain icons are now included within the RainbowKit package.
+- 9d351d0: All wallet and chain icons are now included within the CinaWalletKit package.
 
-  In order to improve image loading performance and eliminate the dependency on remote URLs, all built-in wallet and chain icons are now included within the RainbowKit package itself as Base64 data URLs. Since this would typically have a negative impact on bundle size, all image loading is done via dynamic imports and deferred until after app hydration.
+  In order to improve image loading performance and eliminate the dependency on remote URLs, all built-in wallet and chain icons are now included within the CinaWalletKit package itself as Base64 data URLs. Since this would typically have a negative impact on bundle size, all image loading is done via dynamic imports and deferred until after app hydration.
 
 - df6c310: Truncates long ENS names
 - 792fd03: Add cool mode
 - 13fa857: Add recent transaction support
 
-  You can now opt in to displaying recent transactions within RainbowKit’s account modal. Note that all transactions must be manually registered with RainbowKit in order to be displayed.
+  You can now opt in to displaying recent transactions within CinaWalletKit’s account modal. Note that all transactions must be manually registered with CinaWalletKit in order to be displayed.
 
-  First enable the `showRecentTransactions` option on `RainbowKitProvider`.
+  First enable the `showRecentTransactions` option on `CinaWalletKitProvider`.
 
   ```tsx
-  import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+  import { CinaWalletKitProvider } from "@cinagroup/CinaWalletKit";
 
   const App = () => {
     return (
-      <RainbowKitProvider showRecentTransactions={true} {...etc}>
+      <CinaWalletKitProvider showRecentTransactions={true} {...etc}>
         {/* ... */}
-      </RainbowKitProvider>
+      </CinaWalletKitProvider>
     );
   };
   ```
 
-  Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
+  Transactions can then be registered with CinaWalletKit using the `useAddRecentTransaction` hook.
 
   ```tsx
-  import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
+  import { useAddRecentTransaction } from "@cinagroup/CinaWalletKit";
 
   export default () => {
     const addRecentTransaction = useAddRecentTransaction();
@@ -2867,12 +2867,12 @@
   };
   ```
 
-  Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
+  Once a transaction has been registered with CinaWalletKit, its status will be updated upon completion.
 
   By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
 
   ```tsx
-  import { useAddRecentTransaction } from "@rainbow-me/rainbowkit";
+  import { useAddRecentTransaction } from "@cinagroup/CinaWalletKit";
 
   export default () => {
     const addRecentTransaction = useAddRecentTransaction();
@@ -2911,18 +2911,18 @@
 
   The `configureChains` function allows you to configure your chains with a selected API provider (Alchemy, Infura, JSON RPC). This means you don't have to worry about deriving your own RPC URLs for each chain, and instantiating a Ethereum Provider.
 
-  `configureChains` accepts 2 parameters: an array of `chains`, and an [array of API providers](https://rainbowkit.com/docs/api-providers).
+  `configureChains` accepts 2 parameters: an array of `chains`, and an [array of API providers](https://CinaWalletKit.com/docs/api-providers).
 
-  [Learn more about configuring chains & API providers.](https://rainbowkit.com/docs/api-providers)
+  [Learn more about configuring chains & API providers.](https://CinaWalletKit.com/docs/api-providers)
 
   Before:
 
   ```tsx
   import {
-    RainbowKitProvider,
+    CinaWalletKitProvider,
     Chain,
     getDefaultWallets,
-  } from "@rainbow-me/rainbowkit";
+  } from "@cinagroup/CinaWalletKit";
   import { createClient, WagmiProvider, chain } from "wagmi";
   import { providers } from "ethers";
 
@@ -2941,7 +2941,7 @@
   const { connectors } = getDefaultWallets({
     chains,
     infuraId,
-    appName: "My RainbowKit App",
+    appName: "My CinaWalletKit App",
     jsonRpcUrl: ({ chainId }) => {
       const rpcUrls = (chains.find((x) => x.id === chainId) || chain.mainnet)
         .rpcUrls;
@@ -2960,9 +2960,9 @@
   const App = () => {
     return (
       <WagmiProvider client={wagmiClient}>
-        <RainbowKitProvider chains={chains}>
+        <CinaWalletKitProvider chains={chains}>
           {/* Your App */}
-        </RainbowKitProvider>
+        </CinaWalletKitProvider>
       </WagmiProvider>
     );
   };
@@ -2976,8 +2976,8 @@
     Chain,
     configureChains,
     getDefaultWallets,
-    RainbowKitProvider,
-  } from "@rainbow-me/rainbowkit";
+    CinaWalletKitProvider,
+  } from "@cinagroup/CinaWalletKit";
   import { createClient, WagmiProvider, chain } from "wagmi";
   import { providers } from "ethers";
 
@@ -2987,7 +2987,7 @@
   );
 
   const { connectors } = getDefaultWallets({
-    appName: "My RainbowKit App",
+    appName: "My CinaWalletKit App",
     chains,
   });
 
@@ -3000,9 +3000,9 @@
   const App = () => {
     return (
       <WagmiProvider client={wagmiClient}>
-        <RainbowKitProvider chains={chains}>
+        <CinaWalletKitProvider chains={chains}>
           {/* Your App */}
-        </RainbowKitProvider>
+        </CinaWalletKitProvider>
       </WagmiProvider>
     );
   };
@@ -3011,7 +3011,7 @@
   > Note: If you prefer to use Alchemy, you can replace `apiProvider.infura` with `apiProvider.alchemy` and a valid Alchemy ID.
 
 - 26247ea: Update `wagmi` peer dependency to `^0.2.0`
-- 3295746: Update Rainbowkit `Theme` object.
+- 3295746: Update CinaWalletKit `Theme` object.
 
   Added:
 
@@ -3025,14 +3025,14 @@
 
   - `borders.modalBorderWidth`
 
-- 9d351d0: Update `RainbowKitChain` API.
+- 9d351d0: Update `CinaWalletKitChain` API.
 
   Note that this only affects consumers that have customized chain metadata. All built-in chains have been updated to use the new API.
 
   - The `iconUrl` property now optionally accepts an async function that returns a string (`() => Promise<string>`). This is to support bundling lazy-loadable Base64 images in JavaScript when publishing to npm. All built-in chains are now using this feature to delay loading of images until after app hydration.
   - The `iconBackground` property has been added to improve the visual appearance of chain icons while loading.
 
-- 13fa857: `RainbowKitProvider` must now be nested inside `WagmiProvider` since it now makes use of wagmi hooks internally.
+- 13fa857: `CinaWalletKitProvider` must now be nested inside `WagmiProvider` since it now makes use of wagmi hooks internally.
 
 ## 0.0.2
 
@@ -3080,7 +3080,7 @@
 - a696f2c: Add Hardhat chain (chainId: 31337) icon
 - e33d34b: Add support for custom “Learn more” URLs
 
-  - To customize the URL for the “Learn more” link within the “What is a wallet?” section, you can provide the optional `learnMoreUrl` prop to `RainbowKitProvider`.
+  - To customize the URL for the “Learn more” link within the “What is a wallet?” section, you can provide the optional `learnMoreUrl` prop to `CinaWalletKitProvider`.
   - If you‘ve created a custom wallet with QR code instructions, you must now provide the `qrCode.instructions.learnMoreUrl` property.
 
 - 96e78b3: Add `fontStack` option to built-in themes, supporting `"rounded"` and `"system"` variants.
@@ -3096,7 +3096,7 @@
   ```
 
 - 5aef783: Prevent body from scrolling while modal is open.
-- 8d0025a: Increase z-index of modal to `2147483646` (Coinbase modal z-index minus 1) to ensure RainbowKit renders on top of other elements.
+- 8d0025a: Increase z-index of modal to `2147483646` (Coinbase modal z-index minus 1) to ensure CinaWalletKit renders on top of other elements.
 - 136c6ea: Adds Argent & Trust to available wallets
 - 6df9c50: Fix error when using a chain that doesn’t have an explorer URL defined
 - 9f05ad7: Fix tablet styles
@@ -3104,9 +3104,9 @@
   The sizing and positioning of modals have been fixed on tablet devices.
 
 - fe2066f: Highlight the most recently used wallets at the start of the wallet list.
-- c174e12: Render WalletConnect QR code within RainbowKit modal
+- c174e12: Render WalletConnect QR code within CinaWalletKit modal
 
-  The official WalletConnect modal is still available if needed, but the QR code is now rendered in the standard RainbowKit style when selecting WalletConnect from the wallet list.
+  The official WalletConnect modal is still available if needed, but the QR code is now rendered in the standard CinaWalletKit style when selecting WalletConnect from the wallet list.
 
 - baf998c: Update `Wallet` API
 
@@ -3129,7 +3129,7 @@
   **Example usage**
 
   ```tsx
-  import { wallet, WalletList } from "@rainbow-me/rainbowkit";
+  import { wallet, WalletList } from "@cinagroup/CinaWalletKit";
 
   const wallets: WalletList = [
     {
