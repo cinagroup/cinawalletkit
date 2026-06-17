@@ -4,7 +4,7 @@ import { omitUndefinedValues } from '../utils/omitUndefinedValues';
 import { uniqueBy } from '../utils/uniqueBy';
 import { computeWalletConnectMetaData } from './computeWalletConnectMetaData';
 import type {
-  RainbowKitWalletConnectParameters,
+  CinaWalletKitWalletConnectParameters,
   Wallet,
   WalletDetailsParams,
   WalletList,
@@ -22,7 +22,7 @@ export interface ConnectorsForWalletsParameters {
   appDescription?: string;
   appUrl?: string;
   appIcon?: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
+  walletConnectParameters?: CinaWalletKitWalletConnectParameters;
 }
 
 export const connectorsForWallets = (
@@ -139,8 +139,8 @@ export const connectorsForWallets = (
           ...walletMeta,
           groupIndex,
           groupName,
-          isRainbowKitConnector: true,
-          // These additional params will be used in rainbowkit react tree to
+          isCinaWalletKitConnector: true,
+          // These additional params will be used in cinawalletkit react tree to
           // merge `walletConnectWallet` and `walletConnect` connector from wagmi with
           // showQrModal: true. This way we can let the user choose if they want to
           // connect via QR code or open the official walletConnect modal instead

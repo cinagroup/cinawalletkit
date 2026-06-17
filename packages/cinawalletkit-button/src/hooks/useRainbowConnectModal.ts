@@ -1,4 +1,4 @@
-import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { useConnectModal } from '@cinagroup/cinawalletkit';
 import { useCallback } from 'react';
 
 export function useRainbowConnectModal() {

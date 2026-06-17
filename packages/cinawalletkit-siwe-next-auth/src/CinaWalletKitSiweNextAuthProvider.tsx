@@ -1,7 +1,7 @@
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+} from '@cinagroup/cinawalletkit';
 import { getCsrfToken, signIn, signOut, useSession } from 'next-auth/react';
 import React, { type ReactNode, useMemo } from 'react';
 import type { Address } from 'viem';
@@ -21,17 +21,17 @@ type ConfigurableMessageOptions = Partial<
 
 export type GetSiweMessageOptions = () => ConfigurableMessageOptions;
 
-interface RainbowKitSiweNextAuthProviderProps {
+interface CinaWalletKitSiweNextAuthProviderProps {
   enabled?: boolean;
   getSiweMessageOptions?: GetSiweMessageOptions;
   children: ReactNode;
 }
 
-export function RainbowKitSiweNextAuthProvider({
+export function CinaWalletKitSiweNextAuthProvider({
   children,
   enabled,
   getSiweMessageOptions,
-}: RainbowKitSiweNextAuthProviderProps) {
+}: CinaWalletKitSiweNextAuthProviderProps) {
   const { status } = useSession() ?? { status: 'loading' as const };
   const adapter = useMemo(
     () =>
@@ -90,12 +90,12 @@ export function RainbowKitSiweNextAuthProvider({
   );
 
   return (
-    <RainbowKitAuthenticationProvider
+    <CinaWalletKitAuthenticationProvider
       adapter={adapter}
       enabled={enabled}
       status={status}
     >
       {children}
-    </RainbowKitAuthenticationProvider>
+    </CinaWalletKitAuthenticationProvider>
   );
 }

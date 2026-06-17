@@ -1,10 +1,10 @@
 import type { Transport } from 'viem';
 import { type CreateConfigParameters, createConfig, http } from 'wagmi';
-import type { RainbowKitChain } from '../components/RainbowKitProvider/RainbowKitChainContext';
+import type { CinaWalletKitChain } from '../components/CinaWalletKitProvider/CinaWalletKitChainContext';
 import { computeWalletConnectMetaData } from '../wallets/computeWalletConnectMetaData';
 import { connectorsForWallets } from '../wallets/connectorsForWallets';
 import type {
-  RainbowKitWalletConnectParameters,
+  CinaWalletKitWalletConnectParameters,
   WalletList,
 } from '../wallets/Wallet';
 import {
@@ -15,7 +15,7 @@ import {
   walletConnectWallet,
 } from '../wallets/walletConnectors';
 
-export type _chains = readonly [RainbowKitChain, ...RainbowKitChain[]];
+export type _chains = readonly [CinaWalletKitChain, ...CinaWalletKitChain[]];
 
 // Define the '_transports' type as a Record
 // It maps each 'Chain' id to a 'Transport'
@@ -37,7 +37,7 @@ interface GetDefaultConfigParameters<
   appIcon?: string;
   wallets?: WalletList;
   projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
+  walletConnectParameters?: CinaWalletKitWalletConnectParameters;
 }
 
 const createDefaultTransports = <

@@ -10,8 +10,8 @@ import type { Address } from 'viem';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-} from '../RainbowKitProvider/AuthenticationContext';
+  CinaWalletKitAuthenticationProvider,
+} from '../CinaWalletKitProvider/AuthenticationContext';
 import { SignIn } from './SignIn';
 
 const wagmiMocks = vi.hoisted(() => ({
@@ -47,12 +47,12 @@ function renderSignIn({
   });
 
   return render(
-    <RainbowKitAuthenticationProvider
+    <CinaWalletKitAuthenticationProvider
       adapter={adapter}
       status="unauthenticated"
     >
       <SignIn onClose={() => {}} onCloseModal={() => {}} />
-    </RainbowKitAuthenticationProvider>,
+    </CinaWalletKitAuthenticationProvider>,
   );
 }
 

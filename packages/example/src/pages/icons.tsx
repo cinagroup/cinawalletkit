@@ -1,4 +1,4 @@
-import * as wallets from '@rainbow-me/rainbowkit/wallets';
+import * as wallets from '@cinagroup/cinawalletkit/wallets';
 import { Cuer } from 'cuer';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -191,7 +191,7 @@ export default function Icons() {
                 type="button"
                 onClick={() =>
                   navigator.clipboard.writeText(
-                    `packages/rainbowkit/src/wallets/walletConnectors/${name}/${name}.svg`,
+                    `packages/cinawalletkit/src/wallets/walletConnectors/${name}/${name}.svg`,
                   )
                 }
                 style={{

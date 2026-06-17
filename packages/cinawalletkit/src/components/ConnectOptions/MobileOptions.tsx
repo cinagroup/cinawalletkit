@@ -18,10 +18,10 @@ import { CloseButton } from '../CloseButton/CloseButton';
 import { DisclaimerLink } from '../Disclaimer/DisclaimerLink';
 import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
-import { AppContext } from '../RainbowKitProvider/AppContext';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
-import { setWalletConnectDeepLink } from '../RainbowKitProvider/walletConnectDeepLink';
+import { AppContext } from '../CinaWalletKitProvider/AppContext';
+import { I18nContext } from '../CinaWalletKitProvider/I18nContext';
+import { useCoolMode } from '../CinaWalletKitProvider/useCoolMode';
+import { setWalletConnectDeepLink } from '../CinaWalletKitProvider/walletConnectDeepLink';
 import { Text } from '../Text/Text';
 import * as styles from './MobileOptions.css';
 
@@ -93,7 +93,7 @@ export function WalletButton({
       }
 
       if (mobileUri.startsWith('http')) {
-        // Workaround for https://github.com/rainbow-me/rainbowkit/issues/524.
+        // Workaround for https://github.com/rainbow-me/cinawalletkit/issues/524.
         // Using 'window.open' causes issues on iOS in non-Safari browsers and
         // WebViews where a blank tab is left behind after connecting.
         // This is especially bad in some WebView scenarios (e.g. following a
@@ -210,7 +210,7 @@ enum MobileWalletStep {
 export function MobileOptions({ onClose }: { onClose: () => void }) {
   const titleId = 'rk_connect_title';
   const wallets = useWalletConnectors().filter(
-    (wallet) => wallet.isRainbowKitConnector,
+    (wallet) => wallet.isCinaWalletKitConnector,
   );
   const { disclaimer: Disclaimer, learnMoreUrl } = useContext(AppContext);
 

@@ -5,8 +5,8 @@ import {
 } from './enhancedProvider';
 
 describe('createHttpClient', () => {
-  if (!process.env.RAINBOW_PROVIDER_API_KEY) {
-    it.skip('skips tests if RAINBOW_PROVIDER_API_KEY is missing', () => {});
+  if (!process.env.CINA_PROVIDER_API_KEY) {
+    it.skip('skips tests if CINA_PROVIDER_API_KEY is missing', () => {});
     return;
   }
 

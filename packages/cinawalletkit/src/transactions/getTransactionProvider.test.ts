@@ -43,7 +43,7 @@ function createProvider(uid: string) {
 }
 
 describe('getTransactionProvider', () => {
-  it('uses a RainbowKit transaction watcher uid', () => {
+  it('uses a CinaWalletKit transaction watcher uid', () => {
     const { provider } = createProvider('app-client');
 
     expect(getTransactionProvider(provider)).toEqual(

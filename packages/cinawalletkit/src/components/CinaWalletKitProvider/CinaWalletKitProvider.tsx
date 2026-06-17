@@ -24,7 +24,7 @@ import {
   ModalSizeProvider,
   type ModalSizes,
 } from './ModalSizeContext';
-import { RainbowKitChainProvider } from './RainbowKitChainContext';
+import { CinaWalletKitChainProvider } from './CinaWalletKitChainContext';
 import { ShowBalanceProvider } from './ShowBalanceContext';
 import { ShowRecentTransactionsContext } from './ShowRecentTransactionsContext';
 import { useFingerprint } from './useFingerprint';
@@ -34,7 +34,7 @@ import { clearWalletConnectDeepLink } from './walletConnectDeepLink';
 
 const ThemeIdContext = createContext<string | undefined>(undefined);
 
-const attr = 'data-rk';
+const attr = 'data-cwk';
 
 const createThemeRootProps = (id: string | undefined) => ({ [attr]: id || '' });
 
@@ -58,7 +58,7 @@ export type Theme =
       darkMode: ThemeVars;
     };
 
-export interface RainbowKitProviderProps {
+export interface CinaWalletKitProviderProps {
   initialChain?: Chain | number;
   id?: string;
   children: ReactNode;
@@ -77,7 +77,7 @@ export interface RainbowKitProviderProps {
 
 const defaultTheme = lightTheme();
 
-export function RainbowKitProvider({
+export function CinaWalletKitProvider({
   appInfo,
   avatar,
   children,
@@ -88,7 +88,7 @@ export function RainbowKitProvider({
   modalSize = ModalSizeOptions.WIDE,
   showRecentTransactions = false,
   theme = defaultTheme,
-}: RainbowKitProviderProps) {
+}: CinaWalletKitProviderProps) {
   usePreloadImages();
   useFingerprint();
 
@@ -110,7 +110,7 @@ export function RainbowKitProvider({
   const avatarContext = avatar ?? defaultAvatar;
 
   return (
-    <RainbowKitChainProvider initialChain={initialChain}>
+    <CinaWalletKitChainProvider initialChain={initialChain}>
       <WalletButtonProvider>
         <I18nProvider locale={locale}>
           <CoolModeContext.Provider value={coolMode}>
@@ -165,6 +165,6 @@ export function RainbowKitProvider({
           </CoolModeContext.Provider>
         </I18nProvider>
       </WalletButtonProvider>
-    </RainbowKitChainProvider>
+    </CinaWalletKitChainProvider>
   );
 }

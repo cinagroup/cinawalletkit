@@ -1,9 +1,9 @@
 import { getWalletConnectConnector } from '../../getWalletConnectConnector';
-import type { RainbowKitWalletConnectParameters, Wallet } from '../../Wallet';
+import type { CinaWalletKitWalletConnectParameters, Wallet } from '../../Wallet';
 
 export interface WalletConnectWalletOptions {
   projectId: string;
-  options?: RainbowKitWalletConnectParameters;
+  options?: CinaWalletKitWalletConnectParameters;
 }
 
 export const walletConnectWallet = ({

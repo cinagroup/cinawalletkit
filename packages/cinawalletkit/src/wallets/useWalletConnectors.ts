@@ -1,9 +1,9 @@
 import { type Connector, useConnect } from 'wagmi';
-import { useWalletConnectOpenState } from '../components/RainbowKitProvider/ModalContext';
+import { useWalletConnectOpenState } from '../components/CinaWalletKitProvider/ModalContext';
 import {
   useInitialChainId,
-  useRainbowKitChains,
-} from './../components/RainbowKitProvider/RainbowKitChainContext';
+  useCinaWalletKitChains,
+} from './../components/CinaWalletKitProvider/CinaWalletKitChainContext';
 import { indexBy } from '../utils/indexBy';
 import {
   getDesktopDownloadUrl,
@@ -13,9 +13,9 @@ import {
 import {
   connectorsWithRecentWallets,
   isEIP6963Connector,
-  isRainbowKitConnector,
+  isCinaWalletKitConnector,
   isRecentWallet,
-  rainbowKitConnectorWithWalletConnect,
+  CinaWalletKitConnectorWithWalletConnect,
 } from './groupedWallets';
 import { addRecentWalletId, getRecentWalletIds } from './recentWalletIds';
 import type { WagmiConnectorInstance, WalletInstance } from './Wallet';
@@ -36,7 +36,7 @@ export interface WalletConnector extends WalletInstance {
 export function useWalletConnectors(
   mergeEIP6963WithRkConnectors = false,
 ): WalletConnector[] {
-  const rainbowKitChains = useRainbowKitChains();
+  const CinaWalletKitChains = useCinaWalletKitChains();
   const intialChainId = useInitialChainId();
   const { connectAsync, connectors: defaultConnectors_untyped } = useConnect();
   const defaultCreatedConnectors =
@@ -62,12 +62,12 @@ export function useWalletConnectors(
       chainId:
         parameters?.chainId ??
         // The goal here is to ensure users are always on a supported chain when connecting.
-        // If an `initialChain` prop was provided to RainbowKitProvider, use that.
+        // If an `initialChain` prop was provided to CinaWalletKitProvider, use that.
         intialChainId ??
         // Otherwise, if the wallet is already on a supported chain, use that to avoid a chain switch prompt.
-        rainbowKitChains.find(({ id }) => id === walletChainId)?.id ??
-        // Finally, fall back to the first chain provided to RainbowKitProvider.
-        rainbowKitChains[0]?.id,
+        CinaWalletKitChains.find(({ id }) => id === walletChainId)?.id ??
+        // Finally, fall back to the first chain provided to CinaWalletKitProvider.
+        CinaWalletKitChains[0]?.id,
       connector,
     });
 
@@ -135,8 +135,8 @@ export function useWalletConnectors(
       };
     });
 
-  const rainbowKitConnectors = defaultConnectors
-    .filter(isRainbowKitConnector)
+  const CinaWalletKitConnectors = defaultConnectors
+    .filter(isCinaWalletKitConnector)
     .filter((wallet) => !wallet.isWalletConnectModalConnector)
     .filter((wallet) => {
       if (!mergeEIP6963WithRkConnectors) return true;
@@ -148,13 +148,13 @@ export function useWalletConnectors(
       return !existsInEIP6963Connectors;
     })
     .map((wallet) =>
-      rainbowKitConnectorWithWalletConnect(
+      CinaWalletKitConnectorWithWalletConnect(
         wallet,
         walletConnectModalConnector!,
       ),
     );
 
-  const combinedConnectors = [...eip6963Connectors, ...rainbowKitConnectors];
+  const combinedConnectors = [...eip6963Connectors, ...CinaWalletKitConnectors];
 
   const walletInstanceById = indexBy(
     combinedConnectors,

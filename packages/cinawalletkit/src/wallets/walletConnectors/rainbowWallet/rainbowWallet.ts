@@ -19,10 +19,10 @@ export const rainbowWallet = ({
     return isAndroid()
       ? uri
       : isIOS()
-        ? `rainbow://wc?uri=${encodeURIComponent(uri)}&connector=rainbowkit`
+        ? `rainbow://wc?uri=${encodeURIComponent(uri)}&connector=cinawalletkit`
         : `https://rnbwapp.com/wc?uri=${encodeURIComponent(
             uri,
-          )}&connector=rainbowkit`;
+          )}&connector=cinawalletkit`;
   };
 
   return {
@@ -34,12 +34,12 @@ export const rainbowWallet = ({
     installed: !shouldUseWalletConnect ? isRainbowInjected : undefined,
     downloadUrls: {
       android:
-        'https://play.google.com/store/apps/details?id=me.rainbow&referrer=utm_source%3Drainbowkit&utm_source=rainbowkit',
-      ios: 'https://apps.apple.com/app/apple-store/id1457119021?pt=119997837&ct=rainbowkit&mt=8',
-      mobile: 'https://rainbow.download?utm_source=rainbowkit',
+        'https://play.google.com/store/apps/details?id=me.rainbow&referrer=utm_source%3Dcinawalletkit&utm_source=cinawalletkit',
+      ios: 'https://apps.apple.com/app/apple-store/id1457119021?pt=119997837&ct=cinawalletkit&mt=8',
+      mobile: 'https://rainbow.download?utm_source=cinawalletkit',
       qrCode:
-        'https://rainbow.download?utm_source=rainbowkit&utm_medium=qrcode',
-      browserExtension: 'https://rainbow.me/extension?utm_source=rainbowkit',
+        'https://rainbow.download?utm_source=cinawalletkit&utm_medium=qrcode',
+      browserExtension: 'https://rainbow.me/extension?utm_source=cinawalletkit',
     },
     mobile: { getUri: shouldUseWalletConnect ? getUri : undefined },
     qrCode: shouldUseWalletConnect
@@ -47,7 +47,7 @@ export const rainbowWallet = ({
           getUri,
           instructions: {
             learnMoreUrl:
-              'https://learn.rainbow.me/connect-to-a-website-or-app?utm_source=rainbowkit&utm_medium=connector&utm_campaign=learnmore',
+              'https://learn.rainbow.me/connect-to-a-website-or-app?utm_source=cinawalletkit&utm_medium=connector&utm_campaign=learnmore',
             steps: [
               {
                 description:

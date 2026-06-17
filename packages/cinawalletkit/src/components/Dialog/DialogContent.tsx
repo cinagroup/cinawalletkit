@@ -4,7 +4,7 @@ import { Box, type BoxProps } from '../Box/Box';
 import {
   ModalSizeContext,
   ModalSizeOptions,
-} from '../RainbowKitProvider/ModalSizeContext';
+} from '../CinaWalletKitProvider/ModalSizeContext';
 import * as styles from './DialogContent.css';
 
 interface DialogContentProps {

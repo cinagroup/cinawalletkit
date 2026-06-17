@@ -20,20 +20,20 @@ export const isRecentWallet = (
   return recentWallets.some((recentWallet) => recentWallet.id === walletId);
 };
 
-export const isRainbowKitConnector = (wallet: WalletInstance) => {
-  return !!wallet.isRainbowKitConnector;
+export const isCinaWalletKitConnector = (wallet: WalletInstance) => {
+  return !!wallet.isCinaWalletKitConnector;
 };
 
 export const isEIP6963Connector = (wallet: WalletInstance) => {
   return !!(
-    !wallet.isRainbowKitConnector &&
+    !wallet.isCinaWalletKitConnector &&
     wallet.icon?.replace(/\n/g, '').startsWith('data:image') &&
     wallet.uid &&
     wallet.name
   );
 };
 
-export const rainbowKitConnectorWithWalletConnect = (
+export const CinaWalletKitConnectorWithWalletConnect = (
   wallet: WalletInstance,
   walletConnectModalConnector: WalletInstance,
 ) => {

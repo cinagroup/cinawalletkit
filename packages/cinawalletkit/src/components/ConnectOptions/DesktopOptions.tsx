@@ -21,13 +21,13 @@ import { DisclaimerText } from '../Disclaimer/DisclaimerText';
 import { BackIcon } from '../Icons/Back';
 import { InfoButton } from '../InfoButton/InfoButton';
 import { ModalSelection } from '../ModalSelection/ModalSelection';
-import { AppContext } from '../RainbowKitProvider/AppContext';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
+import { AppContext } from '../CinaWalletKitProvider/AppContext';
+import { I18nContext } from '../CinaWalletKitProvider/I18nContext';
 import {
   ModalSizeContext,
   ModalSizeOptions,
-} from '../RainbowKitProvider/ModalSizeContext';
-import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
+} from '../CinaWalletKitProvider/ModalSizeContext';
+import { WalletButtonContext } from '../CinaWalletKitProvider/WalletButtonContext';
 import { Text } from '../Text/Text';
 import {
   ConnectDetail,
@@ -76,9 +76,9 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
   const { connector } = useContext(WalletButtonContext);
 
   // The `WalletButton` component made the connect modal appear empty when trying to connect.
-  // This happened because of a mix up between EIP-6963 and RainbowKit connectors.
-  // The problem was finding the correct `wallet.id`. `WalletButton` uses RainbowKit's id,
-  // but EIP-6963 uses `rdns` for its id. We now don't merge EIP-6963 and RainbowKit
+  // This happened because of a mix up between EIP-6963 and CinaWalletKit connectors.
+  // The problem was finding the correct `wallet.id`. `WalletButton` uses CinaWalletKit's id,
+  // but EIP-6963 uses `rdns` for its id. We now don't merge EIP-6963 and CinaWalletKit
   // connectors if user interacts with `WalletButton` component.
   const mergeEIP6963WithRkConnectors = !connector;
 
@@ -447,7 +447,7 @@ export function DesktopOptions({ onClose }: { onClose: () => void }) {
                             ready={wallet.ready}
                             recent={wallet.recent}
                             testId={`wallet-option-${wallet.id}`}
-                            isRainbowKitConnector={wallet.isRainbowKitConnector}
+                            isCinaWalletKitConnector={wallet.isCinaWalletKitConnector}
                           />
                         );
                       })}

@@ -2,8 +2,8 @@ import React from 'react';
 import { touchableStyles } from '../../css/touchableStyles';
 import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Box } from '../Box/Box';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { useCoolMode } from '../RainbowKitProvider/useCoolMode';
+import { I18nContext } from '../CinaWalletKitProvider/I18nContext';
+import { useCoolMode } from '../CinaWalletKitProvider/useCoolMode';
 import { Text } from '../Text/Text';
 import * as styles from './ModalSelection.css';
 
@@ -17,7 +17,7 @@ type Props = {
   iconUrl: string | (() => Promise<string>);
   iconBackground?: string;
   testId?: string;
-  isRainbowKitConnector?: boolean;
+  isCinaWalletKitConnector?: boolean;
 };
 
 export const ModalSelection = ({
@@ -30,7 +30,7 @@ export const ModalSelection = ({
   ready,
   recent,
   testId,
-  isRainbowKitConnector,
+  isCinaWalletKitConnector,
   ...urlProps
 }: Props) => {
   const coolModeRef = useCoolMode(iconUrl);
@@ -90,13 +90,13 @@ export const ModalSelection = ({
           <Box alignItems="center" display="flex" flexDirection="row" gap="12">
             <AsyncImage
               background={iconBackground}
-              {...(!isMouseOver && isRainbowKitConnector
+              {...(!isMouseOver && isCinaWalletKitConnector
                 ? { borderColor: 'actionButtonBorder' }
                 : {})}
               // We want to use pure <img /> element
               // to avoid bugs with eip6963 icons as sometimes
               // background: url(...) does not work
-              useAsImage={!isRainbowKitConnector}
+              useAsImage={!isCinaWalletKitConnector}
               borderRadius="6"
               height="28"
               src={iconUrl}

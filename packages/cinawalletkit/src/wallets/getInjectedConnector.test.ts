@@ -92,7 +92,7 @@ describe('getInjectedConnector', () => {
       rkDetails: {
         id: 'rabby',
         name: 'Rabby Wallet',
-        isRainbowKitConnector: true,
+        isCinaWalletKitConnector: true,
       },
     } as any);
 
@@ -143,7 +143,7 @@ describe('getInjectedConnector', () => {
       rkDetails: {
         id: 'rabby',
         name: 'Rabby Wallet',
-        isRainbowKitConnector: true,
+        isCinaWalletKitConnector: true,
       },
     } as any);
 

@@ -9,16 +9,16 @@ import { useAsyncImage } from '../AsyncImage/useAsyncImage';
 import {
   type AuthenticationStatus,
   useAuthenticationStatus,
-} from '../RainbowKitProvider/AuthenticationContext';
+} from '../CinaWalletKitProvider/AuthenticationContext';
 import {
   useAccountModal,
   useChainModal,
   useConnectModal,
   useModalState,
-} from '../RainbowKitProvider/ModalContext';
-import { useRainbowKitChainsById } from '../RainbowKitProvider/RainbowKitChainContext';
-import { useShowBalance } from '../RainbowKitProvider/ShowBalanceContext';
-import { ShowRecentTransactionsContext } from '../RainbowKitProvider/ShowRecentTransactionsContext';
+} from '../CinaWalletKitProvider/ModalContext';
+import { useCinaWalletKitChainsById } from '../CinaWalletKitProvider/CinaWalletKitChainContext';
+import { useShowBalance } from '../CinaWalletKitProvider/ShowBalanceContext';
+import { ShowRecentTransactionsContext } from '../CinaWalletKitProvider/ShowRecentTransactionsContext';
 import { abbreviateETHBalance } from './abbreviateETHBalance';
 import { formatAddress } from './formatAddress';
 import { formatENS } from './formatENS';
@@ -69,12 +69,12 @@ export function ConnectButtonRenderer({
     (chain) => chain.id === chainId,
   );
 
-  const rainbowkitChainsById = useRainbowKitChainsById();
+  const cinawalletkitChainsById = useCinaWalletKitChainsById();
   const authenticationStatus = useAuthenticationStatus() ?? undefined;
-  const rainbowKitChain = chainId ? rainbowkitChainsById[chainId] : undefined;
-  const chainName = rainbowKitChain?.name ?? undefined;
-  const chainIconUrl = rainbowKitChain?.iconUrl ?? undefined;
-  const chainIconBackground = rainbowKitChain?.iconBackground ?? undefined;
+  const CinaWalletKitChain = chainId ? cinawalletkitChainsById[chainId] : undefined;
+  const chainName = CinaWalletKitChain?.name ?? undefined;
+  const chainIconUrl = CinaWalletKitChain?.iconUrl ?? undefined;
+  const chainIconBackground = CinaWalletKitChain?.iconBackground ?? undefined;
   const resolvedChainIconUrl = useAsyncImage(chainIconUrl);
 
   const showRecentTransactions = useContext(ShowRecentTransactionsContext);

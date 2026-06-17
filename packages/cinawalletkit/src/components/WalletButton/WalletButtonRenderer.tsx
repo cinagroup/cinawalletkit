@@ -21,8 +21,8 @@ import {
 import {
   useConnectModal,
   useModalState,
-} from '../RainbowKitProvider/ModalContext';
-import { WalletButtonContext } from '../RainbowKitProvider/WalletButtonContext';
+} from '../CinaWalletKitProvider/ModalContext';
+import { WalletButtonContext } from '../CinaWalletKitProvider/WalletButtonContext';
 
 export interface WalletButtonRendererProps {
   wallet?: string;
@@ -48,8 +48,8 @@ export function WalletButtonRenderer({
   const { connectModalOpen } = useModalState();
   const { connector, setConnector } = useContext(WalletButtonContext);
   const [firstConnector] = useWalletConnectors()
-    .filter((wallet) => wallet.isRainbowKitConnector)
-    // rainbowkit / wagmi connectors can uppercase some letters on the `id` field.
+    .filter((wallet) => wallet.isCinaWalletKitConnector)
+    // cinawalletkit / wagmi connectors can uppercase some letters on the `id` field.
     // Id for metamask is `metaMask`, so instead we will make sure it's has lowercase comparison
     .filter(
       (_wallet) =>
@@ -141,7 +141,7 @@ export function WalletButtonRenderer({
 
           // If openConnectModal is true and user is on mobile or
           // if user hasn't installed the connector then we prompt them
-          // to rainbowkit connect modal
+          // to cinawalletkit connect modal
           if (mobile || isNotSupported) {
             openConnectModal?.();
             setConnector(firstConnector);

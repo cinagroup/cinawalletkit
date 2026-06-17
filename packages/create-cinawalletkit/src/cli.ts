@@ -47,7 +47,7 @@ async function run() {
     const options = program.opts();
 
     const reservedPackageNames = [
-      '@rainbow-me/rainbowkit',
+      '@cinagroup/cinawalletkit',
       'wagmi',
       'viem',
       'next',
@@ -56,7 +56,7 @@ async function run() {
     ];
 
     log();
-    log(chalk.green('🌈 Welcome to RainbowKit!'));
+    log(chalk.green('🌈 Welcome to CinaWalletKit!'));
 
     const isValidProjectName = (value: string) =>
       validateNpmPackageName(value).validForNewPackages;
@@ -71,7 +71,7 @@ async function run() {
     if (!projectPath) {
       log();
       const { value } = await prompts({
-        initial: 'my-rainbowkit-app',
+        initial: 'my-cinawalletkit-app',
         message: 'What is the name of your project?',
         name: 'value',
         type: 'text',
@@ -140,7 +140,7 @@ async function run() {
 
     log(
       chalk.cyan(
-        `🚀 Creating a new RainbowKit app in ${chalk.bold(targetPath)}`,
+        `🚀 Creating a new CinaWalletKit app in ${chalk.bold(targetPath)}`,
       ),
     );
 
@@ -160,9 +160,9 @@ async function run() {
     pkgJson.name = projectPath;
     pkgJson.version = '0.1.0';
 
-    if (process.env.INSTALL_WORKSPACE_RAINBOWKIT !== 'true') {
-      // Remove RainbowKit workspace dependency so we can install latest
-      delete pkgJson.dependencies['@rainbow-me/rainbowkit'];
+    if (process.env.INSTALL_WORKSPACE_CinaWalletKit !== 'true') {
+      // Remove CinaWalletKit workspace dependency so we can install latest
+      delete pkgJson.dependencies['@cinagroup/cinawalletkit'];
     }
 
     await fs.writeFile(
@@ -190,12 +190,12 @@ async function run() {
       stdio: 'inherit',
     });
 
-    if (process.env.INSTALL_WORKSPACE_RAINBOWKIT !== 'true') {
+    if (process.env.INSTALL_WORKSPACE_CinaWalletKit !== 'true') {
       await execa(
         packageManager,
         [
           packageManager === 'yarn' ? 'add' : 'install',
-          '@rainbow-me/rainbowkit',
+          '@cinagroup/cinawalletkit',
         ],
         {
           cwd: targetPath,
@@ -214,13 +214,13 @@ async function run() {
           'commit',
           '--no-verify',
           '--message',
-          'Initial commit from create-rainbowkit',
+          'Initial commit from create-cinawalletkit',
         ],
         { cwd: targetPath },
       );
     }
 
-    log(chalk.green('🌈 Done! Thanks for using RainbowKit 🙏'));
+    log(chalk.green('🌈 Done! Thanks for using CinaWalletKit 🙏'));
     log();
     log(
       chalk.cyan(

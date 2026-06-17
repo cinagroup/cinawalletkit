@@ -11,9 +11,9 @@ import { AsyncImage } from '../AsyncImage/AsyncImage';
 import { Avatar } from '../Avatar/Avatar';
 import { Box } from '../Box/Box';
 import { DropdownIcon } from '../Icons/Dropdown';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
-import { useShowBalance } from '../RainbowKitProvider/ShowBalanceContext';
+import { I18nContext } from '../CinaWalletKitProvider/I18nContext';
+import { useCinaWalletKitChains } from '../CinaWalletKitProvider/CinaWalletKitChainContext';
+import { useShowBalance } from '../CinaWalletKitProvider/ShowBalanceContext';
 import { ConnectButtonRenderer } from './ConnectButtonRenderer';
 
 type AccountStatus = 'full' | 'avatar' | 'address';
@@ -39,7 +39,7 @@ export function ConnectButton({
   label = defaultProps.label,
   showBalance = defaultProps.showBalance,
 }: ConnectButtonProps) {
-  const chains = useRainbowKitChains();
+  const chains = useCinaWalletKitChains();
   const connectionStatus = useConnectionStatus();
   const { setShowBalance } = useShowBalance();
   const [ready, setReady] = useState(false);

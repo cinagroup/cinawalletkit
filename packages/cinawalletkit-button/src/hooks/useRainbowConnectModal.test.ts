@@ -4,7 +4,7 @@ import { useRainbowConnectModal } from './useRainbowConnectModal';
 
 const openConnectModal = vi.hoisted(() => vi.fn());
 
-vi.mock('@rainbow-me/rainbowkit', () => ({
+vi.mock('@cinagroup/cinawalletkit', () => ({
   useConnectModal: () => ({
     connectModalOpen: false,
     openConnectModal,

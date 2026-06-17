@@ -1,4 +1,4 @@
-import '@rainbow-me/rainbowkit/styles.css';
+import '@cinagroup/cinawalletkit/styles.css';
 import './global.css';
 
 import {
@@ -8,12 +8,12 @@ import {
   type Locale,
   lightTheme,
   midnightTheme,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitProvider,
+} from '@cinagroup/cinawalletkit';
 import {
   type GetSiweMessageOptions,
-  RainbowKitSiweNextAuthProvider,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
+  CinaWalletKitSiweNextAuthProvider,
+} from '@cinagroup/cinawalletkit-siwe-next-auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -29,7 +29,7 @@ import { config } from '../wagmi';
 const RAINBOW_TERMS = 'https://rainbow.me/terms-of-use';
 
 const demoAppInfo = {
-  appName: 'Rainbowkit Demo',
+  appName: 'CinaWalletKit Demo',
 };
 
 const DisclaimerDemo: DisclaimerComponent = ({ Link, Text }) => {
@@ -61,7 +61,7 @@ const CustomAvatar: AvatarComponent = ({ size }) => {
 };
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
-  statement: 'Sign in to the RainbowKit Demo',
+  statement: 'Sign in to the CinaWalletKit Demo',
 });
 
 const themes = [
@@ -94,7 +94,7 @@ type OverlayBlur = (typeof overlayBlurs)[number];
 const modalSizes = ['wide', 'compact'] as const;
 type ModalSize = (typeof modalSizes)[number];
 
-function RainbowKitApp({
+function CinaWalletKitApp({
   Component,
   pageProps,
 }: AppProps<{
@@ -145,15 +145,15 @@ function RainbowKitApp({
 
   const locales = router.locales as Locale[];
 
-  // Note: Non-RainbowKit providers are wrapped around this component
+  // Note: Non-CinaWalletKit providers are wrapped around this component
   // at the bottom of the file. This is so that our example app
   // component can use their corresponding Hooks.
   return (
-    <RainbowKitSiweNextAuthProvider
+    <CinaWalletKitSiweNextAuthProvider
       enabled={authEnabled}
       getSiweMessageOptions={getSiweMessageOptions}
     >
-      <RainbowKitProvider
+      <CinaWalletKitProvider
         appInfo={{
           ...demoAppInfo,
           ...(showDisclaimer && { disclaimer: DisclaimerDemo }),
@@ -187,7 +187,7 @@ function RainbowKitApp({
                   fontFamily: 'sans-serif',
                 }}
               >
-                <h3>RainbowKitProvider props</h3>
+                <h3>CinaWalletKitProvider props</h3>
                 <table cellSpacing={12}>
                   <tbody>
                     <tr>
@@ -506,8 +506,8 @@ function RainbowKitApp({
             </>
           )}
         </div>
-      </RainbowKitProvider>
-    </RainbowKitSiweNextAuthProvider>
+      </CinaWalletKitProvider>
+    </CinaWalletKitSiweNextAuthProvider>
   );
 }
 
@@ -520,12 +520,12 @@ export default function App(
 ) {
   const router = useRouter();
 
-  // Pages that don't need RainbowKit - render without providers to avoid SSG issues with wagmi v3
+  // Pages that don't need CinaWalletKit - render without providers to avoid SSG issues with wagmi v3
   if (router.pathname === '/icons' || router.pathname === '/providers') {
     return (
       <>
         <Head>
-          <title>RainbowKit Example</title>
+          <title>CinaWalletKit Example</title>
           <link href="/favicon.ico" rel="icon" />
         </Head>
         <appProps.Component {...appProps.pageProps} />
@@ -536,14 +536,14 @@ export default function App(
   return (
     <>
       <Head>
-        <title>RainbowKit Example</title>
+        <title>CinaWalletKit Example</title>
         <link href="/favicon.ico" rel="icon" />
       </Head>
 
       <SessionProvider refetchInterval={0} session={appProps.pageProps.session}>
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
-            <RainbowKitApp {...appProps} />
+            <CinaWalletKitApp {...appProps} />
           </QueryClientProvider>
         </WagmiProvider>
       </SessionProvider>

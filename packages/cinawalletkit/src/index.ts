@@ -4,9 +4,9 @@ export {
   type WalletButtonRendererProps,
 } from './components/WalletButton/WalletButton';
 export {
-  RainbowKitProvider,
-  type RainbowKitProviderProps,
-} from './components/RainbowKitProvider/RainbowKitProvider';
+  CinaWalletKitProvider,
+  type CinaWalletKitProviderProps,
+} from './components/CinaWalletKitProvider/CinaWalletKitProvider';
 export { getDefaultConfig } from './config/getDefaultConfig';
 export { getDefaultWallets } from './wallets/getDefaultWallets';
 export { getWalletConnectConnector } from './wallets/getWalletConnectConnector';
@@ -15,27 +15,27 @@ export {
   useAccountModal,
   useChainModal,
   useConnectModal,
-} from './components/RainbowKitProvider/ModalContext';
+} from './components/CinaWalletKitProvider/ModalContext';
 export { useAddRecentTransaction } from './transactions/useAddRecentTransaction';
 export {
-  RainbowKitAuthenticationProvider,
+  CinaWalletKitAuthenticationProvider,
   createAuthenticationAdapter,
-} from './components/RainbowKitProvider/AuthenticationContext';
+} from './components/CinaWalletKitProvider/AuthenticationContext';
 export type {
   Wallet,
   WalletList,
   WalletDetailsParams,
-  RainbowKitWalletConnectParameters,
+  CinaWalletKitWalletConnectParameters,
 } from './wallets/Wallet';
-export type { Theme } from './components/RainbowKitProvider/RainbowKitProvider';
+export type { Theme } from './components/CinaWalletKitProvider/CinaWalletKitProvider';
 export type {
   AuthenticationStatus,
   AuthenticationConfig,
-} from './components/RainbowKitProvider/AuthenticationContext';
+} from './components/CinaWalletKitProvider/AuthenticationContext';
 export type { Locale } from './locales/';
-export type { DisclaimerComponent } from './components/RainbowKitProvider/AppContext';
-export type { AvatarComponent } from './components/RainbowKitProvider/AvatarContext';
-export type { RainbowKitChain as Chain } from './components/RainbowKitProvider/RainbowKitChainContext';
+export type { DisclaimerComponent } from './components/CinaWalletKitProvider/AppContext';
+export type { AvatarComponent } from './components/CinaWalletKitProvider/AvatarContext';
+export type { CinaWalletKitChain as Chain } from './components/CinaWalletKitProvider/CinaWalletKitChainContext';
 export { lightTheme } from './themes/lightTheme';
 export { darkTheme } from './themes/darkTheme';
 export { midnightTheme } from './themes/midnightTheme';

@@ -1,5 +1,5 @@
 import { isNotNullish } from '../../utils/isNotNullish';
-import type { RainbowKitChain } from './RainbowKitChainContext';
+import type { CinaWalletKitChain } from './CinaWalletKitChainContext';
 
 // Sourced from https://github.com/wevm/viem/tree/main/src/chains/definitions
 // This is just so we can clearly see which of wagmi's first-class chains we provide metadata for
@@ -347,8 +347,8 @@ const chainMetadataById = Object.fromEntries(
     .map(({ chainId, ...metadata }) => [chainId, metadata]),
 );
 
-/** @description Decorates an array of wagmi `Chain` objects with RainbowKitChain property overrides */
-export const provideRainbowKitChains = <Chain extends RainbowKitChain>(
+/** @description Decorates an array of wagmi `Chain` objects with CinaWalletKitChain property overrides */
+export const provideCinaWalletKitChains = <Chain extends CinaWalletKitChain>(
   chains: readonly [Chain, ...Chain[]],
 ): Chain[] =>
   chains.map((chain) => {

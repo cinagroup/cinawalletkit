@@ -10,7 +10,7 @@ export type InstructionStepName =
   | 'connect'
   | 'refresh';
 
-type RainbowKitConnector = {
+type CinaWalletKitConnector = {
   mobile?: {
     getUri?: (uri: string) => string;
   };
@@ -76,11 +76,11 @@ export type Wallet = {
   };
   hidden?: () => boolean;
   createConnector: (walletDetails: WalletDetailsParams) => CreateConnectorFn;
-} & RainbowKitConnector;
+} & CinaWalletKitConnector;
 
 export interface DefaultWalletOptions {
   projectId: string;
-  walletConnectParameters?: RainbowKitWalletConnectParameters;
+  walletConnectParameters?: CinaWalletKitWalletConnectParameters;
 }
 
 export type CreateWalletFn = (
@@ -97,39 +97,39 @@ export type WalletList = {
 }[];
 
 // We don't want users to pass in `showQrModal` or `projectId`.
-// Those two values are handled by rainbowkit. The rest of WalletConnect
+// Those two values are handled by cinawalletkit. The rest of WalletConnect
 // parameters can be passed with no issue
-export type RainbowKitWalletConnectParameters = Omit<
+export type CinaWalletKitWalletConnectParameters = Omit<
   WalletConnectParameters,
   'showQrModal' | 'projectId'
 >;
 
-export type RainbowKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
+export type CinaWalletKitDetails = Omit<Wallet, 'createConnector' | 'hidden'> & {
   index: number;
   groupIndex: number;
   groupName: string;
   isWalletConnectModalConnector?: boolean;
-  isRainbowKitConnector: boolean;
+  isCinaWalletKitConnector: boolean;
   walletConnectModalConnector?: Connector;
   // Used specifically in `connectorsForWallets` logic
-  // to make sure we can also get WalletConnect modal in rainbowkit
+  // to make sure we can also get WalletConnect modal in cinawalletkit
   showQrModal?: true;
 };
 
-export type WalletDetailsParams = { rkDetails: RainbowKitDetails };
+export type WalletDetailsParams = { rkDetails: CinaWalletKitDetails };
 
 export type CreateConnector = (walletDetails: {
-  rkDetails: RainbowKitDetails;
+  rkDetails: CinaWalletKitDetails;
 }) => CreateConnectorFn;
 
 // This is the default connector you get at first from wagmi
-// "Connector" + rainbowkit details we inject into the connector
+// "Connector" + cinawalletkit details we inject into the connector
 export type WagmiConnectorInstance = Connector & {
   // this is optional since we only get
-  // rkDetails if we use rainbowkit connectors
-  rkDetails?: RainbowKitDetails;
+  // rkDetails if we use cinawalletkit connectors
+  rkDetails?: CinaWalletKitDetails;
 };
 
 // This will be the wallet instance we will return
-// in the rainbowkit connect modal
-export type WalletInstance = Connector & RainbowKitDetails;
+// in the cinawalletkit connect modal
+export type WalletInstance = Connector & CinaWalletKitDetails;

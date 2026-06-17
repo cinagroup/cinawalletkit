@@ -41,18 +41,18 @@ const AuthenticationContext = createContext<AuthenticationConfig<any> | null>(
   null,
 );
 
-interface RainbowKitAuthenticationProviderProps<Message>
+interface CinaWalletKitAuthenticationProviderProps<Message>
   extends AuthenticationConfig<Message> {
   enabled?: boolean;
   children: ReactNode;
 }
 
-export function RainbowKitAuthenticationProvider<Message = unknown>({
+export function CinaWalletKitAuthenticationProvider<Message = unknown>({
   adapter,
   children,
   enabled = true,
   status,
-}: RainbowKitAuthenticationProviderProps<Message>) {
+}: CinaWalletKitAuthenticationProviderProps<Message>) {
   // When the wallet is disconnected, we want to tell the auth
   // adapter that the user session is no longer active.
   const { connector } = useAccount();

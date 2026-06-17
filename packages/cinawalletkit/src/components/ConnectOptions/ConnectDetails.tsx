@@ -19,8 +19,8 @@ import { preloadRefreshIcon, RefreshIcon } from '../Icons/Refresh';
 import { preloadScanIcon, ScanIcon } from '../Icons/Scan';
 import { SpinnerIcon } from '../Icons/Spinner';
 import { QRCode } from '../QRCode/QRCode';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { ModalSizeContext } from '../RainbowKitProvider/ModalSizeContext';
+import { I18nContext } from '../CinaWalletKitProvider/I18nContext';
+import { ModalSizeContext } from '../CinaWalletKitProvider/ModalSizeContext';
 import { Text } from '../Text/Text';
 import { WalletStep } from './DesktopOptions';
 
@@ -72,7 +72,7 @@ export function GetDetail({
   compactModeEnabled: boolean;
 }) {
   const wallets = useWalletConnectors().filter(
-    (wallet) => wallet.isRainbowKitConnector,
+    (wallet) => wallet.isCinaWalletKitConnector,
   );
 
   const shownWallets = wallets.splice(0, 5);
@@ -309,7 +309,7 @@ export function ConnectDetail({
           >
             <Box borderRadius="10" height={LOGO_SIZE} overflow="hidden">
               <AsyncImage
-                useAsImage={!wallet.isRainbowKitConnector}
+                useAsImage={!wallet.isCinaWalletKitConnector}
                 height={LOGO_SIZE}
                 src={iconUrl}
                 width={LOGO_SIZE}

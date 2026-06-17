@@ -1,2 +1,2 @@
-export { RainbowKitSiweNextAuthProvider } from './RainbowKitSiweNextAuthProvider';
-export type { GetSiweMessageOptions } from './RainbowKitSiweNextAuthProvider';
+export { CinaWalletKitSiweNextAuthProvider } from './CinaWalletKitSiweNextAuthProvider';
+export type { GetSiweMessageOptions } from './CinaWalletKitSiweNextAuthProvider';

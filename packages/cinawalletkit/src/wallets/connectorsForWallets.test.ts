@@ -39,7 +39,7 @@ describe('connectorsForWallets', () => {
         ],
         {
           projectId: exampleProjectId,
-          appName: 'rainbowkit.com',
+          appName: 'cinawalletkit.com',
         },
       );
 
@@ -66,7 +66,7 @@ describe('connectorsForWallets', () => {
         [{ groupName: 'Test Group 1', wallets: [customWallet] }],
         {
           projectId: exampleProjectId,
-          appName: 'rainbowkit.com',
+          appName: 'cinawalletkit.com',
         },
       );
 
@@ -88,7 +88,7 @@ describe('connectorsForWallets', () => {
           ],
           {
             projectId: exampleProjectId,
-            appName: 'rainbowkit.com',
+            appName: 'cinawalletkit.com',
           },
         );
       }).toThrow(
@@ -110,7 +110,7 @@ describe('connectorsForWallets', () => {
           ],
           {
             projectId: exampleProjectId,
-            appName: 'rainbowkit.com',
+            appName: 'cinawalletkit.com',
           },
         ),
         transports: {

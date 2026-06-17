@@ -1,7 +1,7 @@
 // ============================ Provider Components ============================
-// Main provider for RainbowKit context, theming, and modals
-export { RainbowKitProvider } from './RainbowKitProvider/RainbowKitProvider';
-export type { RainbowKitProviderProps } from './RainbowKitProvider/RainbowKitProvider';
+// Main provider for CinaWalletKit context, theming, and modals
+export { CinaWalletKitProvider } from './CinaWalletKitProvider/CinaWalletKitProvider';
+export type { CinaWalletKitProviderProps } from './CinaWalletKitProvider/CinaWalletKitProvider';
 
 // ============================ Button Components ============================
 // Main connect button with wallet connection flow
@@ -19,7 +19,7 @@ export type { AvatarProps } from './Avatar/Avatar';
 
 // Default emoji-based avatar implementation
 export { EmojiAvatar } from './Avatar/EmojiAvatar';
-export type { AvatarComponentProps as EmojiAvatarProps } from './RainbowKitProvider/AvatarContext';
+export type { AvatarComponentProps as EmojiAvatarProps } from './CinaWalletKitProvider/AvatarContext';
 
 // Utility function to generate emoji avatars based on wallet addresses
 export { emojiAvatarForAddress } from './Avatar/emojiAvatarForAddress';

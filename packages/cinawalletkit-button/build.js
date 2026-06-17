@@ -32,7 +32,7 @@ const mainBuildOptions = {
 };
 
 const stylesBuildOptions = {
-  entryPoints: ['../rainbowkit/dist/index.css'],
+  entryPoints: ['../cinawalletkit/dist/index.css'],
   outdir: 'dist',
   plugins: [
     {

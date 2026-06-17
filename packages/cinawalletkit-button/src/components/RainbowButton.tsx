@@ -1,18 +1,18 @@
 import {
-  RainbowKitProvider,
-  type RainbowKitProviderProps,
+  CinaWalletKitProvider,
+  type CinaWalletKitProviderProps,
   WalletButton,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/cinawalletkit';
 import React from 'react';
 
 export function RainbowButtonProvider({
   children,
   ...options
 }: Omit<
-  RainbowKitProviderProps,
+  CinaWalletKitProviderProps,
   'chains' | 'avatar' | 'initialChain' | 'modalSize' | 'showRecentTransactions'
 >) {
-  return <RainbowKitProvider {...options}>{children}</RainbowKitProvider>;
+  return <CinaWalletKitProvider {...options}>{children}</CinaWalletKitProvider>;
 }
 
 export const RainbowButton = () => {

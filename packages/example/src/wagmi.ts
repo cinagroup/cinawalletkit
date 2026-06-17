@@ -1,4 +1,4 @@
-import { type Chain, getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { type Chain, getDefaultConfig } from '@cinagroup/cinawalletkit';
 import {
   anchorageDigitalWallet,
   backpackWallet,
@@ -67,7 +67,7 @@ import {
   zerionWallet,
   zilPayWallet,
   universalProfilesWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/cinawalletkit/wallets';
 import { publicActions } from 'viem';
 import {
   apeChain,
@@ -195,7 +195,7 @@ const chains = [
 ] as const satisfies readonly [Chain, ...Chain[]];
 
 export const config = getDefaultConfig({
-  appName: 'RainbowKit Demo',
+  appName: 'CinaWalletKit Demo',
   projectId,
   walletConnectParameters: {
     telemetryEnabled: false,

@@ -2,10 +2,10 @@ import { render, screen } from '@testing-library/react';
 // biome-ignore lint/style/useImportType: Required by the package JSX transform.
 import React, { type ComponentProps } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { RainbowKitSiweNextAuthProvider } from './RainbowKitSiweNextAuthProvider';
+import { CinaWalletKitSiweNextAuthProvider } from './CinaWalletKitSiweNextAuthProvider';
 
 type ProviderProps = Omit<
-  ComponentProps<typeof RainbowKitSiweNextAuthProvider>,
+  ComponentProps<typeof CinaWalletKitSiweNextAuthProvider>,
   'children'
 >;
 
@@ -23,11 +23,11 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock('@rainbow-me/rainbowkit', async () => {
+vi.mock('@cinagroup/cinawalletkit', async () => {
   const React = await import('react');
 
   return {
-    RainbowKitAuthenticationProvider: ({
+    CinaWalletKitAuthenticationProvider: ({
       children,
       ...props
     }: React.PropsWithChildren<Record<string, unknown>>) => {
@@ -66,13 +66,13 @@ function getAdapter() {
 
 function renderProvider(props: Partial<ProviderProps> = {}) {
   return render(
-    <RainbowKitSiweNextAuthProvider {...props}>
+    <CinaWalletKitSiweNextAuthProvider {...props}>
       <span>children</span>
-    </RainbowKitSiweNextAuthProvider>,
+    </CinaWalletKitSiweNextAuthProvider>,
   );
 }
 
-describe('<RainbowKitSiweNextAuthProvider />', () => {
+describe('<CinaWalletKitSiweNextAuthProvider />', () => {
   beforeEach(() => {
     mocks.providerProps.length = 0;
     mocks.createAuthenticationAdapter.mockClear();
@@ -84,7 +84,7 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     mocks.useSession.mockReturnValue({ status: 'unauthenticated' });
   });
 
-  it('passes the NextAuth session status and enabled flag through to RainbowKit', () => {
+  it('passes the NextAuth session status and enabled flag through to CinaWalletKit', () => {
     mocks.useSession.mockReturnValue({ status: 'authenticated' });
 
     renderProvider({ enabled: false });
@@ -174,11 +174,11 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     const firstAdapter = getAdapter();
 
     rerender(
-      <RainbowKitSiweNextAuthProvider
+      <CinaWalletKitSiweNextAuthProvider
         getSiweMessageOptions={getSiweMessageOptions}
       >
         <span>updated children</span>
-      </RainbowKitSiweNextAuthProvider>,
+      </CinaWalletKitSiweNextAuthProvider>,
     );
 
     expect(getAdapter()).toBe(firstAdapter);
@@ -194,16 +194,16 @@ describe('<RainbowKitSiweNextAuthProvider />', () => {
     const firstAdapter = getAdapter();
 
     rerender(
-      <RainbowKitSiweNextAuthProvider getSiweMessageOptions={secondOptions}>
+      <CinaWalletKitSiweNextAuthProvider getSiweMessageOptions={secondOptions}>
         <span>children</span>
-      </RainbowKitSiweNextAuthProvider>,
+      </CinaWalletKitSiweNextAuthProvider>,
     );
 
     expect(getAdapter()).not.toBe(firstAdapter);
     expect(mocks.createAuthenticationAdapter).toHaveBeenCalledTimes(2);
   });
 
-  it('uses the NextAuth CSRF token as the RainbowKit nonce', async () => {
+  it('uses the NextAuth CSRF token as the CinaWalletKit nonce', async () => {
     mocks.getCsrfToken.mockResolvedValue('csrf-nonce');
 
     renderProvider();

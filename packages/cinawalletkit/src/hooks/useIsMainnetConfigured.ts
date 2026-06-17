@@ -1,13 +1,13 @@
 import { mainnet } from 'wagmi/chains';
-import { useRainbowKitChains } from '../components/RainbowKitProvider/RainbowKitChainContext';
+import { useCinaWalletKitChains } from '../components/CinaWalletKitProvider/CinaWalletKitChainContext';
 
 export function useIsMainnetConfigured() {
-  const rainbowKitChains = useRainbowKitChains();
+  const CinaWalletKitChains = useCinaWalletKitChains();
 
   const chainId = mainnet.id;
 
-  const configured = rainbowKitChains.some(
-    (rainbowKitChain) => rainbowKitChain.id === chainId,
+  const configured = CinaWalletKitChains.some(
+    (CinaWalletKitChain) => CinaWalletKitChain.id === chainId,
   );
 
   return configured;

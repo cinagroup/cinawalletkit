@@ -1,5 +1,5 @@
 import { useAccount } from 'wagmi';
-import { useAuthenticationStatus } from '../components/RainbowKitProvider/AuthenticationContext';
+import { useAuthenticationStatus } from '../components/CinaWalletKitProvider/AuthenticationContext';
 
 export type ConnectionStatus =
   | 'disconnected'

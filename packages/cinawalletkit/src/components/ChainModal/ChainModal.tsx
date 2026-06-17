@@ -7,8 +7,8 @@ import { Dialog } from '../Dialog/Dialog';
 import { DialogContent } from '../Dialog/DialogContent';
 import { DisconnectSqIcon } from '../Icons/DisconnectSq';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { I18nContext } from '../RainbowKitProvider/I18nContext';
-import { useRainbowKitChains } from '../RainbowKitProvider/RainbowKitChainContext';
+import { I18nContext } from '../CinaWalletKitProvider/I18nContext';
+import { useCinaWalletKitChains } from '../CinaWalletKitProvider/CinaWalletKitChainContext';
 import { Text } from '../Text/Text';
 import Chain from './Chain';
 import {
@@ -49,7 +49,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
   const mobile = isMobile();
   const isCurrentChainSupported = chains.some((chain) => chain.id === chainId);
   const chainIconSize = mobile ? '36' : '28';
-  const rainbowkitChains = useRainbowKitChains();
+  const cinawalletkitChains = useCinaWalletKitChains();
 
   if (!chainId) {
     return null;
@@ -93,7 +93,7 @@ export function ChainModal({ onClose, open }: ChainModalProps) {
             padding="2"
             paddingBottom="16"
           >
-            {rainbowkitChains.map(
+            {cinawalletkitChains.map(
               ({ iconBackground, iconUrl, id, name }, idx) => {
                 return (
                   <Chain

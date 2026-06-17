@@ -1,4 +1,4 @@
-import { RainbowButton } from '@rainbow-me/rainbow-button';
+import { RainbowButton } from '@cinagroup/cinawalletkit-button';
 import {
   ConnectButton,
   useAccountModal,
@@ -6,7 +6,7 @@ import {
   useChainModal,
   useConnectModal,
   WalletButton,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/cinawalletkit';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { type ComponentProps, useEffect, useState } from 'react';
