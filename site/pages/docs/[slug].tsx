@@ -5,17 +5,15 @@ import { TitleAndMetaTags } from 'components/TitleAndMetaTags/TitleAndMetaTags';
 import { docsRoutes } from 'lib/docsRoutes';
 import Head from 'next/head';
 import { useLiveReload, useMDXComponent } from 'next-contentlayer/hooks';
-import pckg from '../../../packages/rainbowkit/package.json';
+import pckg from '../../../packages/cinawalletkit/package.json';
 
-const RAINBOWKIT_VERSION = pckg.version as string;
+const CINAWALLETKIT_VERSION = pckg.version as string;
 
-const isProd =
-  process.env.NODE_ENV === 'production' &&
-  process.env.VERCEL_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 const DOCSEARCH_VERSION = isProd
-  ? `${RAINBOWKIT_VERSION},latest`
-  : RAINBOWKIT_VERSION;
+  ? `${CINAWALLETKIT_VERSION},latest`
+  : CINAWALLETKIT_VERSION;
 
 type DocPageProps = { doc: Doc; sectionName: string };
 

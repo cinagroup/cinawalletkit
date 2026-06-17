@@ -1,5 +1,4 @@
 import '@cinagroup/CinaWalletKit/styles.css';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Provider } from 'components/Provider/Provider';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
@@ -81,7 +80,6 @@ function App({ Component, pageProps }: AppProps) {
           )}
         </Provider>
       </NextIntlClientProvider>
-      <SpeedInsights />
     </>
   );
 }
