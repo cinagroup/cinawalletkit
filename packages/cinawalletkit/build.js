@@ -69,6 +69,10 @@ const baseBuildConfig = (onEnd) => {
         setup(build) {
           const filter = /^[^./]|^\.[^./]|^\.\.[^/]/; // Must not start with "/" or "./" or "../"
           build.onResolve({ filter }, (args) => {
+            // Skip absolute paths (Windows drive letters or Unix root)
+            if (/^[a-zA-Z]:/.test(args.path) || args.path.startsWith('/')) {
+              return null;
+            }
             return {
               external: true,
               path: args.path,

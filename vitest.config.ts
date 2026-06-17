@@ -20,7 +20,7 @@ export default {
   test: {
     environment: 'jsdom',
     globals: true,
-    setupFiles: ['./packages/rainbowkit/test/setup.ts'],
+    setupFiles: ['./packages/cinawalletkit/test/setup.ts'],
     watch: false,
     exclude: [
       '**/node_modules/**',
