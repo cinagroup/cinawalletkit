@@ -7,7 +7,10 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "deploy": "pnpm build && npx wrangler deploy",
+    "deploy:production": "pnpm build && npx wrangler deploy --env production",
+    "preview:cf": "pnpm build && npx wrangler dev"
   },
   "dependencies": {
     "@cinagroup/cinawalletkit": "workspace:*",

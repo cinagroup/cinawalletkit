@@ -1,0 +1,18 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "cinawalletkit-with-remix"
+compatibility_date = "2026-06-17"
+compatibility_flags = ["nodejs_compat"]
+main = "build/index.js"
+account_id = ""
+
+[site]
+bucket = "public"
+
+[observability]
+enabled = true
+
+[env.production]
+name = "cinawalletkit-with-remix-production"
+
+[env.preview]
+name = "cinawalletkit-with-remix-preview"

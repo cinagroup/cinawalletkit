@@ -6,7 +6,10 @@
   "scripts": {
     "build": "remix build",
     "dev": "PORT=8000 remix dev",
-    "start": "remix-serve build/index.js"
+    "start": "remix-serve build/index.js",
+    "deploy": "pnpm build && npx wrangler deploy",
+    "deploy:production": "pnpm build && npx wrangler deploy --env production",
+    "preview:cf": "pnpm build && npx wrangler dev"
   },
   "dependencies": {
     "@cinagroup/cinawalletkit": "workspace:*",
