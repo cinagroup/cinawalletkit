@@ -1,5 +1,5 @@
 {
-  "name": "@rainbow-me/rainbow-button",
+  "name": "@cinagroup/cinawalletkit-button",
   "description": "Rainbow connector button",
   "version": "0.2.28",
   "files": [
@@ -14,7 +14,7 @@
     "react-hook",
     "hooks"
   ],
-  "author": "Rainbow",
+  "author": "CinaGroup",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -37,7 +37,7 @@
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
   "dependencies": {
-    "@rainbow-me/rainbowkit": "workspace:*"
+    "@cinagroup/cinawalletkit": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
-    "directory": "packages/rainbow-button"
+    "url": "git+https://github.com/cinagroup/cinawalletkit.git",
+    "directory": "packages/cinawalletkit-button"
   }
 }

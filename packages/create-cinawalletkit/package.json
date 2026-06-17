@@ -1,5 +1,5 @@
 {
-  "name": "@rainbow-me/create-rainbowkit",
+  "name": "@cinagroup/create-cinawalletkit",
   "description": "Scaffold a new RainbowKit project",
   "version": "0.3.17",
   "files": [
@@ -9,7 +9,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "create-rainbowkit": "dist/cli.js"
+    "create-cinawalletkit": "dist/cli.js"
   },
   "scripts": {
     "build": "node build.js",

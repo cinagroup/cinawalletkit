@@ -1,7 +1,7 @@
 prefer-workspace-packages: true
 packages:
   - 'packages/*'
-  - 'packages/create-rainbowkit/**/*-app'
+  - 'packages/create-cinawalletkit/**/*-app'
   - 'site'
   - 'examples/*'
 # Don't install packages < 1 day old

@@ -1,5 +1,5 @@
 {
-  "name": "@rainbow-me/rainbowkit-siwe-next-auth",
+  "name": "@cinagroup/cinawalletkit-siwe-next-auth",
   "version": "0.6.0",
   "description": "RainbowKit authentication adapter for Sign-In with Ethereum and NextAuth",
   "files": [
@@ -26,19 +26,19 @@
     "typegen:watch": "tsc --emitDeclarationOnly --watch"
   },
   "keywords": [],
-  "author": "Rainbow",
+  "author": "CinaGroup",
   "license": "MIT",
   "peerDependencies": {
-    "@rainbow-me/rainbowkit": "2.2.x",
+    "@cinagroup/cinawalletkit": "2.2.x",
     "next-auth": ">=5.0.0-0 <6",
     "react": ">=18"
   },
   "devDependencies": {
-    "@rainbow-me/rainbowkit": "workspace:*"
+    "@cinagroup/cinawalletkit": "workspace:*"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rainbow-me/rainbowkit.git",
-    "directory": "packages/rainbowkit-siwe-next-auth"
+    "url": "git+https://github.com/cinagroup/cinawalletkit.git",
+    "directory": "packages/cinawalletkit-siwe-next-auth"
   }
 }

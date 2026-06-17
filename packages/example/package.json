@@ -5,9 +5,9 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "@rainbow-me/rainbow-button": "workspace:*",
-    "@rainbow-me/rainbowkit": "workspace:*",
-    "@rainbow-me/rainbowkit-siwe-next-auth": "workspace:*",
+    "@cinagroup/cinawalletkit-button": "workspace:*",
+    "@cinagroup/cinawalletkit": "workspace:*",
+    "@cinagroup/cinawalletkit-siwe-next-auth": "workspace:*",
     "@tanstack/react-query": "^5.55.3",
     "cuer": "^0.0.3",
     "next": "^16.2.4",
