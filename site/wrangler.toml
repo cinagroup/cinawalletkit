@@ -1,0 +1,25 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "cinawalletkit-site"
+compatibility_date = "2026-06-17"
+compatibility_flags = ["nodejs_compat"]
+main = ".open-next/worker.js"
+account_id = ""
+
+[site]
+bucket = ".open-next/assets"
+
+[observability]
+enabled = true
+
+[[kv_namespaces]]
+binding = "CACHE_KV"
+id = ""
+preview_id = ""
+
+# Production environment
+[env.production]
+name = "cinawalletkit-site-production"
+
+# Preview environment (for PR previews)
+[env.preview]
+name = "cinawalletkit-site-preview"

@@ -39,15 +39,21 @@
     "wagmi": "^2.19.3"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.0.0",
     "contentlayer": "npm:contentlayer2@0.5.8",
     "next-contentlayer": "npm:next-contentlayer2@0.5.8",
-    "next-sitemap": "^4.2.3"
+    "next-sitemap": "^4.2.3",
+    "wrangler": "^4.0.0"
   },
   "scripts": {
     "dev": "next dev --webpack --port 3001",
     "build": "INIT_CWD=$PWD contentlayer2 build && next build --webpack",
+    "build:cf": "INIT_CWD=$PWD contentlayer2 build && npx opennextjs-cloudflare",
     "postbuild": "next-sitemap",
-    "typecheck": "INIT_CWD=$PWD contentlayer2 build && pnpm tsc --noEmit"
+    "typecheck": "INIT_CWD=$PWD contentlayer2 build && pnpm tsc --noEmit",
+    "deploy": "pnpm build:cf && npx wrangler deploy",
+    "deploy:production": "pnpm build:cf && npx wrangler deploy --env production",
+    "preview": "pnpm build:cf && npx wrangler dev"
   },
   "keywords": [],
   "author": "",
