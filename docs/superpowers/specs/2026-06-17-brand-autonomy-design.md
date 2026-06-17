@@ -124,7 +124,7 @@ import { ... } from '@cinagroup/cinawalletkit-siwe-next-auth';
 
 **3a. README.md（根目录）**：
 - 标题：`RainbowKit` → `CinaWalletKit`
-- Logo 图片链接：替换为 CinaWalletKit logo（占位，后续替换实际图片）
+- Logo 图片链接：使用 `site/public/logo.png`（已复制，蓝色渐变背景 + 白色 C 形图案）
 - 描述："The best way to connect a wallet" → 保持不变（此描述通用，无需修改）
 - npm badge、CodeSandbox 链接、文档链接
 - 底部添加：`Based on [RainbowKit](https://github.com/rainbow-me/rainbowkit), originally developed by Rainbow. Licensed under MIT.`
@@ -213,10 +213,20 @@ MIT 协议要求保留原始版权声明。因此：
 
 ### 6.6 Logo / 图片资源
 
-当前 README 头图指向 GitHub user-images URL。需要：
-- 创建或上传 CinaWalletKit logo
-- 更新所有文档中的 logo 引用
-- 本规格不处理 logo 设计，仅处理文本引用占位
+**已准备**：
+- `site/public/logo.png` — 蓝色渐变背景 + 白色 C 形图案（65KB）
+- `site/public/favicon.ico` — 网站图标
+
+**使用方式**：
+- README 头图：引用 `site/public/logo.png`
+- 网站 favicon：使用 `site/public/favicon.ico`
+- 网站 OG 图 / Logo：使用 `site/public/logo.png`
+- npm 包（可选）：如需发布到 npm，可复制到 `packages/cinawalletkit/assets/logo.png`
+
+**后续可能需要的资源**：
+- 暗色主题版本的 logo（如需要）
+- 不同尺寸的 favicon（16x16, 32x32, 180x180 等）
+- SVG 格式的 logo（用于矢量缩放）
 
 ---
 
