@@ -7,22 +7,22 @@ description: การปรับแต่งเชน
 
 ## การปรับแต่งเชน
 
-RainbowKit ถูกออกแบบมาให้รวมเข้ากับ[ออบเจกต์ `chain` ของ wagmi](https://wagmi.sh/react/chains) ตรวจสอบรายการเชนที่รองรับได้ [ที่นี่](https://wagmi.sh/react/chains#supported-chains)
+CinaWalletKit ถูกออกแบบมาให้รวมเข้ากับ[ออบเจกต์ `chain` ของ wagmi](https://wagmi.sh/react/chains) ตรวจสอบรายการเชนที่รองรับได้ [ที่นี่](https://wagmi.sh/react/chains#supported-chains)
 
 ### การปรับแต่งเชนเริ่มต้น
 
-โดยค่าเริ่มต้น RainbowKit จะเชื่อมต่อกับเชนแรกที่จัดหาให้กับ Wagmi พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain`
+โดยค่าเริ่มต้น CinaWalletKit จะเชื่อมต่อกับเชนแรกที่จัดหาให้กับ Wagmi พฤติกรรมนี้สามารถปรับแต่งได้ผ่าน prop `initialChain`
 
 เชนเริ่มต้นสามารถกำหนดค่าได้โดยใช้ chain ID
 
 ```tsx
-<RainbowKitProvider initialChain={1}>
+<CinaWalletKitProvider initialChain={1}>
 ```
 
 เพื่อความสะดวก คุณยังสามารถส่งออบเจกต์เชนได้อีกด้วย
 
 ```tsx
-<RainbowKitProvider initialChain={mainnet}>
+<CinaWalletKitProvider initialChain={mainnet}>
 ```
 
 ### เมทาดาทาของเชนที่ปรับแต่งเอง
@@ -54,7 +54,7 @@ const config = getDefaultConfig({
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
-import { Chain } from '@rainbow-me/rainbowkit';
+import { Chain } from '@cinagroup/CinaWalletKit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   {

@@ -7,22 +7,22 @@ description: チェーンのカスタマイズ
 
 ## チェーンのカスタマイズ
 
-RainbowKitは[wagmiの`chain`オブジェクト](https://wagmi.sh/react/chains)と統合するように設計されています。サポートされているチェーンのリストは[こちら](https://wagmi.sh/react/chains#supported-chains)をご覧ください。
+CinaWalletKitは[wagmiの`chain`オブジェクト](https://wagmi.sh/react/chains)と統合するように設計されています。サポートされているチェーンのリストは[こちら](https://wagmi.sh/react/chains#supported-chains)をご覧ください。
 
 ### 初期のチェーン設定のカスタマイズ
 
-デフォルトでは、RainbowKitはWagmiに提供された最初のチェーンに接続します。この動作は`initialChain`プロップでカスタマイズできます。
+デフォルトでは、CinaWalletKitはWagmiに提供された最初のチェーンに接続します。この動作は`initialChain`プロップでカスタマイズできます。
 
 初期のチェーンはチェーンIDを使って設定できます。
 
 ```tsx
-<RainbowKitProvider initialChain={1}>
+<CinaWalletKitProvider initialChain={1}>
 ```
 
 便利なことに、チェーンオブジェクトを渡すこともできます。
 
 ```tsx
-<RainbowKitProvider initialChain={mainnet}>
+<CinaWalletKitProvider initialChain={mainnet}>
 ```
 
 ### カスタムチェーンメタデータ
@@ -54,7 +54,7 @@ const config = getDefaultConfig({
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
-import { Chain } from '@rainbow-me/rainbowkit';
+import { Chain } from '@cinagroup/CinaWalletKit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   {

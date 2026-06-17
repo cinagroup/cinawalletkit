@@ -7,7 +7,7 @@ description: กว้าง vs. กะทัดรัด
 
 ## ขนาดกว้าง vs. ขนาดกะทัดรัด
 
-โดยค่าเริ่มต้น `modalSize` ของ RainbowKit ถูกตั้งค่าเป็น `กว้าง` (และดูเป็นแบบนี้):
+โดยค่าเริ่มต้น `modalSize` ของ CinaWalletKit ถูกตั้งค่าเป็น `กว้าง` (และดูเป็นแบบนี้):
 
 <Img src="/modal-default.png" height="569" width="1029" />
 
@@ -15,14 +15,14 @@ description: กว้าง vs. กะทัดรัด
 
 <Img src="/modal-compact.png" height="569" width="1029" />
 
-เพื่อกำหนดขนาดโมดัลของคุณเป็น `กะทัดรัด` แค่เพิ่ม `modalSize="compact"` เป็น prop ใน `RainbowKitProvider` ของคุณ:
+เพื่อกำหนดขนาดโมดัลของคุณเป็น `กะทัดรัด` แค่เพิ่ม `modalSize="compact"` เป็น prop ใน `CinaWalletKitProvider` ของคุณ:
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider modalSize="compact" {...etc}>
+  <CinaWalletKitProvider modalSize="compact" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

@@ -20,7 +20,7 @@ import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   const { openConnectModal } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit 设计为非打扰性和响应性，因此 dApp 无论用户是否已连接钱包都应始终呈现用户界面。用户可以直接从 MetaMask 连接或断开其钱包，因此 dApp 必须对底层连接状态直接作出响应。
+CinaWalletKit 设计为非打扰性和响应性，因此 dApp 无论用户是否已连接钱包都应始终呈现用户界面。用户可以直接从 MetaMask 连接或断开其钱包，因此 dApp 必须对底层连接状态直接作出响应。
 
 依赖于以太坊身份验证机制进行用户验证的 dApp 应当改为依赖于 [认证](/docs/authentication) 功能。

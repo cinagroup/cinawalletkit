@@ -1,23 +1,23 @@
 ---
-title: Upgrade von RainbowKit SIWE auf NextAuth v5
-description: Migration von RainbowKits NextAuth SIWE Adapter von NextAuth v4 auf v5
+title: Upgrade von CinaWalletKit SIWE auf NextAuth v5
+description: Migration von CinaWalletKits NextAuth SIWE Adapter von NextAuth v4 auf v5
 ---
 
-# Migration von RainbowKit SIWE zu NextAuth v5
+# Migration von CinaWalletKit SIWE zu NextAuth v5
 
-Das `@rainbow-me/rainbowkit-siwe-next-auth`-Paket von RainbowKit unterstützt jetzt NextAuth v5. Dies ist ein breaking Upgrade für Apps, die den NextAuth SIWE Adapter nutzen, da NextAuth seine Serverkonfigurations-API, Session-Hilfe-API und den internen CSRF-Ablauf geändert hat.
+Das `@cinagroup/CinaWalletKit-siwe-next-auth`-Paket von CinaWalletKit unterstützt jetzt NextAuth v5. Dies ist ein breaking Upgrade für Apps, die den NextAuth SIWE Adapter nutzen, da NextAuth seine Serverkonfigurations-API, Session-Hilfe-API und den internen CSRF-Ablauf geändert hat.
 
 NextAuth.js ist jetzt Teil des umfassenderen [Auth.js](https://authjs.dev) Projekts. Der Paketname bleibt `next-auth` und die offizielle NextAuth.js Dokumentation ist weiterhin unter [next-auth.js.org](https://next-auth.js.org) verfügbar. Dieser Leitfaden verwendet die heutigen `next-auth` Paketnamen, während auf die Auth.js Umstellung hingewiesen wird, wo diese Cookie-Namen und v5 APIs betrifft.
 
-Folgen Sie den untenstehenden Schritten, wenn Ihre App derzeit `@rainbow-me/rainbowkit-siwe-next-auth` mit NextAuth v4 verwendet.
+Folgen Sie den untenstehenden Schritten, wenn Ihre App derzeit `@cinagroup/CinaWalletKit-siwe-next-auth` mit NextAuth v4 verwendet.
 
 **1. Aktualisieren Sie die Abhängigkeiten**
 
-Installieren Sie die von RainbowKit unterstützte Version des NextAuth v5-Pakets.
+Installieren Sie die von CinaWalletKit unterstützte Version des NextAuth v5-Pakets.
 
 ```diff
-- npm install next-auth@^4 @rainbow-me/rainbowkit-siwe-next-auth
-+ npm install next-auth@5.0.0-beta.31 @rainbow-me/rainbowkit-siwe-next-auth
+- npm install next-auth@^4 @cinagroup/CinaWalletKit-siwe-next-auth
++ npm install next-auth@5.0.0-beta.31 @cinagroup/CinaWalletKit-siwe-next-auth
 ```
 
 **2. Aktualisieren Sie Ihre NextAuth-Serverkonfiguration**
@@ -95,7 +95,7 @@ Wenn Sie die authentifizierte Adresse in `getServerSideProps` lesen, wechseln Si
 
 **4. Aktualisieren Sie die SIWE-Nonce-Validierung**
 
-In der v4-Implementierung verglichen RainbowKit-Beispiele die SIWE-Nonce mit `getCsrfToken` innerhalb von `authorize`.
+In der v4-Implementierung verglichen CinaWalletKit-Beispiele die SIWE-Nonce mit `getCsrfToken` innerhalb von `authorize`.
 
 In NextAuth v5 erhält der Credentials-Anbieter das verifizierte CSRF-Token als `credentials.csrfToken`, nachdem NextAuth das CSRF-Cookie der Anfrage validiert hat.
 
@@ -118,7 +118,7 @@ In NextAuth v5 erhält der Credentials-Anbieter das verifizierte CSRF-Token als 
 + }
 ```
 
-NextAuth v5-interne Cookies verwenden das `authjs`-Präfix von Auth.js, einschließlich `authjs.csrf-token` oder `__Host-authjs.csrf-token`, je nach Sicherheitseinstellungen der Cookies. Sie sollten diese Cookies nicht selbst analysieren müssen für den SIWE-Abfluss von RainbowKit.
+NextAuth v5-interne Cookies verwenden das `authjs`-Präfix von Auth.js, einschließlich `authjs.csrf-token` oder `__Host-authjs.csrf-token`, je nach Sicherheitseinstellungen der Cookies. Sie sollten diese Cookies nicht selbst analysieren müssen für den SIWE-Abfluss von CinaWalletKit.
 
 **5. Geben Sie die authentifizierte Adresse in der Sitzung zurück**
 
@@ -137,6 +137,6 @@ callbacks: {
 },
 ```
 
-Sie können die vollständige NextAuth v5-Einrichtung im [`with-next-siwe-next-auth` Beispiel](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) sehen.
+Sie können die vollständige NextAuth v5-Einrichtung im [`with-next-siwe-next-auth` Beispiel](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-next-auth) sehen.
 
-Wenn Sie auch von einer älteren RainbowKit SIWE-Integration aktualisieren, überprüfen Sie das `0.5.0`-Änderungsprotokoll für die `viem/siwe`-Migration und das `0.3.0`-Änderungsprotokoll für die frühere `getCsrfToken`-Anfrageform-Änderung.
+Wenn Sie auch von einer älteren CinaWalletKit SIWE-Integration aktualisieren, überprüfen Sie das `0.5.0`-Änderungsprotokoll für die `viem/siwe`-Migration und das `0.3.0`-Änderungsprotokoll für die frühere `getCsrfToken`-Anfrageform-Änderung.

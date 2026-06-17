@@ -7,28 +7,28 @@ description: Tampilkan transaksi terbaru Anda
 
 ## Tampilkan transaksi terbaru Anda
 
-Anda dapat memilih untuk menampilkan transaksi terbaru dalam modal akun RainbowKit. Harap dicatat bahwa semua transaksi disimpan di penyimpanan lokal dan harus didaftarkan secara manual dengan RainbowKit agar bisa ditampilkan.
+Anda dapat memilih untuk menampilkan transaksi terbaru dalam modal akun CinaWalletKit. Harap dicatat bahwa semua transaksi disimpan di penyimpanan lokal dan harus didaftarkan secara manual dengan CinaWalletKit agar bisa ditampilkan.
 
 Implementasi default `ConnectButton` juga akan menampilkan indikator pemuatan di sekitar avatar pengguna jika ada transaksi yang tertunda. Implementasi `ConnectButton` kustom dapat membuat ulang perilaku ini melalui properti `account.hasPendingTransactions` yang diteruskan ke fungsi render Anda.
 
-Untuk menggunakan fitur ini, pertama-tama aktifkan opsi `showRecentTransactions` pada `RainbowKitProvider`.
+Untuk menggunakan fitur ini, pertama-tama aktifkan opsi `showRecentTransactions` pada `CinaWalletKitProvider`.
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+    <CinaWalletKitProvider showRecentTransactions={true} {...etc}>
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
-Transaksi kemudian dapat didaftarkan dengan RainbowKit menggunakan hook `useAddRecentTransaction`.
+Transaksi kemudian dapat didaftarkan dengan CinaWalletKit menggunakan hook `useAddRecentTransaction`.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();
@@ -48,12 +48,12 @@ export default () => {
 };
 ```
 
-Setelah transaksi didaftarkan dengan RainbowKit, statusnya akan diperbarui setelah selesai.
+Setelah transaksi didaftarkan dengan CinaWalletKit, statusnya akan diperbarui setelah selesai.
 
 Secara default, transaksi akan dianggap selesai setelah satu blok ditambang di atas blok tempat transaksi ditambang, tetapi ini dapat dikonfigurasi dengan menentukan nilai `confirmations` kustom.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();

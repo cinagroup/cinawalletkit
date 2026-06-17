@@ -20,7 +20,7 @@ import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   const { openConnectModal } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-صُمم RainbowKit ليكون غير متقطع وقابل للاستجابة، لذا يجب على dApps دائمًا تقديم واجهة للمستخدمين سواء قاموا بتوصيل محفظتهم أم لا. يمكن للمستخدم الاتصال أو قطع الاتصال بمحفظته مباشرةً من MetaMask، لذا يجب أن تكون dApp مستجيبة لحالة الاتصال الأساسية مباشرةً.
+صُمم CinaWalletKit ليكون غير متقطع وقابل للاستجابة، لذا يجب على dApps دائمًا تقديم واجهة للمستخدمين سواء قاموا بتوصيل محفظتهم أم لا. يمكن للمستخدم الاتصال أو قطع الاتصال بمحفظته مباشرةً من MetaMask، لذا يجب أن تكون dApp مستجيبة لحالة الاتصال الأساسية مباشرةً.
 
 يجب على التطبيقات اللامركزية (dApps) التي تعتمد على آليات مثل تسجيل الدخول باستخدام Ethereum لأغراض التحقق من المستخدم الاعتماد بدلاً من ذلك على ميزة [المصادقة](/docs/authentication).

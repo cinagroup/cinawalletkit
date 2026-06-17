@@ -7,28 +7,28 @@ description: Hiển thị giao dịch gần đây của bạn
 
 ## Hiển thị giao dịch gần đây của bạn
 
-Bạn có thể chọn hiển thị các giao dịch gần đây trong modal tài khoản của RainbowKit. Lưu ý rằng tất cả các giao dịch được lưu trữ cục bộ và phải được đăng ký thủ công với RainbowKit để được hiển thị.
+Bạn có thể chọn hiển thị các giao dịch gần đây trong modal tài khoản của CinaWalletKit. Lưu ý rằng tất cả các giao dịch được lưu trữ cục bộ và phải được đăng ký thủ công với CinaWalletKit để được hiển thị.
 
 Mặc định, hiện thực `ConnectButton` sẽ hiển thị chỉ báo đang tải quanh hình đại diện người dùng nếu có bất kỳ giao dịch nào đang chờ xử lý. Các hiện thực `ConnectButton` tùy chỉnh có thể tái tạo hành vi này thông qua thuộc tính `account.hasPendingTransactions` được truyền vào hàm render của bạn.
 
-Để sử dụng tính năng này, trước tiên hãy bật tùy chọn `showRecentTransactions` trên `RainbowKitProvider`.
+Để sử dụng tính năng này, trước tiên hãy bật tùy chọn `showRecentTransactions` trên `CinaWalletKitProvider`.
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+    <CinaWalletKitProvider showRecentTransactions={true} {...etc}>
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
-Các giao dịch sau đó có thể được đăng ký với RainbowKit bằng cách sử dụng hook `useAddRecentTransaction`.
+Các giao dịch sau đó có thể được đăng ký với CinaWalletKit bằng cách sử dụng hook `useAddRecentTransaction`.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();
@@ -48,12 +48,12 @@ export default () => {
 };
 ```
 
-Khi một giao dịch đã được đăng ký với RainbowKit, trạng thái của nó sẽ được cập nhật sau khi hoàn tất.
+Khi một giao dịch đã được đăng ký với CinaWalletKit, trạng thái của nó sẽ được cập nhật sau khi hoàn tất.
 
 Mặc định, giao dịch sẽ được coi là hoàn tất sau khi một block đã được đào trên block chứa giao dịch, nhưng điều này có thể được cấu hình bằng cách chỉ định giá trị `confirmations` tùy chỉnh.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();

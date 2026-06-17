@@ -7,25 +7,25 @@ description: Customizing your dApp's language with built-in translations
 
 ## Customizing your dApp's language with built-in translations
 
-By default, RainbowKit supports the `en-US` locale for English language users.
+By default, CinaWalletKit supports the `en-US` locale for English language users.
 
-If available, RainbowKit will detect the user's [preferred language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) and choose the appropriate translations. Developers can always override the default language.
+If available, CinaWalletKit will detect the user's [preferred language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) and choose the appropriate translations. Developers can always override the default language.
 
-To specify a language for your users, just add `locale="zh-CN"` as a prop in your `RainbowKitProvider`
+To specify a language for your users, just add `locale="zh-CN"` as a prop in your `CinaWalletKitProvider`
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider locale="zh-CN" {...etc}>
+  <CinaWalletKitProvider locale="zh-CN" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
 ### Using with Next.js
 
-RainbowKit's localization support works even better with [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
+CinaWalletKit's localization support works even better with [Sub-path Routing](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing).
 
 Configure your Next.js project like the example below to add an optional `/locale/` sub-path to your routes, which will help search engines and users better discover your multi-lingual support.
 
@@ -39,24 +39,24 @@ Configure your Next.js project like the example below to add an optional `/local
 }
 ```
 
-Then pass the `locale` provided by the Pages Router to the `RainbowKitProvider`
+Then pass the `locale` provided by the Pages Router to the `CinaWalletKitProvider`
 
 ```tsx
-import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, Locale } from '@cinagroup/CinaWalletKit';
 
 export const App = () => {
   const { locale } = useRouter() as { locale: Locale };
   return (
-    <RainbowKitProvider locale={locale} {...etc}>
+    <CinaWalletKitProvider locale={locale} {...etc}>
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   )
 };
 ```
 
-You can reference an example for the Pages Router [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next).
+You can reference an example for the Pages Router [here](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next).
 
-App Router does not yet support i18n. Reference our separate example [here](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n) for implementation best practices with [`next-intl`](https://github.com/amannn/next-intl) middleware.
+App Router does not yet support i18n. Reference our separate example [here](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-app-i18n) for implementation best practices with [`next-intl`](https://github.com/amannn/next-intl) middleware.
 
 It is recommended that you use the same techniques to translate your dApp's content for full localization support. Localization libraries like [`i18n-js`](https://github.com/fnando/i18n) and [`next-intl`](https://github.com/amannn/next-intl) and management tools like Crowdin will simplify this process.
 
@@ -94,4 +94,4 @@ We provide full support for the following `locale` regions:
   ]}
 />
 
-If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) and we'll work to support it as soon as possible.
+If you would like to see support for an additional language, please open a [GitHub Discussion](https://github.com/rainbow-me/CinaWalletKit/discussions/new?category=ideas) and we'll work to support it as soon as possible.

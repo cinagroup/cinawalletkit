@@ -7,7 +7,7 @@ description: Geniş vs. Kompakt
 
 ## Geniş vs. Kompakt boyut
 
-Varsayılan olarak, RainbowKit'in `modalSize` değeri `wide` olarak ayarlanmıştır (aşağıdaki gibi görünür):
+Varsayılan olarak, CinaWalletKit'in `modalSize` değeri `wide` olarak ayarlanmıştır (aşağıdaki gibi görünür):
 
 <Img src="/modal-default.png" height="569" width="1029" />
 
@@ -15,14 +15,14 @@ Ayrıca, aşağıdakine benzeyen bir `compact` modal boyutu da sağlıyoruz:
 
 <Img src="/modal-compact.png" height="569" width="1029" />
 
-Modunuzun boyutunu `compact` olarak ayarlamak için `RainbowKitProvider`'ınıza `modalSize="compact"` parametresini ekleyin:
+Modunuzun boyutunu `compact` olarak ayarlamak için `CinaWalletKitProvider`'ınıza `modalSize="compact"` parametresini ekleyin:
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider modalSize="compact" {...etc}>
+  <CinaWalletKitProvider modalSize="compact" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

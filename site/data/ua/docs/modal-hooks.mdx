@@ -20,7 +20,7 @@ import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   const { openConnectModal } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit розроблений так, щоб бути ненав'язливим і чуйним, тому dApps завжди повинні надавати інтерфейс для користувачів, незалежно від того, чи підключили вони свій гаманець. Користувач може підключити або від'єднати свій гаманець безпосередньо з MetaMask, тому dApp повинен бути чуйним до актуального стану підключення.
+CinaWalletKit розроблений так, щоб бути ненав'язливим і чуйним, тому dApps завжди повинні надавати інтерфейс для користувачів, незалежно від того, чи підключили вони свій гаманець. Користувач може підключити або від'єднати свій гаманець безпосередньо з MetaMask, тому dApp повинен бути чуйним до актуального стану підключення.
 
 dApps, які покладаються на механізми, такі як Вхід через Ethereum для перевірки користувача, повинні натомість покладатися на функцію [Authentication](/docs/authentication).

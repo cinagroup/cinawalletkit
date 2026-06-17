@@ -3,8 +3,8 @@ import {
   darkTheme,
   type Locale,
   lightTheme,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';
 import { Text } from 'components/Text/Text';
@@ -12,10 +12,10 @@ import { vars } from 'css/vars.css';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import type React from 'react';
-import pckg from '../../../packages/rainbowkit/package.json';
+import pckg from '../../../packages/CinaWalletKit/package.json';
 import { header, logo, row } from './Header.css';
 
-const RAINBOWKIT_VERSION = pckg.version;
+const CinaWalletKit_VERSION = pckg.version;
 
 export function Header({
   darkMode,
@@ -55,13 +55,13 @@ export function Header({
           gap={{ xs: '1', sm: '4' }}
         >
           <Text style={{ lineHeight: 1 }} variant="title3" weight="bold">
-            RainbowKit
+            CinaWalletKit
           </Text>
-          <Badge>{RAINBOWKIT_VERSION}</Badge>
+          <Badge>{CinaWalletKit_VERSION}</Badge>
         </Box>
 
         <Box style={{ marginLeft: 'auto' }}>
-          <RainbowKitProvider
+          <CinaWalletKitProvider
             theme={
               darkMode
                 ? darkTheme({ accentColor: vars.colors.blue })
@@ -72,7 +72,7 @@ export function Header({
             <ConnectButton
               accountStatus={{ largeScreen: 'full', smallScreen: 'avatar' }}
             />
-          </RainbowKitProvider>{' '}
+          </CinaWalletKitProvider>{' '}
         </Box>
       </Box>
       {docsMobileMenuRef && (

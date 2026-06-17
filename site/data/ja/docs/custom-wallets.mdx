@@ -7,7 +7,7 @@ description: カスタムウォレットを作成する
 
 ## カスタムウォレットを作成する
 
-> 注意: このAPIは不安定で、近い将来変更される可能性があります。時間とともに、より多くの組み込みウォレットを追加します。興味のある特定のウォレットがあれば、[こちらからお知らせください](https://github.com/rainbow-me/rainbowkit/issues)。
+> 注意: このAPIは不安定で、近い将来変更される可能性があります。時間とともに、より多くの組み込みウォレットを追加します。興味のある特定のウォレットがあれば、[こちらからお知らせください](https://github.com/rainbow-me/CinaWalletKit/issues)。
 
 `Wallet`関数タイプは、独自のカスタムウォレットを定義するのに役立つよう提供されています。次のプロパティが`Wallet`関数の戻り値で設定可能です:
 
@@ -88,8 +88,8 @@ description: カスタムウォレットを作成する
     {
       name: 'createConnector',
       required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
+      type: '() => CinaWalletKitConnector',
+      typeSimple: 'CinaWalletKitConnector',
       description:
         '接続方法の異なるインスタンスと設定を提供するための関数',
     },
@@ -209,7 +209,7 @@ description: カスタムウォレットを作成する
 例えば、WalletConnectを使用してカスタムウォレットを作成するには:
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

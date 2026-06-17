@@ -20,7 +20,7 @@ import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   const { openConnectModal } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit được thiết kế để không gây gián đoạn và đáp ứng được, nên dApp luôn phải hiển thị giao diện cho người dùng bất kể họ có kết nối ví hay không. Người dùng có thể kết nối hoặc ngắt kết nối ví của họ trực tiếp từ MetaMask, vì vậy dApp phải phản ứng trực tiếp với trạng thái kết nối nền tảng.
+CinaWalletKit được thiết kế để không gây gián đoạn và đáp ứng được, nên dApp luôn phải hiển thị giao diện cho người dùng bất kể họ có kết nối ví hay không. Người dùng có thể kết nối hoặc ngắt kết nối ví của họ trực tiếp từ MetaMask, vì vậy dApp phải phản ứng trực tiếp với trạng thái kết nối nền tảng.
 
 dApps dựa vào các cơ chế như Đăng nhập với Ethereum để xác minh người dùng nên dựa vào tính năng [Xác Thực](/docs/authentication).

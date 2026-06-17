@@ -7,7 +7,7 @@ description: Lebar vs. Kompak
 
 ## Saiz Lebar vs. Kompak
 
-Secara lalai, `modalSize` RainbowKit disetkan kepada `wide` (dan kelihatan seperti ini):
+Secara lalai, `modalSize` CinaWalletKit disetkan kepada `wide` (dan kelihatan seperti ini):
 
 <Img src="/modal-default.png" height="569" width="1029" />
 
@@ -15,14 +15,14 @@ Kami juga menyediakan saiz modal yang `compact`, yang kelihatan seperti ini:
 
 <Img src="/modal-compact.png" height="569" width="1029" />
 
-Untuk menetapkan saiz modal anda kepada `compact`, cuma tambahkan `modalSize="compact"` sebagai prop dalam `RainbowKitProvider`:
+Untuk menetapkan saiz modal anda kepada `compact`, cuma tambahkan `modalSize="compact"` sebagai prop dalam `CinaWalletKitProvider`:
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider modalSize="compact" {...etc}>
+  <CinaWalletKitProvider modalSize="compact" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

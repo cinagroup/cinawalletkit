@@ -7,22 +7,22 @@ description: 自訂鏈設置
 
 ## 自訂鏈設置
 
-RainbowKit 設計可與 [wagmi 的 `chain` 獲取對象](https://wagmi.sh/react/chains) 集成。查看支援的鏈列表：[此處](https://wagmi.sh/react/chains#supported-chains)。
+CinaWalletKit 設計可與 [wagmi 的 `chain` 獲取對象](https://wagmi.sh/react/chains) 集成。查看支援的鏈列表：[此處](https://wagmi.sh/react/chains#supported-chains)。
 
 ### 自訂初始鏈
 
-預設情況下，RainbowKit 將連接到 Wagmi 提供的第一條鏈。此行為可通過 `initialChain` 屬性自訂。
+預設情況下，CinaWalletKit 將連接到 Wagmi 提供的第一條鏈。此行為可通過 `initialChain` 屬性自訂。
 
 可以使用鏈 ID 配置初始鏈。
 
 ```tsx
-<RainbowKitProvider initialChain={1}>
+<CinaWalletKitProvider initialChain={1}>
 ```
 
 為了方便起見，您還可以傳遞一個鏈物件。
 
 ```tsx
-<RainbowKitProvider initialChain={mainnet}>
+<CinaWalletKitProvider initialChain={mainnet}>
 ```
 
 ### 自訂鏈的元數據
@@ -54,7 +54,7 @@ const config = getDefaultConfig({
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
-import { Chain } from '@rainbow-me/rainbowkit';
+import { Chain } from '@cinagroup/CinaWalletKit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   {

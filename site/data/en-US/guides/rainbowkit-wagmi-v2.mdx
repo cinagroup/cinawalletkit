@@ -1,19 +1,19 @@
 ---
-title: Upgrading your dApp for RainbowKit v2
-description: RainbowKit and Wagmi have been promoted to v2
-image: guide-rainbowkit-v2.png
+title: Upgrading your dApp for CinaWalletKit v2
+description: CinaWalletKit and Wagmi have been promoted to v2
+image: guide-CinaWalletKit-v2.png
 ---
 
-# Migrating to RainbowKit and Wagmi v2
+# Migrating to CinaWalletKit and Wagmi v2
 
 The [wagmi](https://wagmi.sh) and [viem](https://viem.sh) peer dependencies have reached `2.x.x` with breaking changes.
 
 Follow the steps below to migrate.
 
-**1. Upgrade RainbowKit, `wagmi`, and `viem` to their latest versions**
+**1. Upgrade CinaWalletKit, `wagmi`, and `viem` to their latest versions**
 
 ```bash
-npm i @rainbow-me/rainbowkit wagmi viem@2.x
+npm i @cinagroup/CinaWalletKit wagmi viem@2.x
 ```
 
 **2. Install `@tanstack/react-query` peer dependency**
@@ -26,10 +26,10 @@ Install it with the following command:
 npm i @tanstack/react-query
 ```
 
-**3. Upgrade your RainbowKit and Wagmi configurations**
+**3. Upgrade your CinaWalletKit and Wagmi configurations**
 
 ```diff
-  import '@rainbow-me/rainbowkit/styles.css'
+  import '@cinagroup/CinaWalletKit/styles.css'
 
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 - import { createPublicClient, http } from 'viem'
@@ -37,13 +37,13 @@ npm i @tanstack/react-query
 + import { WagmiProvider, http } from 'wagmi'
 - import { configureChains, createConfig } from 'wagmi'
   import { mainnet } from 'wagmi/chains'
-  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
-+ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+  import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit'
+- import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit'
++ import { getDefaultConfig } from '@cinagroup/CinaWalletKit'
 
   /* getDefaultWallets is now optional */
 - const { wallets } = getDefaultWallets({
--   appName: 'RainbowKit demo',
+-   appName: 'CinaWalletKit demo',
 -   projectId: 'YOUR_PROJECT_ID',
 -   chains,
 - })
@@ -63,7 +63,7 @@ npm i @tanstack/react-query
 
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
-+   appName: 'RainbowKit demo',
++   appName: 'CinaWalletKit demo',
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -78,10 +78,10 @@ npm i @tanstack/react-query
 -     <WagmiConfig config={config}>
 +     <WagmiProvider config={config}>
 +       <QueryClientProvider client={queryClient}>
--         <RainbowKitProvider chains={chains}>
-+         <RainbowKitProvider>
+-         <CinaWalletKitProvider chains={chains}>
++         <CinaWalletKitProvider>
             {/* Your App */}
-          </RainbowKitProvider>
+          </CinaWalletKitProvider>
 +       </QueryClientProvider>
 -     </WagmiConfig>
 +     </WagmiProvider>
@@ -96,7 +96,7 @@ If you use `wagmi` hooks and `viem` actions in your dApp, you will need to follo
 - [Wagmi v2 Migration Guide](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 - [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
-#### RainbowKit Changes
+#### CinaWalletKit Changes
 
 **1. Improved behavior for EIP-6963 wallets**
 
@@ -114,7 +114,7 @@ You can create a Custom Wallet List by passing imported or Custom Wallet connect
 
 ```
 const config = getDefaultConfig({
-  appName: 'RainbowKit demo',
+  appName: 'CinaWalletKit demo',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */
@@ -122,21 +122,21 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. RainbowKitProvider**
+**3. CinaWalletKitProvider**
 
-You no longer need to pass `chains` to `<RainbowKitProvider>`.
+You no longer need to pass `chains` to `<CinaWalletKitProvider>`.
 
 ```diff
-- <RainbowKitProvider chains={chains}>
-+ <RainbowKitProvider>
+- <CinaWalletKitProvider chains={chains}>
++ <CinaWalletKitProvider>
 ```
 
 **4. Custom Chains**
 
-The `Chain` type has changed in accordance with Wagmi v2, and continues to support RainbowKit's `iconUrl` and `iconBackground` metadata.
+The `Chain` type has changed in accordance with Wagmi v2, and continues to support CinaWalletKit's `iconUrl` and `iconBackground` metadata.
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 
   const avalanche = {
     id: 43_114,
@@ -177,7 +177,7 @@ const config = getDefaultConfig({
 Example with `createConfig`:
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 + const chains: readonly [Chain, ...Chain[]] = [
 +   {
 +     ...mainnet,
@@ -195,8 +195,8 @@ Example with `createConfig`:
 
 **5. Custom Wallets**
 
-RainbowKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.rainbowkit.com/docs/custom-wallets) and an [example connector](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
+CinaWalletKit wallet connectors have undergone substantial changes to support Wagmi v2. Reference the [updated docs](https://www.CinaWalletKit.com/docs/custom-wallets) and an [example connector](https://github.com/rainbow-me/CinaWalletKit/tree/main/packages/CinaWalletKit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) to upgrade any Custom Wallet Connectors in your dApp.
 
 Wallet connectors also now support the EIP-6963 standard with the `rdns` prop. Ensure that this is populated to prevent duplicate references to EIP-6963 supporting wallets in your wallet list.
 
-> Please report any issues or feedback for RainbowKit v2 on GitHub [here](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> Please report any issues or feedback for CinaWalletKit v2 on GitHub [here](https://github.com/rainbow-me/CinaWalletKit/issues/new/choose).

@@ -5,8 +5,8 @@ import {
   type Locale,
   lightTheme,
   midnightTheme,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import clsx from 'clsx';
 import { Box } from 'components/Box/Box';
 import { MeshGradient } from 'components/MeshGradient/MeshGradient';
@@ -145,7 +145,7 @@ export function Playground() {
           </Text>
         </Wrapper>
 
-        <RainbowKitProvider
+        <CinaWalletKitProvider
           id="playground"
           modalSize={modalSize}
           theme={selectedTheme}
@@ -181,7 +181,7 @@ export function Playground() {
                 >
                   <DesktopOptions onClose={() => {}} />
                 </div>
-                {/* This div is placed on top of rainbowkit to make it non-interactive.
+                {/* This div is placed on top of CinaWalletKit to make it non-interactive.
                   pointer-events: none; was forcing scrollbar to show:
                   https://linear.app/rainbow/issue/RNBW-3686/site-playground-wallet-list-showing-a-scrollbar */}
                 <div style={{ position: 'absolute', inset: 0 }} />
@@ -196,14 +196,14 @@ export function Playground() {
                 >
                   <DesktopOptions onClose={() => {}} />
                 </div>
-                {/* This div is placed on top of rainbowkit to make it non-interactive.
+                {/* This div is placed on top of CinaWalletKit to make it non-interactive.
                   pointer-events: none; was forcing scrollbar to show:
                   https://linear.app/rainbow/issue/RNBW-3686/site-playground-wallet-list-showing-a-scrollbar */}
                 <div style={{ position: 'absolute', inset: 0 }} />
               </div>
             </Box>
           </Box>
-        </RainbowKitProvider>
+        </CinaWalletKitProvider>
 
         <Box
           marginX={{ xs: '0', md: 'auto' }}

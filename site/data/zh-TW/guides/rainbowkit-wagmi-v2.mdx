@@ -1,19 +1,19 @@
 ---
-title: 升級您的 dApp 以適應 RainbowKit v2
-description: RainbowKit 和 Wagmi 已經升級到 v2
-image: guide-rainbowkit-v2.png
+title: 升級您的 dApp 以適應 CinaWalletKit v2
+description: CinaWalletKit 和 Wagmi 已經升級到 v2
+image: guide-CinaWalletKit-v2.png
 ---
 
-# 遷移到 RainbowKit 和 Wagmi v2
+# 遷移到 CinaWalletKit 和 Wagmi v2
 
 [wagmi](https://wagmi.sh) 和 [viem](https://viem.sh) 的對等依賴已經達到 `2.x.x` 版本，並且有重大更改。
 
 請遵循以下步驟進行遷移。
 
-**1. 升級 RainbowKit、`wagmi` 和 `viem` 到最新版本**
+**1. 升級 CinaWalletKit、`wagmi` 和 `viem` 到最新版本**
 
 ```bash
-npm i @rainbow-me/rainbowkit wagmi viem@2.x
+npm i @cinagroup/CinaWalletKit wagmi viem@2.x
 ```
 
 **2. 安裝 `@tanstack/react-query` 等級的依賴項**
@@ -26,10 +26,10 @@ npm i @rainbow-me/rainbowkit wagmi viem@2.x
 npm i @tanstack/react-query
 ```
 
-**3. 升級您的 RainbowKit 和 Wagmi 配置**
+**3. 升級您的 CinaWalletKit 和 Wagmi 配置**
 
 ```diff
-  import '@rainbow-me/rainbowkit/styles.css'
+  import '@cinagroup/CinaWalletKit/styles.css'
 
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 - import { createPublicClient, http } from 'viem'
@@ -37,13 +37,13 @@ npm i @tanstack/react-query
 + import { WagmiProvider, http } from 'wagmi'
 - import { configureChains, createConfig } from 'wagmi'
   import { mainnet } from 'wagmi/chains'
-  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
-+ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+  import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit'
+- import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit'
++ import { getDefaultConfig } from '@cinagroup/CinaWalletKit'
 
   /* getDefaultWallets is now optional */
 - const { wallets } = getDefaultWallets({
--   appName: 'RainbowKit demo',
+-   appName: 'CinaWalletKit demo',
 -   projectId: 'YOUR_PROJECT_ID',
 -   chains,
 - })
@@ -63,7 +63,7 @@ npm i @tanstack/react-query
 
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
-+   appName: 'RainbowKit demo',
++   appName: 'CinaWalletKit demo',
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -78,10 +78,10 @@ npm i @tanstack/react-query
 -     <WagmiConfig config={config}>
 +     <WagmiProvider config={config}>
 +       <QueryClientProvider client={queryClient}>
--         <RainbowKitProvider chains={chains}>
-+         <RainbowKitProvider>
+-         <CinaWalletKitProvider chains={chains}>
++         <CinaWalletKitProvider>
             {/* Your App */}
-          </RainbowKitProvider>
+          </CinaWalletKitProvider>
 +       </QueryClientProvider>
 -     </WagmiConfig>
 +     </WagmiProvider>
@@ -96,7 +96,7 @@ npm i @tanstack/react-query
 - [Wagmi v2 遷移指南](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 - [Viem v2 破壞性變更](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
-#### RainbowKit 變更
+#### CinaWalletKit 變更
 
 **1. 改進 EIP-6963 錢包的行為**
 
@@ -114,7 +114,7 @@ npm i @tanstack/react-query
 
 ```
 const config = getDefaultConfig({
-  appName: 'RainbowKit demo',
+  appName: 'CinaWalletKit demo',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */
@@ -122,21 +122,21 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. RainbowKitProvider**
+**3. CinaWalletKitProvider**
 
-您不再需要將 `chains` 傳遞給 `<RainbowKitProvider>`。
+您不再需要將 `chains` 傳遞給 `<CinaWalletKitProvider>`。
 
 ```diff
-- <RainbowKitProvider chains={chains}>
-+ <RainbowKitProvider>
+- <CinaWalletKitProvider chains={chains}>
++ <CinaWalletKitProvider>
 ```
 
 **4. 自定義鏈**
 
-根據 Wagmi v2 的變更，`Chain` 類型已經更改，但仍然支援 RainbowKit 的 `iconUrl` 和 `iconBackground` 中繼數據。
+根據 Wagmi v2 的變更，`Chain` 類型已經更改，但仍然支援 CinaWalletKit 的 `iconUrl` 和 `iconBackground` 中繼數據。
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 
   const avalanche = {
     id: 43_114,
@@ -177,7 +177,7 @@ const config = getDefaultConfig({
 使用 `createConfig` 的範例：
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 + const chains: readonly [Chain, ...Chain[]] = [
 +   {
 +     ...mainnet,
@@ -195,8 +195,8 @@ const config = getDefaultConfig({
 
 **5. 自定義錢包**
 
-RainbowKit 錢包連接器已進行重大更改，以支援 Wagmi v2。請參考[更新的文檔](https://www.rainbowkit.com/docs/custom-wallets)以及[範例連接器](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)來升級您 dApp 中的任何自定義錢包連接器。
+CinaWalletKit 錢包連接器已進行重大更改，以支援 Wagmi v2。請參考[更新的文檔](https://www.CinaWalletKit.com/docs/custom-wallets)以及[範例連接器](https://github.com/rainbow-me/CinaWalletKit/tree/main/packages/CinaWalletKit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts)來升級您 dApp 中的任何自定義錢包連接器。
 
 錢包連接器現在還通過 `rdns` prop 支援 EIP-6963 標準。確保已填充此信息，以防止在您的錢包列表中重複引用支援 EIP-6963 的錢包。
 
-> 請在 GitHub 上 [這裡](https://github.com/rainbow-me/rainbowkit/issues/new/choose) 報告任何針對 RainbowKit v2 的問題或反饋。
+> 請在 GitHub 上 [這裡](https://github.com/rainbow-me/CinaWalletKit/issues/new/choose) 報告任何針對 CinaWalletKit v2 的問題或反饋。

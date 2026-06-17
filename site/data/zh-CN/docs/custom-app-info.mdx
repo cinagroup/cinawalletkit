@@ -7,22 +7,22 @@ description: 定制您应用的信息
 
 ## 定制您应用的信息
 
-您可以在 `RainbowKitProvider` 的 `appInfo` 属性中传递您的应用程序信息。您可以修改的属性包括您的应用名称 (`appName`) 和连接模态窗口中“了解更多”的链接重定向地址 (`learnMoreUrl`)：
+您可以在 `CinaWalletKitProvider` 的 `appInfo` 属性中传递您的应用程序信息。您可以修改的属性包括您的应用名称 (`appName`) 和连接模态窗口中“了解更多”的链接重定向地址 (`learnMoreUrl`)：
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'Rainbowkit Demo',
+        appName: 'CinaWalletKit Demo',
         learnMoreUrl: 'https://learnaboutcryptowallets.example',
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -33,9 +33,9 @@ const App = () => {
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   DisclaimerComponent,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
   <Text>
@@ -48,15 +48,15 @@ const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'RainbowKit Demo',
+        appName: 'CinaWalletKit Demo',
         disclaimer: Disclaimer,
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

@@ -1,49 +1,49 @@
 ---
 title: Instalação
-description: Prepare-se e comece a usar o RainbowKit
+description: Prepare-se e comece a usar o CinaWalletKit
 ---
 
 # Instalação
 
-## Prepare-se e comece a usar o RainbowKit
+## Prepare-se e comece a usar o CinaWalletKit
 
 ### Início rápido
 
-Você pode criar rapidamente um novo aplicativo RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) com um dos seguintes comandos, usando o gerenciador de pacotes de sua escolha:
+Você pode criar rapidamente um novo aplicativo CinaWalletKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) com um dos seguintes comandos, usando o gerenciador de pacotes de sua escolha:
 
 ```bash
-npm init @rainbow-me/rainbowkit@latest
+npm init @cinagroup/CinaWalletKit@latest
 # or
-pnpm create @rainbow-me/rainbowkit@latest
+pnpm create @cinagroup/CinaWalletKit@latest
 # or
-yarn create @rainbow-me/rainbowkit
+yarn create @cinagroup/CinaWalletKit
 ```
 
 Isso solicitará o nome do projeto, gerará um novo diretório contendo um projeto modelo e instalará todas as dependências necessárias.
 
-Alternativamente, você pode integrar o RainbowKit manualmente em seu projeto existente.
+Alternativamente, você pode integrar o CinaWalletKit manualmente em seu projeto existente.
 
 ### Configuração manual
 
-Instale o RainbowKit e suas dependências pares, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), e [@tanstack/react-query](https://tanstack.com/query/v5).
+Instale o CinaWalletKit e suas dependências pares, [wagmi](https://wagmi.sh/), [viem](https://viem.sh), e [@tanstack/react-query](https://tanstack.com/query/v5).
 
 ```bash
-npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
+npm install @cinagroup/CinaWalletKit wagmi viem@2.x @tanstack/react-query
 ```
 
-> Nota: RainbowKit é uma biblioteca de [React](https://reactjs.org/).
+> Nota: CinaWalletKit é uma biblioteca de [React](https://reactjs.org/).
 
 #### Importar
 
-Importe RainbowKit, Wagmi e TanStack Query.
+Importe CinaWalletKit, Wagmi e TanStack Query.
 
 ```tsx
-import '@rainbow-me/rainbowkit/styles.css';
+import '@cinagroup/CinaWalletKit/styles.css';
 
 import {
   getDefaultConfig,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { WagmiProvider } from 'wagmi';
 import {
   mainnet,
@@ -66,10 +66,10 @@ Configure as cadeias desejadas e gere os conectores necessários. Você também 
 
 ```tsx line=4-99
 ...
-import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig } from '@cinagroup/CinaWalletKit';
 
 const config = getDefaultConfig({
-  appName: 'My RainbowKit App',
+  appName: 'My CinaWalletKit App',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet, polygon, optimism, arbitrum, base],
   ssr: true, // If your dApp uses server side rendering (SSR)
@@ -78,7 +78,7 @@ const config = getDefaultConfig({
 
 #### Envolver provedores
 
-Envolva seu aplicativo com `RainbowKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), e [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
+Envolva seu aplicativo com `CinaWalletKitProvider`, [`WagmiProvider`](https://wagmi.sh/react/api/WagmiProvider#wagmiprovider), e [`QueryClientProvider`](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider).
 
 ```tsx
 const queryClient = new QueryClient();
@@ -87,9 +87,9 @@ const App = () => {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
+        <CinaWalletKitProvider>
           {/* Your App */}
-        </RainbowKitProvider>
+        </CinaWalletKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
@@ -101,14 +101,14 @@ const App = () => {
 Então, no seu aplicativo, importe e renderize o componente `ConnectButton`.
 
 ```tsx
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   return <ConnectButton />;
 };
 ```
 
-RainbowKit agora irá lidar com a seleção de carteiras dos seus usuários, exibir informações de carteira/transação e gerenciar a troca de rede/carteira.
+CinaWalletKit agora irá lidar com a seleção de carteiras dos seus usuários, exibir informações de carteira/transação e gerenciar a troca de rede/carteira.
 
 #### Configuração adicional de ferramentas de build
 
@@ -116,7 +116,7 @@ Algumas ferramentas de build exigem configuração adicional.
 
 ##### Next.js
 
-O RainbowKit funciona tanto com [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (o empacotador padrão no Next.js 16+) quanto com [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
+O CinaWalletKit funciona tanto com [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) (o empacotador padrão no Next.js 16+) quanto com [webpack](https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack).
 
 Se você está usando plugins que ainda requerem o Webpack, adicione a opção `--webpack` aos seus scripts:
 
@@ -131,7 +131,7 @@ Se você está usando plugins que ainda requerem o Webpack, adicione a opção `
 
 ##### Remix
 
-Ao usar [Remix](https://remix.run), você deve preencher os módulos `buffer`, `events` e `http`. Consulte a configuração do Remix abaixo ou [nosso projeto exemplo com Remix](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-remix).
+Ao usar [Remix](https://remix.run), você deve preencher os módulos `buffer`, `events` e `http`. Consulte a configuração do Remix abaixo ou [nosso projeto exemplo com Remix](https://github.com/rainbow-me/CinaWalletKit/blob/main/examples/with-remix).
 
 ```ts
 /** @type {import('@remix-run/dev').AppConfig} */
@@ -152,12 +152,12 @@ Um Transporte é a camada intermediária de rede que lida com o envio de solicit
 **Exemplo com um transporte `http`**
 
 ```tsx
-import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig } from '@cinagroup/CinaWalletKit';
 import { http } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
 
 const config = getDefaultConfig({
-  appName: 'My RainbowKit App',
+  appName: 'My CinaWalletKit App',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet, sepolia],
   transports: {
@@ -179,13 +179,13 @@ Para mais detalhes, veja a [documentação do wagmi.](https://wagmi.sh)
 
 ### Outros exemplos
 
-Para ver alguns exemplos em execução do RainbowKit, ou até usá-los para criar automaticamente um novo projeto, veja os [exemplos oficiais](https://github.com/rainbow-me/rainbowkit/tree/main/examples).
+Para ver alguns exemplos em execução do CinaWalletKit, ou até usá-los para criar automaticamente um novo projeto, veja os [exemplos oficiais](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples).
 
-Para experimentar o RainbowKit diretamente em seu navegador, confira os links no CodeSandbox abaixo:
+Para experimentar o CinaWalletKit diretamente em seu navegador, confira os links no CodeSandbox abaixo:
 
-- com [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
-- com [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
-- com [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
-- com [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- com [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-- com [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
+- com [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/CinaWalletKit/tree/main/examples/with-create-react-app)
+- com [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/CinaWalletKit/tree/main/examples/with-next)
+- com [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/CinaWalletKit/tree/main/examples/with-next-app)
+- com [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/CinaWalletKit/tree/main/examples/with-remix)
+- com [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/CinaWalletKit/tree/main/examples/with-vite)
+- com [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/CinaWalletKit/tree/main/examples/with-react-router)

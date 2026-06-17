@@ -4,12 +4,12 @@ This file provides guidance to Codex (openai.com/codex) when working with code i
 
 ## Monorepo Structure
 
-RainbowKit is a pnpm monorepo containing multiple packages:
+CinaWalletKit is a pnpm monorepo containing multiple packages:
 
-- **`packages/rainbowkit`** - Core library: React components and hooks for wallet connection UI
-- **`packages/rainbow-button`** - Standalone rainbow button component
-- **`packages/rainbowkit-siwe-next-auth`** - Sign-In with Ethereum integration with NextAuth.js
-- **`packages/create-rainbowkit`** - CLI tool for scaffolding new RainbowKit projects
+- **`packages/CinaWalletKit`** - Core library: React components and hooks for wallet connection UI
+- **`packages/cinawalletkit-button`** - Standalone rainbow button component
+- **`packages/CinaWalletKit-siwe-next-auth`** - Sign-In with Ethereum integration with NextAuth.js
+- **`packages/create-CinaWalletKit`** - CLI tool for scaffolding new CinaWalletKit projects
 - **`packages/example`** - Development example app (runs on localhost:3000)
 - **`site`** - Documentation site (runs on localhost:3001)
 - **`examples/`** - Additional example integrations (Next.js, Vite, Remix, etc.)
@@ -27,7 +27,7 @@ pnpm dev                      # Run example app + site (localhost:3000 and :3001
 pnpm dev:lib                  # Watch and rebuild library packages only
 pnpm dev:example              # Run lib + example app only
 pnpm dev:site                 # Run lib + docs site only
-pnpm dev:cli                  # Watch mode for create-rainbowkit CLI
+pnpm dev:cli                  # Watch mode for create-CinaWalletKit CLI
 pnpm dev:template:next-app    # Run Next.js app template directly
 ```
 
@@ -57,7 +57,7 @@ pnpm format:fix               # Auto-fix Biome formatting (run before commits)
 
 ## Architecture
 
-### Core Library (`packages/rainbowkit`)
+### Core Library (`packages/CinaWalletKit`)
 
 Built with:
 - **Styling**: Vanilla Extract for type-safe CSS-in-JS with CSS modules
@@ -75,17 +75,17 @@ Key directories:
 Build process:
 1. TypeScript type generation runs first (`typegen`)
 2. esbuild compiles main entry + wallets separately
-3. Vanilla Extract processes CSS with autoprefixer and selector prefixing (`[data-rk]`)
+3. Vanilla Extract processes CSS with autoprefixer and selector prefixing (`[data-cwk]`)
 4. SVGs are inlined as data URLs, PNGs as base64
 
 Environment variables required (`.env.local`):
-- `RAINBOW_PROVIDER_API_KEY` - For enhanced provider features
+- `CINA_PROVIDER_API_KEY` - For enhanced provider features
 - `WALLETCONNECT_PROJECT_ID` - For WalletConnect integration
 
 ### Testing
 
 - Framework: Vitest with jsdom environment
-- Setup: `packages/rainbowkit/test/setup.ts`
+- Setup: `packages/CinaWalletKit/test/setup.ts`
 - Config: Root `vitest.config.ts` with Vanilla Extract plugin
 - Tests located alongside source files (`.test.ts` / `.test.tsx`)
 
@@ -104,7 +104,7 @@ pnpm changeset  # Creates markdown file in .changeset/
 - Prefer patch versions unless change warrants minor/major
 - Never edit CHANGELOG.md files directly (auto-generated)
 - Update existing changesets in same area rather than creating duplicates
-- Patch bump `@rainbow-me/create-rainbowkit` when template dependencies change
+- Patch bump `@cinagroup/create-CinaWalletKit` when template dependencies change
 
 ### Git Workflow Tools
 Use the following tools for git operations:
@@ -140,9 +140,9 @@ See `.github/workflows/ci.yml` for full test plan:
 
 All checks must pass before merging.
 
-## Working with create-rainbowkit CLI
+## Working with create-CinaWalletKit CLI
 
-Template location: `packages/create-rainbowkit/templates/next-app/`
+Template location: `packages/create-CinaWalletKit/templates/next-app/`
 
 After template changes:
 ```bash
@@ -152,7 +152,7 @@ Commit the generated lockfile to keep monorepo in sync.
 
 Link CLI globally for testing:
 ```bash
-pnpm link:cli  # Makes `create-rainbowkit` available system-wide
+pnpm link:cli  # Makes `create-CinaWalletKit` available system-wide
 ```
 
 ## Additional Notes
@@ -166,9 +166,9 @@ pnpm link:cli  # Makes `create-rainbowkit` available system-wide
 
 - **Node.js**: Installed via nvm (v24). Source nvm before running any commands: `export NVM_DIR="$HOME/.nvm" && source "$NVM_DIR/nvm.sh"`.
 - **pnpm**: Enabled via `corepack enable pnpm`. The lockfile pins pnpm 10.33.3.
-- **`pnpm install`** runs `prepare` scripts that build the three library packages (`rainbowkit`, `rainbow-button`, `rainbowkit-siwe-next-auth`). A separate `pnpm build` is needed only for the `site`, `example`, and other example apps.
+- **`pnpm install`** runs `prepare` scripts that build the three library packages (`CinaWalletKit`, `rainbow-button`, `CinaWalletKit-siwe-next-auth`). A separate `pnpm build` is needed only for the `site`, `example`, and other example apps.
 - **Dev servers**: `pnpm dev:example` starts library watch-mode + the example Next.js app on port 3000. `pnpm dev:site` starts library watch-mode + the docs site on port 3001. `pnpm dev` runs both.
-- **Environment variables**: `RAINBOW_PROVIDER_API_KEY` and `WALLETCONNECT_PROJECT_ID` are optional; the example app and tests work without them (enhanced provider is disabled and WalletConnect falls back to a placeholder).
+- **Environment variables**: `CINA_PROVIDER_API_KEY` and `WALLETCONNECT_PROJECT_ID` are optional; the example app and tests work without them (enhanced provider is disabled and WalletConnect falls back to a placeholder).
 - **No external services**: No databases, Docker, or external APIs are required. This is a pure frontend/library monorepo.
 - **Lint/test/build commands**: See the "Development Commands" section above. All commands are run from the repo root.
 - **Pre-commit hooks**: Husky runs `pnpm lint` on pre-commit and commitlint on commit-msg. Commit messages must follow conventional commit format (see `commitlint.config.js`).

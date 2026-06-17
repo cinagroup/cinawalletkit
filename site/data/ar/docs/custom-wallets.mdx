@@ -7,7 +7,7 @@ description: إنشاء محفظة مخصصة
 
 ## إنشاء محفظة مخصصة
 
-> ملاحظة: واجهة برمجة التطبيقات هذه غير مستقرة وقد تتغير في المستقبل القريب. سنضيف المزيد من المحافظ المدمجة مع مرور الوقت. [أخبرنا](https://github.com/rainbow-me/rainbowkit/issues) إذا كانت هناك محافظ معينة تهمك.
+> ملاحظة: واجهة برمجة التطبيقات هذه غير مستقرة وقد تتغير في المستقبل القريب. سنضيف المزيد من المحافظ المدمجة مع مرور الوقت. [أخبرنا](https://github.com/rainbow-me/CinaWalletKit/issues) إذا كانت هناك محافظ معينة تهمك.
 
 يتم توفير نوع الوظيفة `Wallet` لمساعدتك في تعريف المحافظ المخصصة الخاصة بك. يمكن تكوين الخصائص التالية على القيمة التي ترجعها وظيفة `Wallet` الخاصة بك:
 
@@ -87,8 +87,8 @@ description: إنشاء محفظة مخصصة
     {
       name: 'createConnector',
       required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
+      type: '() => CinaWalletKitConnector',
+      typeSimple: 'CinaWalletKitConnector',
       description:
         'وظيفة لتوفير مثيل الموصل وتكوينه لطرق اتصال مختلفة موصوفة أدناه',
     },
@@ -207,7 +207,7 @@ description: إنشاء محفظة مخصصة
 على سبيل المثال، لإنشاء محفظة مخصصة باستخدام WalletConnect:
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

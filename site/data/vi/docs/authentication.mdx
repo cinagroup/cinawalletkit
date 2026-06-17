@@ -9,16 +9,16 @@ description: Xác thực người dùng của bạn
 
 Bạn có thể tuỳ chọn bắt buộc người dùng ký một tin nhắn bằng ví của họ trong quá trình kết nối, chứng minh rằng họ sở hữu tài khoản đã được kết nối và cho phép bạn tạo một phiên người dùng xác thực với quyền truy cập đặc biệt vào ứng dụng của bạn.
 
-Trong khi có thể [tích hợp với các back-end tuỳ chỉnh và định dạng tin nhắn,](/docs/custom-authentication) RainbowKit cung cấp hỗ trợ hàng đầu cho [Đăng nhập bằng Ethereum](https://login.xyz) và [NextAuth](https://next-auth.js.org).
+Trong khi có thể [tích hợp với các back-end tuỳ chỉnh và định dạng tin nhắn,](/docs/custom-authentication) CinaWalletKit cung cấp hỗ trợ hàng đầu cho [Đăng nhập bằng Ethereum](https://login.xyz) và [NextAuth](https://next-auth.js.org).
 
 ### Thiết lập Đăng nhập bằng Ethereum và NextAuth
 
 #### Cài đặt
 
-Cài đặt gói `@rainbow-me/rainbowkit-siwe-next-auth` và NextAuth v5.
+Cài đặt gói `@cinagroup/CinaWalletKit-siwe-next-auth` và NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
+npm install @cinagroup/CinaWalletKit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
 
 Nếu bạn đang nâng cấp một tích hợp SIWE NextAuth v4 hiện có, hãy làm theo [hướng dẫn di chuyển NextAuth v5](/guides/next-auth-v5).
@@ -62,21 +62,21 @@ export const authOptions: NextAuthConfig = {
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
 ```
 
-Xem [ví dụ hoàn chỉnh `with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) để xác thực SIWE, kiểm tra nonce và xác minh phía máy chủ.
+Xem [ví dụ hoàn chỉnh `with-next-siwe-next-auth`](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-next-auth) để xác thực SIWE, kiểm tra nonce và xác minh phía máy chủ.
 
 #### Thiết lập nhà cung cấp
 
-Trong thành phần `App` của bạn, nhập `RainbowKitSiweNextAuthProvider`.
+Trong thành phần `App` của bạn, nhập `CinaWalletKitSiweNextAuthProvider`.
 
 ```tsx
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { CinaWalletKitSiweNextAuthProvider } from '@cinagroup/CinaWalletKit-siwe-next-auth';
 ```
 
-Bọc `RainbowKitProvider` với `RainbowKitSiweNextAuthProvider`, đảm bảo nó được lồng trong `SessionProvider` của NextAuth để nó có quyền truy cập vào phiên.
+Bọc `CinaWalletKitProvider` với `CinaWalletKitSiweNextAuthProvider`, đảm bảo nó được lồng trong `SessionProvider` của NextAuth để nó có quyền truy cập vào phiên.
 
 ```tsx
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitSiweNextAuthProvider } from '@cinagroup/CinaWalletKit-siwe-next-auth';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
@@ -98,11 +98,11 @@ export default function App({
     <WagmiProvider {...etc}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>
         <QueryClientProvider client={queryClient}>
-          <RainbowKitSiweNextAuthProvider>
-            <RainbowKitProvider {...etc}>
+          <CinaWalletKitSiweNextAuthProvider>
+            <CinaWalletKitProvider {...etc}>
               <Component {...pageProps} />
-            </RainbowKitProvider>
-          </RainbowKitSiweNextAuthProvider>
+            </CinaWalletKitProvider>
+          </CinaWalletKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
     </WagmiProvider>
@@ -110,29 +110,29 @@ export default function App({
 }
 ```
 
-Với `RainbowKitSiweNextAuthProvider` được thiết lập, người dùng của bạn sẽ được yêu cầu xác thực bằng cách ký một tin nhắn sau khi họ đã kết nối ví.
+Với `CinaWalletKitSiweNextAuthProvider` được thiết lập, người dùng của bạn sẽ được yêu cầu xác thực bằng cách ký một tin nhắn sau khi họ đã kết nối ví.
 
 #### Tuỳ chỉnh các tuỳ chọn tin nhắn SIWE
 
-Bạn có thể tùy chỉnh [tùy chọn thông điệp SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) bằng cách truyền một hàm vào thuộc tính `getSiweMessageOptions` trên `RainbowKitSiweNextAuthProvider`.
+Bạn có thể tùy chỉnh [tùy chọn thông điệp SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) bằng cách truyền một hàm vào thuộc tính `getSiweMessageOptions` trên `CinaWalletKitSiweNextAuthProvider`.
 
 Hàm này sẽ được gọi bất cứ khi nào một tin nhắn mới được tạo. Các tùy chọn trả về từ hàm này sẽ được kết hợp với những mặc định.
 
 ```tsx
 import {
-  RainbowKitSiweNextAuthProvider,
+  CinaWalletKitSiweNextAuthProvider,
   GetSiweMessageOptions,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
+} from '@cinagroup/CinaWalletKit-siwe-next-auth';
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
-  statement: 'Sign in to my RainbowKit app',
+  statement: 'Sign in to my CinaWalletKit app',
 });
 
-<RainbowKitSiweNextAuthProvider
+<CinaWalletKitSiweNextAuthProvider
   getSiweMessageOptions={getSiweMessageOptions}
 >
   ...
-</RainbowKitSiweNextAuthProvider>;
+</CinaWalletKitSiweNextAuthProvider>;
 ```
 
 #### Truy cập phiên từ phía máy chủ

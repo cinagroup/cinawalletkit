@@ -7,22 +7,22 @@ description: Customizing your app's info
 
 ## Customizing your app’s info
 
-You can pass your app’s info in the `appInfo` prop for `RainbowKitProvider`. Properties you can modify are your app's name (`appName`) and the link where the “Learn More” button in the connection modal redirects to (`learnMoreUrl`):
+You can pass your app’s info in the `appInfo` prop for `CinaWalletKitProvider`. Properties you can modify are your app's name (`appName`) and the link where the “Learn More” button in the connection modal redirects to (`learnMoreUrl`):
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'Rainbowkit Demo',
+        appName: 'CinaWalletKit Demo',
         learnMoreUrl: 'https://learnaboutcryptowallets.example',
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -33,9 +33,9 @@ You can provide your own disclaimer to be displayed at the bottom of the connect
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   DisclaimerComponent,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
   <Text>
@@ -48,15 +48,15 @@ const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'RainbowKit Demo',
+        appName: 'CinaWalletKit Demo',
         disclaimer: Disclaimer,
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

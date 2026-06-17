@@ -7,22 +7,22 @@ description: Настройка информации вашего приложе
 
 ## Настройка информации вашего приложения
 
-Вы можете передать информацию о вашем приложении в свойстве `appInfo` для `RainbowKitProvider`. Свойства, которые можно изменить, включают имя вашего приложения (`appName`) и ссылку, на которую перенаправляется кнопка "Узнать больше" в модальном окне подключения (`learnMoreUrl`):
+Вы можете передать информацию о вашем приложении в свойстве `appInfo` для `CinaWalletKitProvider`. Свойства, которые можно изменить, включают имя вашего приложения (`appName`) и ссылку, на которую перенаправляется кнопка "Узнать больше" в модальном окне подключения (`learnMoreUrl`):
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'Rainbowkit Demo',
+        appName: 'CinaWalletKit Demo',
         learnMoreUrl: 'https://learnaboutcryptowallets.example',
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -33,9 +33,9 @@ const App = () => {
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   DisclaimerComponent,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
   <Text>
@@ -48,15 +48,15 @@ const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'RainbowKit Demo',
+        appName: 'CinaWalletKit Demo',
         disclaimer: Disclaimer,
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

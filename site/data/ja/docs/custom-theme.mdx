@@ -12,7 +12,7 @@ description: カスタムテーマの作成
 組み込みのテーマでは一部のカスタマイズを提供しますが、`Theme` タイプを利用して、基礎テーマ変数へのより低レベルのアクセスにより、独自のカスタムテーマを定義できます。
 
 ```tsx
-import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, Theme } from '@cinagroup/CinaWalletKit';
 
 const myCustomTheme: Theme = {
   blurs: {
@@ -71,9 +71,9 @@ const myCustomTheme: Theme = {
 };
 
 const App = () => (
-  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+  <CinaWalletKitProvider theme={myCustomTheme} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>;
+  </CinaWalletKitProvider>;
 )
 ```
 
@@ -92,10 +92,10 @@ npm install lodash.merge
 ```tsx
 import merge from 'lodash.merge';
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   darkTheme,
   Theme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 ```
 
 次に、組み込みテーマと上書きしたいテーマトークンをマージします。この例では、ブランドのアクセントカラーに合わせて `accentColor` トークンを上書きしています。
@@ -108,40 +108,40 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-最後に、`RainbowKitProvider` の `theme` prop に自分のカスタムテーマを渡すことができます。
+最後に、`CinaWalletKitProvider` の `theme` prop に自分のカスタムテーマを渡すことができます。
 
 ```tsx
 const App = () => {
   return (
-    <RainbowKitProvider theme={myTheme} {...etc}>
+    <CinaWalletKitProvider theme={myTheme} {...etc}>
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
 ### カスタムテーマセレクタの作成
 
-もしアプリがサーバーレンダリングまたは静的レンダリングされており、ユーザーにテーマを手動で切り替えることができるのであれば、RainbowKit のテーマシステムは以下の関数を使用してカスタム CSS セレクタと接続できます。これらの関数はどの CSS-in-JS システムとも使用できます。
+もしアプリがサーバーレンダリングまたは静的レンダリングされており、ユーザーにテーマを手動で切り替えることができるのであれば、CinaWalletKit のテーマシステムは以下の関数を使用してカスタム CSS セレクタと接続できます。これらの関数はどの CSS-in-JS システムとも使用できます。
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
 これらの関数は、すべての必要なテーマ変数を設定する CSS を返します。文字列とオブジェクトの両方に対応しているため、任意の CSS-in-JS システムと統合できます。
 
-基本的な例として、各テーマにカスタムセレクタを持つ `style` 要素をレンダリングすることができます。テーマの CSS のレンダリングを管理しているため、`theme` prop には `null` を渡して、RainbowKitProvider が独自のスタイルをレンダリングしないようにします。また、cssStringFromTheme 関数での extends オプションの使用により、ベーステーマと同じテーマ変数が省略されます。
+基本的な例として、各テーマにカスタムセレクタを持つ `style` 要素をレンダリングすることができます。テーマの CSS のレンダリングを管理しているため、`theme` prop には `null` を渡して、CinaWalletKitProvider が独自のスタイルをレンダリングしないようにします。また、cssStringFromTheme 関数での extends オプションの使用により、ベーステーマと同じテーマ変数が省略されます。
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   cssStringFromTheme,
   lightTheme,
   darkTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider theme={null} {...etc}>
+    <CinaWalletKitProvider theme={null} {...etc}>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -159,7 +159,7 @@ const App = () => {
       />
 
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

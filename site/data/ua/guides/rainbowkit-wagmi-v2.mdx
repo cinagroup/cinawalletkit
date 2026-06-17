@@ -1,19 +1,19 @@
 ---
-title: Оновлення вашого dApp для RainbowKit v2
-description: RainbowKit та Wagmi перейшли на v2
-image: guide-rainbowkit-v2.png
+title: Оновлення вашого dApp для CinaWalletKit v2
+description: CinaWalletKit та Wagmi перейшли на v2
+image: guide-CinaWalletKit-v2.png
 ---
 
-# Міграція до RainbowKit та Wagmi v2
+# Міграція до CinaWalletKit та Wagmi v2
 
 Пірингові залежності [wagmi](https://wagmi.sh) і [viem](https://viem.sh) досягли версії `2.x.x` з критичними змінами.
 
 Дотримуйтесь наведених нижче кроків для міграції.
 
-**1. Оновіть RainbowKit, `wagmi`, і `viem` до останніх версій**
+**1. Оновіть CinaWalletKit, `wagmi`, і `viem` до останніх версій**
 
 ```bash
-npm i @rainbow-me/rainbowkit wagmi viem@2.x
+npm i @cinagroup/CinaWalletKit wagmi viem@2.x
 ```
 
 **2. Встановіть `@tanstack/react-query` як додаткову залежність**
@@ -26,10 +26,10 @@ npm i @rainbow-me/rainbowkit wagmi viem@2.x
 npm i @tanstack/react-query
 ```
 
-**3. Оновіть конфігурації RainbowKit і Wagmi**
+**3. Оновіть конфігурації CinaWalletKit і Wagmi**
 
 ```diff
-  import '@rainbow-me/rainbowkit/styles.css'
+  import '@cinagroup/CinaWalletKit/styles.css'
 
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 - import { createPublicClient, http } from 'viem'
@@ -37,13 +37,13 @@ npm i @tanstack/react-query
 + import { WagmiProvider, http } from 'wagmi'
 - import { configureChains, createConfig } from 'wagmi'
   import { mainnet } from 'wagmi/chains'
-  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
-+ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+  import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit'
+- import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit'
++ import { getDefaultConfig } from '@cinagroup/CinaWalletKit'
 
   /* getDefaultWallets is now optional */
 - const { wallets } = getDefaultWallets({
--   appName: 'RainbowKit demo',
+-   appName: 'CinaWalletKit demo',
 -   projectId: 'YOUR_PROJECT_ID',
 -   chains,
 - })
@@ -63,7 +63,7 @@ npm i @tanstack/react-query
 
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
-+   appName: 'RainbowKit demo',
++   appName: 'CinaWalletKit demo',
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -78,10 +78,10 @@ npm i @tanstack/react-query
 -     <WagmiConfig config={config}>
 +     <WagmiProvider config={config}>
 +       <QueryClientProvider client={queryClient}>
--         <RainbowKitProvider chains={chains}>
-+         <RainbowKitProvider>
+-         <CinaWalletKitProvider chains={chains}>
++         <CinaWalletKitProvider>
             {/* Your App */}
-          </RainbowKitProvider>
+          </CinaWalletKitProvider>
 +       </QueryClientProvider>
 -     </WagmiConfig>
 +     </WagmiProvider>
@@ -96,7 +96,7 @@ npm i @tanstack/react-query
 - [Інструкція з міграції для Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 - [Критичні зміни Viem v2](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
-#### Зміни у RainbowKit
+#### Зміни у CinaWalletKit
 
 **1. Покращене поводження для гаманців EIP-6963**
 
@@ -114,7 +114,7 @@ npm i @tanstack/react-query
 
 ```
 const config = getDefaultConfig({
-  appName: 'RainbowKit demo',
+  appName: 'CinaWalletKit demo',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */
@@ -122,21 +122,21 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. RainbowKitProvider**
+**3. CinaWalletKitProvider**
 
-Вам більше не потрібно передавати `chains` для `<RainbowKitProvider>`.
+Вам більше не потрібно передавати `chains` для `<CinaWalletKitProvider>`.
 
 ```diff
-- <RainbowKitProvider chains={chains}>
-+ <RainbowKitProvider>
+- <CinaWalletKitProvider chains={chains}>
++ <CinaWalletKitProvider>
 ```
 
 **Користувацькі Мережі**
 
-Тип `Chain` змінено відповідно до Wagmi v2 і продовжує підтримувати метадані RainbowKit `iconUrl` та `iconBackground`.
+Тип `Chain` змінено відповідно до Wagmi v2 і продовжує підтримувати метадані CinaWalletKit `iconUrl` та `iconBackground`.
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 
   const avalanche = {
     id: 43_114,
@@ -177,7 +177,7 @@ const config = getDefaultConfig({
 Приклад з `createConfig`:
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 + const chains: readonly [Chain, ...Chain[]] = [
 +   {
 +     ...mainnet,
@@ -195,8 +195,8 @@ const config = getDefaultConfig({
 
 **Кастомні Гаманці**
 
-Конектори гаманців RainbowKit зазнали суттєвих змін для підтримки Wagmi v2. Зверніться до [оновленої документації](https://www.rainbowkit.com/docs/custom-wallets) та [прикладу конектора](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) для оновлення будь-яких користувацьких конекторів гаманців у вашому dApp.
+Конектори гаманців CinaWalletKit зазнали суттєвих змін для підтримки Wagmi v2. Зверніться до [оновленої документації](https://www.CinaWalletKit.com/docs/custom-wallets) та [прикладу конектора](https://github.com/rainbow-me/CinaWalletKit/tree/main/packages/CinaWalletKit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) для оновлення будь-яких користувацьких конекторів гаманців у вашому dApp.
 
 Конектори гаманців тепер також підтримують стандарт EIP-6963 з `rdns` властивістю. Переконайтеся, що вона заповнена, щоб уникнути дубльованих посилань на гаманці, що підтримують EIP-6963 у вашому списку гаманців.
 
-> Будь ласка, повідомляйте про будь-які проблеми або зворотній зв'язок для RainbowKit v2 на GitHub [тут](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> Будь ласка, повідомляйте про будь-які проблеми або зворотній зв'язок для CinaWalletKit v2 на GitHub [тут](https://github.com/rainbow-me/CinaWalletKit/issues/new/choose).

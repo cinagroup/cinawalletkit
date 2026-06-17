@@ -7,7 +7,7 @@ description: Cipta dompet tersuai
 
 ## Cipta dompet tersuai
 
-> Nota: API ini tidak stabil dan kemungkinan akan berubah dalam masa terdekat. Kami akan menambah lebih banyak dompet terbina dalam dari semasa ke semasa. [Beritahu kami](https://github.com/rainbow-me/rainbowkit/issues) jika ada dompet yang khusus anda minati.
+> Nota: API ini tidak stabil dan kemungkinan akan berubah dalam masa terdekat. Kami akan menambah lebih banyak dompet terbina dalam dari semasa ke semasa. [Beritahu kami](https://github.com/rainbow-me/CinaWalletKit/issues) jika ada dompet yang khusus anda minati.
 
 Jenis fungsi `Wallet` disediakan untuk membantu anda mentakrifkan dompet tersuai anda sendiri. Sifat-sifat berikut boleh dikonfigurasi pada nilai pulangan fungsi `Wallet` anda:
 
@@ -88,8 +88,8 @@ Jenis fungsi `Wallet` disediakan untuk membantu anda mentakrifkan dompet tersuai
     {
       name: 'createConnector',
       required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
+      type: '() => CinaWalletKitConnector',
+      typeSimple: 'CinaWalletKitConnector',
       description:
         'Fungsi untuk menyediakan contoh penyambung dan konfigurasi untuk pelbagai kaedah sambungan, diterangkan di bawah',
     },
@@ -209,7 +209,7 @@ Jenis fungsi `Wallet` disediakan untuk membantu anda mentakrifkan dompet tersuai
 Sebagai contoh, untuk mencipta dompet tersuai menggunakan WalletConnect:
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

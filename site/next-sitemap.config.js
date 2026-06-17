@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://rainbowkit.com',
+  siteUrl: process.env.SITE_URL || 'https://walletkit.cinagroup.com',
   generateRobotsTxt: true,
   autoLastmod: false,
   exclude: [
@@ -44,79 +44,79 @@ module.exports = {
   ],
   alternateRefs: [
     {
-      href: 'https://rainbowkit.com/en-US/',
+      href: 'https://walletkit.cinagroup.com/en-US/',
       hreflang: 'en-US',
     },
     {
-      href: 'https://rainbowkit.com/ar/',
+      href: 'https://walletkit.cinagroup.com/ar/',
       hreflang: 'ar',
     },
     {
-      href: 'https://rainbowkit.com/de/',
+      href: 'https://walletkit.cinagroup.com/de/',
       hreflang: 'de',
     },
     {
-      href: 'https://rainbowkit.com/es-419/',
+      href: 'https://walletkit.cinagroup.com/es-419/',
       hreflang: 'es-419',
     },
     {
-      href: 'https://rainbowkit.com/fr/',
+      href: 'https://walletkit.cinagroup.com/fr/',
       hreflang: 'fr',
     },
     {
-      href: 'https://rainbowkit.com/hi/',
+      href: 'https://walletkit.cinagroup.com/hi/',
       hreflang: 'hi',
     },
     {
-      href: 'https://rainbowkit.com/id/',
+      href: 'https://walletkit.cinagroup.com/id/',
       hreflang: 'id',
     },
     {
-      href: 'https://rainbowkit.com/ja/',
+      href: 'https://walletkit.cinagroup.com/ja/',
       hreflang: 'ja',
     },
     {
-      href: 'https://rainbowkit.com/ko/',
+      href: 'https://walletkit.cinagroup.com/ko/',
       hreflang: 'ko',
     },
     {
-      href: 'https://rainbowkit.com/ms/',
+      href: 'https://walletkit.cinagroup.com/ms/',
       hreflang: 'ms',
     },
     {
-      href: 'https://rainbowkit.com/pt-BR/',
+      href: 'https://walletkit.cinagroup.com/pt-BR/',
       hreflang: 'pt-BR',
     },
     {
-      href: 'https://rainbowkit.com/ru/',
+      href: 'https://walletkit.cinagroup.com/ru/',
       hreflang: 'ru',
     },
     {
-      href: 'https://rainbowkit.com/th/',
+      href: 'https://walletkit.cinagroup.com/th/',
       hreflang: 'th',
     },
     {
-      href: 'https://rainbowkit.com/tr/',
+      href: 'https://walletkit.cinagroup.com/tr/',
       hreflang: 'tr',
     },
     {
-      href: 'https://rainbowkit.com/ua/',
+      href: 'https://walletkit.cinagroup.com/ua/',
       hreflang: 'ua',
     },
     {
-      href: 'https://rainbowkit.com/vi/',
+      href: 'https://walletkit.cinagroup.com/vi/',
       hreflang: 'vi',
     },
     {
-      href: 'https://rainbowkit.com/zh-CN/',
+      href: 'https://walletkit.cinagroup.com/zh-CN/',
       hreflang: 'zh-CN',
     },
     {
-      href: 'https://rainbowkit.com/zh-HK/',
+      href: 'https://walletkit.cinagroup.com/zh-HK/',
       hreflang: 'zh-HK',
     },
     {
-      href: 'https://rainbowkit.com/zh-TW/',
+      href: 'https://walletkit.cinagroup.com/zh-TW/',
       hreflang: 'zh-TW',
     },
   ],

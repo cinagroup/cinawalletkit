@@ -7,22 +7,22 @@ description: 앱의 정보를 사용자 정의하기
 
 ## 앱의 정보를 사용자 정의하기
 
-`RainbowKitProvider`의 `appInfo` 속성에 앱의 정보를 전달할 수 있습니다. 수정할 수 있는 속성들은 앱의 이름 (`appName`)과 연결 모달의 "자세히 알아보기" 버튼이 리디렉션되는 링크 (`learnMoreUrl`)입니다.
+`CinaWalletKitProvider`의 `appInfo` 속성에 앱의 정보를 전달할 수 있습니다. 수정할 수 있는 속성들은 앱의 이름 (`appName`)과 연결 모달의 "자세히 알아보기" 버튼이 리디렉션되는 링크 (`learnMoreUrl`)입니다.
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'Rainbowkit Demo',
+        appName: 'CinaWalletKit Demo',
         learnMoreUrl: 'https://learnaboutcryptowallets.example',
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -33,9 +33,9 @@ const App = () => {
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   DisclaimerComponent,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
   <Text>
@@ -48,15 +48,15 @@ const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'RainbowKit Demo',
+        appName: 'CinaWalletKit Demo',
         disclaimer: Disclaimer,
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

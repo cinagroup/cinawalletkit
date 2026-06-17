@@ -1,19 +1,19 @@
 ---
-title: ترقية تطبيقك اللامركزي لاستخدام RainbowKit v2
-description: تمت ترقية RainbowKit وWagmi إلى الإصدار v2
-image: guide-rainbowkit-v2.png
+title: ترقية تطبيقك اللامركزي لاستخدام CinaWalletKit v2
+description: تمت ترقية CinaWalletKit وWagmi إلى الإصدار v2
+image: guide-CinaWalletKit-v2.png
 ---
 
-# الهجرة إلى RainbowKit وWagmi v2
+# الهجرة إلى CinaWalletKit وWagmi v2
 
 وصلت الاعتمادات النظيرة [wagmi](https://wagmi.sh) و[viem](https://viem.sh) إلى `2.x.x` مع تغييرات مهمة.
 
 اتبع الخطوات أدناه للهجرة.
 
-**1. قم بترقية RainbowKit و`wagmi` و`viem` إلى أحدث الإصدارات**
+**1. قم بترقية CinaWalletKit و`wagmi` و`viem` إلى أحدث الإصدارات**
 
 ```bash
-npm i @rainbow-me/rainbowkit wagmi viem@2.x
+npm i @cinagroup/CinaWalletKit wagmi viem@2.x
 ```
 
 **2. قم بتثبيت التبعية النظيرة `@tanstack/react-query`**
@@ -26,10 +26,10 @@ npm i @rainbow-me/rainbowkit wagmi viem@2.x
 npm i @tanstack/react-query
 ```
 
-**3. قم بترقية إعدادات RainbowKit وWagmi**
+**3. قم بترقية إعدادات CinaWalletKit وWagmi**
 
 ```diff
-  import '@rainbow-me/rainbowkit/styles.css'
+  import '@cinagroup/CinaWalletKit/styles.css'
 
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 - import { createPublicClient, http } from 'viem'
@@ -37,13 +37,13 @@ npm i @tanstack/react-query
 + import { WagmiProvider, http } from 'wagmi'
 - import { configureChains, createConfig } from 'wagmi'
   import { mainnet } from 'wagmi/chains'
-  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
-+ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+  import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit'
+- import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit'
++ import { getDefaultConfig } from '@cinagroup/CinaWalletKit'
 
   /* getDefaultWallets is now optional */
 - const { wallets } = getDefaultWallets({
--   appName: 'RainbowKit demo',
+-   appName: 'CinaWalletKit demo',
 -   projectId: 'YOUR_PROJECT_ID',
 -   chains,
 - })
@@ -63,7 +63,7 @@ npm i @tanstack/react-query
 
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
-+   appName: 'RainbowKit demo',
++   appName: 'CinaWalletKit demo',
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -78,10 +78,10 @@ npm i @tanstack/react-query
 -     <WagmiConfig config={config}>
 +     <WagmiProvider config={config}>
 +       <QueryClientProvider client={queryClient}>
--         <RainbowKitProvider chains={chains}>
-+         <RainbowKitProvider>
+-         <CinaWalletKitProvider chains={chains}>
++         <CinaWalletKitProvider>
             {/* Your App */}
-          </RainbowKitProvider>
+          </CinaWalletKitProvider>
 +       </QueryClientProvider>
 -     </WagmiConfig>
 +     </WagmiProvider>
@@ -96,7 +96,7 @@ npm i @tanstack/react-query
 - [دليل هجرة Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 - [التغييرات الجذرية في Viem v2](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
-#### تغييرات RainbowKit
+#### تغييرات CinaWalletKit
 
 **1. تحسين السلوك لمحافظ EIP-6963**
 
@@ -114,7 +114,7 @@ npm i @tanstack/react-query
 
 ```
 const config = getDefaultConfig({
-  appName: 'RainbowKit demo',
+  appName: 'CinaWalletKit demo',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */
@@ -122,21 +122,21 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. RainbowKitProvider**
+**3. CinaWalletKitProvider**
 
-لم تعد بحاجة إلى تمرير `chains` إلى `<RainbowKitProvider>`.
+لم تعد بحاجة إلى تمرير `chains` إلى `<CinaWalletKitProvider>`.
 
 ```diff
-- <RainbowKitProvider chains={chains}>
-+ <RainbowKitProvider>
+- <CinaWalletKitProvider chains={chains}>
++ <CinaWalletKitProvider>
 ```
 
 **4. السلاسل المخصصة**
 
-تغيّر نوع `Chain` وفقًا لـ Wagmi v2، ويواصل دعم بيانات RainbowKit التعريفية مثل `iconUrl` و`iconBackground`.
+تغيّر نوع `Chain` وفقًا لـ Wagmi v2، ويواصل دعم بيانات CinaWalletKit التعريفية مثل `iconUrl` و`iconBackground`.
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 
   const avalanche = {
     id: 43_114,
@@ -177,7 +177,7 @@ const config = getDefaultConfig({
 مثال مع `createConfig`:
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 + const chains: readonly [Chain, ...Chain[]] = [
 +   {
 +     ...mainnet,
@@ -195,8 +195,8 @@ const config = getDefaultConfig({
 
 **5. المحافظ المخصصة**
 
-أجرى موصلو محافظ RainbowKit تغييرات كبيرة لدعم Wagmi v2. راجع [الوثائق المحدثة](https://www.rainbowkit.com/docs/custom-wallets) و[مثال على الموصل](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) لترقية أي موصلات محفظة مخصصة في تطبيقك.
+أجرى موصلو محافظ CinaWalletKit تغييرات كبيرة لدعم Wagmi v2. راجع [الوثائق المحدثة](https://www.CinaWalletKit.com/docs/custom-wallets) و[مثال على الموصل](https://github.com/rainbow-me/CinaWalletKit/tree/main/packages/CinaWalletKit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) لترقية أي موصلات محفظة مخصصة في تطبيقك.
 
 يدعم موصلين المحافظ الآن أيضًا معيار EIP-6963 مع خاصية `rdns`. تأكد من ملئها لمنع الإشارات المكررة إلى المحافظ الداعمة لـ EIP-6963 في قائمة المحافظ الخاصة بك.
 
-> يرجى الإبلاغ عن أي مشاكل أو ملاحظات على RainbowKit v2 على GitHub [هنا](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> يرجى الإبلاغ عن أي مشاكل أو ملاحظات على CinaWalletKit v2 على GitHub [هنا](https://github.com/rainbow-me/CinaWalletKit/issues/new/choose).

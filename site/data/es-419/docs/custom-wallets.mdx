@@ -7,7 +7,7 @@ description: Crear una cartera personalizada
 
 ## Crear una cartera personalizada
 
-> Nota: Esta API es inestable y probablemente cambie en el futuro cercano. Iremos añadiendo más carteras integradas con el tiempo. [Háganos saber](https://github.com/rainbow-me/rainbowkit/issues) si hay alguna cartera en particular que le interese.
+> Nota: Esta API es inestable y probablemente cambie en el futuro cercano. Iremos añadiendo más carteras integradas con el tiempo. [Háganos saber](https://github.com/rainbow-me/CinaWalletKit/issues) si hay alguna cartera en particular que le interese.
 
 El tipo de función `Wallet` se proporciona para ayudarle a definir sus propias carteras personalizadas. Las siguientes propiedades se pueden configurar en el valor de retorno de su función `Wallet`:
 
@@ -83,8 +83,8 @@ El tipo de función `Wallet` se proporciona para ayudarle a definir sus propias 
     {
       name: 'createConnector',
       required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
+      type: '() => CinaWalletKitConnector',
+      typeSimple: 'CinaWalletKitConnector',
       description:
         'Función para proporcionar la instancia del conector y la configuración de diferentes métodos de conexión, descritos a continuación',
     },
@@ -204,7 +204,7 @@ El tipo de función `Wallet` se proporciona para ayudarle a definir sus propias 
 Por ejemplo, para crear una cartera personalizada usando WalletConnect:
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

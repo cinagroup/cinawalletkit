@@ -7,7 +7,7 @@ description: 테마 사용 및 맞춤화
 
 ## 테마 사용 및 맞춤화
 
-RainbowKit UI를 브랜드와 일치하도록 조정할 수 있습니다. 사전 정의된 몇 가지 강조색상 및 테두리 반경 설정에서 선택할 수 있습니다.
+CinaWalletKit UI를 브랜드와 일치하도록 조정할 수 있습니다. 사전 정의된 몇 가지 강조색상 및 테두리 반경 설정에서 선택할 수 있습니다.
 
 3개의 기본 테마 함수가 있습니다:
 
@@ -15,25 +15,25 @@ RainbowKit UI를 브랜드와 일치하도록 조정할 수 있습니다. 사전
 - `darkTheme`
 - `midnightTheme`
 
-테마 함수는 테마 객체를 반환합니다. 해당 객체를 `RainbowKitProvider`의 `theme` 속성에 전달할 수 있습니다.
+테마 함수는 테마 객체를 반환합니다. 해당 객체를 `CinaWalletKitProvider`의 `theme` 속성에 전달할 수 있습니다.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider theme={darkTheme()} {...etc}>
+  <CinaWalletKitProvider theme={darkTheme()} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
 원하는 경우 `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack`, 및 `overlayBlur`를 전달하여 설정을 맞춤화할 수 있습니다.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider
+  <CinaWalletKitProvider
     theme={darkTheme({
       __accentColor__: '#7b3fe4',
       __accentColorForeground__: 'white',
@@ -44,7 +44,7 @@ export const App = () => (
     {...etc}
   >
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
@@ -101,11 +101,11 @@ export const App = () => (
 예를 들어, 보라색 강조 색상과 `medium` 테두리 반경 스케일로 어두운 테마를 맞춤화하려면:
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
@@ -114,7 +114,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -122,18 +122,18 @@ const App = () => {
 각 테마는 옵션 객체에 확산할 수 있는 몇 가지 강조 색상 프리셋(`blue`, `green`, `orange`, `pink`, `purple`, `red`)을 제공합니다. 예를 들어, `pink` 강조 색상 프리셋을 사용하려면:
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         ...darkTheme.accentColors.pink,
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -147,12 +147,12 @@ const App = () => {
 `darkTheme` 테마를 사용합니다.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider theme={darkTheme()} {...etc}>
+  <CinaWalletKitProvider theme={darkTheme()} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
@@ -160,14 +160,14 @@ export const App = () => (
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   midnightTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider theme={midnightTheme()} {...etc}>
+  <CinaWalletKitProvider theme={midnightTheme()} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
@@ -178,11 +178,11 @@ export const App = () => (
 강조 색상을 사용자 정의 보라색 값으로 설정합니다.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
@@ -190,7 +190,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -198,18 +198,18 @@ const App = () => {
 강조 색상을 기본 제공 `green` 프리셋으로 설정합니다.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         ...darkTheme.accentColors.green,
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -221,18 +221,18 @@ const App = () => {
 테두리 반경을 `medium`으로 설정합니다.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         borderRadius: 'medium',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -240,18 +240,18 @@ const App = () => {
 테두리 반경을 `none`으로 설정합니다.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         borderRadius: 'none',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -265,18 +265,18 @@ const App = () => {
 폰트 스택을 `system`으로 설정합니다.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         fontStack: 'system',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -288,18 +288,18 @@ const App = () => {
 블러 효과 오버레이를 `small`로 설정합니다.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         overlayBlur: 'small',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -314,11 +314,11 @@ const App = () => {
 - 폰트 스택을 `system`으로 설정합니다.
 
 ```tsx
-import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, lightTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={lightTheme({
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
@@ -328,7 +328,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -340,13 +340,13 @@ const App = () => {
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   midnightTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={midnightTheme({
         ...midnightTheme.accentColors.pink,
         borderRadius: 'small',
@@ -355,7 +355,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -366,13 +366,13 @@ const App = () => {
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   lightTheme,
   darkTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => (
-  <RainbowKitProvider
+  <CinaWalletKitProvider
     theme={{
       lightMode: lightTheme(),
       darkMode: darkTheme(),
@@ -380,6 +380,6 @@ const App = () => (
     {...etc}
   >
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

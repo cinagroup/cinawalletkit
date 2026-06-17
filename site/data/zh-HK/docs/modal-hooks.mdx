@@ -20,7 +20,7 @@ import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   const { openConnectModal } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit 被設計為非中斷和響應式，因此 dApps 無論用戶是否已連接其錢包，都應始終為用戶呈現介面。用戶可以從 MetaMask 直接連接或斷開其錢包，因此 dApp 必須直接對基礎連接狀態作出響應。
+CinaWalletKit 被設計為非中斷和響應式，因此 dApps 無論用戶是否已連接其錢包，都應始終為用戶呈現介面。用戶可以從 MetaMask 直接連接或斷開其錢包，因此 dApp 必須直接對基礎連接狀態作出響應。
 
 依賴 Sign-in with Ethereum 做用戶驗證的 dApps 應改為依賴 [身份驗證](/docs/authentication) 功能。

@@ -6,14 +6,14 @@ image: guide-rainbow-button.png
 
 # นำปุ่ม Rainbow มาใช้ใน dApp ของคุณ
 
-คอมโพเน้นต์ `RainbowButton` เป็นวิธีที่ง่ายที่สุดในการเพิ่มการสนับสนุนสำหรับ Rainbow Wallet กับ dApps ที่ใช้ `wagmi` และต้องการประสบการณ์การเชื่อมต่อที่กำหนดเองมากกว่า [RainbowKit](https://www.rainbowkit.com/docs/installation).
+คอมโพเน้นต์ `RainbowButton` เป็นวิธีที่ง่ายที่สุดในการเพิ่มการสนับสนุนสำหรับ Rainbow Wallet กับ dApps ที่ใช้ `wagmi` และต้องการประสบการณ์การเชื่อมต่อที่กำหนดเองมากกว่า [CinaWalletKit](https://www.CinaWalletKit.com/docs/installation).
 
-**ติดตั้ง `@rainbow-me/rainbow-button` และ peer dependencies ของมัน**
+**ติดตั้ง `@cinagroup/rainbow-button` และ peer dependencies ของมัน**
 
 แพ็คเกจนี้เข้ากันได้กับ Next.js, React, และ Vite. ตรวจสอบให้แน่ใจว่าคุณปฏิบัติตามคำเตือนการพึ่งพาเทียบเท่า.
 
 ```bash
-npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
+npm install @cinagroup/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
 **กำหนดค่ากับ wagmi และติดตั้ง RainbowButton**
@@ -21,12 +21,12 @@ npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 ส่งอินสแตนซ์ของ `rainbowConnector` ไปยัง `createConfig` ของ Wagmi พร้อมกับ `projectId` และ `appName`, และห่อแอปของคุณด้วย `RainbowButtonProvider`. จากนั้นใส่คอมโพเน้นต์ `RainbowButton`.
 
 ```tsx
-import '@rainbow-me/rainbow-button/styles.css';
+import '@cinagroup/rainbow-button/styles.css';
 import {
   RainbowButtonProvider,
   RainbowButton,
   rainbowConnector,
-} from '@rainbow-me/rainbow-button';
+} from '@cinagroup/rainbow-button';
 import { WagmiProvider, createConfig, http } from 'wagmi';
 import { mainnet } from 'viem/chains';
 import {
@@ -37,7 +37,7 @@ import {
 const config = createConfig({
   connectors: [
     rainbowConnector({
-      appName: 'RainbowKit demo',
+      appName: 'CinaWalletKit demo',
       projectId: 'YOUR_PROJECT_ID',
     }),
   ],
@@ -85,4 +85,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 ตอนนี้ผู้ใช้ของคุณสามารถเพลิดเพลินกับประสบการณ์เชื่อมต่อที่ไม่มีปัญหาสำหรับ Rainbow — โดยไม่ต้องดูแลหรือมีปัญหาใดๆ.
 
-อีกอย่าง [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) แทนที่อยู่ใน [RainbowKit](https://www.rainbowkit.com/docs/installation) ถ้าคุณต้องการใช้งานร่วมกับกระเป๋าเสริมเพิ่มเติม.
+อีกอย่าง [`WalletButton`](https://www.CinaWalletKit.com/docs/wallet-button) แทนที่อยู่ใน [CinaWalletKit](https://www.CinaWalletKit.com/docs/installation) ถ้าคุณต้องการใช้งานร่วมกับกระเป๋าเสริมเพิ่มเติม.

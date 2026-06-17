@@ -7,25 +7,25 @@ description: 使用內建翻譯自定義您的 dApp 語言
 
 ## 使用內建翻譯自定義您的 dApp 語言
 
-預設情況下，RainbowKit 為英語使用者支援 `en-US` 區域設置。
+預設情況下，CinaWalletKit 為英語使用者支援 `en-US` 區域設置。
 
-如果可以，RainbowKit 會檢測用戶的[首選語言](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)並選擇合適的翻譯。開發者可以隨時覆蓋默認語言。
+如果可以，CinaWalletKit 會檢測用戶的[首選語言](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)並選擇合適的翻譯。開發者可以隨時覆蓋默認語言。
 
-要為您的用戶指定語言，只需在 `RainbowKitProvider` 中添加 `locale="zh-CN"` 這個屬性。
+要為您的用戶指定語言，只需在 `CinaWalletKitProvider` 中添加 `locale="zh-CN"` 這個屬性。
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider locale="zh-CN" {...etc}>
+  <CinaWalletKitProvider locale="zh-CN" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
 ### 與 Next.js 一起使用
 
-RainbowKit 的本地化支持在[子路徑路由](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing)下工作得更好。
+CinaWalletKit 的本地化支持在[子路徑路由](https://nextjs.org/docs/pages/building-your-application/routing/internationalization#sub-path-routing)下工作得更好。
 
 像下面的示例一樣配置您的 Next.js 項目，為您的路徑添加一個可選的 `/locale/` 子路徑，這將幫助搜索引擎和用戶更好地發現您的多語言支持。
 
@@ -39,24 +39,24 @@ RainbowKit 的本地化支持在[子路徑路由](https://nextjs.org/docs/pages/
 }
 ```
 
-然後將 Pages Router 提供的 `locale` 傳遞給 `RainbowKitProvider`。
+然後將 Pages Router 提供的 `locale` 傳遞給 `CinaWalletKitProvider`。
 
 ```tsx
-import { RainbowKitProvider, Locale } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, Locale } from '@cinagroup/CinaWalletKit';
 
 export const App = () => {
   const { locale } = useRouter() as { locale: Locale };
   return (
-    <RainbowKitProvider locale={locale} {...etc}>
+    <CinaWalletKitProvider locale={locale} {...etc}>
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   )
 };
 ```
 
-您可以在[這裡](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next)參考 Pages Router 的示例。
+您可以在[這裡](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next)參考 Pages Router 的示例。
 
-App Router 尚不支持 i18n。請參考我們的單獨示例[這裡](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-app-i18n)，以獲得 [`next-intl`](https://github.com/amannn/next-intl) 中間件的最佳實踐。
+App Router 尚不支持 i18n。請參考我們的單獨示例[這裡](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-app-i18n)，以獲得 [`next-intl`](https://github.com/amannn/next-intl) 中間件的最佳實踐。
 
 建議您使用相同的技術來翻譯您的 dApp 的內容以獲得完整的本地化支援。本地化庫如 [`i18n-js`](https://github.com/fnando/i18n) 和 [`next-intl`](https://github.com/amannn/next-intl)，還有管理工具 Crowdin 將簡化此過程。
 
@@ -94,4 +94,4 @@ App Router 尚不支持 i18n。請參考我們的單獨示例[這裡](https://gi
   ]}
 />
 
-如果您希望增加其他語言的支援，請在 [GitHub 討論](https://github.com/rainbow-me/rainbowkit/discussions/new?category=ideas) 中提出，我們將竭盡所能盡快提供支援。
+如果您希望增加其他語言的支援，請在 [GitHub 討論](https://github.com/rainbow-me/CinaWalletKit/discussions/new?category=ideas) 中提出，我們將竭盡所能盡快提供支援。

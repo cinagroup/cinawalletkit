@@ -9,16 +9,16 @@ description: Аутентифікація користувачів
 
 Ви можете необов'язково вимагати, щоб користувачі підписували повідомлення за допомогою свого гаманця під час процесу підключення, доводячи, що вони володіють підключеним обліковим записом, і дозволяючи вам створити аутентифікований користувацький сеанс з привілейованим доступом до вашого застосунку.
 
-Хоча можливо [інтегруватися з власними бекендами та форматами повідомлень,](/docs/custom-authentication) RainbowKit надає першокласну підтримку для [Входу за допомогою Ethereum](https://login.xyz) та [NextAuth](https://next-auth.js.org).
+Хоча можливо [інтегруватися з власними бекендами та форматами повідомлень,](/docs/custom-authentication) CinaWalletKit надає першокласну підтримку для [Входу за допомогою Ethereum](https://login.xyz) та [NextAuth](https://next-auth.js.org).
 
 ### Налаштування Входу за допомогою Ethereum та NextAuth
 
 #### Встановлення
 
-Встановіть пакет `@rainbow-me/rainbowkit-siwe-next-auth` та NextAuth v5.
+Встановіть пакет `@cinagroup/CinaWalletKit-siwe-next-auth` та NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
+npm install @cinagroup/CinaWalletKit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
 
 Якщо ви оновлюєте існуючу інтеграцію NextAuth v4 SIWE, дотримуйтесь [посібника з міграції NextAuth v5](/guides/next-auth-v5).
@@ -62,21 +62,21 @@ export const authOptions: NextAuthConfig = {
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
 ```
 
-Дивіться повний приклад [`with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) для перевірки SIWE, перевірок nonce та серверної верифікації.
+Дивіться повний приклад [`with-next-siwe-next-auth`](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-next-auth) для перевірки SIWE, перевірок nonce та серверної верифікації.
 
 #### Налаштуйте провайдера
 
-У вашому компоненті `App`, імпортуйте `RainbowKitSiweNextAuthProvider`.
+У вашому компоненті `App`, імпортуйте `CinaWalletKitSiweNextAuthProvider`.
 
 ```tsx
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { CinaWalletKitSiweNextAuthProvider } from '@cinagroup/CinaWalletKit-siwe-next-auth';
 ```
 
-Обгорніть `RainbowKitProvider` за допомогою `RainbowKitSiweNextAuthProvider`, переконавшись, що він знаходиться всередині `SessionProvider` від NextAuth, щоб мати доступ до сесії.
+Обгорніть `CinaWalletKitProvider` за допомогою `CinaWalletKitSiweNextAuthProvider`, переконавшись, що він знаходиться всередині `SessionProvider` від NextAuth, щоб мати доступ до сесії.
 
 ```tsx
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitSiweNextAuthProvider } from '@cinagroup/CinaWalletKit-siwe-next-auth';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
@@ -98,11 +98,11 @@ export default function App({
     <WagmiProvider {...etc}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>
         <QueryClientProvider client={queryClient}>
-          <RainbowKitSiweNextAuthProvider>
-            <RainbowKitProvider {...etc}>
+          <CinaWalletKitSiweNextAuthProvider>
+            <CinaWalletKitProvider {...etc}>
               <Component {...pageProps} />
-            </RainbowKitProvider>
-          </RainbowKitSiweNextAuthProvider>
+            </CinaWalletKitProvider>
+          </CinaWalletKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
     </WagmiProvider>
@@ -110,29 +110,29 @@ export default function App({
 }
 ```
 
-З `RainbowKitSiweNextAuthProvider` на місці, тепер ваших користувачів буде запрошено аутентифікуватися, підписавши повідомлення після підключення їхнього гаманця.
+З `CinaWalletKitSiweNextAuthProvider` на місці, тепер ваших користувачів буде запрошено аутентифікуватися, підписавши повідомлення після підключення їхнього гаманця.
 
 #### Налаштуйте опції повідомлення SIWE
 
-Ви можете налаштувати [опції повідомлення SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters), передавши функцію до пропу `getSiweMessageOptions` на `RainbowKitSiweNextAuthProvider`.
+Ви можете налаштувати [опції повідомлення SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters), передавши функцію до пропу `getSiweMessageOptions` на `CinaWalletKitSiweNextAuthProvider`.
 
 Ця функція буде викликатися кожного разу, коли створюється нове повідомлення. Опції, повернені з цієї функції, будуть об'єднані з параметрами за замовчуванням.
 
 ```tsx
 import {
-  RainbowKitSiweNextAuthProvider,
+  CinaWalletKitSiweNextAuthProvider,
   GetSiweMessageOptions,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
+} from '@cinagroup/CinaWalletKit-siwe-next-auth';
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
-  statement: 'Sign in to my RainbowKit app',
+  statement: 'Sign in to my CinaWalletKit app',
 });
 
-<RainbowKitSiweNextAuthProvider
+<CinaWalletKitSiweNextAuthProvider
   getSiweMessageOptions={getSiweMessageOptions}
 >
   ...
-</RainbowKitSiweNextAuthProvider>;
+</CinaWalletKitSiweNextAuthProvider>;
 ```
 
 #### Доступ до сесії на серверній стороні

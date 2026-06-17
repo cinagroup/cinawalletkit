@@ -12,7 +12,7 @@ description: 建立自訂主題
 雖然內建主題提供了一定程度的自訂設置，但`Theme`型別有助於您定義自己的自訂主題，並深入訪問底層主題變數。
 
 ```tsx
-import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, Theme } from '@cinagroup/CinaWalletKit';
 
 const myCustomTheme: Theme = {
   blurs: {
@@ -71,9 +71,9 @@ const myCustomTheme: Theme = {
 };
 
 const App = () => (
-  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+  <CinaWalletKitProvider theme={myCustomTheme} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>;
+  </CinaWalletKitProvider>;
 )
 ```
 
@@ -92,10 +92,10 @@ npm install lodash.merge
 ```tsx
 import merge from 'lodash.merge';
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   darkTheme,
   Theme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 ```
 
 然後，將內建主題與您希望覆蓋的主題標記合併。在此範例中，我將`accentColor`標記覆蓋為品牌的強調顏色。
@@ -108,40 +108,40 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-最後，您可以將自訂主題傳遞給`RainbowKitProvider`的`theme`屬性。
+最後，您可以將自訂主題傳遞給`CinaWalletKitProvider`的`theme`屬性。
 
 ```tsx
 const App = () => {
   return (
-    <RainbowKitProvider theme={myTheme} {...etc}>
+    <CinaWalletKitProvider theme={myTheme} {...etc}>
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
 ### 創建自訂主題選擇器
 
-如果您的應用是伺服器/靜態渲染的，並允許用戶手動切換主題，RainbowKit 的主題系統可以通過以下功能與任何 CSS-in-JS 系統的自訂 CSS 選擇器掛鉤：
+如果您的應用是伺服器/靜態渲染的，並允許用戶手動切換主題，CinaWalletKit 的主題系統可以通過以下功能與任何 CSS-in-JS 系統的自訂 CSS 選擇器掛鉤：
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
 這些功能會返回設置所有所需主題變數的 CSS。由於支持字符串和對象，因此可以與任何 CSS-in-JS 系統集成。
 
-作為基本範例，您可以渲染自己的`style`元素，為每個主題設置自訂選擇器。由於我們控制主題的 CSS 渲染，所以將`null`傳遞給`theme`屬性，以使 RainbowKitProvider 不會為我們渲染任何樣式。此外，請注意擴展 cssStringFromTheme 函數中的`extends`選項，以省略與基礎主題相同的任何主題變數。
+作為基本範例，您可以渲染自己的`style`元素，為每個主題設置自訂選擇器。由於我們控制主題的 CSS 渲染，所以將`null`傳遞給`theme`屬性，以使 CinaWalletKitProvider 不會為我們渲染任何樣式。此外，請注意擴展 cssStringFromTheme 函數中的`extends`選項，以省略與基礎主題相同的任何主題變數。
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   cssStringFromTheme,
   lightTheme,
   darkTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider theme={null} {...etc}>
+    <CinaWalletKitProvider theme={null} {...etc}>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -159,7 +159,7 @@ const App = () => {
       />
 
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

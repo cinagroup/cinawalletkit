@@ -7,28 +7,28 @@ description: Показать ваши последние транзакции
 
 ## Показать ваши последние транзакции
 
-Вы можете выбрать отображение последних транзакций в модальном окне аккаунта RainbowKit. Обратите внимание, что все транзакции хранятся в локальном хранилище и должны быть вручную зарегистрированы в RainbowKit для отображения.
+Вы можете выбрать отображение последних транзакций в модальном окне аккаунта CinaWalletKit. Обратите внимание, что все транзакции хранятся в локальном хранилище и должны быть вручную зарегистрированы в CinaWalletKit для отображения.
 
 Стандартная реализация `ConnectButton` также будет отображать индикатор загрузки вокруг аватара пользователя, если есть незавершенные транзакции. Пользовательские реализации `ConnectButton` могут воссоздать это поведение посредством свойства `account.hasPendingTransactions`, которое передается в вашу функцию рендеринга.
 
-Для использования этой функции сначала включите опцию `showRecentTransactions` на `RainbowKitProvider`.
+Для использования этой функции сначала включите опцию `showRecentTransactions` на `CinaWalletKitProvider`.
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+    <CinaWalletKitProvider showRecentTransactions={true} {...etc}>
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
-Затем транзакции могут быть зарегистрированы в RainbowKit с помощью хука `useAddRecentTransaction`.
+Затем транзакции могут быть зарегистрированы в CinaWalletKit с помощью хука `useAddRecentTransaction`.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();
@@ -48,12 +48,12 @@ export default () => {
 };
 ```
 
-После регистрации транзакции в RainbowKit её статус будет обновлен после завершения.
+После регистрации транзакции в CinaWalletKit её статус будет обновлен после завершения.
 
 По умолчанию транзакция будет считаться завершенной после добычи одного блока поверх блока, в котором транзакция была добыта, но это можно настроить, указав пользовательское значение `confirmations`.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();

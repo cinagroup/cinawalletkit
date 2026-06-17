@@ -20,7 +20,7 @@ import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   const { openConnectModal } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKitは非中断的かつレスポンシブに設計されているため、dAppはユーザーがウォレットを接続しているかどうかにかかわらず、常にインターフェースを表示すべきです。ユーザーはMetaMaskから直接ウォレットを接続または切断することができるため、dAppは基礎となる接続ステータスに直接応答する必要があります。
+CinaWalletKitは非中断的かつレスポンシブに設計されているため、dAppはユーザーがウォレットを接続しているかどうかにかかわらず、常にインターフェースを表示すべきです。ユーザーはMetaMaskから直接ウォレットを接続または切断することができるため、dAppは基礎となる接続ステータスに直接応答する必要があります。
 
 ユーザー認証にEthereumでのサインインのようなメカニズムを使用しているdAppは、代わりに[Authentication](/docs/authentication)機能を利用する必要があります。

@@ -20,7 +20,7 @@ import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   const { openConnectModal } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit은 비간섭적이며 반응성이 좋도록 설계되어 있으므로 사용자들이 지갑을 연결하지 않더라도 항상 사용자 인터페이스를 표시해야 합니다. 사용자는 MetaMask에서 직접 지갑을 연결하거나 연결 해제할 수 있으므로 dApp은 기본 연결 상태에 직접 반응해야 합니다.
+CinaWalletKit은 비간섭적이며 반응성이 좋도록 설계되어 있으므로 사용자들이 지갑을 연결하지 않더라도 항상 사용자 인터페이스를 표시해야 합니다. 사용자는 MetaMask에서 직접 지갑을 연결하거나 연결 해제할 수 있으므로 dApp은 기본 연결 상태에 직접 반응해야 합니다.
 
 Ethereum과 같은 메커니즘으로 서명을 기반으로 사용자 검증을 의존하는 dApp은 대신 [Authentication](/docs/authentication) 기능을 사용해야 합니다.

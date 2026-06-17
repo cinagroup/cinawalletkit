@@ -7,16 +7,16 @@ description: Sambung ke belakang pengesahan anda sendiri
 
 ## Sambung ke belakang pengesahan anda sendiri
 
-Walaupun RainbowKit menyediakan [sokongan kelas pertama untuk Daftar Masuk dengan Ethereum dan NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) anda juga boleh mengintegrasikan dengan latar belakang dan format mesej tersuai.
+Walaupun CinaWalletKit menyediakan [sokongan kelas pertama untuk Daftar Masuk dengan Ethereum dan NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) anda juga boleh mengintegrasikan dengan latar belakang dan format mesej tersuai.
 
 ### Mencipta penyesuai tersuai
 
-Mula-mula cipta penyesuai pengesahan. Ini membolehkan RainbowKit membuat/menyediakan mesej dan berkomunikasi dengan belakang anda.
+Mula-mula cipta penyesuai pengesahan. Ini membolehkan CinaWalletKit membuat/menyediakan mesej dan berkomunikasi dengan belakang anda.
 
-Sebagai contoh, kita boleh membuat penyesuai pengesahan yang membolehkan kita menggunakan [Daftar Masuk dengan Ethereum](https://login.xyz) terhadap beberapa titik akhir API tersuai, seperti [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+Sebagai contoh, kita boleh membuat penyesuai pengesahan yang membolehkan kita menggunakan [Daftar Masuk dengan Ethereum](https://login.xyz) terhadap beberapa titik akhir API tersuai, seperti [iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
-import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createAuthenticationAdapter } from '@cinagroup/CinaWalletKit';
 import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
@@ -75,14 +75,14 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Menyediakan status pengesahan
 
-Mengandaikan aplikasi anda sudah menguruskan kitaran hayat pengesahan dengan cara tertentu, anda boleh menghantar status pengesahan semasa bersama penyesuai tersuai anda kepada `RainbowKitAuthenticationProvider`, membungkus `RainbowKitProvider` sedia ada anda.
+Mengandaikan aplikasi anda sudah menguruskan kitaran hayat pengesahan dengan cara tertentu, anda boleh menghantar status pengesahan semasa bersama penyesuai tersuai anda kepada `CinaWalletKitAuthenticationProvider`, membungkus `CinaWalletKitProvider` sedia ada anda.
 
 ```tsx
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
@@ -105,14 +105,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider {...etc}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authenticationAdapter}
           status={AUTHENTICATION_STATUS}
         >
-          <RainbowKitProvider {...etc}>
+          <CinaWalletKitProvider {...etc}>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

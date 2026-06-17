@@ -7,7 +7,7 @@ description: Создать пользовательский кошелек
 
 ## Создать пользовательский кошелек
 
-> Примечание: Этот API нестабилен и может измениться в ближайшем будущем. Со временем мы добавим больше встроенных кошельков. [Сообщите нам](https://github.com/rainbow-me/rainbowkit/issues), если вас интересуют определенные кошельки.
+> Примечание: Этот API нестабилен и может измениться в ближайшем будущем. Со временем мы добавим больше встроенных кошельков. [Сообщите нам](https://github.com/rainbow-me/CinaWalletKit/issues), если вас интересуют определенные кошельки.
 
 Функция типа `Wallet` предоставляется, чтобы помочь вам определить свои собственные пользовательские кошельки. Следующие свойства могут быть настроены в возвращаемом значении вашей функции `Wallet`:
 
@@ -88,8 +88,8 @@ description: Создать пользовательский кошелек
     {
       name: 'createConnector',
       required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
+      type: '() => CinaWalletKitConnector',
+      typeSimple: 'CinaWalletKitConnector',
       description:
         'Функция для предоставления экземпляра коннектора и конфигурации для различных методов подключения, описанных ниже',
     },
@@ -209,7 +209,7 @@ description: Создать пользовательский кошелек
 Например, чтобы создать пользовательский кошелек, используя WalletConnect:
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

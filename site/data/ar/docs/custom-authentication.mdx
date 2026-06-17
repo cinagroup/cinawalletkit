@@ -7,16 +7,16 @@ description: الاتصال بخادم استيثاق خلفي خاص بك
 
 ## الاتصال بخادم استيثاق خلفي خاص بك
 
-بينما يوفر RainbowKit [دعماً عالي المستوى لتسجيل الدخول بإستخدام إثريوم وNextAuth،](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) يمكنك أيضًا التكامل مع الواجهات الخلفية والتنسيقات المخصصة للرسائل.
+بينما يوفر CinaWalletKit [دعماً عالي المستوى لتسجيل الدخول بإستخدام إثريوم وNextAuth،](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) يمكنك أيضًا التكامل مع الواجهات الخلفية والتنسيقات المخصصة للرسائل.
 
 ### إنشاء محول مخصص
 
-أولاً، أنشئ محول استيثاق. هذا يسمح ل RainbowKit بإنشاء/تحضير الرسائل والتواصل مع خادم الاستيثاق الخلفي الخاص بك.
+أولاً، أنشئ محول استيثاق. هذا يسمح ل CinaWalletKit بإنشاء/تحضير الرسائل والتواصل مع خادم الاستيثاق الخلفي الخاص بك.
 
-كمثال، يمكننا صنع محول استيثاق يسمح لنا باستخدام [تسجيل الدخول باستخدام إثريوم](https://login.xyz) مع بعض نقاط نهاية API المخصصة، مثل [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+كمثال، يمكننا صنع محول استيثاق يسمح لنا باستخدام [تسجيل الدخول باستخدام إثريوم](https://login.xyz) مع بعض نقاط نهاية API المخصصة، مثل [iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
-import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createAuthenticationAdapter } from '@cinagroup/CinaWalletKit';
 import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
@@ -75,14 +75,14 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### توفير حالة الاستيثاق
 
-على افتراض أن تطبيقك يدير بالفعل دورة حياة الاستيثاق بطريقة معينة، يمكنك تمرير حالة الاستيثاق الحالية مع مزود المحول المخصص الخاص بك إلى `RainbowKitAuthenticationProvider`، تغليف مزود RainbowKit الحالي الخاص بك.
+على افتراض أن تطبيقك يدير بالفعل دورة حياة الاستيثاق بطريقة معينة، يمكنك تمرير حالة الاستيثاق الحالية مع مزود المحول المخصص الخاص بك إلى `CinaWalletKitAuthenticationProvider`، تغليف مزود CinaWalletKit الحالي الخاص بك.
 
 ```tsx
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
@@ -105,14 +105,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider {...etc}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authenticationAdapter}
           status={AUTHENTICATION_STATUS}
         >
-          <RainbowKitProvider {...etc}>
+          <CinaWalletKitProvider {...etc}>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

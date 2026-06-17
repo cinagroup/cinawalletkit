@@ -7,16 +7,16 @@ description: Menyesuaikan senarai dompet
 
 ## Menyesuaikan senarai dompet
 
-Anda boleh mengimport dompet individu dari `'@rainbow-me/rainbowkit/wallets'` bersama dengan fungsi `connectorsForWallets` untuk membina senarai dompet anda sendiri dengan penyambung yang diperlukan. Dengan cara ini anda mempunyai kawalan penuh ke atas dompet mana yang akan dipaparkan, dan dalam susunan apa.
+Anda boleh mengimport dompet individu dari `'@cinagroup/CinaWalletKit/wallets'` bersama dengan fungsi `connectorsForWallets` untuk membina senarai dompet anda sendiri dengan penyambung yang diperlukan. Dengan cara ini anda mempunyai kawalan penuh ke atas dompet mana yang akan dipaparkan, dan dalam susunan apa.
 
 Sebagai contoh, anda boleh memilih untuk hanya memaparkan Rainbow bersama dompet pemulihan generik.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import {
   rainbowWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/CinaWalletKit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -26,7 +26,7 @@ const connectors = connectorsForWallets(
     },
   ],
   {
-    appName: 'My RainbowKit App',
+    appName: 'My CinaWalletKit App',
     projectId: 'YOUR_PROJECT_ID',
   }
 );
@@ -35,7 +35,7 @@ const connectors = connectorsForWallets(
 Anda kemudian boleh memberikan penyambung anda kepada `createConfig` Wagmi.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import { createConfig } from 'wagmi';
 
 const connectors = connectorsForWallets(/* ... */);
@@ -50,9 +50,9 @@ const queryClient = new QueryClient();
 const App = () => (
   <WagmiProvider config={config}>
     <QueryClientProvider client={queryClient}>
-      <RainbowKitProvider {...etc}>
+      <CinaWalletKitProvider {...etc}>
         {/* Your App */}
-      </RainbowKitProvider>
+      </CinaWalletKitProvider>
     </QueryClientProvider>
   </WagmiProvider>
 );
@@ -73,7 +73,7 @@ Ini adalah pilihan dompet pemulihan yang direka untuk dompet berasaskan WalletCo
 **Disarankan agar dompet ini sentiasa disertakan dalam senarai untuk memastikan semua dompet berasaskan WalletConnect disokong.**
 
 ```tsx
-import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
+import { walletConnectWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 ##### Dompet Suntikan
@@ -83,7 +83,7 @@ Ini adalah pilihan dompet pemulihan yang direka untuk senario di mana `window.et
 **Disarankan agar dompet ini sentiasa disertakan dalam senarai untuk memastikan semua dompet suntikan disokong.**
 
 ```tsx
-import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
+import { injectedWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 ##### Dompet Selamat
@@ -91,7 +91,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 Untuk dApps yang menyokong Aplikasi Selamat bagi membolehkan pengguna menyambung dengan peti besi atau multi-sig mereka dengan mudah, sertakan pilihan `safeWallet` untuk sambungan automatik. Pilihan Selamat hanya akan muncul dalam persekitaran pelayar Dompet Selamat.
 
 ```tsx
-import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+import { safeWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 ### Dompet Khusus
@@ -101,19 +101,19 @@ Dompet berikut disediakan menerusi objek `wallet` (mengikut urutan abjad).
 #### Dompet 1inch
 
 ```tsx
-import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
+import { oneInchWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Anchorage Digital
 
 ```tsx
-import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
+import { anchorageDigitalWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Backpack
 
 ```tsx
-import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+import { backpackWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Base (sebelumnya dikenali sebagai Dompet Coinbase)
@@ -125,7 +125,7 @@ Pilihan konfigurasi sejajar dengan [rujukan SDK Base](https://docs.base.org/base
 > `baseAccount` dan `coinbaseWallet` kekal tersedia sebagai alias yang serasi ke belakang.
 
 ```tsx
-import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@cinagroup/CinaWalletKit/wallets';
 import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
@@ -154,121 +154,121 @@ base.paymasterUrls = {
 #### BeraSig
 
 ```tsx
-import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
+import { berasigWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Terbaik
 
 ```tsx
-import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bestWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Bifrost
 
 ```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bifrostWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Binance Web3
 
 ```tsx
-import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+import { binanceWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Bitget
 
 ```tsx
-import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bitgetWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Bitski
 
 ```tsx
-import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bitskiWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Bitverse
 
 ```tsx
-import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bitverseWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Bloom
 
 ```tsx
-import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bloomWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Brave
 
 ```tsx
-import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
+import { braveWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Bybit
 
 ```tsx
-import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bybitWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Coin98
 
 ```tsx
-import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
+import { coin98Wallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Kompas
 
 ```tsx
-import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
+import { compassWallet } from '@cinagroup/CinaWalletKit/compassWallet';
 ```
 
 #### Teroka
 
 ```tsx
-import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+import { coreWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet CTRL
 
 ```tsx
-import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ctrlWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Dawn
 
 ```tsx
-import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+import { dawnWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Enkrypt
 
 ```tsx
-import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
+import { enkryptWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### FoxWallet
 
 ```tsx
-import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
+import { foxWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Frame
 
 ```tsx
-import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
+import { frameWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Frontier
 
 ```tsx
-import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+import { frontierWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Gate
 
 ```tsx
-import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+import { gateWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Gemini
@@ -278,7 +278,7 @@ Penyambung dompet pintar ini membolehkan pengesahan tanpa gangguan melalui kunci
 Parameter `appName` diperlukan untuk mengenal pasti dApp anda, dan `appIcon` adalah pilihan untuk penjenamaan pengalaman sambungan anda.
 
 ```tsx
-import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { geminiWallet } from '@cinagroup/CinaWalletKit/wallets';
 
 const gemini = geminiWallet({
   appName: 'My App',
@@ -289,211 +289,211 @@ const gemini = geminiWallet({
 #### imToken
 
 ```tsx
-import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { imTokenWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet ioPay
 
 ```tsx
-import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
+import { iopayWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Kaia
 
 ```tsx
-import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kaiaWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Kaikas
 
 ```tsx
-import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kaikasWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Kraken
 
 ```tsx
-import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { krakenWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Kresus
 
 ```tsx
-import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kresusWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Ledger Live
 
 ```tsx
-import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ledgerWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Magic Eden
 
 ```tsx
-import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { magicEdenWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### MetaMask
 
 ```tsx
-import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+import { metaMaskWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### MEW Wallet
 
 ```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+import { mewWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet MeCo
 
 ```tsx
-import { mecoWallet } from '@rainbow-me/rainbowkit/wallets';
+import { mecoWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Nova
 
 ```tsx
-import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
+import { novaWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet OKX
 
 ```tsx
-import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+import { okxWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Omni
 
 ```tsx
-import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+import { omniWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### OneKey
 
 ```tsx
-import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
+import { oneKeyWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### ParaSwap
 
 ```tsx
-import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
+import { paraSwapWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Phantom
 
 ```tsx
-import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
+import { phantomWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Porto
 
 ```tsx
-import { portoWallet } from '@rainbow-me/rainbowkit/wallets';
+import { portoWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Rabby
 
 ```tsx
-import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
+import { rabbyWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Rainbow
 
 ```tsx
-import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
+import { rainbowWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Ramper
 
 ```tsx
-import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ramperWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Sedia
 
 ```tsx
-import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+import { readyWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Ronin Wallet
 
 ```tsx
-import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
+import { roninWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Safeheron
 
 ```tsx
-import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
+import { safeheronWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Taho
 
 ```tsx
-import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
+import { tahoWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Talisman
 
 ```tsx
-import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
+import { talismanWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Tokenary
 
 ```tsx
-import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
+import { tokenaryWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### TokenPocket
 
 ```tsx
-import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
+import { tokenPocketWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Wallet Amanah
 
 ```tsx
-import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
+import { trustWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Dompet Uniswap
 
 ```tsx
-import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
+import { uniswapWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Valora
 
 ```tsx
-import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
+import { valoraWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Wigwam
 
 ```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### xPortal
 
 ```tsx
-import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+import { xPortalWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Zerion
 
 ```tsx
-import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+import { zerionWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### ZilPay
 
 ```tsx
-import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
+import { zilPayWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 ### Contoh
@@ -505,11 +505,11 @@ Berikut adalah beberapa contoh paparan dompet yang berbeza, dalam urutan yang be
 Paparkan MetaMask bersama dompet pemulihan generik.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import {
   metaMaskWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/CinaWalletKit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -518,20 +518,20 @@ const connectors = connectorsForWallets(
       wallets: [metaMaskWallet, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+  { appName: 'CinaWalletKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```
 
 Tunjukkan Rainbow, MetaMask dan Base bersama dengan dompet tahan jatuh generik.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import {
   rainbowWallet,
   metaMaskWallet,
   base,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/CinaWalletKit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -545,7 +545,7 @@ const connectors = connectorsForWallets(
       ],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+  { appName: 'CinaWalletKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```
 
@@ -558,13 +558,13 @@ Anda boleh menggunakan kunci `groupName` untuk menamakan kumpulan dompet yang be
 Saran Rainbow dan MetaMask, tetapi juga tawarkan Base bersama dengan dompet tahan jatuh generik.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import {
   rainbowWallet,
   metaMaskWallet,
   base,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/CinaWalletKit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -577,6 +577,6 @@ const connectors = connectorsForWallets(
       wallets: [base, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+  { appName: 'CinaWalletKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```

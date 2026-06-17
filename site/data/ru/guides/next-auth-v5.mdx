@@ -1,23 +1,23 @@
 ---
-title: Обновление RainbowKit SIWE до NextAuth v5
-description: Перенос адаптера SIWE для RainbowKit с NextAuth v4 на v5
+title: Обновление CinaWalletKit SIWE до NextAuth v5
+description: Перенос адаптера SIWE для CinaWalletKit с NextAuth v4 на v5
 ---
 
-# Перенос RainbowKit SIWE на NextAuth v5
+# Перенос CinaWalletKit SIWE на NextAuth v5
 
-Пакет `@rainbow-me/rainbowkit-siwe-next-auth` теперь поддерживает NextAuth v5. Это значительное обновление для приложений, использующих адаптер SIWE NextAuth, поскольку NextAuth изменил свою серверную конфигурацию API, API помощника сессий и внутренний процесс CSRF.
+Пакет `@cinagroup/CinaWalletKit-siwe-next-auth` теперь поддерживает NextAuth v5. Это значительное обновление для приложений, использующих адаптер SIWE NextAuth, поскольку NextAuth изменил свою серверную конфигурацию API, API помощника сессий и внутренний процесс CSRF.
 
 NextAuth.js теперь является частью более широкого проекта [Auth.js](https://authjs.dev). Имя пакета остается `next-auth`, и официальная документация NextAuth.js все еще доступна на [next-auth.js.org](https://next-auth.js.org). Это руководство использует имена пакетов `next-auth`, которые вы устанавливаете сегодня, упоминая переход Auth.js там, где он влияет на имена куки и API v5.
 
-Следуйте приведенным ниже инструкциям, если ваше приложение в настоящее время использует `@rainbow-me/rainbowkit-siwe-next-auth` с NextAuth v4.
+Следуйте приведенным ниже инструкциям, если ваше приложение в настоящее время использует `@cinagroup/CinaWalletKit-siwe-next-auth` с NextAuth v4.
 
 **1. Обновите зависимости**
 
-Установите поддерживаемую RainbowKit версию пакета NextAuth v5.
+Установите поддерживаемую CinaWalletKit версию пакета NextAuth v5.
 
 ```diff
-- npm install next-auth@^4 @rainbow-me/rainbowkit-siwe-next-auth
-+ npm install next-auth@5.0.0-beta.31 @rainbow-me/rainbowkit-siwe-next-auth
+- npm install next-auth@^4 @cinagroup/CinaWalletKit-siwe-next-auth
++ npm install next-auth@5.0.0-beta.31 @cinagroup/CinaWalletKit-siwe-next-auth
 ```
 
 **2. Обновите конфигурацию сервера NextAuth**
@@ -95,7 +95,7 @@ export default NextAuth(authOptions);
 
 **4. Обновите проверку SIWE nonce**
 
-В реализации v4 примеры RainbowKit сравнивали nonce SIWE с `getCsrfToken` внутри `authorize`.
+В реализации v4 примеры CinaWalletKit сравнивали nonce SIWE с `getCsrfToken` внутри `authorize`.
 
 В NextAuth v5 провайдер `Credentials` получает проверенный CSRF-токен как `credentials.csrfToken` после того, как NextAuth валидирует CSRF-cookie запроса.
 
@@ -118,7 +118,7 @@ export default NextAuth(authOptions);
 + }
 ```
 
-Внутренние cookies NextAuth v5 используют префикс Auth.js `authjs`, включая `authjs.csrf-token` или `__Host-authjs.csrf-token` в зависимости от настроек secure-cookie. Вам не следует самим разбирать эти cookies в SIWE-потоке RainbowKit.
+Внутренние cookies NextAuth v5 используют префикс Auth.js `authjs`, включая `authjs.csrf-token` или `__Host-authjs.csrf-token` в зависимости от настроек secure-cookie. Вам не следует самим разбирать эти cookies в SIWE-потоке CinaWalletKit.
 
 **5. Возвращайте аутентифицированный адрес на сессии**
 
@@ -137,6 +137,6 @@ callbacks: {
 },
 ```
 
-Полную настройку NextAuth v5 вы можете увидеть в [примере `with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth).
+Полную настройку NextAuth v5 вы можете увидеть в [примере `with-next-siwe-next-auth`](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-next-auth).
 
-Если вы также обновляетесь с более старой интеграции RainbowKit SIWE, ознакомьтесь с журналом изменений `0.5.0` для миграции `viem/siwe` и журналом изменений `0.3.0` для более раннего изменения формы запроса `getCsrfToken`.
+Если вы также обновляетесь с более старой интеграции CinaWalletKit SIWE, ознакомьтесь с журналом изменений `0.5.0` для миграции `viem/siwe` и журналом изменений `0.3.0` для более раннего изменения формы запроса `getCsrfToken`.

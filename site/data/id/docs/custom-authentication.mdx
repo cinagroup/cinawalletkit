@@ -7,16 +7,16 @@ description: Hubungkan ke backend otentikasi Anda sendiri
 
 ## Hubungkan ke backend otentikasi Anda sendiri
 
-Sementara RainbowKit menyediakan [dukungan kelas satu untuk Sign-In dengan Ethereum dan NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) Anda juga dapat mengintegrasikan dengan backend dan format pesan kustom.
+Sementara CinaWalletKit menyediakan [dukungan kelas satu untuk Sign-In dengan Ethereum dan NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) Anda juga dapat mengintegrasikan dengan backend dan format pesan kustom.
 
 ### Membuat adaptor kustom
 
-Pertama buat adaptor otentikasi. Ini memungkinkan RainbowKit untuk membuat/mempersiapkan pesan dan berkomunikasi dengan backend Anda.
+Pertama buat adaptor otentikasi. Ini memungkinkan CinaWalletKit untuk membuat/mempersiapkan pesan dan berkomunikasi dengan backend Anda.
 
-Sebagai contoh, kami dapat membuat adaptor otentikasi yang memungkinkan kami menggunakan [Sign-In dengan Ethereum](https://login.xyz) terhadap beberapa titik akhir API kustom, seperti [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+Sebagai contoh, kami dapat membuat adaptor otentikasi yang memungkinkan kami menggunakan [Sign-In dengan Ethereum](https://login.xyz) terhadap beberapa titik akhir API kustom, seperti [iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
-import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createAuthenticationAdapter } from '@cinagroup/CinaWalletKit';
 import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
@@ -75,14 +75,14 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Menyediakan status otentikasi
 
-Dengan asumsi aplikasi Anda sudah mengelola siklus hidup otentikasi dengan cara tertentu, Anda dapat mengoperkan status otentikasi saat ini bersamaan dengan adaptor kustom Anda ke `RainbowKitAuthenticationProvider`, mengemas `RainbowKitProvider` yang ada.
+Dengan asumsi aplikasi Anda sudah mengelola siklus hidup otentikasi dengan cara tertentu, Anda dapat mengoperkan status otentikasi saat ini bersamaan dengan adaptor kustom Anda ke `CinaWalletKitAuthenticationProvider`, mengemas `CinaWalletKitProvider` yang ada.
 
 ```tsx
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
@@ -105,14 +105,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider {...etc}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authenticationAdapter}
           status={AUTHENTICATION_STATUS}
         >
-          <RainbowKitProvider {...etc}>
+          <CinaWalletKitProvider {...etc}>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

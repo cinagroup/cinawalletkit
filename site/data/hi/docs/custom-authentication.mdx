@@ -7,16 +7,16 @@ description: अपने स्वयं के प्रमाणीकरण 
 
 ## अपने स्वयं के प्रमाणीकरण बैक-एंड से कनेक्ट करें
 
-हालांकि RainbowKit [Ethereum के साथ साइन-इन और NextAuth के लिए प्रथम श्रेणी की सहायता प्रदान करता है,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) आप कस्टम बैक-एंड्स और संदेश प्रारूपों के साथ भी एकीकृत कर सकते हैं।
+हालांकि CinaWalletKit [Ethereum के साथ साइन-इन और NextAuth के लिए प्रथम श्रेणी की सहायता प्रदान करता है,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) आप कस्टम बैक-एंड्स और संदेश प्रारूपों के साथ भी एकीकृत कर सकते हैं।
 
 ### कस्टम एडाप्टर बनाना
 
-पहले एक प्रमाणीकरण एडाप्टर बनाएं। यह RainbowKit को संदेश बनाने/तैयार करने और आपके बैक-एंड के साथ संवाद करने की अनुमति देता है।
+पहले एक प्रमाणीकरण एडाप्टर बनाएं। यह CinaWalletKit को संदेश बनाने/तैयार करने और आपके बैक-एंड के साथ संवाद करने की अनुमति देता है।
 
-उदाहरण के लिए, हम एक प्रमाणीकरण एडाप्टर बना सकते हैं जो हमें कुछ कस्टम API एंडपॉइंट्स, जैसे [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session) के खिलाफ [Ethereum के साथ साइन-इन](https://login.xyz) का उपयोग करने की अनुमति देता है।
+उदाहरण के लिए, हम एक प्रमाणीकरण एडाप्टर बना सकते हैं जो हमें कुछ कस्टम API एंडपॉइंट्स, जैसे [iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session) के खिलाफ [Ethereum के साथ साइन-इन](https://login.xyz) का उपयोग करने की अनुमति देता है।
 
 ```tsx
-import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createAuthenticationAdapter } from '@cinagroup/CinaWalletKit';
 import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
@@ -75,14 +75,14 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### प्रमाणीकरण स्थिति प्रदान कर रहे हैं
 
-मान लेते हैं कि आपका एप्लिकेशन पहले से ही किसी तरह से प्रमाणीकरण जीवनचक्र का प्रबंधन कर रहा है, आप अपने कस्टम एडाप्टर के साथ वर्तमान प्रमाणीकरण स्थिति `RainbowKitAuthenticationProvider` को पास कर सकते हैं, अपने मौजूदा `RainbowKitProvider` को रैप करते हुए।
+मान लेते हैं कि आपका एप्लिकेशन पहले से ही किसी तरह से प्रमाणीकरण जीवनचक्र का प्रबंधन कर रहा है, आप अपने कस्टम एडाप्टर के साथ वर्तमान प्रमाणीकरण स्थिति `CinaWalletKitAuthenticationProvider` को पास कर सकते हैं, अपने मौजूदा `CinaWalletKitProvider` को रैप करते हुए।
 
 ```tsx
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
@@ -105,14 +105,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider {...etc}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authenticationAdapter}
           status={AUTHENTICATION_STATUS}
         >
-          <RainbowKitProvider {...etc}>
+          <CinaWalletKitProvider {...etc}>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

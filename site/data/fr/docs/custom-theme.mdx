@@ -12,7 +12,7 @@ description: Créer un thème personnalisé
 Bien que les thèmes intégrés offrent un certain niveau de personnalisation, le type `Thème` est fourni pour vous aider à définir vos propres thèmes personnalisés avec un accès à un niveau inférieur aux variables de thème sous-jacentes.
 
 ```tsx
-import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, Theme } from '@cinagroup/CinaWalletKit';
 
 const myCustomTheme: Theme = {
   blurs: {
@@ -71,9 +71,9 @@ const myCustomTheme: Theme = {
 };
 
 const App = () => (
-  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+  <CinaWalletKitProvider theme={myCustomTheme} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>;
+  </CinaWalletKitProvider>;
 )
 ```
 
@@ -92,10 +92,10 @@ Importez-le, ainsi que le thème que vous souhaitez étendre (ex. : `darkTheme`)
 ```tsx
 import merge from 'lodash.merge';
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   darkTheme,
   Theme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 ```
 
 Ensuite, fusionnez le thème intégré avec les jetons de thème que vous souhaitez remplacer. Dans cet exemple, je remplace le jeton `accentColor` pour qu'il corresponde à la couleur d'accent de ma marque.
@@ -108,40 +108,40 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Enfin, vous pouvez maintenant passer votre thème personnalisé à la propriété `theme` de `RainbowKitProvider`.
+Enfin, vous pouvez maintenant passer votre thème personnalisé à la propriété `theme` de `CinaWalletKitProvider`.
 
 ```tsx
 const App = () => {
   return (
-    <RainbowKitProvider theme={myTheme} {...etc}>
+    <CinaWalletKitProvider theme={myTheme} {...etc}>
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
 ### Créer des sélecteurs de thème personnalisés
 
-Si votre application est rendue côté serveur/statutiologique et permet aux utilisateurs de basculer manuellement entre les thèmes, le système de thématique de RainbowKit peut être connecté à des sélecteurs CSS personnalisés avec les fonctions suivantes qui peuvent être utilisées avec n'importe quel système CSS-in-JS :
+Si votre application est rendue côté serveur/statutiologique et permet aux utilisateurs de basculer manuellement entre les thèmes, le système de thématique de CinaWalletKit peut être connecté à des sélecteurs CSS personnalisés avec les fonctions suivantes qui peuvent être utilisées avec n'importe quel système CSS-in-JS :
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
 Ces fonctions renvoient des CSS qui définissent toutes les variables de thème requises. Puisque les chaînes et les objets sont pris en charge, cela peut être intégré dans n'importe quel système CSS-in-JS.
 
-À titre d'exemple basique, vous pouvez rendre votre propre élément `style` avec des sélecteurs personnalisés pour chaque thème. Étant donné que nous prenons le contrôle du rendu du CSS du thème, nous passons `null` à la propriété `theme` pour que `RainbowKitProvider` ne rende pas de styles pour nous. Notez également l'utilisation de l'option d'extends sur la fonction cssStringFromTheme qui omet toutes les variables de thème qui sont les mêmes que le thème de base.
+À titre d'exemple basique, vous pouvez rendre votre propre élément `style` avec des sélecteurs personnalisés pour chaque thème. Étant donné que nous prenons le contrôle du rendu du CSS du thème, nous passons `null` à la propriété `theme` pour que `CinaWalletKitProvider` ne rende pas de styles pour nous. Notez également l'utilisation de l'option d'extends sur la fonction cssStringFromTheme qui omet toutes les variables de thème qui sont les mêmes que le thème de base.
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   cssStringFromTheme,
   lightTheme,
   darkTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider theme={null} {...etc}>
+    <CinaWalletKitProvider theme={null} {...etc}>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -159,7 +159,7 @@ const App = () => {
       />
 
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

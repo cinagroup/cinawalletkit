@@ -7,7 +7,7 @@ description: 使用和自定義主題
 
 ## 使用和自定義主題
 
-您可以調整 RainbowKit 的 UI 以符合您的品牌。您可以從幾個預定義的重點顏色和邊框半徑配置中選擇。
+您可以調整 CinaWalletKit 的 UI 以符合您的品牌。您可以從幾個預定義的重點顏色和邊框半徑配置中選擇。
 
 系統中內建了三個主題函數：
 
@@ -15,25 +15,25 @@ description: 使用和自定義主題
 - `darkTheme`
 - `midnightTheme`
 
-主題函數返回一個主題對象。您可以將該對象傳遞給 `RainbowKitProvider` 的 `theme` 屬性。
+主題函數返回一個主題對象。您可以將該對象傳遞給 `CinaWalletKitProvider` 的 `theme` 屬性。
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider theme={darkTheme()} {...etc}>
+  <CinaWalletKitProvider theme={darkTheme()} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
 如果需要，您可以傳入 `accentColor`、`accentColorForeground`、`borderRadius`、`fontStack` 和 `overlayBlur` 來自定義它們。
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider
+  <CinaWalletKitProvider
     theme={darkTheme({
       __accentColor__: '#7b3fe4',
       __accentColorForeground__: 'white',
@@ -44,7 +44,7 @@ export const App = () => (
     {...etc}
   >
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
@@ -101,11 +101,11 @@ export const App = () => (
 例如，自定義暗色主題使其帶有紫色重點色和 `medium` 大小的邊框半徑：
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
@@ -114,7 +114,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -122,18 +122,18 @@ const App = () => {
 每個主題還提供幾個重點顏色預設值（`blue`、`green`、`orange`、`pink`、`purple`、`red`），這些可以加入到選項對象中。例如，要使用 `pink` 重點顏色預設值：
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         ...darkTheme.accentColors.pink,
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -147,12 +147,12 @@ const App = () => {
 使用 `darkTheme` 主题。
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider theme={darkTheme()} {...etc}>
+  <CinaWalletKitProvider theme={darkTheme()} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
@@ -160,14 +160,14 @@ export const App = () => (
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   midnightTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider theme={midnightTheme()} {...etc}>
+  <CinaWalletKitProvider theme={midnightTheme()} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
@@ -178,11 +178,11 @@ export const App = () => (
 將重點色設置為自定義的紫色值。
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
@@ -190,7 +190,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -198,18 +198,18 @@ const App = () => {
 將重點色設置為內建的 `green` 預設值。
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         ...darkTheme.accentColors.green,
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -221,18 +221,18 @@ const App = () => {
 將邊框半徑設定為 `medium`。
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         borderRadius: 'medium',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -240,18 +240,18 @@ const App = () => {
 將邊框半徑設定為 `none`。
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         borderRadius: 'none',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -265,18 +265,18 @@ const App = () => {
 將字體堆疊設置為 `system`。
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         fontStack: 'system',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -288,18 +288,18 @@ const App = () => {
 將模糊效果設置為 `small`。
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         overlayBlur: 'small',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -314,11 +314,11 @@ const App = () => {
 - 將字體堆疊設置為 `system`。
 
 ```tsx
-import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, lightTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={lightTheme({
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
@@ -328,7 +328,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -340,13 +340,13 @@ const App = () => {
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   midnightTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={midnightTheme({
         ...midnightTheme.accentColors.pink,
         borderRadius: 'small',
@@ -355,7 +355,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -366,13 +366,13 @@ const App = () => {
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   lightTheme,
   darkTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => (
-  <RainbowKitProvider
+  <CinaWalletKitProvider
     theme={{
       lightMode: lightTheme(),
       darkMode: darkTheme(),
@@ -380,6 +380,6 @@ const App = () => (
     {...etc}
   >
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

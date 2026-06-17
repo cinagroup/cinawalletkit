@@ -7,7 +7,7 @@ description: Створіть користувацький гаманець
 
 ## Створіть користувацький гаманець
 
-> Примітка: Це API нестабільний і швидше за все зміниться найближчим часом. Ми будемо додавати більше вбудованих гаманців з часом. [Повідомте нам](https://github.com/rainbow-me/rainbowkit/issues), якщо вас цікавлять якісь конкретні гаманці.
+> Примітка: Це API нестабільний і швидше за все зміниться найближчим часом. Ми будемо додавати більше вбудованих гаманців з часом. [Повідомте нам](https://github.com/rainbow-me/CinaWalletKit/issues), якщо вас цікавлять якісь конкретні гаманці.
 
 Тип функції `Wallet` надається, щоб допомогти вам визначити власні користувацькі гаманці. Наступні властивості можуть бути налаштовані на значення, яке повертається функцією `Wallet`:
 
@@ -88,8 +88,8 @@ description: Створіть користувацький гаманець
     {
       name: 'createConnector',
       required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
+      type: '() => CinaWalletKitConnector',
+      typeSimple: 'CinaWalletKitConnector',
       description:
         'Функція для надання екземпляра з\'єднувача та конфігурації для різних методів підключення, описаних нижче',
     },
@@ -209,7 +209,7 @@ description: Створіть користувацький гаманець
 Наприклад, щоб створити користувацький гаманець з використанням WalletConnect:
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

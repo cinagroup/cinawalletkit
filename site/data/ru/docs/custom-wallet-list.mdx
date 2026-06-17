@@ -7,16 +7,16 @@ description: Настройка списка кошельков
 
 ## Настройка списка кошельков
 
-Вы можете импортировать индивидуальные кошельки из `'@rainbow-me/rainbowkit/wallets'` вместе с функцией `connectorsForWallets`, чтобы создать свой собственный список кошельков с их необходимыми соединителями. Таким образом, у вас будет полный контроль над тем, какие кошельки отображать и в каком порядке.
+Вы можете импортировать индивидуальные кошельки из `'@cinagroup/CinaWalletKit/wallets'` вместе с функцией `connectorsForWallets`, чтобы создать свой собственный список кошельков с их необходимыми соединителями. Таким образом, у вас будет полный контроль над тем, какие кошельки отображать и в каком порядке.
 
 Например, вы можете выбрать отображение только Rainbow вместе с универсальными резервными кошельками.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import {
   rainbowWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/CinaWalletKit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -26,7 +26,7 @@ const connectors = connectorsForWallets(
     },
   ],
   {
-    appName: 'My RainbowKit App',
+    appName: 'My CinaWalletKit App',
     projectId: 'YOUR_PROJECT_ID',
   }
 );
@@ -35,7 +35,7 @@ const connectors = connectorsForWallets(
 Вы можете затем передать свои соединители в Wagmi `createConfig`.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import { createConfig } from 'wagmi';
 
 const connectors = connectorsForWallets(/* ... */);
@@ -50,9 +50,9 @@ const queryClient = new QueryClient();
 const App = () => (
   <WagmiProvider config={config}>
     <QueryClientProvider client={queryClient}>
-      <RainbowKitProvider {...etc}>
+      <CinaWalletKitProvider {...etc}>
         {/* Your App */}
-      </RainbowKitProvider>
+      </CinaWalletKitProvider>
     </QueryClientProvider>
   </WagmiProvider>
 );
@@ -73,7 +73,7 @@ const App = () => (
 **Рекомендуется всегда включать этот кошелек в список, чтобы обеспечить поддержку всех кошельков на базе WalletConnect.**
 
 ```tsx
-import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
+import { walletConnectWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 ##### Встроенный кошелек
@@ -83,7 +83,7 @@ import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 **Рекомендуется всегда включать этот кошелек в список, чтобы обеспечить поддержку всех встроенных кошельков.**
 
 ```tsx
-import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
+import { injectedWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 ##### Безопасный кошелек
@@ -91,7 +91,7 @@ import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 Для dApps, которые поддерживают Safe Apps, предоставляя пользователям возможность легко подключаться к их Safe vault или мульти-сиг, включите опцию `safeWallet` для автоматического подключения. Опция Safe будет отображаться только в браузерной среде Safe Wallet.
 
 ```tsx
-import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
+import { safeWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 ### Конкретные кошельки
@@ -101,19 +101,19 @@ import { safeWallet } from '@rainbow-me/rainbowkit/wallets';
 #### 1inch Wallet
 
 ```tsx
-import { oneInchWallet } from '@rainbow-me/rainbowkit/wallets';
+import { oneInchWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### ЭнкориДж Диджитал
 
 ```tsx
-import { anchorageDigitalWallet } from '@rainbow-me/rainbowkit/wallets';
+import { anchorageDigitalWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Backpack
 
 ```tsx
-import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
+import { backpackWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### База (ранее Coinbase Wallet)
@@ -125,7 +125,7 @@ import { backpackWallet } from '@rainbow-me/rainbowkit/wallets';
 > `baseAccount` и `coinbaseWallet` остаются доступными как обратно-совместимые псевдонимы.
 
 ```tsx
-import { base } from '@rainbow-me/rainbowkit/wallets';
+import { base } from '@cinagroup/CinaWalletKit/wallets';
 import { base as baseChain } from 'wagmi/chains';
 
 // Configure attribution (choose one approach)
@@ -154,121 +154,121 @@ base.paymasterUrls = {
 #### BeraSig
 
 ```tsx
-import { berasigWallet } from '@rainbow-me/rainbowkit/wallets';
+import { berasigWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Лучший кошелек
 
 ```tsx
-import { bestWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bestWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Bifrost Wallet
 
 ```tsx
-import { bifrostWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bifrostWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Binance Web3 Wallet
 
 ```tsx
-import { binanceWallet } from '@rainbow-me/rainbowkit/wallets';
+import { binanceWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Bitget
 
 ```tsx
-import { bitgetWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bitgetWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Bitski
 
 ```tsx
-import { bitskiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bitskiWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Bitverse
 
 ```tsx
-import { bitverseWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bitverseWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Wallet Bloom
 
 ```tsx
-import { bloomWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bloomWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Brave кошелек
 
 ```tsx
-import { braveWallet } from '@rainbow-me/rainbowkit/wallets';
+import { braveWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Bybit кошелек
 
 ```tsx
-import { bybitWallet } from '@rainbow-me/rainbowkit/wallets';
+import { bybitWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Coin98 кошелек
 
 ```tsx
-import { coin98Wallet } from '@rainbow-me/rainbowkit/wallets';
+import { coin98Wallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Compass кошелек
 
 ```tsx
-import { compassWallet } from '@rainbow-me/rainbowkit/compassWallet';
+import { compassWallet } from '@cinagroup/CinaWalletKit/compassWallet';
 ```
 
 #### Основа
 
 ```tsx
-import { coreWallet } from '@rainbow-me/rainbowkit/wallets';
+import { coreWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Кошелек CTRL
 
 ```tsx
-import { ctrlWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ctrlWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Заря кошелек
 
 ```tsx
-import { dawnWallet } from '@rainbow-me/rainbowkit/wallets';
+import { dawnWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Энкрипт кошелек
 
 ```tsx
-import { enkryptWallet } from '@rainbow-me/rainbowkit/wallets';
+import { enkryptWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### FoxWallet
 
 ```tsx
-import { foxWallet } from '@rainbow-me/rainbowkit/wallets';
+import { foxWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Frame кошелек
 
 ```tsx
-import { frameWallet } from '@rainbow-me/rainbowkit/wallets';
+import { frameWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Граница кошелек
 
 ```tsx
-import { frontierWallet } from '@rainbow-me/rainbowkit/wallets';
+import { frontierWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Кошелек ворот
 
 ```tsx
-import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
+import { gateWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Кошелек Gemini
@@ -278,7 +278,7 @@ import { gateWallet } from '@rainbow-me/rainbowkit/wallets';
 Параметр `appName` необходим для идентификации вашего dApp, а `appIcon` является необязательным для брендинга опыта подключения.
 
 ```tsx
-import { geminiWallet } from '@rainbow-me/rainbowkit/wallets';
+import { geminiWallet } from '@cinagroup/CinaWalletKit/wallets';
 
 const gemini = geminiWallet({
   appName: 'My App',
@@ -289,211 +289,211 @@ const gemini = geminiWallet({
 #### imToken
 
 ```tsx
-import { imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { imTokenWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### ioPay кошелек
 
 ```tsx
-import { iopayWallet } from '@rainbow-me/rainbowkit/wallets';
+import { iopayWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Кая кошелек
 
 ```tsx
-import { kaiaWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kaiaWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Kaikas
 
 ```tsx
-import { kaikasWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kaikasWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Kraken кошелек
 
 ```tsx
-import { krakenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { krakenWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Kresus кошелек
 
 ```tsx
-import { kresusWallet } from '@rainbow-me/rainbowkit/wallets';
+import { kresusWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Ledger Live
 
 ```tsx
-import { ledgerWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ledgerWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Magic Eden кошелек
 
 ```tsx
-import { magicEdenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { magicEdenWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### MetaMask
 
 ```tsx
-import { metaMaskWallet } from '@rainbow-me/rainbowkit/wallets';
+import { metaMaskWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### MEW Wallet
 
 ```tsx
-import { mewWallet } from '@rainbow-me/rainbowkit/wallets';
+import { mewWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Кошелек MeCo
 
 ```tsx
-import { mecoWallet } from '@rainbow-me/rainbowkit/wallets';
+import { mecoWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Nova кошелек
 
 ```tsx
-import { novaWallet } from '@rainbow-me/rainbowkit/wallets';
+import { novaWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### OKX кошелек
 
 ```tsx
-import { okxWallet } from '@rainbow-me/rainbowkit/wallets';
+import { okxWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Omni
 
 ```tsx
-import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+import { omniWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### OneKey
 
 ```tsx
-import { oneKeyWallet } from '@rainbow-me/rainbowkit/wallets';
+import { oneKeyWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### ParaSwap
 
 ```tsx
-import { paraSwapWallet } from '@rainbow-me/rainbowkit/wallets';
+import { paraSwapWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Phantom
 
 ```tsx
-import { phantomWallet } from '@rainbow-me/rainbowkit/wallets';
+import { phantomWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Порту
 
 ```tsx
-import { portoWallet } from '@rainbow-me/rainbowkit/wallets';
+import { portoWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Rabby кошелек
 
 ```tsx
-import { rabbyWallet } from '@rainbow-me/rainbowkit/wallets';
+import { rabbyWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Rainbow
 
 ```tsx
-import { rainbowWallet } from '@rainbow-me/rainbowkit/wallets';
+import { rainbowWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Ramper кошелек
 
 ```tsx
-import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
+import { ramperWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Готово
 
 ```tsx
-import { readyWallet } from '@rainbow-me/rainbowkit/wallets';
+import { readyWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Ronin Wallet
 
 ```tsx
-import { roninWallet } from '@rainbow-me/rainbowkit/wallets';
+import { roninWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Safeheron
 
 ```tsx
-import { safeheronWallet } from '@rainbow-me/rainbowkit/wallets';
+import { safeheronWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Taho
 
 ```tsx
-import { tahoWallet } from '@rainbow-me/rainbowkit/wallets';
+import { tahoWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Talisman
 
 ```tsx
-import { talismanWallet } from '@rainbow-me/rainbowkit/wallets';
+import { talismanWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Tokenary
 
 ```tsx
-import { tokenaryWallet } from '@rainbow-me/rainbowkit/wallets';
+import { tokenaryWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### TokenPocket
 
 ```tsx
-import { tokenPocketWallet } from '@rainbow-me/rainbowkit/wallets';
+import { tokenPocketWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Trust Wallet
 
 ```tsx
-import { trustWallet } from '@rainbow-me/rainbowkit/wallets';
+import { trustWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Uniswap Wallet
 
 ```tsx
-import { uniswapWallet } from '@rainbow-me/rainbowkit/wallets';
+import { uniswapWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Valora
 
 ```tsx
-import { valoraWallet } from '@rainbow-me/rainbowkit/wallets';
+import { valoraWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Вигвам
 
 ```tsx
-import { wigwamWallet } from '@rainbow-me/rainbowkit/wallets';
+import { wigwamWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### xPortal
 
 ```tsx
-import { xPortalWallet } from '@rainbow-me/rainbowkit/wallets';
+import { xPortalWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### Zerion
 
 ```tsx
-import { zerionWallet } from '@rainbow-me/rainbowkit/wallets';
+import { zerionWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 #### ZilPay
 
 ```tsx
-import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
+import { zilPayWallet } from '@cinagroup/CinaWalletKit/wallets';
 ```
 
 ### Примеры
@@ -505,11 +505,11 @@ import { zilPayWallet } from '@rainbow-me/rainbowkit/wallets';
 Покажите MetaMask вместе с универсальными резервными кошельками.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import {
   metaMaskWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/CinaWalletKit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -518,20 +518,20 @@ const connectors = connectorsForWallets(
       wallets: [metaMaskWallet, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+  { appName: 'CinaWalletKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```
 
 Показать Rainbow, MetaMask и Base вместе с общими резервными кошельками.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import {
   rainbowWallet,
   metaMaskWallet,
   base,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/CinaWalletKit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -545,7 +545,7 @@ const connectors = connectorsForWallets(
       ],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+  { appName: 'CinaWalletKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```
 
@@ -558,13 +558,13 @@ const connectors = connectorsForWallets(
 Рекомендовать Rainbow и MetaMask, но также предлагать Base вместе с общими резервными кошельками.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 import {
   rainbowWallet,
   metaMaskWallet,
   base,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/CinaWalletKit/wallets';
 
 const connectors = connectorsForWallets(
   [
@@ -577,6 +577,6 @@ const connectors = connectorsForWallets(
       wallets: [base, walletConnectWallet],
     },
   ],
-  { appName: 'RainbowKit App', projectId: 'YOUR_PROJECT_ID' },
+  { appName: 'CinaWalletKit App', projectId: 'YOUR_PROJECT_ID' },
 );
 ```

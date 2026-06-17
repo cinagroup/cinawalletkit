@@ -7,22 +7,22 @@ description: Настройка цепочек
 
 ## Настройка цепочек
 
-RainbowKit разработан для интеграции с [объектом `chain` из wagmi](https://wagmi.sh/react/chains). Ознакомьтесь со списком поддерживаемых цепочек [здесь](https://wagmi.sh/react/chains#supported-chains).
+CinaWalletKit разработан для интеграции с [объектом `chain` из wagmi](https://wagmi.sh/react/chains). Ознакомьтесь со списком поддерживаемых цепочек [здесь](https://wagmi.sh/react/chains#supported-chains).
 
 ### Настройка начальной цепочки
 
-По умолчанию RainbowKit будет подключаться к первой цепочке, предоставленной Wagmi. Это поведение можно изменить с помощью свойства `initialChain`.
+По умолчанию CinaWalletKit будет подключаться к первой цепочке, предоставленной Wagmi. Это поведение можно изменить с помощью свойства `initialChain`.
 
 Начальную цепочку можно настроить, используя идентификатор цепочки.
 
 ```tsx
-<RainbowKitProvider initialChain={1}>
+<CinaWalletKitProvider initialChain={1}>
 ```
 
 Для удобства вы также можете передать объект цепи.
 
 ```tsx
-<RainbowKitProvider initialChain={mainnet}>
+<CinaWalletKitProvider initialChain={mainnet}>
 ```
 
 ### Метаданные настраиваемой цепочки
@@ -54,7 +54,7 @@ const config = getDefaultConfig({
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
-import { Chain } from '@rainbow-me/rainbowkit';
+import { Chain } from '@cinagroup/CinaWalletKit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   {

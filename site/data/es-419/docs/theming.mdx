@@ -7,7 +7,7 @@ description: Uso y personalización de los temas
 
 ## Uso y personalización de los temas
 
-Puedes ajustar la interfaz de usuario de RainbowKit para que coincida con tu marca. Puedes elegir entre algunos colores de acento predefinidos y configuraciones de radio de borde.
+Puedes ajustar la interfaz de usuario de CinaWalletKit para que coincida con tu marca. Puedes elegir entre algunos colores de acento predefinidos y configuraciones de radio de borde.
 
 Hay 3 funciones de tema integradas:
 
@@ -15,25 +15,25 @@ Hay 3 funciones de tema integradas:
 - `darkTheme`
 - `midnightTheme`
 
-Una función de tema devuelve un objeto de tema. Puedes pasar el objeto al `theme` prop de `RainbowKitProvider`.
+Una función de tema devuelve un objeto de tema. Puedes pasar el objeto al `theme` prop de `CinaWalletKitProvider`.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider theme={darkTheme()} {...etc}>
+  <CinaWalletKitProvider theme={darkTheme()} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
 Si lo deseas, puedes pasar `accentColor`, `accentColorForeground`, `borderRadius`, `fontStack` y `overlayBlur` para personalizarlos.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider
+  <CinaWalletKitProvider
     theme={darkTheme({
       __accentColor__: '#7b3fe4',
       __accentColorForeground__: 'white',
@@ -44,7 +44,7 @@ export const App = () => (
     {...etc}
   >
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
@@ -101,11 +101,11 @@ Las funciones de tema integradas también aceptan un objeto de opciones, lo que 
 Por ejemplo, para personalizar el tema oscuro con un color de acento púrpura y una escala de radio de borde `medium`:
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
@@ -114,7 +114,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -122,18 +122,18 @@ const App = () => {
 Cada tema también ofrece varios ajustes preestablecidos de color de acento (`blue`, `green`, `orange`, `pink`, `purple`, `red`) que se pueden integrar en el objeto de opciones. Por ejemplo, para usar el ajuste preestablecido de color de acento `pink`:
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         ...darkTheme.accentColors.pink,
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -147,12 +147,12 @@ Aquí hay algunas formas diferentes de usar la propiedad `theme`.
 Usa el tema `darkTheme`.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider theme={darkTheme()} {...etc}>
+  <CinaWalletKitProvider theme={darkTheme()} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
@@ -160,14 +160,14 @@ Usa el tema `midnightTheme`.
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   midnightTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider theme={midnightTheme()} {...etc}>
+  <CinaWalletKitProvider theme={midnightTheme()} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```
 
@@ -178,11 +178,11 @@ Aquí hay algunas formas diferentes de usar la configuración de `accentColor`.
 Establece el color de acento en un valor púrpura personalizado.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
@@ -190,7 +190,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -198,18 +198,18 @@ const App = () => {
 Establece el color de acento en el ajuste preestablecido `green` integrado.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         ...darkTheme.accentColors.green,
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -221,18 +221,18 @@ Aquí hay algunas formas diferentes de usar la configuración de `borderRadius`.
 Establece el radio de borde en `medium`.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         borderRadius: 'medium',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -240,18 +240,18 @@ const App = () => {
 Establece el radio de borde en `none`.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         borderRadius: 'none',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -265,18 +265,18 @@ Por defecto, la `fontStack` está configurada en `rounded`. Pero aquí te mostra
 Establece la pila de fuentes en `system`.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         fontStack: 'system',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -288,18 +288,18 @@ Por defecto, el `overlayBlur` está configurado en `none`. Pero aquí te mostram
 Establece el desenfoque de superposición en `small`.
 
 ```tsx
-import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, darkTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={darkTheme({
         overlayBlur: 'small',
       })}
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -314,11 +314,11 @@ Aquí hay algunas formas diferentes de utilizar diferentes temas, con las propie
 - Establece la pila de fuentes en `system`
 
 ```tsx
-import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, lightTheme } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={lightTheme({
         accentColor: '#7b3fe4',
         accentColorForeground: 'white',
@@ -328,7 +328,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -340,13 +340,13 @@ const App = () => {
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   midnightTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       theme={midnightTheme({
         ...midnightTheme.accentColors.pink,
         borderRadius: 'small',
@@ -355,7 +355,7 @@ const App = () => {
       {...etc}
     >
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -366,13 +366,13 @@ Si tu aplicación utiliza la consulta de medios estándar `prefers-color-scheme:
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   lightTheme,
   darkTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => (
-  <RainbowKitProvider
+  <CinaWalletKitProvider
     theme={{
       lightMode: lightTheme(),
       darkMode: darkTheme(),
@@ -380,6 +380,6 @@ const App = () => (
     {...etc}
   >
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

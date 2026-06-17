@@ -7,22 +7,22 @@ description: Personnalisation des chaînes
 
 ## Personnalisation des chaînes
 
-RainbowKit est conçu pour s'intégrer à l'[objet `chain` de wagmi](https://wagmi.sh/react/chains). Consultez la liste des chaînes supportées [ici](https://wagmi.sh/react/chains#supported-chains).
+CinaWalletKit est conçu pour s'intégrer à l'[objet `chain` de wagmi](https://wagmi.sh/react/chains). Consultez la liste des chaînes supportées [ici](https://wagmi.sh/react/chains#supported-chains).
 
 ### Personnalisation de la chaîne initiale
 
-Par défaut, RainbowKit se connectera à la première chaîne fournie à Wagmi. Ce comportement peut être personnalisé via la propriété `initialChain`.
+Par défaut, CinaWalletKit se connectera à la première chaîne fournie à Wagmi. Ce comportement peut être personnalisé via la propriété `initialChain`.
 
 La chaîne initiale peut être configurée en utilisant un ID de chaîne.
 
 ```tsx
-<RainbowKitProvider initialChain={1}>
+<CinaWalletKitProvider initialChain={1}>
 ```
 
 Par commodité, vous pouvez également passer un objet de chaîne.
 
 ```tsx
-<RainbowKitProvider initialChain={mainnet}>
+<CinaWalletKitProvider initialChain={mainnet}>
 ```
 
 ### Métadonnées de chaînes personnalisées
@@ -54,7 +54,7 @@ Exemple avec `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
-import { Chain } from '@rainbow-me/rainbowkit';
+import { Chain } from '@cinagroup/CinaWalletKit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   {

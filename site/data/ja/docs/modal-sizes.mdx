@@ -7,7 +7,7 @@ description: ワイド vs. コンパクト
 
 ## ワイド vs. コンパクトサイズ
 
-デフォルトでは、RainbowKitの`modalSize`は`wide`に設定されています（次のように表示されます）:
+デフォルトでは、CinaWalletKitの`modalSize`は`wide`に設定されています（次のように表示されます）:
 
 <Img src="/modal-default.png" height="569" width="1029" />
 
@@ -15,14 +15,14 @@ description: ワイド vs. コンパクト
 
 <Img src="/modal-compact.png" height="569" width="1029" />
 
-モーダルサイズを`compact`に設定するには、`RainbowKitProvider`のプロパティに`modalSize="compact"`を追加するだけです:
+モーダルサイズを`compact`に設定するには、`CinaWalletKitProvider`のプロパティに`modalSize="compact"`を追加するだけです:
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider modalSize="compact" {...etc}>
+  <CinaWalletKitProvider modalSize="compact" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

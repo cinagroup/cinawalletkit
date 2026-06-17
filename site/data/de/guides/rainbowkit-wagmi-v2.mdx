@@ -1,19 +1,19 @@
 ---
-title: Aktualisieren Ihrer dApp für RainbowKit v2
-description: RainbowKit und Wagmi wurden auf v2 hochgestuft
-image: guide-rainbowkit-v2.png
+title: Aktualisieren Ihrer dApp für CinaWalletKit v2
+description: CinaWalletKit und Wagmi wurden auf v2 hochgestuft
+image: guide-CinaWalletKit-v2.png
 ---
 
-# Migration zu RainbowKit und Wagmi v2
+# Migration zu CinaWalletKit und Wagmi v2
 
 Die [wagmi](https://wagmi.sh) und [viem](https://viem.sh) Peer-Abhängigkeiten haben `2.x.x` mit brechenden Änderungen erreicht.
 
 Folgen Sie den untenstehenden Schritten, um die Migration durchzuführen.
 
-**1. Aktualisieren Sie RainbowKit, `wagmi` und `viem` auf die neuesten Versionen**
+**1. Aktualisieren Sie CinaWalletKit, `wagmi` und `viem` auf die neuesten Versionen**
 
 ```bash
-npm i @rainbow-me/rainbowkit wagmi viem@2.x
+npm i @cinagroup/CinaWalletKit wagmi viem@2.x
 ```
 
 **2. Installieren Sie die `@tanstack/react-query` Peer-Abhängigkeit**
@@ -26,10 +26,10 @@ Installieren Sie es mit dem folgenden Befehl:
 npm i @tanstack/react-query
 ```
 
-**3. Aktualisieren Sie Ihre RainbowKit- und Wagmi-Konfigurationen**
+**3. Aktualisieren Sie Ihre CinaWalletKit- und Wagmi-Konfigurationen**
 
 ```diff
-  import '@rainbow-me/rainbowkit/styles.css'
+  import '@cinagroup/CinaWalletKit/styles.css'
 
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 - import { createPublicClient, http } from 'viem'
@@ -37,13 +37,13 @@ npm i @tanstack/react-query
 + import { WagmiProvider, http } from 'wagmi'
 - import { configureChains, createConfig } from 'wagmi'
   import { mainnet } from 'wagmi/chains'
-  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
-+ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+  import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit'
+- import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit'
++ import { getDefaultConfig } from '@cinagroup/CinaWalletKit'
 
   /* getDefaultWallets is now optional */
 - const { wallets } = getDefaultWallets({
--   appName: 'RainbowKit demo',
+-   appName: 'CinaWalletKit demo',
 -   projectId: 'YOUR_PROJECT_ID',
 -   chains,
 - })
@@ -63,7 +63,7 @@ npm i @tanstack/react-query
 
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
-+   appName: 'RainbowKit demo',
++   appName: 'CinaWalletKit demo',
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -78,10 +78,10 @@ npm i @tanstack/react-query
 -     <WagmiConfig config={config}>
 +     <WagmiProvider config={config}>
 +       <QueryClientProvider client={queryClient}>
--         <RainbowKitProvider chains={chains}>
-+         <RainbowKitProvider>
+-         <CinaWalletKitProvider chains={chains}>
++         <CinaWalletKitProvider>
             {/* Your App */}
-          </RainbowKitProvider>
+          </CinaWalletKitProvider>
 +       </QueryClientProvider>
 -     </WagmiConfig>
 +     </WagmiProvider>
@@ -96,7 +96,7 @@ Wenn Sie `wagmi`-Hooks und `viem`-Aktionen in Ihrer dApp verwenden, müssen Sie 
 - [Wagmi v2 Migrationshandbuch](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 - [Viem v2 Breaking Changes](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
-#### Änderungen in RainbowKit
+#### Änderungen in CinaWalletKit
 
 **1. Verbessertes Verhalten für EIP-6963 Wallets**
 
@@ -114,7 +114,7 @@ Sie können eine benutzerdefinierte Wallet-Liste erstellen, indem Sie importiert
 
 ```
 const config = getDefaultConfig({
-  appName: 'RainbowKit demo',
+  appName: 'CinaWalletKit demo',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */
@@ -122,21 +122,21 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. RainbowKitProvider**
+**3. CinaWalletKitProvider**
 
-Sie müssen keine `chains` mehr an `<RainbowKitProvider>` übergeben.
+Sie müssen keine `chains` mehr an `<CinaWalletKitProvider>` übergeben.
 
 ```diff
-- <RainbowKitProvider chains={chains}>
-+ <RainbowKitProvider>
+- <CinaWalletKitProvider chains={chains}>
++ <CinaWalletKitProvider>
 ```
 
 **4. Benutzerdefinierte Chains**
 
-Der `Chain`-Typ hat sich gemäß Wagmi v2 geändert und unterstützt weiterhin RainbowKits `iconUrl` und `iconBackground` Metadaten.
+Der `Chain`-Typ hat sich gemäß Wagmi v2 geändert und unterstützt weiterhin CinaWalletKits `iconUrl` und `iconBackground` Metadaten.
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 
   const avalanche = {
     id: 43_114,
@@ -177,7 +177,7 @@ const config = getDefaultConfig({
 Beispiel mit `createConfig`:
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 + const chains: readonly [Chain, ...Chain[]] = [
 +   {
 +     ...mainnet,
@@ -195,8 +195,8 @@ Beispiel mit `createConfig`:
 
 **5. Benutzerdefinierte Wallets**
 
-RainbowKit-Wallet-Connectoren haben erhebliche Änderungen erfahren, um Wagmi v2 zu unterstützen. Beziehen Sie sich auf die [aktualisierten Dokumente](https://www.rainbowkit.com/docs/custom-wallets) und einen [Beispiel-Connector](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts), um alle benutzerdefinierten Wallet-Connectoren in Ihrer dApp zu aktualisieren.
+CinaWalletKit-Wallet-Connectoren haben erhebliche Änderungen erfahren, um Wagmi v2 zu unterstützen. Beziehen Sie sich auf die [aktualisierten Dokumente](https://www.CinaWalletKit.com/docs/custom-wallets) und einen [Beispiel-Connector](https://github.com/rainbow-me/CinaWalletKit/tree/main/packages/CinaWalletKit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts), um alle benutzerdefinierten Wallet-Connectoren in Ihrer dApp zu aktualisieren.
 
 Wallet-Connectors unterstützen jetzt auch den EIP-6963-Standard mit der `rdns`-Eigenschaft. Stellen Sie sicher, dass diese ausgefüllt ist, um doppelte Referenzen auf EIP-6963 unterstützende Wallets in Ihrer Wallet-Liste zu verhindern.
 
-> Bitte melden Sie alle Probleme oder Feedback für RainbowKit v2 auf GitHub [hier](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> Bitte melden Sie alle Probleme oder Feedback für CinaWalletKit v2 auf GitHub [hier](https://github.com/rainbow-me/CinaWalletKit/issues/new/choose).

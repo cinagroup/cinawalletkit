@@ -7,7 +7,7 @@ description: Large vs Compact
 
 ## Taille Large vs Compact
 
-Par défaut, la `modalSize` de RainbowKit est réglée sur `large` (et ressemble à ceci) :
+Par défaut, la `modalSize` de CinaWalletKit est réglée sur `large` (et ressemble à ceci) :
 
 <Img src="/modal-default.png" height="569" width="1029" />
 
@@ -15,14 +15,14 @@ Nous proposons également une taille de fenêtre modale `compact`, qui ressemble
 
 <Img src="/modal-compact.png" height="569" width="1029" />
 
-Pour définir la taille de votre fenêtre modale sur `compact`, ajoutez simplement `modalSize="compact"` comme prop dans votre `RainbowKitProvider` :
+Pour définir la taille de votre fenêtre modale sur `compact`, ajoutez simplement `modalSize="compact"` comme prop dans votre `CinaWalletKitProvider` :
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider modalSize="compact" {...etc}>
+  <CinaWalletKitProvider modalSize="compact" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

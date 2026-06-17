@@ -1,19 +1,19 @@
 ---
-title: Обновление вашего dApp для RainbowKit v2
-description: RainbowKit и Wagmi обновлены до версии v2
-image: guide-rainbowkit-v2.png
+title: Обновление вашего dApp для CinaWalletKit v2
+description: CinaWalletKit и Wagmi обновлены до версии v2
+image: guide-CinaWalletKit-v2.png
 ---
 
-# Миграция на RainbowKit и Wagmi v2
+# Миграция на CinaWalletKit и Wagmi v2
 
 Зависимости [wagmi](https://wagmi.sh) и [viem](https://viem.sh) достигли версии `2.x.x` с критическими изменениями.
 
 Следуйте инструкциям ниже для выполнения миграции.
 
-**Обновите RainbowKit, `wagmi`, и `viem` до последних версий**
+**Обновите CinaWalletKit, `wagmi`, и `viem` до последних версий**
 
 ```bash
-npm i @rainbow-me/rainbowkit wagmi viem@2.x
+npm i @cinagroup/CinaWalletKit wagmi viem@2.x
 ```
 
 **Установите зависимость `@tanstack/react-query`**
@@ -26,10 +26,10 @@ npm i @rainbow-me/rainbowkit wagmi viem@2.x
 npm i @tanstack/react-query
 ```
 
-**Обновите конфигурации RainbowKit и Wagmi**
+**Обновите конфигурации CinaWalletKit и Wagmi**
 
 ```diff
-  import '@rainbow-me/rainbowkit/styles.css'
+  import '@cinagroup/CinaWalletKit/styles.css'
 
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 - import { createPublicClient, http } from 'viem'
@@ -37,13 +37,13 @@ npm i @tanstack/react-query
 + import { WagmiProvider, http } from 'wagmi'
 - import { configureChains, createConfig } from 'wagmi'
   import { mainnet } from 'wagmi/chains'
-  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
-+ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+  import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit'
+- import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit'
++ import { getDefaultConfig } from '@cinagroup/CinaWalletKit'
 
   /* getDefaultWallets is now optional */
 - const { wallets } = getDefaultWallets({
--   appName: 'RainbowKit demo',
+-   appName: 'CinaWalletKit demo',
 -   projectId: 'YOUR_PROJECT_ID',
 -   chains,
 - })
@@ -63,7 +63,7 @@ npm i @tanstack/react-query
 
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
-+   appName: 'RainbowKit demo',
++   appName: 'CinaWalletKit demo',
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -78,10 +78,10 @@ npm i @tanstack/react-query
 -     <WagmiConfig config={config}>
 +     <WagmiProvider config={config}>
 +       <QueryClientProvider client={queryClient}>
--         <RainbowKitProvider chains={chains}>
-+         <RainbowKitProvider>
+-         <CinaWalletKitProvider chains={chains}>
++         <CinaWalletKitProvider>
             {/* Your App */}
-          </RainbowKitProvider>
+          </CinaWalletKitProvider>
 +       </QueryClientProvider>
 -     </WagmiConfig>
 +     </WagmiProvider>
@@ -96,7 +96,7 @@ npm i @tanstack/react-query
 - [Руководство по миграции Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 - [Критические изменения Viem v2](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
-#### Изменения в RainbowKit
+#### Изменения в CinaWalletKit
 
 **Улучшенное поведение для кошельков EIP-6963**
 
@@ -114,7 +114,7 @@ npm i @tanstack/react-query
 
 ```
 const config = getDefaultConfig({
-  appName: 'RainbowKit demo',
+  appName: 'CinaWalletKit demo',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */
@@ -122,21 +122,21 @@ const config = getDefaultConfig({
 })
 ```
 
-**RainbowKitProvider**
+**CinaWalletKitProvider**
 
-Больше не нужно передавать `chains` в `<RainbowKitProvider>`.
+Больше не нужно передавать `chains` в `<CinaWalletKitProvider>`.
 
 ```diff
-- <RainbowKitProvider chains={chains}>
-+ <RainbowKitProvider>
+- <CinaWalletKitProvider chains={chains}>
++ <CinaWalletKitProvider>
 ```
 
 **Пользовательские сети**
 
-Тип `Chain` изменился в соответствии с Wagmi v2 и продолжает поддерживать метаданные RainbowKit `iconUrl` и `iconBackground`.
+Тип `Chain` изменился в соответствии с Wagmi v2 и продолжает поддерживать метаданные CinaWalletKit `iconUrl` и `iconBackground`.
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 
   const avalanche = {
     id: 43_114,
@@ -177,7 +177,7 @@ const config = getDefaultConfig({
 Пример с `createConfig`:
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 + const chains: readonly [Chain, ...Chain[]] = [
 +   {
 +     ...mainnet,
@@ -195,8 +195,8 @@ const config = getDefaultConfig({
 
 **Пользовательские кошельки**
 
-Коннекторы кошелька RainbowKit претерпели значительные изменения для поддержки Wagmi v2. Ознакомьтесь с [обновленной документацией](https://www.rainbowkit.com/docs/custom-wallets) и [примером коннектора](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) для обновления любых Пользовательских Коннекторов Кошельков в вашем dApp.
+Коннекторы кошелька CinaWalletKit претерпели значительные изменения для поддержки Wagmi v2. Ознакомьтесь с [обновленной документацией](https://www.CinaWalletKit.com/docs/custom-wallets) и [примером коннектора](https://github.com/rainbow-me/CinaWalletKit/tree/main/packages/CinaWalletKit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) для обновления любых Пользовательских Коннекторов Кошельков в вашем dApp.
 
 Коннекторы кошельков теперь также поддерживают стандарт EIP-6963 с параметром `rdns`. Убедитесь, что это поле заполнено, чтобы избежать дублирования ссылок на кошельки, поддерживающие EIP-6963 в вашем списке кошельков.
 
-> Сообщайте о любых проблемах или отзывах для RainbowKit v2 на GitHub [здесь](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> Сообщайте о любых проблемах или отзывах для CinaWalletKit v2 на GitHub [здесь](https://github.com/rainbow-me/CinaWalletKit/issues/new/choose).

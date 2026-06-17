@@ -20,7 +20,7 @@ import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   const { openConnectModal } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
+CinaWalletKit is designed to be non-interruptive and responsive, so dApps should always render an interface for users whether or not they have connected their wallet. A user could connect or disconnect their wallet directly from MetaMask, so the dApp must be responsive to the underlying connection status directly.
 
 dApps that rely on mechanisms like Sign-in with Ethereum for user verification should instead rely on the [Authentication](/docs/authentication) feature.

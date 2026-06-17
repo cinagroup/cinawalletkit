@@ -17,8 +17,8 @@ export function TitleAndMetaTags({
   description,
   image,
   pathname,
-  title = 'RainbowKit',
-  url = 'https://rainbowkit.com',
+  title = 'CinaWalletKit',
+  url = 'https://CinaWalletKit.com',
 }: TitleAndMetaTagsProps) {
   const router = useRouter();
   const t = useTranslations('landing');

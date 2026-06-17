@@ -7,7 +7,7 @@ description: Erstellen Sie ein benutzerdefiniertes Wallet
 
 ## Erstellen Sie ein benutzerdefiniertes Wallet
 
-> Hinweis: Diese API ist instabil und wird sich wahrscheinlich in naher Zukunft ändern. Wir werden im Laufe der Zeit mehr integrierte Wallets hinzufügen. [Lassen Sie uns wissen](https://github.com/rainbow-me/rainbowkit/issues), wenn Sie besondere Wallets von Interesse haben.
+> Hinweis: Diese API ist instabil und wird sich wahrscheinlich in naher Zukunft ändern. Wir werden im Laufe der Zeit mehr integrierte Wallets hinzufügen. [Lassen Sie uns wissen](https://github.com/rainbow-me/CinaWalletKit/issues), wenn Sie besondere Wallets von Interesse haben.
 
 Der `Wallet` Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen benutzerdefinierten Wallets zu definieren. Die folgenden Eigenschaften können im Rückgabewert Ihrer `Wallet`-Funktion konfiguriert werden:
 
@@ -88,8 +88,8 @@ Der `Wallet` Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
     {
       name: 'createConnector',
       required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
+      type: '() => CinaWalletKitConnector',
+      typeSimple: 'CinaWalletKitConnector',
       description:
         'Funktion zur Bereitstellung der Connector-Instanz und Konfiguration für verschiedene Verbindungsarten, unten beschrieben',
     },
@@ -209,7 +209,7 @@ Der `Wallet` Funktionstyp wird bereitgestellt, um Ihnen zu helfen, Ihre eigenen 
 Zum Beispiel, um ein benutzerdefiniertes Wallet mit WalletConnect zu erstellen:
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

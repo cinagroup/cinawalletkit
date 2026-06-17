@@ -1,19 +1,19 @@
 ---
-title: Naik taraf dApp anda untuk RainbowKit v2.
-description: RainbowKit dan Wagmi telah dinaik taraf ke v2.
+title: Naik taraf dApp anda untuk CinaWalletKit v2.
+description: CinaWalletKit dan Wagmi telah dinaik taraf ke v2.
 image: panduan-butang-pelangi.png
 ---
 
-# Beralih kepada RainbowKit dan Wagmi v2.
+# Beralih kepada CinaWalletKit dan Wagmi v2.
 
 Kebergantungan peer [wagmi](https://wagmi.sh) dan [viem](https://viem.sh) telah mencapai `2.x.x` dengan perubahan besar.
 
 Ikut langkah di bawah untuk beralih.
 
-**1. Naik taraf RainbowKit, `wagmi`, dan `viem` ke versi terkini**
+**1. Naik taraf CinaWalletKit, `wagmi`, dan `viem` ke versi terkini**
 
 ```bash
-npm i @rainbow-me/rainbowkit wagmi viem@2.x
+npm i @cinagroup/CinaWalletKit wagmi viem@2.x
 ```
 
 **2. Pasang kebergantungan rakan sebaya `@tanstack/react-query`**
@@ -26,10 +26,10 @@ Pasang ia dengan arahan berikut:
 npm i @tanstack/react-query
 ```
 
-**3. Naik taraf konfigurasi RainbowKit dan Wagmi anda**
+**3. Naik taraf konfigurasi CinaWalletKit dan Wagmi anda**
 
 ```diff
-  import '@rainbow-me/rainbowkit/styles.css'
+  import '@cinagroup/CinaWalletKit/styles.css'
 
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 - import { createPublicClient, http } from 'viem'
@@ -37,13 +37,13 @@ npm i @tanstack/react-query
 + import { WagmiProvider, http } from 'wagmi'
 - import { configureChains, createConfig } from 'wagmi'
   import { mainnet } from 'wagmi/chains'
-  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
-+ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+  import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit'
+- import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit'
++ import { getDefaultConfig } from '@cinagroup/CinaWalletKit'
 
   /* getDefaultWallets is now optional */
 - const { wallets } = getDefaultWallets({
--   appName: 'RainbowKit demo',
+-   appName: 'CinaWalletKit demo',
 -   projectId: 'YOUR_PROJECT_ID',
 -   chains,
 - })
@@ -63,7 +63,7 @@ npm i @tanstack/react-query
 
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
-+   appName: 'RainbowKit demo',
++   appName: 'CinaWalletKit demo',
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -78,10 +78,10 @@ npm i @tanstack/react-query
 -     <WagmiConfig config={config}>
 +     <WagmiProvider config={config}>
 +       <QueryClientProvider client={queryClient}>
--         <RainbowKitProvider chains={chains}>
-+         <RainbowKitProvider>
+-         <CinaWalletKitProvider chains={chains}>
++         <CinaWalletKitProvider>
             {/* Your App */}
-          </RainbowKitProvider>
+          </CinaWalletKitProvider>
 +       </QueryClientProvider>
 -     </WagmiConfig>
 +     </WagmiProvider>
@@ -96,7 +96,7 @@ Jika anda menggunakan `wagmi` hooks dan `viem` actions dalam dApp anda, anda per
 - [Panduan Berlaih Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 - [Perubahan Mendasar Viem v2](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
-#### Perubahan RainbowKit
+#### Perubahan CinaWalletKit
 
 **1. Kelakuan yang dipertingkatkan untuk dompet EIP-6963**
 
@@ -114,7 +114,7 @@ Anda boleh membuat Senarai Dompet Khusus dengan memajukan penyambung Dompet impo
 
 ```
 const config = getDefaultConfig({
-  appName: 'RainbowKit demo',
+  appName: 'CinaWalletKit demo',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */
@@ -122,21 +122,21 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. RainbowKitProvider**
+**3. CinaWalletKitProvider**
 
-Anda tidak lagi perlu menyampaikan `chains` kepada `<RainbowKitProvider>`.
+Anda tidak lagi perlu menyampaikan `chains` kepada `<CinaWalletKitProvider>`.
 
 ```diff
-- <RainbowKitProvider chains={chains}>
-+ <RainbowKitProvider>
+- <CinaWalletKitProvider chains={chains}>
++ <CinaWalletKitProvider>
 ```
 
 **4. Rangkaian Khusus**
 
-Jenis `Chain` telah berubah selaras dengan Wagmi v2, dan terus menyokong metadata `iconUrl` dan `iconBackground` RainbowKit.
+Jenis `Chain` telah berubah selaras dengan Wagmi v2, dan terus menyokong metadata `iconUrl` dan `iconBackground` CinaWalletKit.
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 
   const avalanche = {
     id: 43_114,
@@ -177,7 +177,7 @@ const config = getDefaultConfig({
 Contoh dengan `createConfig`:
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 + const chains: readonly [Chain, ...Chain[]] = [
 +   {
 +     ...mainnet,
@@ -195,8 +195,8 @@ Contoh dengan `createConfig`:
 
 **5. Dompet Khusus**
 
-Penyambung dompet RainbowKit telah mengalami perubahan besar untuk menyokong Wagmi v2. Rujuk [dokumen terkini](https://www.rainbowkit.com/docs/custom-wallets) dan [contoh penyambung](https://github.com/rainbow-me/rainbowkit/tree/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) untuk menaik taraf mana-mana Penyambung Dompet Khusus dalam dApp anda.
+Penyambung dompet CinaWalletKit telah mengalami perubahan besar untuk menyokong Wagmi v2. Rujuk [dokumen terkini](https://www.CinaWalletKit.com/docs/custom-wallets) dan [contoh penyambung](https://github.com/rainbow-me/CinaWalletKit/tree/main/packages/CinaWalletKit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) untuk menaik taraf mana-mana Penyambung Dompet Khusus dalam dApp anda.
 
 Penyambung dompet kini juga menyokong standard EIP-6963 dengan prop `rdns`. Pastikan bahawa ini diisi untuk mengelakkan rujukan berganda kepada dompet yang menyokong EIP-6963 dalam senarai dompet anda.
 
-> Sila laporkan sebarang isu atau maklum balas untuk RainbowKit v2 di GitHub [di sini](https://github.com/rainbow-me/rainbowkit/issues/new/choose).
+> Sila laporkan sebarang isu atau maklum balas untuk CinaWalletKit v2 di GitHub [di sini](https://github.com/rainbow-me/CinaWalletKit/issues/new/choose).

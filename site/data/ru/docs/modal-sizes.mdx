@@ -7,7 +7,7 @@ description: Широкий против компактного
 
 ## Размеры: широкий против компактного
 
-По умолчанию, размер модального окна в RainbowKit установлен на `wide` (и выглядит следующим образом):
+По умолчанию, размер модального окна в CinaWalletKit установлен на `wide` (и выглядит следующим образом):
 
 <Img src="/modal-default.png" height="569" width="1029" />
 
@@ -15,14 +15,14 @@ description: Широкий против компактного
 
 <Img src="/modal-compact.png" height="569" width="1029" />
 
-Чтобы установить ваш модальный размер на `compact`, просто добавьте `modalSize="compact"` как пропс в ваш `RainbowKitProvider`:
+Чтобы установить ваш модальный размер на `compact`, просто добавьте `modalSize="compact"` как пропс в ваш `CinaWalletKitProvider`:
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider modalSize="compact" {...etc}>
+  <CinaWalletKitProvider modalSize="compact" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

@@ -7,7 +7,7 @@ description: 創建自定義錢包
 
 ## 創建自定義錢包
 
-> 注意：此 API 不穩定，並且可能在不久的將來發生更改。我們將隨時間添加更多內建錢包。若您對任何特定錢包有興趣，請[告知我們](https://github.com/rainbow-me/rainbowkit/issues)。
+> 注意：此 API 不穩定，並且可能在不久的將來發生更改。我們將隨時間添加更多內建錢包。若您對任何特定錢包有興趣，請[告知我們](https://github.com/rainbow-me/CinaWalletKit/issues)。
 
 `Wallet` 函數類型是為幫助您定義自己的自定義錢包提供的。以下屬性可以在返回值中配置您的 `Wallet` 函數：
 
@@ -88,8 +88,8 @@ description: 創建自定義錢包
     {
       name: 'createConnector',
       required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
+      type: '() => CinaWalletKitConnector',
+      typeSimple: 'CinaWalletKitConnector',
       description:
         '提供連接方法的連接器實例和配置的功能，如下所述',
     },
@@ -209,7 +209,7 @@ description: 創建自定義錢包
 例如，使用 WalletConnect 創建自定義錢包：
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

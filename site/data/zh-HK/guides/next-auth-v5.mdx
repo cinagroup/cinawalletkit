@@ -1,23 +1,23 @@
 ---
-title: 升級 RainbowKit SIWE 至 NextAuth v5
-description: 將 RainbowKit 的 NextAuth SIWE 適配器從 NextAuth v4 遷移到 v5
+title: 升級 CinaWalletKit SIWE 至 NextAuth v5
+description: 將 CinaWalletKit 的 NextAuth SIWE 適配器從 NextAuth v4 遷移到 v5
 ---
 
-# 將 RainbowKit SIWE 遷移到 NextAuth v5
+# 將 CinaWalletKit SIWE 遷移到 NextAuth v5
 
-RainbowKit 的 `@rainbow-me/rainbowkit-siwe-next-auth` 套件現在支持 NextAuth v5。由於 NextAuth 更改了其伺服器配置 API、會話助手 API 和內部 CSRF 流程，因此這對使用 NextAuth SIWE 適配器的應用程式來說是一次重大升級。
+CinaWalletKit 的 `@cinagroup/CinaWalletKit-siwe-next-auth` 套件現在支持 NextAuth v5。由於 NextAuth 更改了其伺服器配置 API、會話助手 API 和內部 CSRF 流程，因此這對使用 NextAuth SIWE 適配器的應用程式來說是一次重大升級。
 
 NextAuth.js 現在是一個更廣泛的[Auth.js](https://authjs.dev)項目的一部分。包名仍然是 `next-auth`，官方的 NextAuth.js 文檔仍在[下一步-auth.js.org](https://next-auth.js.org) 可用。本指南使用您 oggi 安裝的 `next-auth` 包名稱，並在影響 Cookie 名稱和 v5 API 的地方提及 Auth.js 過渡。
 
-如果您的應用程式目前使用 `@rainbow-me/rainbowkit-siwe-next-auth` 並且 NextAuth 為 v4，請按照以下步驟操作。
+如果您的應用程式目前使用 `@cinagroup/CinaWalletKit-siwe-next-auth` 並且 NextAuth 為 v4，請按照以下步驟操作。
 
 **1. 升級依賴項**
 
-安裝由 RainbowKit 支援的 NextAuth v5 套件版本。
+安裝由 CinaWalletKit 支援的 NextAuth v5 套件版本。
 
 ```diff
-- npm install next-auth@^4 @rainbow-me/rainbowkit-siwe-next-auth
-+ npm install next-auth@5.0.0-beta.31 @rainbow-me/rainbowkit-siwe-next-auth
+- npm install next-auth@^4 @cinagroup/CinaWalletKit-siwe-next-auth
++ npm install next-auth@5.0.0-beta.31 @cinagroup/CinaWalletKit-siwe-next-auth
 ```
 
 **2. 更新你的 NextAuth 伺服器配置**
@@ -95,7 +95,7 @@ export default NextAuth(authOptions);
 
 **4. 更新 SIWE nonce 驗證**
 
-在 v4 實現中，RainbowKit 示例將 SIWE nonce 與 `authorize` 中的 `getCsrfToken` 進行比較。
+在 v4 實現中，CinaWalletKit 示例將 SIWE nonce 與 `authorize` 中的 `getCsrfToken` 進行比較。
 
 在 NextAuth v5 中，Credentials 提供者在 NextAuth 驗證請求的 CSRF cookie 後，接收已驗證的 CSRF token 作為 `credentials.csrfToken`。
 
@@ -118,7 +118,7 @@ export default NextAuth(authOptions);
 + }
 ```
 
-NextAuth v5 內部 cookie 使用 Auth.js `authjs` 前綴，包括 `authjs.csrf-token` 或 `__Host-authjs.csrf-token`，根據安全 cookie 設置而定。對於 RainbowKit 的 SIWE 流程，你不需要自行解析這些 cookie。
+NextAuth v5 內部 cookie 使用 Auth.js `authjs` 前綴，包括 `authjs.csrf-token` 或 `__Host-authjs.csrf-token`，根據安全 cookie 設置而定。對於 CinaWalletKit 的 SIWE 流程，你不需要自行解析這些 cookie。
 
 **5. 在會話中返回已驗證地址**
 
@@ -137,6 +137,6 @@ callbacks: {
 },
 ```
 
-你可以在 [`with-next-siwe-next-auth` 範例](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth)中查看完整的 NextAuth v5 設置。
+你可以在 [`with-next-siwe-next-auth` 範例](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-next-auth)中查看完整的 NextAuth v5 設置。
 
-如果你也在升級舊版的 RainbowKit SIWE 集成，請查看 `0.5.0` 變更日誌了解 `viem/siwe` 遷移，以及 `0.3.0` 變更日誌了解早期 `getCsrfToken` 請求形狀的更改。
+如果你也在升級舊版的 CinaWalletKit SIWE 集成，請查看 `0.5.0` 變更日誌了解 `viem/siwe` 遷移，以及 `0.3.0` 變更日誌了解早期 `getCsrfToken` 請求形狀的更改。

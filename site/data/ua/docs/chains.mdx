@@ -7,22 +7,22 @@ description: Налаштування ланцюгів
 
 ## Налаштування ланцюгів
 
-RainbowKit призначений для інтеграції з [об'єктом `chain` від wagmi](https://wagmi.sh/react/chains). Перегляньте список підтримуваних ланцюгів [тут](https://wagmi.sh/react/chains#supported-chains).
+CinaWalletKit призначений для інтеграції з [об'єктом `chain` від wagmi](https://wagmi.sh/react/chains). Перегляньте список підтримуваних ланцюгів [тут](https://wagmi.sh/react/chains#supported-chains).
 
 ### Налаштування початкового ланцюга
 
-За замовчуванням, RainbowKit під'єднається до першого ланцюга, переданого до Wagmi. Цю поведінку можна налаштувати за допомогою властивості `initialChain`.
+За замовчуванням, CinaWalletKit під'єднається до першого ланцюга, переданого до Wagmi. Цю поведінку можна налаштувати за допомогою властивості `initialChain`.
 
 Початковий ланцюг можна налаштувати, використовуючи ID ланцюга.
 
 ```tsx
-<RainbowKitProvider initialChain={1}>
+<CinaWalletKitProvider initialChain={1}>
 ```
 
 Для зручності ви також можете передати об'єкт ланцюга.
 
 ```tsx
-<RainbowKitProvider initialChain={mainnet}>
+<CinaWalletKitProvider initialChain={mainnet}>
 ```
 
 ### Користувацькі метадані ланцюга
@@ -54,7 +54,7 @@ const config = getDefaultConfig({
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
-import { Chain } from '@rainbow-me/rainbowkit';
+import { Chain } from '@cinagroup/CinaWalletKit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   {

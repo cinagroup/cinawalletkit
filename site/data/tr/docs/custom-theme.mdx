@@ -12,7 +12,7 @@ description: Özel bir tema oluşturma
 Yerleşik temalar bir miktar özelleştirme sağlasa da, `Theme` türü, temel tema değişkenlerine daha düşük seviyelerde erişimle kendi özel temalarınızı tanımlamanıza yardımcı olmak için sunulmaktadır.
 
 ```tsx
-import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, Theme } from '@cinagroup/CinaWalletKit';
 
 const myCustomTheme: Theme = {
   blurs: {
@@ -71,9 +71,9 @@ const myCustomTheme: Theme = {
 };
 
 const App = () => (
-  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+  <CinaWalletKitProvider theme={myCustomTheme} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>;
+  </CinaWalletKitProvider>;
 )
 ```
 
@@ -92,10 +92,10 @@ Bunu, genişletmek istediğiniz temayla (örnek: `darkTheme`) ve TypeScript `The
 ```tsx
 import merge from 'lodash.merge';
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   darkTheme,
   Theme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 ```
 
 Sonra, yerleşik temayı değiştirmek istediğiniz tema belirteçleriyle birleştirin. Bu örnekte, markamın vurgu rengini karşılamak için `accentColor` belirtecini değiştiriyorum.
@@ -108,40 +108,40 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Sonunda, artık özel temanızı `RainbowKitProvider`'ın `theme` özelliğine geçirebilirsiniz.
+Sonunda, artık özel temanızı `CinaWalletKitProvider`'ın `theme` özelliğine geçirebilirsiniz.
 
 ```tsx
 const App = () => {
   return (
-    <RainbowKitProvider theme={myTheme} {...etc}>
+    <CinaWalletKitProvider theme={myTheme} {...etc}>
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
 ### Özel tema seçicileri oluşturma
 
-Uygulamanız sunucu/tan statik olarak oluşturulmuşsa ve kullanıcıların temalar arasında manuel olarak geçiş yapmasına izin veriyorsa, RainbowKit'in tema sistemi herhangi bir CSS-in-JS sistemiyle kullanılabilen aşağıdaki fonksiyonlarla özel CSS seçicilerine bağlanabilir:
+Uygulamanız sunucu/tan statik olarak oluşturulmuşsa ve kullanıcıların temalar arasında manuel olarak geçiş yapmasına izin veriyorsa, CinaWalletKit'in tema sistemi herhangi bir CSS-in-JS sistemiyle kullanılabilen aşağıdaki fonksiyonlarla özel CSS seçicilerine bağlanabilir:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
 Bu fonksiyonlar gerekli tüm tema değişkenlerini ayarlayan CSS döndürür. Hem stringler hem de nesneler desteklendiğinden, bu herhangi bir CSS-in-JS sistemi ile entegre edilebilir.
 
-Temel bir örnek olarak, her tema için özel seçicilerle kendi `style` elemanınızı oluşturabilirsiniz. Tema'nın CSS'sini oluşturmayı kontrol ettiğimizden, RainbowKitProvider bizim için herhangi bir stil oluşturmasın diye `theme` özelliğine `null` geçiyoruz. Ayrıca, temel temayla aynı olan tema değişkenlerini hariç tutan cssStringFromTheme fonksiyonundaki extends seçeneğinin kullanımına dikkat edin.
+Temel bir örnek olarak, her tema için özel seçicilerle kendi `style` elemanınızı oluşturabilirsiniz. Tema'nın CSS'sini oluşturmayı kontrol ettiğimizden, CinaWalletKitProvider bizim için herhangi bir stil oluşturmasın diye `theme` özelliğine `null` geçiyoruz. Ayrıca, temel temayla aynı olan tema değişkenlerini hariç tutan cssStringFromTheme fonksiyonundaki extends seçeneğinin kullanımına dikkat edin.
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   cssStringFromTheme,
   lightTheme,
   darkTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider theme={null} {...etc}>
+    <CinaWalletKitProvider theme={null} {...etc}>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -159,7 +159,7 @@ const App = () => {
       />
 
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

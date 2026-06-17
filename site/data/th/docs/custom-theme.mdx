@@ -12,7 +12,7 @@ description: การสร้างธีมที่กำหนดเอง
 ในขณะที่ธีมที่มีอยู่แบบ built-in ให้ระดับของการกำหนดเองบางอย่าง ประเภท `Theme` นั้นมีไว้เพื่อช่วยให้คุณกำหนดธีมที่กำหนดเองด้วยการเข้าถึงตัวแปรธีมขั้นต่ำสุด.
 
 ```tsx
-import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, Theme } from '@cinagroup/CinaWalletKit';
 
 const myCustomTheme: Theme = {
   blurs: {
@@ -71,9 +71,9 @@ const myCustomTheme: Theme = {
 };
 
 const App = () => (
-  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+  <CinaWalletKitProvider theme={myCustomTheme} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>;
+  </CinaWalletKitProvider>;
 )
 ```
 
@@ -92,10 +92,10 @@ npm install lodash.merge
 ```tsx
 import merge from 'lodash.merge';
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   darkTheme,
   Theme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 ```
 
 จากนั้นรวมธีมที่มีอยู่กับโทเค็นธีมที่คุณต้องการเปลี่ยนแปลง ในตัวอย่างนี้ ฉันกำลังเปลี่ยนแปลงโทเค็น `accentColor` ให้แมทช์กับโทนสีของแบรนด์ฉัน.
@@ -108,40 +108,40 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-สุดท้ายนี้ คุณสามารถส่งผ่านธีมที่กำหนดเองของคุณไปยัง `theme` prop ของ `RainbowKitProvider`.
+สุดท้ายนี้ คุณสามารถส่งผ่านธีมที่กำหนดเองของคุณไปยัง `theme` prop ของ `CinaWalletKitProvider`.
 
 ```tsx
 const App = () => {
   return (
-    <RainbowKitProvider theme={myTheme} {...etc}>
+    <CinaWalletKitProvider theme={myTheme} {...etc}>
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
 ### การสร้าง selector ธีมที่กำหนดเอง
 
-หากแอปของคุณเป็นแบบเซิร์ฟเวอร์/เรนเดอร์ทางสถิต และอนุญาตให้ผู้ใช้สลับธีมเอง ระบบธีมมิ่งของ RainbowKit สามารถเชื่อมต่อกับ CSS selector ที่กำหนดเองได้ด้วยฟังก์ชันต่อไปนี้ ซึ่งสามารถใช้ได้กับระบบ CSS-in-JS ใดๆ:
+หากแอปของคุณเป็นแบบเซิร์ฟเวอร์/เรนเดอร์ทางสถิต และอนุญาตให้ผู้ใช้สลับธีมเอง ระบบธีมมิ่งของ CinaWalletKit สามารถเชื่อมต่อกับ CSS selector ที่กำหนดเองได้ด้วยฟังก์ชันต่อไปนี้ ซึ่งสามารถใช้ได้กับระบบ CSS-in-JS ใดๆ:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
 ฟังก์ชันเหล่านี้จะคืนค่า CSS ที่ตั้งค่าตัวแปรธีมที่จำเป็นทั้งหมด ด้วยการสนับสนุนทั้งแบบ string และ object สิ่งนี้สามารถรวมเข้ากับระบบ CSS-in-JS ใดๆ ได้.
 
-ตัวอย่างเช่นพื้นฐาน คุณสามารถเรนเดอร์ element `style` ของคุณเอง โดยใช้ selecter ที่กำหนดเองสำหรับแต่ละธีม เมื่อเราเป็นผู้ควบคุมการเรนเดอร์ของ CSS ของธีม เราจะส่ง `null` ไปยัง `theme` prop เพื่อให้ RainbowKitProvider ไม่เรนเดอร์สไตล์ใดๆ ให้เรา นอกจากนี้สังเกตการใช้ extends option ในฟังก์ชัน cssStringFromTheme ซึ่งละเว้นตัวแปรธีมใดๆ ที่เหมือนกับธีมพื้นฐาน.
+ตัวอย่างเช่นพื้นฐาน คุณสามารถเรนเดอร์ element `style` ของคุณเอง โดยใช้ selecter ที่กำหนดเองสำหรับแต่ละธีม เมื่อเราเป็นผู้ควบคุมการเรนเดอร์ของ CSS ของธีม เราจะส่ง `null` ไปยัง `theme` prop เพื่อให้ CinaWalletKitProvider ไม่เรนเดอร์สไตล์ใดๆ ให้เรา นอกจากนี้สังเกตการใช้ extends option ในฟังก์ชัน cssStringFromTheme ซึ่งละเว้นตัวแปรธีมใดๆ ที่เหมือนกับธีมพื้นฐาน.
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   cssStringFromTheme,
   lightTheme,
   darkTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider theme={null} {...etc}>
+    <CinaWalletKitProvider theme={null} {...etc}>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -159,7 +159,7 @@ const App = () => {
       />
 
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

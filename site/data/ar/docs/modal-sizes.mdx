@@ -7,7 +7,7 @@ description: واسع مقابل مضغوط
 
 ## مقارنة الحجم الواسع والمضغوط
 
-افتراضيًا، يتم تعيين حجم نافذة RainbowKit إلى `واسع` (ويبدو هكذا):
+افتراضيًا، يتم تعيين حجم نافذة CinaWalletKit إلى `واسع` (ويبدو هكذا):
 
 <Img src="/modal-default.png" height="569" width="1029" />
 
@@ -15,14 +15,14 @@ description: واسع مقابل مضغوط
 
 <Img src="/modal-compact.png" height="569" width="1029" />
 
-لتعيين حجم نافذة الخاص بك إلى `مضغوط`، ما عليك سوى إضافة `modalSize="compact"` كخاصية في `RainbowKitProvider`:
+لتعيين حجم نافذة الخاص بك إلى `مضغوط`، ما عليك سوى إضافة `modalSize="compact"` كخاصية في `CinaWalletKitProvider`:
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider modalSize="compact" {...etc}>
+  <CinaWalletKitProvider modalSize="compact" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

@@ -13,7 +13,7 @@ description: Створення користувацької теми
 Хоча вбудовані теми забезпечують певний рівень налаштування, тип `Тема` надається для того, щоб допомогти вам визначити власні користувацькі теми з нижчим рівнем доступу до основних змінних теми.
 
 ```tsx
-import { RainbowKitProvider, Theme } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider, Theme } from '@cinagroup/CinaWalletKit';
 
 const myCustomTheme: Theme = {
   blurs: {
@@ -72,9 +72,9 @@ const myCustomTheme: Theme = {
 };
 
 const App = () => (
-  <RainbowKitProvider theme={myCustomTheme} {...etc}>
+  <CinaWalletKitProvider theme={myCustomTheme} {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>;
+  </CinaWalletKitProvider>;
 )
 ```
 
@@ -93,10 +93,10 @@ npm install lodash.merge
 ```tsx
 import merge from 'lodash.merge';
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   darkTheme,
   Theme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 ```
 
 Потім обʼєднайте вбудовану тему з токенами теми, які ви хочете змінити. У цьому прикладі, я змінюю токен `accentColor`, щоб відповідати акцентному кольору мого бренду.
@@ -109,40 +109,40 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 ```
 
-Нарешті, ви можете передати свою користувацьку тему в властивість `theme` компоненту `RainbowKitProvider`.
+Нарешті, ви можете передати свою користувацьку тему в властивість `theme` компоненту `CinaWalletKitProvider`.
 
 ```tsx
 const App = () => {
   return (
-    <RainbowKitProvider theme={myTheme} {...etc}>
+    <CinaWalletKitProvider theme={myTheme} {...etc}>
       {/* Your App */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
 ### Створення селекторів для користувацьких тем
 
-Якщо ваш додаток є серверним чи рендериться статично і дозволяє користувачам вручну переключатися між темами, система тем RainbowKit може бути підключена до користувацьких CSS селекторів із наступними функціями, які можуть бути використані з будь-якою системою CSS-in-JS:
+Якщо ваш додаток є серверним чи рендериться статично і дозволяє користувачам вручну переключатися між темами, система тем CinaWalletKit може бути підключена до користувацьких CSS селекторів із наступними функціями, які можуть бути використані з будь-якою системою CSS-in-JS:
 
 - `cssStringFromTheme`
 - `cssObjectFromTheme`
 
 Ці функції повертають CSS, який встановлює всі необхідні змінні теми. Оскільки підтримуються і стрічки, і об'єкти, це може бути інтегровано з будь-якою CSS-in-JS системою.
 
-Як базовий приклад, ви можете рендерити ваш власний елемент `style` з користувацькими селекторами для кожної теми. Оскільки ми беремо під контроль рендеринг CSS теми, ми передаємо `null` у властивість `theme`, щоб `RainbowKitProvider` не рендерив жодні стилі для нас. Також зверніть увагу на використання опції extends у функції cssStringFromTheme, яка виключає будь-які змінні теми, які є такими ж, як і базова тема.
+Як базовий приклад, ви можете рендерити ваш власний елемент `style` з користувацькими селекторами для кожної теми. Оскільки ми беремо під контроль рендеринг CSS теми, ми передаємо `null` у властивість `theme`, щоб `CinaWalletKitProvider` не рендерив жодні стилі для нас. Також зверніть увагу на використання опції extends у функції cssStringFromTheme, яка виключає будь-які змінні теми, які є такими ж, як і базова тема.
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   cssStringFromTheme,
   lightTheme,
   darkTheme,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider theme={null} {...etc}>
+    <CinaWalletKitProvider theme={null} {...etc}>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -160,7 +160,7 @@ const App = () => {
       />
 
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

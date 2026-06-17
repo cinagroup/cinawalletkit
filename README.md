@@ -1,12 +1,12 @@
-<a href="https://rainbowkit.com">
-  <img alt="rainbowkit" src="https://user-images.githubusercontent.com/372831/168174718-685980e0-391e-4621-94a1-29bf83979fa5.png" />
+<a href="https://walletkit.cinagroup.com">
+  <img alt="cinawalletkit" src="./site/public/logo.png" />
 </a>
 
-# RainbowKit &nbsp; [![Version](https://img.shields.io/npm/v/@rainbow-me/rainbowkit?colorA=1f2937&colorB=3b82f6&labelColor=1f2937)](https://www.npmjs.com/package/@rainbow-me/rainbowkit) [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rainbow-me/rainbowkit)
+# CinaWalletKit &nbsp; [![Version](https://img.shields.io/npm/v/@cinagroup/cinawalletkit?colorA=1f2937&colorB=3b82f6&labelColor=1f2937)](https://www.npmjs.com/package/@cinagroup/cinawalletkit)
 
 **The best way to connect a wallet 🌈**
 
-RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add wallet connection to your dapp.
+CinaWalletKit is a [React](https://reactjs.org/) library that makes it easy to add wallet connection to your dapp.
 
 - 🔥 Out-of-the-box wallet management
 - ✅ Easily customizable
@@ -14,30 +14,30 @@ RainbowKit is a [React](https://reactjs.org/) library that makes it easy to add 
 
 ## Quick start
 
-You can scaffold a new RainbowKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
+You can scaffold a new CinaWalletKit + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org) app with one of the following commands, using your package manager of choice:
 
 ```bash
-npm init @rainbow-me/rainbowkit@latest
+npm init @cinagroup/cinawalletkit@latest
 # or
-pnpm create @rainbow-me/rainbowkit@latest
+pnpm create @cinagroup/cinawalletkit@latest
 # or
-yarn create @rainbow-me/rainbowkit
+yarn create @cinagroup/cinawalletkit
 ```
 
 ## Documentation
 
-For full documentation, visit [rainbowkit.com](https://rainbowkit.com).
+For full documentation, visit [walletkit.cinagroup.com](https://walletkit.cinagroup.com).
 
 ### Try it out
 
-You can use the CodeSandbox links below to try out RainbowKit:
+You can use the CodeSandbox links below to try out CinaWalletKit:
 
-- with [Create React App](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-create-react-app)
-- with [Next.js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next)
-- with [Next.js App Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-next-app)
-- with [Remix](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-remix)
-- with [Vite](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite)
-- with [React Router](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-react-router)
+- with [Create React App](https://codesandbox.io/p/sandbox/github/cinagroup/cinawalletkit/tree/main/examples/with-create-react-app)
+- with [Next.js](https://codesandbox.io/p/sandbox/github/cinagroup/cinawalletkit/tree/main/examples/with-next)
+- with [Next.js App Router](https://codesandbox.io/p/sandbox/github/cinagroup/cinawalletkit/tree/main/examples/with-next-app)
+- with [Remix](https://codesandbox.io/p/sandbox/github/cinagroup/cinawalletkit/tree/main/examples/with-remix)
+- with [Vite](https://codesandbox.io/p/sandbox/github/cinagroup/cinawalletkit/tree/main/examples/with-vite)
+- with [React Router](https://codesandbox.io/p/sandbox/github/cinagroup/cinawalletkit/tree/main/examples/with-react-router)
 
 ## Examples
 
@@ -80,6 +80,9 @@ Please follow our [contributing guidelines](/.github/CONTRIBUTING.md).
 
 ## License
 
-Licensed under the MIT License, Copyright © 2022-present [Rainbow](https://rainbow.me).
+Licensed under the MIT License, Copyright © 2026 CinaGroup.
+Copyright © 2022-present [Rainbow](https://rainbow.me).
+
+Based on [RainbowKit](https://github.com/rainbow-me/rainbowkit), originally developed by Rainbow. Licensed under MIT.
 
 See [LICENSE](/LICENSE) for more information.

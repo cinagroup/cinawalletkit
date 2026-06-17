@@ -58,7 +58,7 @@ export default function Home() {
             }}
             weight="bold"
           >
-            RainbowKit
+            CinaWalletKit
           </Text>
           <Text
             as="h2"
@@ -268,7 +268,7 @@ export default function Home() {
             </Button>
             <Button
               as="a"
-              href="https://github.com/rainbow-me/rainbowkit/discussions/new?category=feedback"
+              href="https://github.com/rainbow-me/CinaWalletKit/discussions/new?category=feedback"
               shadow
               size="xl"
               target="_blank"
@@ -290,7 +290,7 @@ export default function Home() {
           >
             <Text size="4" weight="bold">
               <Link
-                href="https://github.com/rainbow-me/rainbowkit"
+                href="https://github.com/rainbow-me/CinaWalletKit"
                 variant="gray"
               >
                 <span data-emoji>👾</span> github
@@ -326,7 +326,7 @@ export default function Home() {
 
 function InstallScript() {
   const [requestCopy, setRequestCopy] = useState(false);
-  const code = 'npm init @rainbow-me/rainbowkit@latest';
+  const code = 'npm init @cinagroup/CinaWalletKit@latest';
   const ref = useCoolMode('/rainbow.svg') as Ref<HTMLButtonElement>;
 
   React.useEffect(() => {

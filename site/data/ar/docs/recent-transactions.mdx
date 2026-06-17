@@ -7,28 +7,28 @@ description: عرض معاملاتك الأخيرة
 
 ## عرض معاملاتك الأخيرة
 
-يمكنك اختيار عرض المعاملات الأخيرة داخل نافذة حساب RainbowKit. لاحظ أن جميع المعاملات تُخزن محليًا ويجب تسجيلها يدويًا مع RainbowKit ليتم عرضها.
+يمكنك اختيار عرض المعاملات الأخيرة داخل نافذة حساب CinaWalletKit. لاحظ أن جميع المعاملات تُخزن محليًا ويجب تسجيلها يدويًا مع CinaWalletKit ليتم عرضها.
 
 ستعرض تنفيذ الافتراضي لـ `ConnectButton` مؤشر تحميل حول صورة المستخدم الرمزية إذا كانت هناك معاملات قيد الانتظار. يمكن للتنفيذات المخصصة لـ `ConnectButton` إعادة إنشاء هذا السلوك عبر خاصية `account.hasPendingTransactions` التي تُمرر لوظيفة العرض لديك.
 
-لاستخدام هذه الميزة، قم أولاً بتمكين خيار `showRecentTransactions` في `RainbowKitProvider`.
+لاستخدام هذه الميزة، قم أولاً بتمكين خيار `showRecentTransactions` في `CinaWalletKitProvider`.
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+    <CinaWalletKitProvider showRecentTransactions={true} {...etc}>
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
-يمكن بعد ذلك تسجيل المعاملات مع RainbowKit باستخدام الخطاف `useAddRecentTransaction`.
+يمكن بعد ذلك تسجيل المعاملات مع CinaWalletKit باستخدام الخطاف `useAddRecentTransaction`.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();
@@ -48,12 +48,12 @@ export default () => {
 };
 ```
 
-بمجرد تسجيل معاملة مع RainbowKit، سيتم تحديث حالتها عند الاكتمال.
+بمجرد تسجيل معاملة مع CinaWalletKit، سيتم تحديث حالتها عند الاكتمال.
 
 بشكل افتراضي، يُعتبر أن المعاملة انتهت بمجرد تعدين كتلة واحدة فوق الكتلة التي تم تعدين المعاملة فيها، ولكن يمكن تكوين ذلك بتحديد قيمة `confirmations` مخصصة.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();

@@ -7,28 +7,28 @@ description: Son işlemlerinizi göster
 
 ## Son işlemlerinizi göster
 
-RainbowKit'in hesap modali içinde son işlemleri görüntüleme opsiyonuna katılabilirsiniz. Tüm işlemlerin yerel depolamada tutulduğunu ve görüntülenmesi için RainbowKit ile manuel olarak kaydedilmesi gerektiğini unutmayın.
+CinaWalletKit'in hesap modali içinde son işlemleri görüntüleme opsiyonuna katılabilirsiniz. Tüm işlemlerin yerel depolamada tutulduğunu ve görüntülenmesi için CinaWalletKit ile manuel olarak kaydedilmesi gerektiğini unutmayın.
 
 Varsayılan `ConnectButton` uygulaması, bekleyen işlemler varsa, kullanıcının avatarının etrafında bir yükleme göstergesi de gösterecektir. Özel `ConnectButton` uygulamaları, render fonksiyonunuza aktarılan `account.hasPendingTransactions` özelliği aracılığıyla bu davranışı yeniden oluşturabilir.
 
-Bu özelliği kullanmak için, önce `RainbowKitProvider` üzerinde `showRecentTransactions` seçeneğini etkinleştirin.
+Bu özelliği kullanmak için, önce `CinaWalletKitProvider` üzerinde `showRecentTransactions` seçeneğini etkinleştirin.
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+    <CinaWalletKitProvider showRecentTransactions={true} {...etc}>
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
-İşlemler daha sonra `useAddRecentTransaction` kancası kullanılarak RainbowKit ile kaydedilebilir.
+İşlemler daha sonra `useAddRecentTransaction` kancası kullanılarak CinaWalletKit ile kaydedilebilir.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();
@@ -48,12 +48,12 @@ export default () => {
 };
 ```
 
-Bir işlem RainbowKit ile kaydedildikten sonra, tamamlandığında durumu güncellenecektir.
+Bir işlem CinaWalletKit ile kaydedildikten sonra, tamamlandığında durumu güncellenecektir.
 
 Varsayılan olarak, işlem, işlemin işlendiği bloğun üzerine bir tek blok madenciliği yapıldığında tamamlanmış kabul edilir, ancak bu, özel bir `confirmations` değeri belirleyerek yapılandırılabilir.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();

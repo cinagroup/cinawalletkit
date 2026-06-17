@@ -20,7 +20,7 @@ import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 export const YourApp = () => {
   const { openConnectModal } = useConnectModal();
@@ -59,6 +59,6 @@ const { accountModalOpen } = useAccountModal();
 const { chainModalOpen } = useChainModal();
 ```
 
-RainbowKit didesain agar tidak mengganggu dan responsif, sehingga dApp harus selalu menampilkan antarmuka untuk pengguna, apakah mereka telah menghubungkan dompet mereka atau belum. Seorang pengguna dapat menghubungkan atau memutuskan dompet mereka secara langsung dari MetaMask, sehingga dApp harus responsif terhadap status koneksi yang mendasarinya secara langsung.
+CinaWalletKit didesain agar tidak mengganggu dan responsif, sehingga dApp harus selalu menampilkan antarmuka untuk pengguna, apakah mereka telah menghubungkan dompet mereka atau belum. Seorang pengguna dapat menghubungkan atau memutuskan dompet mereka secara langsung dari MetaMask, sehingga dApp harus responsif terhadap status koneksi yang mendasarinya secara langsung.
 
 dApps yang mengandalkan mekanisme seperti Masuk dengan Ethereum untuk verifikasi pengguna seharusnya mengandalkan fitur [Authentication](/docs/authentication).

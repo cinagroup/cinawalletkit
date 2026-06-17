@@ -7,16 +7,16 @@ description: Kết nối với hệ thống lưng xác thực của riêng bạn
 
 ## Kết nối với hệ thống lưng xác thực của riêng bạn
 
-Trong khi RainbowKit cung cấp [hỗ trợ hàng đầu cho Đăng nhập với Ethereum và NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) bạn cũng có thể tích hợp với các back-end và định dạng tin nhắn tùy chỉnh.
+Trong khi CinaWalletKit cung cấp [hỗ trợ hàng đầu cho Đăng nhập với Ethereum và NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) bạn cũng có thể tích hợp với các back-end và định dạng tin nhắn tùy chỉnh.
 
 ### Tạo Bộ chuyển đổi tùy chỉnh
 
-Đầu tiên tạo một bộ chuyển đổi xác thực. Điều này cho phép RainbowKit tạo/chuẩn bị tin nhắn và giao tiếp với hệ thống lưng của bạn.
+Đầu tiên tạo một bộ chuyển đổi xác thực. Điều này cho phép CinaWalletKit tạo/chuẩn bị tin nhắn và giao tiếp với hệ thống lưng của bạn.
 
-Ví dụ, chúng ta có thể tạo một bộ chuyển đổi xác thực cho phép chúng ta sử dụng [Đăng nhập với Ethereum](https://login.xyz) trên một số điểm cuối API tùy chỉnh, như [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+Ví dụ, chúng ta có thể tạo một bộ chuyển đổi xác thực cho phép chúng ta sử dụng [Đăng nhập với Ethereum](https://login.xyz) trên một số điểm cuối API tùy chỉnh, như [iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
-import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createAuthenticationAdapter } from '@cinagroup/CinaWalletKit';
 import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
@@ -75,14 +75,14 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Cung cấp trạng thái xác thực
 
-Giả sử ứng dụng của bạn đã quản lý vòng đời xác thực theo cách nào đó, bạn có thể truyền trạng thái xác thực hiện tại cùng với bộ chuyển đổi tùy chỉnh của bạn vào `RainbowKitAuthenticationProvider`, bao bọc `RainbowKitProvider` hiện tại của bạn.
+Giả sử ứng dụng của bạn đã quản lý vòng đời xác thực theo cách nào đó, bạn có thể truyền trạng thái xác thực hiện tại cùng với bộ chuyển đổi tùy chỉnh của bạn vào `CinaWalletKitAuthenticationProvider`, bao bọc `CinaWalletKitProvider` hiện tại của bạn.
 
 ```tsx
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
@@ -105,14 +105,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider {...etc}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authenticationAdapter}
           status={AUTHENTICATION_STATUS}
         >
-          <RainbowKitProvider {...etc}>
+          <CinaWalletKitProvider {...etc}>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

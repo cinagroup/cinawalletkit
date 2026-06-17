@@ -7,16 +7,16 @@ description: Conéctese a su propio back-end de autenticación
 
 ## Conéctese a su propio back-end de autenticación
 
-Aunque RainbowKit proporciona [soporte de primera clase para Sign-In with Ethereum y NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) también puede integrar con back-ends y formatos de mensajes personalizados.
+Aunque CinaWalletKit proporciona [soporte de primera clase para Sign-In with Ethereum y NextAuth,](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) también puede integrar con back-ends y formatos de mensajes personalizados.
 
 ### Creando un adaptador personalizado
 
-Primero, cree un adaptador de autenticación. Esto permite a RainbowKit crear/preparar mensajes y comunicarse con su back-end.
+Primero, cree un adaptador de autenticación. Esto permite a CinaWalletKit crear/preparar mensajes y comunicarse con su back-end.
 
-Como ejemplo, podríamos crear un adaptador de autenticación que nos permita usar [Sign-In with Ethereum](https://login.xyz) contra algunos puntos finales de API personalizados, como [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session).
+Como ejemplo, podríamos crear un adaptador de autenticación que nos permita usar [Sign-In with Ethereum](https://login.xyz) contra algunos puntos finales de API personalizados, como [iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session).
 
 ```tsx
-import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createAuthenticationAdapter } from '@cinagroup/CinaWalletKit';
 import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
@@ -75,14 +75,14 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Proporcionando el estado de autenticación
 
-Suponiendo que su aplicación ya está gestionando el ciclo de vida de la autenticación de alguna manera, puede pasar el estado de autenticación actual junto con su adaptador personalizado a `RainbowKitAuthenticationProvider`, envolviendo su `RainbowKitProvider` existente.
+Suponiendo que su aplicación ya está gestionando el ciclo de vida de la autenticación de alguna manera, puede pasar el estado de autenticación actual junto con su adaptador personalizado a `CinaWalletKitAuthenticationProvider`, envolviendo su `CinaWalletKitProvider` existente.
 
 ```tsx
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
@@ -105,14 +105,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider {...etc}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authenticationAdapter}
           status={AUTHENTICATION_STATUS}
         >
-          <RainbowKitProvider {...etc}>
+          <CinaWalletKitProvider {...etc}>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

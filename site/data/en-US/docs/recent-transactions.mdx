@@ -7,28 +7,28 @@ description: Show your recent transactions
 
 ## Show your recent transactions
 
-You can opt in to displaying recent transactions within RainbowKit's account modal. Note that all transactions are kept in local storage and must be manually registered with RainbowKit in order to be displayed.
+You can opt in to displaying recent transactions within CinaWalletKit's account modal. Note that all transactions are kept in local storage and must be manually registered with CinaWalletKit in order to be displayed.
 
 The default `ConnectButton` implementation will also display a loading indicator around the user's avatar if there are any pending transactions. Custom `ConnectButton` implementations can recreate this behavior via the `account.hasPendingTransactions` property that is passed to your render function.
 
-To use this feature, first enable the `showRecentTransactions` option on `RainbowKitProvider`.
+To use this feature, first enable the `showRecentTransactions` option on `CinaWalletKitProvider`.
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+    <CinaWalletKitProvider showRecentTransactions={true} {...etc}>
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
-Transactions can then be registered with RainbowKit using the `useAddRecentTransaction` hook.
+Transactions can then be registered with CinaWalletKit using the `useAddRecentTransaction` hook.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();
@@ -48,12 +48,12 @@ export default () => {
 };
 ```
 
-Once a transaction has been registered with RainbowKit, its status will be updated upon completion.
+Once a transaction has been registered with CinaWalletKit, its status will be updated upon completion.
 
 By default the transaction will be considered completed once a single block has been mined on top of the block in which the transaction was mined, but this can be configured by specifying a custom `confirmations` value.
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();

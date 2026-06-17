@@ -11,9 +11,9 @@ description: アプリのユーザーアバターのカスタマイズ
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   AvatarComponent,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 import { generateColorFromAddress } from './utils';
 
 const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
@@ -41,9 +41,9 @@ const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
 
 const App = () => {
   return (
-    <RainbowKitProvider avatar={CustomAvatar} {...etc}>
+    <CinaWalletKitProvider avatar={CustomAvatar} {...etc}>
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

@@ -15,7 +15,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 
-const INDEX_NAME = 'rainbowkit';
+const INDEX_NAME = 'CinaWalletKit';
 const API_KEY = '671f4a1482dd79c7a57883c939250293';
 const APP_ID = 'JY91C5WNW9';
 

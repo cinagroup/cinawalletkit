@@ -7,16 +7,16 @@ description: 连接到您自己的身份验证后端
 
 ## 连接到您自己的身份验证后端
 
-虽然RainbowKit 为以太坊登入和NextAuth提供一流支持，但您也可以集成到自定义后端和消息格式。详情请访问 [这里](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)。
+虽然CinaWalletKit 为以太坊登入和NextAuth提供一流支持，但您也可以集成到自定义后端和消息格式。详情请访问 [这里](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)。
 
 ### 创建自定义适配器
 
-首先创建一个身份验证适配器。这允许RainbowKit创建/准备消息并与您的后端通讯。
+首先创建一个身份验证适配器。这允许CinaWalletKit创建/准备消息并与您的后端通讯。
 
-例如，我们可以创建一个身份验证适配器，使我们能够使用 [以太坊登录](https://login.xyz) 对某些自定义API端点进行身份验证，例如 [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)。
+例如，我们可以创建一个身份验证适配器，使我们能够使用 [以太坊登录](https://login.xyz) 对某些自定义API端点进行身份验证，例如 [iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session)。
 
 ```tsx
-import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createAuthenticationAdapter } from '@cinagroup/CinaWalletKit';
 import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
@@ -75,14 +75,14 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### 提供身份验证状态
 
-假设您的应用程序已经以某种方式管理身份验证生命周期，您可以将当前身份验证状态与自定义适配器一起传递给 `RainbowKitAuthenticationProvider`，并包装现有的 `RainbowKitProvider`。
+假设您的应用程序已经以某种方式管理身份验证生命周期，您可以将当前身份验证状态与自定义适配器一起传递给 `CinaWalletKitAuthenticationProvider`，并包装现有的 `CinaWalletKitProvider`。
 
 ```tsx
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
@@ -105,14 +105,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider {...etc}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authenticationAdapter}
           status={AUTHENTICATION_STATUS}
         >
-          <RainbowKitProvider {...etc}>
+          <CinaWalletKitProvider {...etc}>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

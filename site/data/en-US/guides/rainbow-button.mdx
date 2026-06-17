@@ -6,14 +6,14 @@ image: guide-rainbow-button.png
 
 # Adopting the Rainbow Button in your dApp
 
-The `RainbowButton` component is the simplest way to add support for Rainbow Wallet to dApps that use `wagmi` and prefer a more custom connector experience over [RainbowKit](https://www.rainbowkit.com/docs/installation).
+The `RainbowButton` component is the simplest way to add support for Rainbow Wallet to dApps that use `wagmi` and prefer a more custom connector experience over [CinaWalletKit](https://www.CinaWalletKit.com/docs/installation).
 
-**1. Install `@rainbow-me/rainbow-button` and its peer dependencies**
+**1. Install `@cinagroup/rainbow-button` and its peer dependencies**
 
 The package is compatible with Next.js, React, and Vite. Ensure that you follow peer dependency warnings.
 
 ```bash
-npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
+npm install @cinagroup/rainbow-button wagmi viem@2.x @tanstack/react-query
 ```
 
 **2. Configure with Wagmi and install the RainbowButton**
@@ -21,12 +21,12 @@ npm install @rainbow-me/rainbow-button wagmi viem@2.x @tanstack/react-query
 Pass an instance of the `rainbowConnector` to Wagmi's `createConfig` with `projectId` and `appName`, and wrap your app in the `RainbowButtonProvider`. Then drop-in the `RainbowButton` component.
 
 ```tsx
-import '@rainbow-me/rainbow-button/styles.css';
+import '@cinagroup/rainbow-button/styles.css';
 import {
   RainbowButtonProvider,
   RainbowButton,
   rainbowConnector,
-} from '@rainbow-me/rainbow-button';
+} from '@cinagroup/rainbow-button';
 import { WagmiProvider, createConfig, http } from 'wagmi';
 import { mainnet } from 'viem/chains';
 import {
@@ -37,7 +37,7 @@ import {
 const config = createConfig({
   connectors: [
     rainbowConnector({
-      appName: 'RainbowKit demo',
+      appName: 'CinaWalletKit demo',
       projectId: 'YOUR_PROJECT_ID',
     }),
   ],
@@ -85,4 +85,4 @@ You can also use the `RainbowButton.Custom` component for custom implementations
 
 Now your users can enjoy a seamless connection experience for Rainbow — without any maintenance or headaches.
 
-A [`WalletButton`](https://www.rainbowkit.com/docs/wallet-button) component is also available in [RainbowKit](https://www.rainbowkit.com/docs/installation) if you'd like to adopt support for additional wallets.
+A [`WalletButton`](https://www.CinaWalletKit.com/docs/wallet-button) component is also available in [CinaWalletKit](https://www.CinaWalletKit.com/docs/installation) if you'd like to adopt support for additional wallets.

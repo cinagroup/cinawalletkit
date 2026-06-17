@@ -7,7 +7,7 @@ description: Tạo một ví tùy chỉnh
 
 ## Tạo một ví tùy chỉnh
 
-> Chú ý: API này chưa ổn định và có thể thay đổi trong tương lai gần. Chúng tôi sẽ bổ sung thêm nhiều ví tích hợp sẵn theo thời gian. [Hãy cho chúng tôi biết](https://github.com/rainbow-me/rainbowkit/issues) nếu bạn quan tâm đến bất kỳ ví cụ thể nào.
+> Chú ý: API này chưa ổn định và có thể thay đổi trong tương lai gần. Chúng tôi sẽ bổ sung thêm nhiều ví tích hợp sẵn theo thời gian. [Hãy cho chúng tôi biết](https://github.com/rainbow-me/CinaWalletKit/issues) nếu bạn quan tâm đến bất kỳ ví cụ thể nào.
 
 Kiểu hàm `Wallet` được cung cấp để giúp bạn định nghĩa các ví tùy chỉnh của riêng mình. Các thuộc tính sau có thể được cấu hình trên giá trị trả về của hàm `Wallet` của bạn:
 
@@ -88,8 +88,8 @@ Kiểu hàm `Wallet` được cung cấp để giúp bạn định nghĩa các v
  {
  name: 'createConnector',
  required: true,
- type: '() => RainbowKitConnector',
- typeSimple: 'RainbowKitConnector',
+ type: '() => CinaWalletKitConnector',
+ typeSimple: 'CinaWalletKitConnector',
  description:
  'Hàm cung cấp trường hợp kết nối và cấu hình cho các phương pháp kết nối khác nhau, được mô tả dưới đây',
  },
@@ -209,7 +209,7 @@ Kiểu hàm `Wallet` được cung cấp để giúp bạn định nghĩa các v
 Ví dụ, để tạo một ví tùy chỉnh bằng WalletConnect:
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

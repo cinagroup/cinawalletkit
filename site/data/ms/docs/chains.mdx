@@ -7,22 +7,22 @@ description: Menyesuaikan rantai-rantai
 
 ## Menyesuaikan rantai-rantai
 
-RainbowKit direka bentuk untuk berintegrasi dengan [objek `chain` wagmi](https://wagmi.sh/react/chains). Sila lihat senarai rantai yang disokong [di sini](https://wagmi.sh/react/chains#supported-chains).
+CinaWalletKit direka bentuk untuk berintegrasi dengan [objek `chain` wagmi](https://wagmi.sh/react/chains). Sila lihat senarai rantai yang disokong [di sini](https://wagmi.sh/react/chains#supported-chains).
 
 ### Menyesuaikan rantai permulaan
 
-Secara lalai, RainbowKit akan bersambung kepada rantai pertama yang dibekalkan kepada Wagmi. Tingkah laku ini boleh diubah suai melalui `initialChain` prop.
+Secara lalai, CinaWalletKit akan bersambung kepada rantai pertama yang dibekalkan kepada Wagmi. Tingkah laku ini boleh diubah suai melalui `initialChain` prop.
 
 Rantai permulaan boleh dikonfigurasikan menggunakan ID rantai.
 
 ```tsx
-<RainbowKitProvider initialChain={1}>
+<CinaWalletKitProvider initialChain={1}>
 ```
 
 Sebagai kemudahan, anda juga boleh memindahkan objek rantai.
 
 ```tsx
-<RainbowKitProvider initialChain={mainnet}>
+<CinaWalletKitProvider initialChain={mainnet}>
 ```
 
 ### Metadata rantai tersuai
@@ -54,7 +54,7 @@ Contoh dengan `createConfig`
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
-import { Chain } from '@rainbow-me/rainbowkit';
+import { Chain } from '@cinagroup/CinaWalletKit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   {

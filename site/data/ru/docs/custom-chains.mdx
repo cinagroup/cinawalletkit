@@ -13,10 +13,10 @@ description: Создание пользовательской цепи
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   getDefaultConfig,
   Chain,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 import { WagmiProvider } from 'wagmi';
 import {
   QueryClientProvider,
@@ -44,7 +44,7 @@ const avalanche = {
 } as const satisfies Chain;
 
 const config = getDefaultConfig({
-  appName: 'My RainbowKit App',
+  appName: 'My CinaWalletKit App',
   projectId: 'YOUR_PROJECT_ID',
   chains: [avalanche],
 });
@@ -55,9 +55,9 @@ const App = () => {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
+        <CinaWalletKitProvider>
           {/* Your App */}
-        </RainbowKitProvider>
+        </CinaWalletKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

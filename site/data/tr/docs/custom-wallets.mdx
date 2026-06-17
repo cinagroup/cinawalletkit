@@ -7,7 +7,7 @@ description: Özel bir cüzdan oluştur
 
 ## Özel bir cüzdan oluştur
 
-> Not: Bu API dengesizdir ve yakın gelecekte değişiklik gösterebilir. Zamanla daha fazla yerleşik cüzdan ekleyeceğiz. İlgilendiğiniz belirli cüzdanlar varsa, [bize bildirin](https://github.com/rainbow-me/rainbowkit/issues).
+> Not: Bu API dengesizdir ve yakın gelecekte değişiklik gösterebilir. Zamanla daha fazla yerleşik cüzdan ekleyeceğiz. İlgilendiğiniz belirli cüzdanlar varsa, [bize bildirin](https://github.com/rainbow-me/CinaWalletKit/issues).
 
 `Wallet` fonksiyon türü, kendi özel cüzdanlarınızı tanımlamanıza yardımcı olmak için sağlanmıştır. `Wallet` fonksiyonunuzun dönüş değerinde yapılandırılabilecek özellikler şunlardır:
 
@@ -87,8 +87,8 @@ description: Özel bir cüzdan oluştur
  {
  name: 'createConnector',
  required: true,
- type: '() => RainbowKitConnector',
- typeSimple: 'RainbowKitConnector',
+ type: '() => CinaWalletKitConnector',
+ typeSimple: 'CinaWalletKitConnector',
  description:
  'Farklı bağlantı yöntemleri ve konfigürasyon için konektör örneğini sağlayan fonksiyon',
  },
@@ -208,7 +208,7 @@ description: Özel bir cüzdan oluştur
 Örneğin, WalletConnect kullanarak özel bir cüzdan oluşturmak için:
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

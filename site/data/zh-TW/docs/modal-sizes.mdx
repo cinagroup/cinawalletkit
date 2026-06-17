@@ -7,7 +7,7 @@ description: 寬與緊湊
 
 ## 寬與緊湊尺寸
 
-預設情況下，RainbowKit 的 `modalSize` 設定為 `wide`（看起來像這樣）：
+預設情況下，CinaWalletKit 的 `modalSize` 設定為 `wide`（看起來像這樣）：
 
 <Img src="/modal-default.png" height="569" width="1029" />
 
@@ -15,14 +15,14 @@ description: 寬與緊湊
 
 <Img src="/modal-compact.png" height="569" width="1029" />
 
-要將您的模態尺寸設置為 `compact`，只需在 `RainbowKitProvider` 中添加 `modalSize="compact"` 屬性：
+要將您的模態尺寸設置為 `compact`，只需在 `CinaWalletKitProvider` 中添加 `modalSize="compact"` 屬性：
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 export const App = () => (
-  <RainbowKitProvider modalSize="compact" {...etc}>
+  <CinaWalletKitProvider modalSize="compact" {...etc}>
     {/* Your App */}
-  </RainbowKitProvider>
+  </CinaWalletKitProvider>
 );
 ```

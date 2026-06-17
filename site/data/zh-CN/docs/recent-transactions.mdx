@@ -7,28 +7,28 @@ description: 显示您的近期交易记录
 
 ## 显示您的近期交易记录
 
-您可以选择在 RainbowKit 的帐户模式中显示最近的交易记录。请注意，所有交易都保存在本地存储中，必须手动注册到 RainbowKit 中才能显示。
+您可以选择在 CinaWalletKit 的帐户模式中显示最近的交易记录。请注意，所有交易都保存在本地存储中，必须手动注册到 CinaWalletKit 中才能显示。
 
 默认的 `ConnectButton` 实现还将在用户头像周围显示加载指示器，如果有任何未决交易。自定义 `ConnectButton` 实现可以通过传递给渲染函数的 `account.hasPendingTransactions` 属性重现此行为。
 
-要使用此功能，首先在 `RainbowKitProvider` 上启用 `showRecentTransactions` 选项。
+要使用此功能，首先在 `CinaWalletKitProvider` 上启用 `showRecentTransactions` 选项。
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider showRecentTransactions={true} {...etc}>
+    <CinaWalletKitProvider showRecentTransactions={true} {...etc}>
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
 
-然后可以使用 `useAddRecentTransaction` 钩子将交易注册到 RainbowKit。
+然后可以使用 `useAddRecentTransaction` 钩子将交易注册到 CinaWalletKit。
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();
@@ -48,12 +48,12 @@ export default () => {
 };
 ```
 
-一旦交易在 RainbowKit 中注册，其状态将在完成后更新。
+一旦交易在 CinaWalletKit 中注册，其状态将在完成后更新。
 
 默认情况下，交易将在其所在区块上已开采出一个新区块后被视为已完成，但这可以通过指定自定义的 `confirmations` 值进行配置。
 
 ```tsx
-import { useAddRecentTransaction } from '@rainbow-me/rainbowkit';
+import { useAddRecentTransaction } from '@cinagroup/CinaWalletKit';
 
 export default () => {
   const addRecentTransaction = useAddRecentTransaction();

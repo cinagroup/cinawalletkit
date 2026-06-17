@@ -9,16 +9,16 @@ description: مصادقة المستخدمين الخاصين بك
 
 يمكنك اختياريًا إجبار المستخدمين على التوقيع على رسالة باستخدام محفظتهم خلال عملية الاتصال، مما يثبت أنهم يملكون الحساب المتصل ويتيح لك إنشاء جلسة مستخدم مصادق عليها تتمتع بالوصول المميز إلى تطبيقك.
 
-بينما يمكن [الدمج مع خلفيات مخصصة وتنسيقات الرسائل،](/docs/custom-authentication) يوفر RainbowKit دعمًا من الدرجة الأولى لـ [تسجيل الدخول بـ Ethereum](https://login.xyz) و [NextAuth](https://next-auth.js.org).
+بينما يمكن [الدمج مع خلفيات مخصصة وتنسيقات الرسائل،](/docs/custom-authentication) يوفر CinaWalletKit دعمًا من الدرجة الأولى لـ [تسجيل الدخول بـ Ethereum](https://login.xyz) و [NextAuth](https://next-auth.js.org).
 
 ### إعداد تسجيل الدخول بـ Ethereum و NextAuth
 
 #### تثبيت
 
-قم بتثبيت حزمة `@rainbow-me/rainbowkit-siwe-next-auth` و NextAuth v5.
+قم بتثبيت حزمة `@cinagroup/CinaWalletKit-siwe-next-auth` و NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
+npm install @cinagroup/CinaWalletKit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
 
 إذا كنت تقوم بتحديث دمج SIWE في NextAuth v4 الحالي، اتبع [دليل ترحيل NextAuth v5](/guides/next-auth-v5).
@@ -62,21 +62,21 @@ export const authOptions: NextAuthConfig = {
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
 ```
 
-اطلع على المثال الكامل [`with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) للتحقق من صحة SIWE، وفحص nonce، والتحقق على جهة الخادم.
+اطلع على المثال الكامل [`with-next-siwe-next-auth`](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-next-auth) للتحقق من صحة SIWE، وفحص nonce، والتحقق على جهة الخادم.
 
 #### إعداد الموفر
 
-في مكون `App` الخاص بك، قم باستيراد `RainbowKitSiweNextAuthProvider`.
+في مكون `App` الخاص بك، قم باستيراد `CinaWalletKitSiweNextAuthProvider`.
 
 ```tsx
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { CinaWalletKitSiweNextAuthProvider } from '@cinagroup/CinaWalletKit-siwe-next-auth';
 ```
 
-قم بتغليف `RainbowKitProvider` بـ `RainbowKitSiweNextAuthProvider`، مع التأكد من أنه مدمج داخل `SessionProvider` الخاص بـNextAuth حتى يتمكن من الوصول إلى الجلسة.
+قم بتغليف `CinaWalletKitProvider` بـ `CinaWalletKitSiweNextAuthProvider`، مع التأكد من أنه مدمج داخل `SessionProvider` الخاص بـNextAuth حتى يتمكن من الوصول إلى الجلسة.
 
 ```tsx
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitSiweNextAuthProvider } from '@cinagroup/CinaWalletKit-siwe-next-auth';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
@@ -98,11 +98,11 @@ export default function App({
     <WagmiProvider {...etc}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>
         <QueryClientProvider client={queryClient}>
-          <RainbowKitSiweNextAuthProvider>
-            <RainbowKitProvider {...etc}>
+          <CinaWalletKitSiweNextAuthProvider>
+            <CinaWalletKitProvider {...etc}>
               <Component {...pageProps} />
-            </RainbowKitProvider>
-          </RainbowKitSiweNextAuthProvider>
+            </CinaWalletKitProvider>
+          </CinaWalletKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
     </WagmiProvider>
@@ -110,29 +110,29 @@ export default function App({
 }
 ```
 
-مع وجود `RainbowKitSiweNextAuthProvider`، سيتم حث المستخدمين الآن على المصادقة بتوقيع رسالة بمجرد أن يقوموا بتوصيل محفظتهم.
+مع وجود `CinaWalletKitSiweNextAuthProvider`، سيتم حث المستخدمين الآن على المصادقة بتوقيع رسالة بمجرد أن يقوموا بتوصيل محفظتهم.
 
 #### تخصيص خيارات رسالة SIWE
 
-يمكنك تخصيص [خيارات رسالة SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) عن طريق تمرير دالة إلى الخاصية `getSiweMessageOptions` في `RainbowKitSiweNextAuthProvider`.
+يمكنك تخصيص [خيارات رسالة SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) عن طريق تمرير دالة إلى الخاصية `getSiweMessageOptions` في `CinaWalletKitSiweNextAuthProvider`.
 
 سيتم استدعاء هذه الوظيفة كلما تم إنشاء رسالة جديدة. سيتم دمج الخيارات التي يتم إرجاعها من هذه الوظيفة مع الخيارات الافتراضية.
 
 ```tsx
 import {
-  RainbowKitSiweNextAuthProvider,
+  CinaWalletKitSiweNextAuthProvider,
   GetSiweMessageOptions,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
+} from '@cinagroup/CinaWalletKit-siwe-next-auth';
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
-  statement: 'Sign in to my RainbowKit app',
+  statement: 'Sign in to my CinaWalletKit app',
 });
 
-<RainbowKitSiweNextAuthProvider
+<CinaWalletKitSiweNextAuthProvider
   getSiweMessageOptions={getSiweMessageOptions}
 >
   ...
-</RainbowKitSiweNextAuthProvider>;
+</CinaWalletKitSiweNextAuthProvider>;
 ```
 
 #### الوصول إلى الجلسة على الجانب الخادم

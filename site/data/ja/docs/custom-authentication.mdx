@@ -7,16 +7,16 @@ description: 独自の認証バックエンドに接続する
 
 ## 独自の認証バックエンドに接続する
 
-RainbowKitは、[EthereumでサインインとNextAuthに対する第一級のサポートを提供しますが、](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)独自のバックエンドやメッセージフォーマットと統合することもできます。
+CinaWalletKitは、[EthereumでサインインとNextAuthに対する第一級のサポートを提供しますが、](/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth)独自のバックエンドやメッセージフォーマットと統合することもできます。
 
 ### カスタムアダプタの作成
 
-まず、認証アダプターを作成します。これにより、RainbowKitはメッセージを作成/準備してバックエンドと通信できます。
+まず、認証アダプターを作成します。これにより、CinaWalletKitはメッセージを作成/準備してバックエンドと通信できます。
 
-例として、カスタムAPIエンドポイントに対して[Sign-In with Ethereum](https://login.xyz)を使用できる認証アダプターを作成するとします。例えば[iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session)のように。
+例として、カスタムAPIエンドポイントに対して[Sign-In with Ethereum](https://login.xyz)を使用できる認証アダプターを作成するとします。例えば[iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session)のように。
 
 ```tsx
-import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createAuthenticationAdapter } from '@cinagroup/CinaWalletKit';
 import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
@@ -75,14 +75,14 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### 認証状態の提供
 
-あなたのアプリケーションが既に認証ライフサイクルを何らかの形で管理している場合、`RainbowKitAuthenticationProvider`にカスタムアダプターを渡し、既存の`RainbowKitProvider`をラップして、現在の認証ステータスを渡すことができます。
+あなたのアプリケーションが既に認証ライフサイクルを何らかの形で管理している場合、`CinaWalletKitAuthenticationProvider`にカスタムアダプターを渡し、既存の`CinaWalletKitProvider`をラップして、現在の認証ステータスを渡すことができます。
 
 ```tsx
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
@@ -105,14 +105,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider {...etc}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authenticationAdapter}
           status={AUTHENTICATION_STATUS}
         >
-          <RainbowKitProvider {...etc}>
+          <CinaWalletKitProvider {...etc}>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

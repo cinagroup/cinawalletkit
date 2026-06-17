@@ -7,22 +7,22 @@ description: تخصيص معلومات تطبيقك
 
 ## تخصيص معلومات تطبيقك
 
-يمكنك تمرير معلومات تطبيقك في خاصية `appInfo` لمزود `RainbowKitProvider`. الخصائص التي يمكن تعديلها هي اسم تطبيقك (`appName`) والرابط الذي يوجه إليه زر "تعرف على المزيد" في واجهة الاتصال (`learnMoreUrl`) :
+يمكنك تمرير معلومات تطبيقك في خاصية `appInfo` لمزود `CinaWalletKitProvider`. الخصائص التي يمكن تعديلها هي اسم تطبيقك (`appName`) والرابط الذي يوجه إليه زر "تعرف على المزيد" في واجهة الاتصال (`learnMoreUrl`) :
 
 ```tsx
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'Rainbowkit Demo',
+        appName: 'CinaWalletKit Demo',
         learnMoreUrl: 'https://learnaboutcryptowallets.example',
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```
@@ -33,9 +33,9 @@ const App = () => {
 
 ```tsx
 import {
-  RainbowKitProvider,
+  CinaWalletKitProvider,
   DisclaimerComponent,
-} from '@rainbow-me/rainbowkit';
+} from '@cinagroup/CinaWalletKit';
 
 const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
   <Text>
@@ -48,15 +48,15 @@ const Disclaimer: DisclaimerComponent = ({ Text, Link }) => (
 
 const App = () => {
   return (
-    <RainbowKitProvider
+    <CinaWalletKitProvider
       appInfo={{
-        appName: 'RainbowKit Demo',
+        appName: 'CinaWalletKit Demo',
         disclaimer: Disclaimer,
       }}
       {...etc}
     >
       {/* ... */}
-    </RainbowKitProvider>
+    </CinaWalletKitProvider>
   );
 };
 ```

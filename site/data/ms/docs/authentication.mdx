@@ -9,16 +9,16 @@ description: Mengesahkan pengguna anda
 
 Anda boleh secara opsional menguatkuasakan bahawa pengguna menandatangani mesej dengan dompet mereka semasa proses sambungan, membuktikan bahawa mereka memiliki akaun yang disambungkan dan membolehkan anda membuat sesi pengguna yang disahkan dengan akses istimewa ke aplikasi anda.
 
-Meskipun mungkin untuk [mengintegrasikan dengan backend dan format pesan kustom,](/docs/custom-authentication) RainbowKit menyediakan dukungan kelas utama untuk [Sign-In dengan Ethereum](https://login.xyz) dan [NextAuth](https://next-auth.js.org).
+Meskipun mungkin untuk [mengintegrasikan dengan backend dan format pesan kustom,](/docs/custom-authentication) CinaWalletKit menyediakan dukungan kelas utama untuk [Sign-In dengan Ethereum](https://login.xyz) dan [NextAuth](https://next-auth.js.org).
 
 ### Sediakan Sign-In dengan Ethereum dan NextAuth
 
 #### Pasang
 
-Pasang pakej `@rainbow-me/rainbowkit-siwe-next-auth` dan NextAuth v5.
+Pasang pakej `@cinagroup/CinaWalletKit-siwe-next-auth` dan NextAuth v5.
 
 ```bash
-npm install @rainbow-me/rainbowkit-siwe-next-auth next-auth@5.0.0-beta.31
+npm install @cinagroup/CinaWalletKit-siwe-next-auth next-auth@5.0.0-beta.31
 ```
 
 Jika anda ingin menaik taraf integrasi NextAuth v4 SIWE yang sedia ada, ikuti [panduan migrasi NextAuth v5](/guides/next-auth-v5).
@@ -62,21 +62,21 @@ export const authOptions: NextAuthConfig = {
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
 ```
 
-Lihat [contoh lengkap `with-next-siwe-next-auth`](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-next-auth) untuk pengesahan SIWE, semakan nonce, dan pengesahan pelayan.
+Lihat [contoh lengkap `with-next-siwe-next-auth`](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-next-auth) untuk pengesahan SIWE, semakan nonce, dan pengesahan pelayan.
 
 #### Sediakan pengeluar
 
-Dalam komponen `App` anda, import `RainbowKitSiweNextAuthProvider`.
+Dalam komponen `App` anda, import `CinaWalletKitSiweNextAuthProvider`.
 
 ```tsx
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { CinaWalletKitSiweNextAuthProvider } from '@cinagroup/CinaWalletKit-siwe-next-auth';
 ```
 
-Bungkus `RainbowKitProvider` dengan `RainbowKitSiweNextAuthProvider`, pastikan ia bersarang di dalam `SessionProvider` NextAuth agar ia mempunyai akses kepada sesi.
+Bungkus `CinaWalletKitProvider` dengan `CinaWalletKitSiweNextAuthProvider`, pastikan ia bersarang di dalam `SessionProvider` NextAuth agar ia mempunyai akses kepada sesi.
 
 ```tsx
-import { RainbowKitSiweNextAuthProvider } from '@rainbow-me/rainbowkit-siwe-next-auth';
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { CinaWalletKitSiweNextAuthProvider } from '@cinagroup/CinaWalletKit-siwe-next-auth';
+import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit';
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 import { AppProps } from 'next/app';
@@ -98,11 +98,11 @@ export default function App({
     <WagmiProvider {...etc}>
       <SessionProvider refetchInterval={0} session={pageProps.session}>
         <QueryClientProvider client={queryClient}>
-          <RainbowKitSiweNextAuthProvider>
-            <RainbowKitProvider {...etc}>
+          <CinaWalletKitSiweNextAuthProvider>
+            <CinaWalletKitProvider {...etc}>
               <Component {...pageProps} />
-            </RainbowKitProvider>
-          </RainbowKitSiweNextAuthProvider>
+            </CinaWalletKitProvider>
+          </CinaWalletKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
     </WagmiProvider>
@@ -110,29 +110,29 @@ export default function App({
 }
 ```
 
-Dengan `RainbowKitSiweNextAuthProvider` di tempatnya, pengguna anda kini akan diminta untuk mengesahkan dengan menandatangani mesej sebaik sahaja mereka telah menyambungkan dompet mereka.
+Dengan `CinaWalletKitSiweNextAuthProvider` di tempatnya, pengguna anda kini akan diminta untuk mengesahkan dengan menandatangani mesej sebaik sahaja mereka telah menyambungkan dompet mereka.
 
 #### Sesuaikan opsi mesej SIWE
 
-Anda boleh menyesuaikan [pilihan mesej SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) dengan menyerahkan fungsi kepada prop `getSiweMessageOptions` pada `RainbowKitSiweNextAuthProvider`.
+Anda boleh menyesuaikan [pilihan mesej SIWE](https://viem.sh/docs/siwe/utilities/createSiweMessage#parameters) dengan menyerahkan fungsi kepada prop `getSiweMessageOptions` pada `CinaWalletKitSiweNextAuthProvider`.
 
 Fungsi ini akan dipanggil setiap kali mesej baru dicipta. Pilihan yang dikembalikan daripada fungsi ini akan digabungkan dengan tetapan lalai.
 
 ```tsx
 import {
-  RainbowKitSiweNextAuthProvider,
+  CinaWalletKitSiweNextAuthProvider,
   GetSiweMessageOptions,
-} from '@rainbow-me/rainbowkit-siwe-next-auth';
+} from '@cinagroup/CinaWalletKit-siwe-next-auth';
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({
-  statement: 'Sign in to my RainbowKit app',
+  statement: 'Sign in to my CinaWalletKit app',
 });
 
-<RainbowKitSiweNextAuthProvider
+<CinaWalletKitSiweNextAuthProvider
   getSiweMessageOptions={getSiweMessageOptions}
 >
   ...
-</RainbowKitSiweNextAuthProvider>;
+</CinaWalletKitSiweNextAuthProvider>;
 ```
 
 #### Akses pelayan sesi sebelah

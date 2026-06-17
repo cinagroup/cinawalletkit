@@ -7,7 +7,7 @@ description: Créer un portefeuille personnalisé
 
 ## Créer un portefeuille personnalisé
 
-> Remarque : Cette API est instable et susceptible de changer dans un avenir proche. Nous ajouterons de plus en plus de portefeuilles intégrés au fil du temps. [Faites-nous savoir](https://github.com/rainbow-me/rainbowkit/issues) s'il y a des portefeuilles particuliers qui vous intéressent.
+> Remarque : Cette API est instable et susceptible de changer dans un avenir proche. Nous ajouterons de plus en plus de portefeuilles intégrés au fil du temps. [Faites-nous savoir](https://github.com/rainbow-me/CinaWalletKit/issues) s'il y a des portefeuilles particuliers qui vous intéressent.
 
 Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres portefeuilles personnalisés. Les propriétés suivantes peuvent être configurées sur la valeur de retour de votre fonction `Wallet` :
 
@@ -88,8 +88,8 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
     {
       name: 'createConnector',
       required: true,
-      type: '() => RainbowKitConnector',
-      typeSimple: 'RainbowKitConnector',
+      type: '() => CinaWalletKitConnector',
+      typeSimple: 'CinaWalletKitConnector',
       description:
         'Fonction pour fournir l\'instance du connecteur et la configuration pour différentes méthodes de connexion, décrites ci-dessous',
     },
@@ -209,7 +209,7 @@ Le type de fonction `Wallet` est fourni pour vous aider à définir vos propres 
 Par exemple, pour créer un portefeuille personnalisé en utilisant WalletConnect :
 
 ```tsx
-import { Wallet, getWalletConnectConnector } from '@rainbow-me/rainbowkit';
+import { Wallet, getWalletConnectConnector } from '@cinagroup/CinaWalletKit';
 
 export interface MyWalletOptions {
   projectId: string;

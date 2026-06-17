@@ -7,16 +7,16 @@ description: Kendi kimlik doğrulama arka ucunuza bağlanın
 
 ## Kendi kimlik doğrulama arka ucunuza bağlanın
 
-RainbowKit, [Ethereum ve NextAuth ile Kayıt](\{/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) konusunda birinci sınıf destek sağlarken, özel arka uçlar ve mesaj formatlarıyla da entegre olabilirsiniz.
+CinaWalletKit, [Ethereum ve NextAuth ile Kayıt](\{/docs/authentication#set-up-sign-in-with-ethereum-and-nextauth) konusunda birinci sınıf destek sağlarken, özel arka uçlar ve mesaj formatlarıyla da entegre olabilirsiniz.
 
 ### Özel bir adaptör oluşturma
 
-İlk olarak bir kimlik doğrulama adaptörü oluşturun. Bu, RainbowKit'in mesajlar oluşturup hazırlamasına ve arka ucunuzla iletişim kurmasına olanak tanır.
+İlk olarak bir kimlik doğrulama adaptörü oluşturun. Bu, CinaWalletKit'in mesajlar oluşturup hazırlamasına ve arka ucunuzla iletişim kurmasına olanak tanır.
 
-Örneğin, [iron-session](https://github.com/rainbow-me/rainbowkit/tree/main/examples/with-next-siwe-iron-session) gibi bazı özel API uç noktalarına karşı [Ethereum ile Kayıt](https://login.xyz) kullanmamızı sağlayan bir kimlik doğrulama adaptörü yapabiliriz.
+Örneğin, [iron-session](https://github.com/rainbow-me/CinaWalletKit/tree/main/examples/with-next-siwe-iron-session) gibi bazı özel API uç noktalarına karşı [Ethereum ile Kayıt](https://login.xyz) kullanmamızı sağlayan bir kimlik doğrulama adaptörü yapabiliriz.
 
 ```tsx
-import { createAuthenticationAdapter } from '@rainbow-me/rainbowkit';
+import { createAuthenticationAdapter } from '@cinagroup/CinaWalletKit';
 import { createSiweMessage } from 'viem/siwe';
 
 const authenticationAdapter = createAuthenticationAdapter({
@@ -75,14 +75,14 @@ const authenticationAdapter = createAuthenticationAdapter({
 
 #### Kimlik doğrulama durumunun sağlanması
 
-Uygulamanızın zaten bir şekilde kimlik doğrulama döngüsünü yönetmekte olduğunu varsayarak, mevcut kimlik doğrulama durumunu kendi özel adaptörünüzle birlikte `RainbowKitAuthenticationProvider`'a, mevcut `RainbowKitProvider` sarmalayarak iletebilirsiniz.
+Uygulamanızın zaten bir şekilde kimlik doğrulama döngüsünü yönetmekte olduğunu varsayarak, mevcut kimlik doğrulama durumunu kendi özel adaptörünüzle birlikte `CinaWalletKitAuthenticationProvider`'a, mevcut `CinaWalletKitProvider` sarmalayarak iletebilirsiniz.
 
 ```tsx
 import {
   createAuthenticationAdapter,
-  RainbowKitAuthenticationProvider,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+  CinaWalletKitAuthenticationProvider,
+  CinaWalletKitProvider,
+} from '@cinagroup/CinaWalletKit';
 import { AppProps } from 'next/app';
 import { WagmiProvider } from 'wagmi';
 import {
@@ -105,14 +105,14 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiProvider {...etc}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitAuthenticationProvider
+        <CinaWalletKitAuthenticationProvider
           adapter={authenticationAdapter}
           status={AUTHENTICATION_STATUS}
         >
-          <RainbowKitProvider {...etc}>
+          <CinaWalletKitProvider {...etc}>
             <Component {...pageProps} />
-          </RainbowKitProvider>
-        </RainbowKitAuthenticationProvider>
+          </CinaWalletKitProvider>
+        </CinaWalletKitAuthenticationProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

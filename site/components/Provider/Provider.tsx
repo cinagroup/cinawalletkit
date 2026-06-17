@@ -1,11 +1,11 @@
-import { getDefaultConfig, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig, getDefaultWallets } from '@cinagroup/CinaWalletKit';
 import {
   imTokenWallet,
   ledgerWallet,
   omniWallet,
   readyWallet,
   trustWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from '@cinagroup/CinaWalletKit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type React from 'react';
 import { http, WagmiProvider } from 'wagmi';
@@ -39,7 +39,7 @@ const transports = {
 const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
-  appName: 'rainbowkit.com',
+  appName: 'CinaWalletKit.com',
   projectId,
   chains: [
     mainnet,

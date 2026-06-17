@@ -16,13 +16,13 @@ description: चेन को कस्टमाइज़ करना
 प्रारंभिक चेन को एक चेन आईडी का उपयोग करके कॉन्फ़िगर किया जा सकता है।
 
 ```tsx
-<RainbowKitProvider initialChain={1}>
+<CinaWalletKitProvider initialChain={1}>
 ```
 
 सुविधा के लिए, आप चेन ऑब्जेक्ट भी पास कर सकते हैं।
 
 ```tsx
-<RainbowKitProvider initialChain={mainnet}>
+<CinaWalletKitProvider initialChain={mainnet}>
 ```
 
 ### कस्टम चेन मेटाडेटा
@@ -54,7 +54,7 @@ const config = getDefaultConfig({
 
 ```tsx
 import { mainnet, optimism } from 'wagmi/chains';
-import { Chain } from '@rainbow-me/rainbowkit';
+import { Chain } from '@cinagroup/CinaWalletKit';
 
 const chains: readonly [Chain, ...Chain[]] = [
   {

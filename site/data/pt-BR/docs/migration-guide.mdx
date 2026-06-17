@@ -4,7 +4,7 @@ title: Guia de Migração
 
 # Guia de Migração
 
-## Migrando RainbowKit
+## Migrando CinaWalletKit
 
 ### Alterações de quebra da versão 2.x.x
 
@@ -12,10 +12,10 @@ As dependências de pares [wagmi](https://wagmi.sh) e [viem](https://viem.sh) al
 
 Siga os passos abaixo para realizar a migração.
 
-**1. Atualize RainbowKit, `wagmi` e `viem` para suas versões mais recentes**
+**1. Atualize CinaWalletKit, `wagmi` e `viem` para suas versões mais recentes**
 
 ```bash
-npm i @rainbow-me/rainbowkit@2 wagmi@2 viem@2.x
+npm i @cinagroup/CinaWalletKit@2 wagmi@2 viem@2.x
 ```
 
 **2. Instale a dependência de par `@tanstack/react-query`**
@@ -28,10 +28,10 @@ Instale com o seguinte comando:
 npm i @tanstack/react-query
 ```
 
-**3. Atualize suas configurações de RainbowKit e Wagmi**
+**3. Atualize suas configurações de CinaWalletKit e Wagmi**
 
 ```diff
-  import '@rainbow-me/rainbowkit/styles.css'
+  import '@cinagroup/CinaWalletKit/styles.css'
 
 + import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 - import { createPublicClient, http } from 'viem'
@@ -39,13 +39,13 @@ npm i @tanstack/react-query
 + import { WagmiProvider, http } from 'wagmi'
 - import { configureChains, createConfig } from 'wagmi'
   import { mainnet } from 'wagmi/chains'
-  import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
-- import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit'
-+ import { getDefaultConfig } from '@rainbow-me/rainbowkit'
+  import { CinaWalletKitProvider } from '@cinagroup/CinaWalletKit'
+- import { getDefaultWallets, connectorsForWallets } from '@cinagroup/CinaWalletKit'
++ import { getDefaultConfig } from '@cinagroup/CinaWalletKit'
 
   /* getDefaultWallets is now optional */
 - const { wallets } = getDefaultWallets({
--   appName: 'RainbowKit demo',
+-   appName: 'CinaWalletKit demo',
 -   projectId: 'YOUR_PROJECT_ID',
 -   chains,
 - })
@@ -65,7 +65,7 @@ npm i @tanstack/react-query
 
   /* New API that includes Wagmi's createConfig and replaces getDefaultWallets and connectorsForWallets */
 + const config = getDefaultConfig({
-+   appName: 'RainbowKit demo',
++   appName: 'CinaWalletKit demo',
 +   projectId: 'YOUR_PROJECT_ID',
 +   chains: [mainnet],
 +   transports: {
@@ -80,10 +80,10 @@ npm i @tanstack/react-query
 -     <WagmiConfig config={config}>
 +     <WagmiProvider config={config}>
 +       <QueryClientProvider client={queryClient}>
--         <RainbowKitProvider chains={chains}>
-+         <RainbowKitProvider>
+-         <CinaWalletKitProvider chains={chains}>
++         <CinaWalletKitProvider>
             {/* Your App */}
-          </RainbowKitProvider>
+          </CinaWalletKitProvider>
 +       </QueryClientProvider>
 -     </WagmiConfig>
 +     </WagmiProvider>
@@ -98,7 +98,7 @@ Se você usa hooks do `wagmi` e ações do `viem` no seu dApp, você precisará 
 - [Guia de Migração Wagmi v2](https://wagmi.sh/react/guides/migrate-from-v1-to-v2)
 - [Mudanças que Quebram a Compatibilidade no Viem v2](https://viem.sh/docs/migration-guide#2xx-breaking-changes)
 
-#### Alterações no RainbowKit
+#### Alterações no CinaWalletKit
 
 **1. Comportamento aprimorado para carteiras EIP-6963**
 
@@ -116,7 +116,7 @@ Você pode criar uma Lista de Carteiras Personalizadas passando conectores de Ca
 
 ```
 const config = getDefaultConfig({
-  appName: 'RainbowKit demo',
+  appName: 'CinaWalletKit demo',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet],
   wallets: [rainbowWallet], /* optional custom wallet list */
@@ -124,21 +124,21 @@ const config = getDefaultConfig({
 })
 ```
 
-**3. RainbowKitProvider**
+**3. CinaWalletKitProvider**
 
-Você não precisa mais passar `chains` para `<RainbowKitProvider>`.
+Você não precisa mais passar `chains` para `<CinaWalletKitProvider>`.
 
 ```diff
-- <RainbowKitProvider chains={chains}>
-+ <RainbowKitProvider>
+- <CinaWalletKitProvider chains={chains}>
++ <CinaWalletKitProvider>
 ```
 
 **4. Cadeias Personalizadas**
 
-O tipo `Chain` foi alterado de acordo com o Wagmi v2, e continua a suportar os metadados `iconUrl` e `iconBackground` do RainbowKit.
+O tipo `Chain` foi alterado de acordo com o Wagmi v2, e continua a suportar os metadados `iconUrl` e `iconBackground` do CinaWalletKit.
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 
   const avalanche = {
     id: 43_114,
@@ -179,7 +179,7 @@ const config = getDefaultConfig({
 Exemplo com `createConfig`:
 
 ```diff
-+ import { Chain } from '@rainbow-me/rainbowkit'
++ import { Chain } from '@cinagroup/CinaWalletKit'
 + const chains: readonly [Chain, ...Chain[]] = [
 +   {
 +     ...mainnet,
@@ -197,7 +197,7 @@ Exemplo com `createConfig`:
 
 **5. Carteiras Personalizadas**
 
-Os conectores de carteiras RainbowKit passaram por mudanças substanciais para dar suporte ao Wagmi v2. Consulte os [docs atualizados](https://www.rainbowkit.com/docs/custom-wallets) e um [exemplo de conector](https://github.com/rainbow-me/rainbowkit/blob/main/packages/rainbowkit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) para atualizar quaisquer Conectores de Carteiras Personalizados no seu dApp.
+Os conectores de carteiras CinaWalletKit passaram por mudanças substanciais para dar suporte ao Wagmi v2. Consulte os [docs atualizados](https://www.CinaWalletKit.com/docs/custom-wallets) e um [exemplo de conector](https://github.com/rainbow-me/CinaWalletKit/blob/main/packages/CinaWalletKit/src/wallets/walletConnectors/rainbowWallet/rainbowWallet.ts) para atualizar quaisquer Conectores de Carteiras Personalizados no seu dApp.
 
 Os conectores de carteiras agora também suportam o padrão EIP-6963 com a propriedade `rdns`. Certifique-se de que isso esteja preenchido para evitar referências duplicadas a carteiras compatíveis com EIP-6963 na sua lista de carteiras.
 
@@ -209,10 +209,10 @@ A dependência de par [wagmi](https://wagmi.sh) foi atualizada para `1.x.x`.
 
 Siga os passos abaixo para realizar a migração.
 
-**1. Atualize RainbowKit e `wagmi` para sua versão mais recente**
+**1. Atualize CinaWalletKit e `wagmi` para sua versão mais recente**
 
 ```bash
-npm i @rainbow-me/rainbowkit@^1 wagmi@^1
+npm i @cinagroup/CinaWalletKit@^1 wagmi@^1
 ```
 
 **2. Instale a dependência de par `viem`**
@@ -225,9 +225,9 @@ npm i viem
 
 **3. Garanta compatibilidade com pacote e preenchimento**
 
-Consulte nossa [Configuração do Next.js](https://github.com/rainbow-me/rainbowkit/blob/main/examples/with-next/next.config.js) como exemplo para orientações de configuração para seu projeto.
+Consulte nossa [Configuração do Next.js](https://github.com/rainbow-me/CinaWalletKit/blob/main/examples/with-next/next.config.js) como exemplo para orientações de configuração para seu projeto.
 
-Guias adicionais do framework para Vite e Remix estão disponíveis [aqui](https://www.rainbowkit.com/docs/installation#additional-build-tooling-setup).
+Guias adicionais do framework para Vite e Remix estão disponíveis [aqui](https://www.CinaWalletKit.com/docs/installation#additional-build-tooling-setup).
 
 **4. Verifique alterações de quebra em `wagmi`**
 
@@ -239,31 +239,31 @@ Se você usa ganchos `wagmi` em sua aplicação, precisará seguir o guia de mig
 
 A dependência de par wagmi foi atualizada para `0.12.x`.
 
-RainbowKit adotou o conector `WalletConnectLegacyConnector` em `wagmi` para suporte contínuo ao WalletConnect v1. O suporte para o WalletConnect v2 e `WalletConnectConnector` estará disponível em breve como uma atualização, sem alterações de quebra.
+CinaWalletKit adotou o conector `WalletConnectLegacyConnector` em `wagmi` para suporte contínuo ao WalletConnect v1. O suporte para o WalletConnect v2 e `WalletConnectConnector` estará disponível em breve como uma atualização, sem alterações de quebra.
 
 As carteiras serão automaticamente transferidas em lançamentos futuros.
 
-Cada dApp agora deve fornecer um `projectId` do [WalletConnect Cloud](https://cloud.walletconnect.com/) para habilitar o WalletConnect v2. Isso deve ser concluído antes que os servidores de ponte v1 do WalletConnect sejam desativados em 28 de junho de 2023. RainbowKit preferirá silenciosamente o v1 para todas as carteiras se o `projectId` não for especificado.
+Cada dApp agora deve fornecer um `projectId` do [WalletConnect Cloud](https://cloud.walletconnect.com/) para habilitar o WalletConnect v2. Isso deve ser concluído antes que os servidores de ponte v1 do WalletConnect sejam desativados em 28 de junho de 2023. CinaWalletKit preferirá silenciosamente o v1 para todas as carteiras se o `projectId` não for especificado.
 
 Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
+#### 1. Atualize CinaWalletKit e `wagmi` para sua versão mais recente
 
 ```bash
-npm i @rainbow-me/rainbowkit@^0.12.0 wagmi@^0.12.0
+npm i @cinagroup/CinaWalletKit@^0.12.0 wagmi@^0.12.0
 ```
 
 #### 2. Forneça um projectId da WalletConnect Cloud
 
 Cada dApp que depende do WalletConnect agora precisa obter um `projectId` do [WalletConnect Cloud](https://cloud.walletconnect.com/). Isso é absolutamente gratuito e leva apenas alguns minutos.
 
-Forneça o `projectId` para `getDefaultWallets` e conectores de carteiras individuais RainbowKit, como o seguinte:
+Forneça o `projectId` para `getDefaultWallets` e conectores de carteiras individuais CinaWalletKit, como o seguinte:
 
 ```ts
 const projectId = 'YOUR_PROJECT_ID';
 
 const { wallets } = getDefaultWallets({
-  appName: 'My RainbowKit App',
+  appName: 'My CinaWalletKit App',
   projectId,
   chains,
 });
@@ -287,10 +287,10 @@ A dependência de par wagmi foi atualizada para `0.11.x`.
 
 Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
+#### 1. Atualize CinaWalletKit e `wagmi` para sua versão mais recente
 
 ```bash
-npm i @rainbow-me/rainbowkit@^0.11.0 wagmi@^0.11.0
+npm i @cinagroup/CinaWalletKit@^0.11.0 wagmi@^0.11.0
 ```
 
 #### 2. Verifique alterações de quebra em `wagmi`
@@ -305,10 +305,10 @@ A dependência de par wagmi foi atualizada para `0.10.x`.
 
 Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
+#### 1. Atualize CinaWalletKit e `wagmi` para sua versão mais recente
 
 ```bash
-npm i @rainbow-me/rainbowkit@^0.10.0 wagmi@^0.10.0
+npm i @cinagroup/CinaWalletKit@^0.10.0 wagmi@^0.10.0
 ```
 
 #### 2. Verifique alterações de quebra em `wagmi`
@@ -323,10 +323,10 @@ A dependência de par wagmi foi atualizada para `0.9.x`.
 
 Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
+#### 1. Atualize CinaWalletKit e `wagmi` para sua versão mais recente
 
 ```bash
-npm i @rainbow-me/rainbowkit@^0.9.0 wagmi@^0.9.0
+npm i @cinagroup/CinaWalletKit@^0.9.0 wagmi@^0.9.0
 ```
 
 #### 2. Verifique alterações de quebra em `wagmi`
@@ -341,10 +341,10 @@ A dependência de par wagmi foi atualizada para `0.8.x`.
 
 Siga os passos abaixo para realizar a migração.
 
-#### 1. Atualize RainbowKit e `wagmi` para sua versão mais recente
+#### 1. Atualize CinaWalletKit e `wagmi` para sua versão mais recente
 
 ```bash
-npm i @rainbow-me/rainbowkit@^0.8.0 wagmi@^0.8.0
+npm i @cinagroup/CinaWalletKit@^0.8.0 wagmi@^0.8.0
 ```
 
 #### 2. Verifique alterações de quebra em `wagmi`
@@ -358,15 +358,15 @@ Se você usa ganchos `wagmi` em sua aplicação, precisará verificar se sua apl
 Se você está criando uma lista personalizada de carteiras, agora deve importar cada carteira individualmente para reduzir o tamanho do pacote. Note que, uma vez que as carteiras não são mais nomeadas via objeto `wallet`, todas as carteiras agora possuem um sufixo `Wallet`.
 
 ```diff
--import { connectorsForWallets, wallet } from '@rainbow-me/rainbowkit';
-+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+-import { connectorsForWallets, wallet } from '@cinagroup/CinaWalletKit';
++import { connectorsForWallets } from '@cinagroup/CinaWalletKit';
 +import {
 +  injectedWallet,
 +  rainbowWallet,
 +  metaMaskWallet,
 +  coinbaseWallet,
 +  walletConnectWallet,
-+} from '@rainbow-me/rainbowkit/wallets';
++} from '@cinagroup/CinaWalletKit/wallets';
 
 const wallets = [
 -  wallet.injected({ chains }),
@@ -385,8 +385,8 @@ const wallets = [
 Observe também que a camada de compatibilidade retroativa para Steakwallet foi removida. Omni deve ser usado em vez disso.
 
 ```diff
--import { wallet } from '@rainbow-me/rainbowkit';
-+import { omniWallet } from '@rainbow-me/rainbowkit/wallets';
+-import { wallet } from '@cinagroup/CinaWalletKit';
++import { omniWallet } from '@cinagroup/CinaWalletKit/wallets';
 
 const wallets = [
 -  wallet.steak({ chains }),
@@ -396,16 +396,16 @@ const wallets = [
 
 ### Alterações de quebra da versão 0.4.x
 
-RainbowKit atualizou a dependência de par `wagmi` para `0.5.x`.
+CinaWalletKit atualizou a dependência de par `wagmi` para `0.5.x`.
 
 Siga os passos abaixo para realizar a migração.
 
 #### 1. Atualize as dependências
 
-Atualize RainbowKit e wagmi para sua versão mais recente
+Atualize CinaWalletKit e wagmi para sua versão mais recente
 
 ```bash
-npm i @rainbow-me/rainbowkit@^0.4.0 wagmi@^0.5.0
+npm i @cinagroup/CinaWalletKit@^0.4.0 wagmi@^0.5.0
 ```
 
 #### 2. Verifique alterações de quebra em `wagmi`
@@ -423,7 +423,7 @@ Removido o parâmetro `chainId` do `createConnector` no tipo `Wallet`.
 Se você anteriormente derivava URLs de RPC do `chainId` em `createConnector`, agora pode remover essa lógica, pois o `wagmi` agora manipula URLs de RPC internamente quando usado com `configureChains`.
 
 ```diff
-import { connectorsForWallets, wallet, Chain, Wallet } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets, wallet, Chain, Wallet } from '@cinagroup/CinaWalletKit';
 import { chain, configureChains } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
@@ -476,33 +476,33 @@ const connectors = connectorsForWallets([
 
 ### Alterações de quebra da versão 0.2.x
 
-RainbowKit atualizou a dependência de par `wagmi` para `^0.4`.
+CinaWalletKit atualizou a dependência de par `wagmi` para `^0.4`.
 
 Siga os passos abaixo para realizar a migração.
 
 #### 1. Atualize as dependências
 
-Atualize RainbowKit e wagmi para sua versão mais recente
+Atualize CinaWalletKit e wagmi para sua versão mais recente
 
 ```bash
-npm i @rainbow-me/rainbowkit@^0.2.0 wagmi@^0.4.2
+npm i @cinagroup/CinaWalletKit@^0.2.0 wagmi@^0.4.2
 ```
 
 #### 2. Substitua a importação de configureChains
 
-Importe `configureChains` do wagmi em vez do RainbowKit:
+Importe `configureChains` do wagmi em vez do CinaWalletKit:
 
 ```diff
-- import { configureChains } from '@rainbow-me/rainbowkit';
+- import { configureChains } from '@cinagroup/CinaWalletKit';
 + import { configureChains } from 'wagmi';
 ```
 
 #### 3. Migre provedores
 
-RainbowKit não exporta mais uma API `apiProvider`. Substitua-o pelo provedor desejado do wagmi.
+CinaWalletKit não exporta mais uma API `apiProvider`. Substitua-o pelo provedor desejado do wagmi.
 
 ```diff
-- import { apiProvider } from '@rainbow-me/rainbowkit';
+- import { apiProvider } from '@cinagroup/CinaWalletKit';
 ```
 
 #### Alchemy
