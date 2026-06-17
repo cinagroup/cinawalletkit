@@ -1,0 +1,14 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "cinawalletkit-with-create-react-app"
+compatibility_date = "2026-06-17"
+
+[site]
+bucket = "build"
+
+# Production environment
+[env.production]
+name = "cinawalletkit-with-create-react-app-production"
+
+# Preview environment (for PR previews)
+[env.preview]
+name = "cinawalletkit-with-create-react-app-preview"

@@ -1,0 +1,14 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "cinawalletkit-with-vite"
+compatibility_date = "2026-06-17"
+
+[site]
+bucket = "dist"
+
+# Production environment
+[env.production]
+name = "cinawalletkit-with-vite-production"
+
+# Preview environment (for PR previews)
+[env.preview]
+name = "cinawalletkit-with-vite-preview"

@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite dev",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "pnpm build && npx wrangler deploy",
+    "deploy:production": "pnpm build && npx wrangler deploy --env production",
+    "preview:cf": "pnpm build && npx wrangler dev"
   },
   "dependencies": {
     "@cinagroup/cinawalletkit": "workspace:*",

@@ -27,7 +27,10 @@
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@cinagroup)/\"",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "pnpm build && npx wrangler deploy",
+    "deploy:production": "pnpm build && npx wrangler deploy --env production",
+    "preview:cf": "pnpm build && npx wrangler dev"
   },
   "browserslist": {
     "production": [
