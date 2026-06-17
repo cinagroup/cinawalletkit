@@ -9,7 +9,7 @@
     "start": "remix-serve build/index.js"
   },
   "dependencies": {
-    "@rainbow-me/rainbowkit": "workspace:*",
+    "@cinagroup/cinawalletkit": "workspace:*",
     "@remix-run/node": "^2.17.4",
     "@remix-run/react": "^2.17.4",
     "@remix-run/serve": "^2.17.4",

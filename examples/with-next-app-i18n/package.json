@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@rainbow-me/rainbowkit": "workspace:*",
+    "@cinagroup/cinawalletkit": "workspace:*",
     "next": "^16.2.4",
     "next-intl": "^4.11.0",
     "react": "^19.2.5",

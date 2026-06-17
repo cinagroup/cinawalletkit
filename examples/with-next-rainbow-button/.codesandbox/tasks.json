@@ -1,10 +1,10 @@
 {
   "$schema": "https://codesandbox.io/schemas/tasks.json",
-  "setupTasks": ["yarn add @rainbow-me/rainbow-button@latest", "yarn build"],
+  "setupTasks": ["yarn add @cinagroup/cinawalletkit-button@latest", "yarn build"],
   "tasks": {
     "install-dependencies": {
       "name": "Install Dependencies",
-      "command": "yarn add @rainbow-me/rainbow-button@latest"
+      "command": "yarn add @cinagroup/cinawalletkit-button@latest"
     },
     "start-app": {
       "name": "Run Dev Server",
