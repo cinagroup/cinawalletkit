@@ -8,6 +8,7 @@ import {
 } from '@cinagroup/cinawalletkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type React from 'react';
+import { useState } from 'react';
 import { http, WagmiProvider } from 'wagmi';
 import {
   arbitrum,
@@ -18,6 +19,8 @@ import {
   mainnet,
   optimism,
   polygon,
+  scroll,
+  mantle,
   zora,
 } from 'wagmi/chains';
 
@@ -32,46 +35,63 @@ const transports = {
   [base.id]: http(),
   [bsc.id]: http(),
   [avalanche.id]: http(),
+  [scroll.id]: http(),
+  [mantle.id]: http(),
   [zora.id]: http(),
   [blast.id]: http(),
 };
 
 const { wallets } = getDefaultWallets();
 
-const config = getDefaultConfig({
-  appName: 'CinaWalletKit.com',
-  projectId,
-  chains: [
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    base,
-    bsc,
-    avalanche,
-    zora,
-    blast,
-  ],
-  transports,
-  wallets: [
-    ...wallets,
-    {
-      groupName: 'More',
-      wallets: [
-        readyWallet,
-        trustWallet,
-        omniWallet,
-        imTokenWallet,
-        ledgerWallet,
+// Use a module-level config with stable reference
+// Next.js 16 parallel SSG workers each get their own module instance,
+// but WagmiProvider + useConfig must share the same wagmi context.
+// Lazy initialization via useState ensures config is created in the
+// same execution context as the provider.
+let _config: ReturnType<typeof getDefaultConfig> | undefined;
+function getConfig() {
+  if (!_config) {
+    _config = getDefaultConfig({
+      appName: 'CinaWalletKit.com',
+      projectId,
+      chains: [
+        mainnet,
+        polygon,
+        optimism,
+        arbitrum,
+        base,
+        bsc,
+        avalanche,
+        scroll,
+        mantle,
+        zora,
+        blast,
       ],
-    },
-  ],
-  ssr: true,
-});
+      transports,
+      wallets: [
+        ...wallets,
+        {
+          groupName: 'More',
+          wallets: [
+            readyWallet,
+            trustWallet,
+            omniWallet,
+            imTokenWallet,
+            ledgerWallet,
+          ],
+        },
+      ],
+      ssr: true,
+    });
+  }
+  return _config;
+}
 
 const client = new QueryClient();
 
 export function Provider({ children }: { children: React.ReactNode }) {
+  const [config] = useState(() => getConfig());
+
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={client}>{children}</QueryClientProvider>
