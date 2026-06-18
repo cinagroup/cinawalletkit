@@ -4,7 +4,7 @@ import {
   type Locale,
   lightTheme,
   CinaWalletKitProvider,
-} from '@cinagroup/CinaWalletKit';
+} from '@cinagroup/cinawalletkit';
 import { Badge } from 'components/Badge/Badge';
 import { Box } from 'components/Box/Box';
 import { Text } from 'components/Text/Text';
@@ -12,7 +12,7 @@ import { vars } from 'css/vars.css';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import type React from 'react';
-import pckg from '../../../packages/CinaWalletKit/package.json';
+import pckg from '../../../packages/cinawalletkit/package.json';
 import { header, logo, row } from './Header.css';
 
 const CinaWalletKit_VERSION = pckg.version;

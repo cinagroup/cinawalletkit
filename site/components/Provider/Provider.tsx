@@ -1,11 +1,11 @@
-import { getDefaultConfig, getDefaultWallets } from '@cinagroup/CinaWalletKit';
+import { getDefaultConfig, getDefaultWallets } from '@cinagroup/cinawalletkit';
 import {
   imTokenWallet,
   ledgerWallet,
   omniWallet,
   readyWallet,
   trustWallet,
-} from '@cinagroup/CinaWalletKit/wallets';
+} from '@cinagroup/cinawalletkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type React from 'react';
 import { http, WagmiProvider } from 'wagmi';

@@ -1,0 +1,158 @@
+name: Deploy to Cloudflare
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+jobs:
+  # Build and deploy site (documentation)
+  deploy-site:
+    name: Deploy Site
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build site
+        run: pnpm build:cf
+      
+      - name: Deploy to Cloudflare Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npx wrangler deploy --env production
+      
+      - name: Preview deployment
+        if: github.event_name == 'pull_request'
+        run: npx wrangler deploy --env preview
+
+  # Build and deploy static examples
+  deploy-static-examples:
+    name: Deploy Static Examples
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        example:
+          - with-vite
+          - with-create-react-app
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build ${{ matrix.example }}
+        working-directory: examples/${{ matrix.example }}
+        run: pnpm build
+      
+      - name: Deploy ${{ matrix.example }} to Cloudflare Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: cinawalletkit-${{ matrix.example }}
+          directory: examples/${{ matrix.example }}/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  # Build and deploy Next.js examples (SSR)
+  deploy-nextjs-examples:
+    name: Deploy Next.js Examples
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        example:
+          - with-next
+          - with-next-app
+          - with-next-app-i18n
+          - with-next-custom-button
+          - with-next-mint-nft
+          - with-next-rainbow-button
+          - with-next-siwe-iron-session
+          - with-next-siwe-next-auth
+          - with-next-wallet-button
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build ${{ matrix.example }}
+        working-directory: examples/${{ matrix.example }}
+        run: |
+          pnpm build
+          npx opennextjs-cloudflare
+      
+      - name: Deploy ${{ matrix.example }} to Cloudflare Workers
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        working-directory: examples/${{ matrix.example }}
+        run: npx wrangler deploy
+
+  # Build and deploy Remix/React Router examples
+  deploy-ssr-examples:
+    name: Deploy SSR Examples
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        example:
+          - with-remix
+          - with-react-router
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build ${{ matrix.example }}
+        working-directory: examples/${{ matrix.example }}
+        run: pnpm build
+      
+      - name: Deploy ${{ matrix.example }} to Cloudflare Workers
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        working-directory: examples/${{ matrix.example }}
+        run: npx wrangler deploy
