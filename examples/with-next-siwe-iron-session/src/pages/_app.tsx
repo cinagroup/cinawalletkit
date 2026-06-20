@@ -3,118 +3,17 @@
 import '../styles/global.css';
 import '@cinagroup/cinawalletkit/styles.css';
 import type { AppProps } from 'next/app';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import dynamic from 'next/dynamic';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider } from 'wagmi';
-import {
-  CinaWalletKitProvider,
-  createAuthenticationAdapter,
-  CinaWalletKitAuthenticationProvider,
-  type AuthenticationStatus,
-} from '@cinagroup/cinawalletkit';
-import { createSiweMessage } from 'viem/siwe';
-
-import { config } from '../wagmi';
-
-const queryClient = new QueryClient();
+const Provider = dynamic(
+  () => import('../components/Provider').then((mod) => ({ default: mod.Provider })),
+  { ssr: false }
+);
 
 export default function App({ Component, pageProps }: AppProps) {
-  const fetchingStatusRef = useRef(false);
-  const verifyingRef = useRef(false);
-  const [authStatus, setAuthStatus] = useState<AuthenticationStatus>('loading');
-
-  // Fetch user when:
-  useEffect(() => {
-    const fetchStatus = async () => {
-      if (fetchingStatusRef.current || verifyingRef.current) {
-        return;
-      }
-
-      fetchingStatusRef.current = true;
-
-      try {
-        const response = await fetch('/api/me');
-        const json = await response.json();
-        setAuthStatus(json.address ? 'authenticated' : 'unauthenticated');
-      } catch (_error) {
-        setAuthStatus('unauthenticated');
-      } finally {
-        fetchingStatusRef.current = false;
-      }
-    };
-
-    // 1. page loads
-    fetchStatus();
-
-    // 2. window is focused (in case user logs out of another window)
-    window.addEventListener('focus', fetchStatus);
-    return () => window.removeEventListener('focus', fetchStatus);
-  }, []);
-
-  const authAdapter = useMemo(() => {
-    return createAuthenticationAdapter({
-      getNonce: async () => {
-        const response = await fetch('/api/nonce');
-        return await response.text();
-      },
-
-      createMessage: ({ nonce, address, chainId }) => {
-        return createSiweMessage({
-          domain: window.location.host,
-          address,
-          statement: 'Sign in with Ethereum to the app.',
-          uri: window.location.origin,
-          version: '1',
-          chainId,
-          nonce,
-        });
-      },
-
-      verify: async ({ message, signature }) => {
-        verifyingRef.current = true;
-
-        try {
-          const response = await fetch('/api/verify', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message, signature }),
-          });
-
-          const authenticated = Boolean(response.ok);
-
-          if (authenticated) {
-            setAuthStatus(authenticated ? 'authenticated' : 'unauthenticated');
-          }
-
-          return authenticated;
-        } catch (error) {
-          console.error('Error verifying signature', error);
-          return false;
-        } finally {
-          verifyingRef.current = false;
-        }
-      },
-
-      signOut: async () => {
-        setAuthStatus('unauthenticated');
-        await fetch('/api/logout');
-      },
-    });
-  }, []);
-
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <CinaWalletKitAuthenticationProvider
-          adapter={authAdapter}
-          status={authStatus}
-        >
-          <CinaWalletKitProvider>
-            <Component {...pageProps} />
-          </CinaWalletKitProvider>
-        </CinaWalletKitAuthenticationProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+    <Provider>
+      <Component {...pageProps} />
+    </Provider>
   );
 }

@@ -5,6 +5,8 @@ compatibility_flags = ["nodejs_compat"]
 main = "build/server/index.js"
 account_id = ""
 
+routes = [{ pattern = "cinacoin.com/examples/with-react-router/*", zone_name = "cinacoin.com" }]
+
 [site]
 bucket = "build/client"
 

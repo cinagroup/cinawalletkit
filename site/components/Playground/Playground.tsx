@@ -6,7 +6,7 @@ import {
   lightTheme,
   midnightTheme,
   CinaWalletKitProvider,
-} from '@cinagroup/CinaWalletKit';
+} from '@cinagroup/cinawalletkit';
 import clsx from 'clsx';
 import { Box } from 'components/Box/Box';
 import { MeshGradient } from 'components/MeshGradient/MeshGradient';

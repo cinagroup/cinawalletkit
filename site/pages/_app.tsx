@@ -1,6 +1,12 @@
-import '@cinagroup/CinaWalletKit/styles.css';
-import { Provider } from 'components/Provider/Provider';
+import '@cinagroup/cinawalletkit/styles.css';
+import dynamic from 'next/dynamic';
 import type { AppProps } from 'next/app';
+
+// Dynamic import Provider with ssr: false to avoid WagmiProviderNotFoundError during SSG
+const Provider = dynamic(
+  () => import('components/Provider/Provider').then(mod => ({ default: mod.Provider })),
+  { ssr: false }
+);
 import { useRouter } from 'next/router';
 import { NextIntlClientProvider } from 'next-intl';
 import { useEffect } from 'react';

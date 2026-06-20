@@ -5,8 +5,14 @@ compatibility_flags = ["nodejs_compat"]
 main = ".open-next/worker.js"
 account_id = "7ea8e46d8210bad342fa7595f7935fea"
 
-[site]
-bucket = ".open-next/assets"
+# Stub out WebSocket module - not needed in Workers environment
+[alias]
+isows = "./stubs/empty.js"
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+run_worker_first = ["/_next/*", "/favicon.ico", "/llms.txt", "/llms-full.txt"]
 
 [observability]
 enabled = true
@@ -20,6 +26,11 @@ enabled = true
 # Production environment
 [env.production]
 name = "cinawalletkit-site-production"
+workers_dev = true
+routes = [
+  { pattern = "cinacoin.com/*", zone_name = "cinacoin.com" },
+  { pattern = "www.cinacoin.com/*", zone_name = "cinacoin.com" }
+]
 
 # Preview environment (for PR previews)
 [env.preview]

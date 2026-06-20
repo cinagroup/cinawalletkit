@@ -1,14 +1,12 @@
-#:schema node_modules/wrangler/config-schema.json
 name = "cinawalletkit-with-vite"
 compatibility_date = "2026-06-17"
 
-[site]
-bucket = "dist"
+main = "worker.js"
+workers_dev = true
 
-# Production environment
-[env.production]
-name = "cinawalletkit-with-vite-production"
+[assets]
+directory = "dist"
+binding = "ASSETS"
+run_worker_first = true
 
-# Preview environment (for PR previews)
-[env.preview]
-name = "cinawalletkit-with-vite-preview"
+routes = [{ pattern = "vite.cinacoin.com/*", zone_name = "cinacoin.com" }]

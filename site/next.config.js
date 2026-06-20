@@ -17,6 +17,9 @@ const nextConfig = {
     '@wagmi/core',
     '@wagmi/connectors',
   ],
+  experimental: {
+    ppr: false, // 关闭 PPR，避免客户端上下文拆分
+  },
   logging: {
     browserToTerminal: 'warn',
   },

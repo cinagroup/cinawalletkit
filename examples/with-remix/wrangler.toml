@@ -1,9 +1,11 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "cinawalletkit-with-remix"
+main = "build/index.js"
 compatibility_date = "2026-06-17"
 compatibility_flags = ["nodejs_compat"]
-main = "build/index.js"
 account_id = ""
+
+routes = [{ pattern = "cinacoin.com/examples/with-remix/*", zone_name = "cinacoin.com" }]
 
 [site]
 bucket = "public"
@@ -13,6 +15,8 @@ enabled = true
 
 [env.production]
 name = "cinawalletkit-with-remix-production"
+routes = [{ pattern = "cinacoin.com/examples/remix/*", zone_name = "cinacoin.com" }]
+vars = { BASE_PATH = "/examples/remix" }
 
 [env.preview]
 name = "cinawalletkit-with-remix-preview"

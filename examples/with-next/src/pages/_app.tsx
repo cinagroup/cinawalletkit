@@ -2,25 +2,20 @@ import '../styles/global.css';
 import '@cinagroup/cinawalletkit/styles.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider } from 'wagmi';
-import { CinaWalletKitProvider, type Locale } from '@cinagroup/cinawalletkit';
-
-import { config } from '../wagmi';
-
-const queryClient = new QueryClient();
+// Dynamic import Provider with ssr: false to avoid WagmiProviderNotFoundError during SSG
+const Provider = dynamic(
+  () => import('../components/Provider').then(mod => ({ default: mod.Provider })),
+  { ssr: false }
+);
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { locale } = useRouter() as { locale: Locale };
+  const { locale } = useRouter() as { locale: string };
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <CinaWalletKitProvider locale={locale}>
-          <Component {...pageProps} />
-        </CinaWalletKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+    <Provider locale={locale}>
+      <Component {...pageProps} />
+    </Provider>
   );
 }
 

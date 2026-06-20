@@ -1,18 +1,23 @@
-#:schema node_modules/wrangler/config-schema.json
 name = "cinawalletkit-with-next"
 compatibility_date = "2026-06-17"
 compatibility_flags = ["nodejs_compat"]
 main = ".open-next/worker.js"
-account_id = ""
+account_id = "7ea8e46d8210bad342fa7595f7935fea"
 
-[site]
-bucket = ".open-next/assets"
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+run_worker_first = true
 
 [observability]
 enabled = true
 
+# Production environment
 [env.production]
 name = "cinawalletkit-with-next-production"
+workers_dev = true
+routes = [{ pattern = "next.cinacoin.com/*", zone_name = "cinacoin.com" }]
 
+# Preview environment
 [env.preview]
 name = "cinawalletkit-with-next-preview"

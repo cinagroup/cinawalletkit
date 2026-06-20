@@ -2,7 +2,7 @@ import {
   type Locale,
   CinaWalletKitProvider,
   WalletButton as RKWalletButton,
-} from '@cinagroup/CinaWalletKit';
+} from '@cinagroup/cinawalletkit';
 import { Box } from 'components/Box/Box';
 import { useRouter } from 'next/router';
 import React from 'react';

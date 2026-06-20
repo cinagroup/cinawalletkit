@@ -4,8 +4,15 @@ const createNextIntlPlugin = require('next-intl/plugin');
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+  const nextConfig = {
+    basePath: process.env.CINA_BASE_PATH || '',
+    reactStrictMode: true,
+  transpilePackages: [
+    '@cinagroup/cinawalletkit',
+    'wagmi',
+    '@wagmi/core',
+    '@wagmi/connectors',
+  ],
   webpack(config) {
     config.resolve.alias = {
       ...config.resolve.alias,

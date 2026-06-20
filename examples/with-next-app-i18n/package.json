@@ -12,18 +12,21 @@
   },
   "dependencies": {
     "@cinagroup/cinawalletkit": "workspace:*",
+    "@rainbow-me/rainbowkit": "^2.2.11",
+    "@tanstack/react-query": "^5.55.3",
     "next": "^16.2.4",
-    "next-intl": "^4.11.0",
+    "next-intl": "3.26.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "viem": "2.38.0",
-    "wagmi": "^2.19.3",
-    "@tanstack/react-query": "^5.55.3"
+    "wagmi": "^2.19.3"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.0.0",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "wrangler": "^4.0.0"
   },
   "engines": {
     "node": ">=24"

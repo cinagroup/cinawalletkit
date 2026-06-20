@@ -1,21 +1,14 @@
 'use client';
 
 import type React from 'react';
+import dynamic from 'next/dynamic';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider } from 'wagmi';
-import { CinaWalletKitProvider } from '@cinagroup/cinawalletkit';
-
-import { config } from '../wagmi';
-
-const queryClient = new QueryClient();
+// Dynamic import Provider with ssr: false to avoid WagmiProviderNotFoundError during SSG
+const Provider = dynamic(
+  () => import('../components/Provider').then((mod) => ({ default: mod.Provider })),
+  { ssr: false }
+);
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <CinaWalletKitProvider>{children}</CinaWalletKitProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
-  );
+  return <Provider>{children}</Provider>;
 }

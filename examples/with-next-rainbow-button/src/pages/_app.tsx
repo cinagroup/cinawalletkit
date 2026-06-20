@@ -1,24 +1,18 @@
 import '../styles/global.css';
 import '@cinagroup/cinawalletkit-button/styles.css';
 import type { AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider } from 'wagmi';
-import { RainbowButtonProvider } from '@cinagroup/cinawalletkit-button';
-
-import { config } from '../wagmi';
-
-const queryClient = new QueryClient();
+const Provider = dynamic(
+  () => import('../components/Provider').then((mod) => ({ default: mod.Provider })),
+  { ssr: false }
+);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiProvider config={config}>
-      <QueryClientProvider client={queryClient}>
-        <RainbowButtonProvider>
-          <Component {...pageProps} />
-        </RainbowButtonProvider>
-      </QueryClientProvider>
-    </WagmiProvider>
+    <Provider>
+      <Component {...pageProps} />
+    </Provider>
   );
 }
 
