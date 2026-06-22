@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@cinagroup/cinawalletkit": "workspace:*",
+    "@remix-run/cloudflare": "^2.17.4",
     "@remix-run/node": "^2.17.4",
     "@remix-run/react": "^2.17.4",
     "@remix-run/serve": "^2.17.4",
@@ -27,7 +28,8 @@
     "@remix-run/dev": "^2.17.4",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "wrangler": "^4.0.0"
   },
   "engines": {
     "node": ">=24"

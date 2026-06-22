@@ -1,10 +1,12 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 export default {
   ignoredRouteFiles: ['**/.*'],
-  // appDirectory: "app",
-  // assetsBuildDirectory: "public/build",
-  // publicPath: "/build/",
-  // serverBuildPath: "build/index.js",
+  // Build for Cloudflare Workers:
+  // - ESM module format so the worker entry (worker/server.ts) can import it.
+  // - The Cloudflare runtime is handled by @remix-run/cloudflare (loaded in the
+  //   worker entry), so we leave the default node platform for the Remix build.
+  serverModuleFormat: 'esm',
+  serverBuildPath: 'build/index.js',
   future: {
     v3_throwAbortReason: true,
     v3_relativeSplatPath: true,

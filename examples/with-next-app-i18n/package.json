@@ -6,16 +6,15 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "deploy": "pnpm build && npx opennextjs-cloudflare && npx wrangler deploy",
-    "deploy:production": "pnpm build && npx opennextjs-cloudflare && npx wrangler deploy --env production",
-    "preview:cf": "pnpm build && npx opennextjs-cloudflare && npx wrangler dev"
+    "deploy": "pnpm build && npx opennextjs-cloudflare build && npx wrangler deploy",
+    "deploy:production": "pnpm build && npx opennextjs-cloudflare build && npx wrangler deploy --env production",
+    "preview:cf": "pnpm build && npx opennextjs-cloudflare build && npx wrangler dev"
   },
   "dependencies": {
     "@cinagroup/cinawalletkit": "workspace:*",
-    "@rainbow-me/rainbowkit": "^2.2.11",
     "@tanstack/react-query": "^5.55.3",
     "next": "^16.2.4",
-    "next-intl": "3.26.4",
+    "next-intl": "^4.13.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "viem": "2.38.0",

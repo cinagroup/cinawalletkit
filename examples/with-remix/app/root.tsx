@@ -52,12 +52,14 @@ export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: rainbowStylesUrl },
 ];
 
-// Note: These environment variables are hard coded for demonstration purposes.
-// See: https://remix.run/docs/en/v1/guides/envvars#browser-environment-variables
-export const loader: LoaderFunction = () => {
+// Reads PUBLIC_ENABLE_TESTNETS from the Remix load context. On Cloudflare
+// Workers, process.env is unavailable, so the Worker's server entry passes the
+// value in via the load context (see worker/server.ts).
+export const loader: LoaderFunction = ({ context }) => {
+  const ctx = (context ?? {}) as Partial<Env>;
   const data: LoaderData = {
     ENV: {
-      PUBLIC_ENABLE_TESTNETS: process.env.PUBLIC_ENABLE_TESTNETS || 'false',
+      PUBLIC_ENABLE_TESTNETS: ctx.PUBLIC_ENABLE_TESTNETS || 'false',
     },
   };
 

@@ -1,20 +1,15 @@
-#:schema node_modules/wrangler/config-schema.json
 name = "cinawalletkit-with-react-router"
 compatibility_date = "2026-06-17"
 compatibility_flags = ["nodejs_compat"]
-main = "build/server/index.js"
-account_id = ""
+main = "worker.js"
+workers_dev = true
 
-routes = [{ pattern = "cinacoin.com/examples/with-react-router/*", zone_name = "cinacoin.com" }]
+routes = [{ pattern = "react-router.cinacoin.com/*", zone_name = "cinacoin.com" }]
 
-[site]
-bucket = "build/client"
+[assets]
+directory = "build/client"
+binding = "ASSETS"
+run_worker_first = true
 
 [observability]
 enabled = true
-
-[env.production]
-name = "cinawalletkit-with-react-router-production"
-
-[env.preview]
-name = "cinawalletkit-with-react-router-preview"

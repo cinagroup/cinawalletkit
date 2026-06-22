@@ -4,9 +4,9 @@ compatibility_flags = ["nodejs_compat"]
 main = ".open-next/worker.js"
 workers_dev = true
 
+routes = [{ pattern = "next-app-i18n.cinacoin.com/*", zone_name = "cinacoin.com" }]
+
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
 run_worker_first = true
-
-routes = [{ pattern = "next-app-i18n.cinacoin.com/*", zone_name = "cinacoin.com" }]
