@@ -114,3 +114,7 @@ dist
 # Others
 .DS_Store
 node-compile-cache/
+
+# Cloudflare Workers / OpenNext build output
+.open-next/
+.wrangler/
