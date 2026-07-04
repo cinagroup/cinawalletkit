@@ -7,9 +7,7 @@ export const config = getDefaultConfig({
   projectId: 'YOUR_PROJECT_ID',
   chains: [sepolia],
   transports: {
-    [sepolia.id]: http(
-      `https://eth-sepolia.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_ID}`,
-    ),
+    [sepolia.id]: http(),
   },
   ssr: true,
 });

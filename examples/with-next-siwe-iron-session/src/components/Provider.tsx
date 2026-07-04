@@ -1,19 +1,15 @@
 import { getDefaultConfig } from '@cinagroup/cinawalletkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import { WagmiProvider } from 'wagmi';
 import { CinaWalletKitProvider } from '@cinagroup/cinawalletkit';
-import {
-  arbitrum,
-  base,
-  mainnet,
-  optimism,
-  polygon,
-  sepolia,
-} from 'wagmi/chains';
+import { arbitrum, base, mainnet, optimism, polygon } from 'wagmi/chains';
 
+// Use build-time environment variable or fallback
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
+
+const chains = [mainnet, polygon, optimism, arbitrum, base] as const;
 
 // Lazy initialization via useState ensures config is created in the
 // same execution context as the provider, avoiding WagmiProviderNotFoundError during SSG.
@@ -23,14 +19,7 @@ function getConfig() {
     _config = getDefaultConfig({
       appName: 'CinaWalletKit demo',
       projectId,
-      chains: [
-        mainnet,
-        polygon,
-        optimism,
-        arbitrum,
-        base,
-        ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
-      ],
+      chains,
       ssr: true,
     });
   }
@@ -45,9 +34,7 @@ export function Provider({ children }: { children: ReactNode }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <CinaWalletKitProvider>
-          {children}
-        </CinaWalletKitProvider>
+        <CinaWalletKitProvider>{children}</CinaWalletKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
