@@ -1,14 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ConnectButton,
-  CinaWalletKitProvider,
-  lightTheme,
-  darkTheme,
-  midnightTheme,
-  type Locale,
-} from '@cinagroup/cinawalletkit';
+import type { Locale } from '@cinagroup/cinawalletkit';
 import type { Chain } from 'wagmi/chains';
 import {
   arbitrum,
@@ -19,6 +12,8 @@ import {
   sepolia,
 } from 'wagmi/chains';
 import { ConfigPanel } from '../components/ConfigPanel';
+import { WalletPreviewWrapper } from './providers';
+import type { PlaygroundSettings } from '../components/Provider';
 
 type ThemeKey = 'light' | 'dark' | 'midnight';
 type AccentKey = 'blue' | 'purple' | 'green' | 'orange';
@@ -63,18 +58,17 @@ export default function Page() {
   const [coolMode, setCoolMode] = useState(false);
   const [showAppInfo, setShowAppInfo] = useState(true);
 
-  const themeBuilder =
-    theme === 'light'
-      ? lightTheme
-      : theme === 'dark'
-        ? darkTheme
-        : midnightTheme;
-
-  const resolvedTheme = themeBuilder({
+  const settings: PlaygroundSettings = {
+    theme,
     accentColor: ACCENTS[accent],
     borderRadius: radius,
-    overlayBlur: 'small',
-  });
+    locale,
+    modalSize,
+    initialChainId: CHAINS[initialChainKey].id,
+    showRecentTransactions: showRecentTxs,
+    coolMode,
+    showAppInfo,
+  };
 
   return (
     <div style={styles.layout}>
@@ -132,31 +126,15 @@ export default function Page() {
       </aside>
 
       {/* Right: live preview.
-          WagmiProvider + QueryClientProvider are at the layout level,
-          so CinaWalletKitProvider + ConnectButton are safe to use here. */}
+          WalletPreview is dynamically imported (ssr:false) and contains
+          WagmiProvider + CinaWalletKitProvider + ConnectButton in ONE module,
+          so they share the same wagmi context. */}
       <main style={styles.preview}>
         <div style={styles.previewToolbar}>
           <span style={styles.badge}>LIVE PREVIEW</span>
         </div>
         <div style={styles.previewStage}>
-          <CinaWalletKitProvider
-            theme={resolvedTheme}
-            locale={locale}
-            modalSize={modalSize}
-            initialChain={CHAINS[initialChainKey]}
-            showRecentTransactions={showRecentTxs}
-            coolMode={coolMode}
-            appInfo={
-              showAppInfo
-                ? {
-                    appName: 'Playground Demo',
-                    learnMoreUrl: 'https://cinacoin.com',
-                  }
-                : undefined
-            }
-          >
-            <ConnectButton />
-          </CinaWalletKitProvider>
+          <WalletPreviewWrapper settings={settings} />
         </div>
       </main>
     </div>

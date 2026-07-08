@@ -1,17 +1,23 @@
 'use client';
 
-import type React from 'react';
 import dynamic from 'next/dynamic';
+import type { PlaygroundSettings } from '../components/Provider';
 
-// Dynamic import Provider with ssr: false to avoid WagmiProviderNotFoundError during SSG.
-// This wraps the ENTIRE app at the layout level, so wagmi context is always
-// available when any page component renders.
-const Provider = dynamic(
+// Dynamic import WalletPreview with ssr: false. This component bundles
+// WagmiProvider + CinaWalletKitProvider + ConnectButton in ONE module,
+// guaranteeing they share the same wagmi context instance.
+const WalletPreview = dynamic(
   () =>
-    import('../components/Provider').then((mod) => ({ default: mod.Provider })),
+    import('../components/Provider').then((mod) => ({
+      default: mod.WalletPreview,
+    })),
   { ssr: false, loading: () => null },
 );
 
-export function Providers({ children }: { children: React.ReactNode }) {
-  return <Provider>{children}</Provider>;
+export function WalletPreviewWrapper({
+  settings,
+}: {
+  settings: PlaygroundSettings;
+}) {
+  return <WalletPreview settings={settings} />;
 }
