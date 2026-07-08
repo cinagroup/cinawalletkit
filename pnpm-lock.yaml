@@ -181,6 +181,19 @@ importers:
         specifier: ^4.0.0
         version: 4.101.0(@cloudflare/workers-types@4.20260620.1)(bufferutil@4.1.0)(utf-8-validate@5.0.10)
 
+  examples/with-next-app-playground:
+    dependencies:
+      '@cinagroup/cinawalletkit':
+        specifier: workspace:*
+        version: link:../../packages/cinawalletkit
+    devDependencies:
+      '@opennextjs/cloudflare':
+        specifier: ^1.0.0
+        version: 1.19.11(next@16.2.9(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(wrangler@4.101.0(@cloudflare/workers-types@4.20260620.1)(bufferutil@4.1.0)(utf-8-validate@5.0.10))
+      wrangler:
+        specifier: ^4.0.0
+        version: 4.101.0(@cloudflare/workers-types@4.20260620.1)(bufferutil@4.1.0)(utf-8-validate@5.0.10)
+
   examples/with-next-custom-button:
     dependencies:
       '@cinagroup/cinawalletkit':
@@ -383,10 +396,10 @@ importers:
         version: 2.0.10
       viem:
         specifier: 2.x
-        version: 2.38.0(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76)
+        version: 2.38.0(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.4.3)
       wagmi:
         specifier: ^2.9.0
-        version: 2.19.5(@tanstack/query-core@5.101.0)(@tanstack/react-query@5.101.0(react@19.2.7))(@types/react@19.2.17)(aws4fetch@1.0.20)(bufferutil@4.1.0)(immer@9.0.21)(react@19.2.7)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.38.0(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@3.25.76))(zod@3.25.76)
+        version: 2.19.5(@tanstack/query-core@5.101.0)(@tanstack/react-query@5.101.0(react@19.2.7))(@types/react@19.2.17)(aws4fetch@1.0.20)(bufferutil@4.1.0)(immer@9.0.21)(react@19.2.7)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.38.0(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.4.3))(zod@4.4.3)
     devDependencies:
       '@testing-library/dom':
         specifier: ^10.4.1

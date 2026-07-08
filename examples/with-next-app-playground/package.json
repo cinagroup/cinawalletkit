@@ -1,0 +1,33 @@
+{
+  "name": "with-next-app-playground",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "deploy": "pnpm build && npx opennextjs-cloudflare build && npx wrangler deploy",
+    "deploy:production": "pnpm build && npx opennextjs-cloudflare build && npx wrangler deploy --env production",
+    "preview:cf": "pnpm build && npx opennextjs-cloudflare build && npx wrangler dev"
+  },
+  "dependencies": {
+    "@cinagroup/cinawalletkit": "workspace:*",
+    "@tanstack/react-query": "^5.55.3",
+    "next": "^16.2.4",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "viem": "2.38.0",
+    "wagmi": "^2.19.3"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.0.0",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "5.9.3",
+    "wrangler": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
