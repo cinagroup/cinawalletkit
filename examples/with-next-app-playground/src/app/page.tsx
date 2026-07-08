@@ -1,14 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ConnectButton,
-  CinaWalletKitProvider,
-  lightTheme,
-  darkTheme,
-  midnightTheme,
-  type Locale,
-} from '@cinagroup/cinawalletkit';
+import { ConnectButton } from '@cinagroup/cinawalletkit';
+import type { Locale } from '@cinagroup/cinawalletkit';
 import type { Chain } from 'wagmi/chains';
 import {
   arbitrum,
@@ -19,6 +13,8 @@ import {
   sepolia,
 } from 'wagmi/chains';
 import { ConfigPanel } from '../components/ConfigPanel';
+import { Providers } from './providers';
+import type { PlaygroundSettings } from '../components/Provider';
 
 type ThemeKey = 'light' | 'dark' | 'midnight';
 type AccentKey = 'blue' | 'purple' | 'green' | 'orange';
@@ -38,13 +34,6 @@ const ACCENTS: Record<AccentKey, string> = {
   purple: '#6e3aff',
   green: '#0d7d4a',
   orange: '#e0611f',
-};
-
-const RADII: Record<RadiusKey, 'none' | 'small' | 'medium' | 'large'> = {
-  none: 'none',
-  small: 'small',
-  medium: 'medium',
-  large: 'large',
 };
 
 const LOCALES: { value: Locale; label: string }[] = [
@@ -70,18 +59,17 @@ export default function Page() {
   const [coolMode, setCoolMode] = useState(false);
   const [showAppInfo, setShowAppInfo] = useState(true);
 
-  const themeBuilder =
-    theme === 'light'
-      ? lightTheme
-      : theme === 'dark'
-        ? darkTheme
-        : midnightTheme;
-
-  const resolvedTheme = themeBuilder({
+  const settings: PlaygroundSettings = {
+    theme,
     accentColor: ACCENTS[accent],
-    borderRadius: RADII[radius],
-    overlayBlur: 'small',
-  });
+    borderRadius: radius,
+    locale,
+    modalSize,
+    initialChainId: CHAINS[initialChainKey].id,
+    showRecentTransactions: showRecentTxs,
+    coolMode,
+    showAppInfo,
+  };
 
   return (
     <div style={styles.layout}>
@@ -138,30 +126,16 @@ export default function Page() {
         </footer>
       </aside>
 
-      {/* Right: live preview */}
+      {/* Right: live preview — Providers wraps ConnectButton with WagmiProvider +
+          CinaWalletKitProvider in the SAME component tree (matches with-next-app). */}
       <main style={styles.preview}>
         <div style={styles.previewToolbar}>
           <span style={styles.badge}>LIVE PREVIEW</span>
         </div>
         <div style={styles.previewStage}>
-          <CinaWalletKitProvider
-            theme={resolvedTheme}
-            locale={locale}
-            modalSize={modalSize}
-            initialChain={CHAINS[initialChainKey]}
-            showRecentTransactions={showRecentTxs}
-            coolMode={coolMode}
-            appInfo={
-              showAppInfo
-                ? {
-                    appName: 'Playground Demo',
-                    learnMoreUrl: 'https://cinacoin.com',
-                  }
-                : undefined
-            }
-          >
+          <Providers settings={settings}>
             <ConnectButton />
-          </CinaWalletKitProvider>
+          </Providers>
         </div>
       </main>
     </div>
@@ -173,14 +147,14 @@ const styles = {
     display: 'grid',
     gridTemplateColumns: '360px 1fr',
     minHeight: '100vh',
-  } as const,
+  },
   sidebar: {
     background: '#fff',
     borderRight: '1px solid #e6e8eb',
     padding: '24px 20px',
-    overflowY: 'auto' as const,
+    overflowY: 'auto',
     display: 'flex',
-    flexDirection: 'column' as const,
+    flexDirection: 'column',
     gap: 20,
   },
   sidebarHeader: { paddingBottom: 16, borderBottom: '1px solid #eef0f2' },
@@ -199,7 +173,7 @@ const styles = {
     fontSize: 12,
     color: '#9ca3af',
   },
-  preview: { display: 'flex', flexDirection: 'column' as const },
+  preview: { display: 'flex', flexDirection: 'column' },
   previewToolbar: {
     padding: '12px 24px',
     borderBottom: '1px solid #e6e8eb',
@@ -222,4 +196,4 @@ const styles = {
     padding: 24,
     gap: 16,
   },
-};
+} as const;

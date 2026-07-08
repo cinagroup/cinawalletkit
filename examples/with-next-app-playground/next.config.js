@@ -13,7 +13,6 @@ const nextConfig = {
       ...config.resolve.alias,
       'pino-pretty': false,
     };
-
     return config;
   },
 };
