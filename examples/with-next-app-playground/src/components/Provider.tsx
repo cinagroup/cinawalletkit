@@ -3,6 +3,7 @@
 import {
   getDefaultConfig,
   CinaWalletKitProvider,
+  ConnectButton,
   lightTheme,
   darkTheme,
   midnightTheme,
@@ -10,8 +11,7 @@ import {
 } from '@cinagroup/cinawalletkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { http, WagmiProvider } from 'wagmi';
-import type { ReactNode } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   arbitrum,
   base,
@@ -53,18 +53,18 @@ function getConfig() {
   return _config;
 }
 
-// EXACT same structure as with-next-app's Provider:
-// WagmiProvider → QueryClientProvider → CinaWalletKitProvider → children
-// The page renders ConnectButton as {children}, exactly like with-next-app.
-export function Provider({
-  children,
-  settings,
-}: {
-  children: ReactNode;
-  settings: PlaygroundSettings;
-}) {
+// Render everything (WagmiProvider + CinaWalletKitProvider + ConnectButton)
+// only after client-side mount, using a useEffect gate instead of dynamic().
+// This avoids webpack code-splitting wagmi and cinawalletkit into separate
+// chunks, which causes WagmiProviderNotFoundError due to context duplication.
+export function Provider({ settings }: { settings: PlaygroundSettings }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const [config] = useState(() => getConfig());
   const [queryClient] = useState(() => new QueryClient());
+
+  if (!mounted) return null;
 
   const themeBuilder =
     settings.theme === 'light'
@@ -98,7 +98,7 @@ export function Provider({
               : undefined
           }
         >
-          {children}
+          <ConnectButton />
         </CinaWalletKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { ConnectButton } from '@cinagroup/cinawalletkit';
 import type { Locale } from '@cinagroup/cinawalletkit';
 import type { Chain } from 'wagmi/chains';
 import {
@@ -135,9 +134,7 @@ export default function Page() {
           <span style={styles.badge}>LIVE PREVIEW</span>
         </div>
         <div style={styles.previewStage}>
-          <Providers settings={settings}>
-            <ConnectButton />
-          </Providers>
+          <Providers settings={settings} />
         </div>
       </main>
     </div>
