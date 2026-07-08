@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ConnectButton } from '@cinagroup/cinawalletkit';
 import type { Locale } from '@cinagroup/cinawalletkit';
 import type { Chain } from 'wagmi/chains';
 import {
@@ -12,7 +13,7 @@ import {
   sepolia,
 } from 'wagmi/chains';
 import { ConfigPanel } from '../components/ConfigPanel';
-import { WalletPreviewWrapper } from './providers';
+import { Providers } from './providers';
 import type { PlaygroundSettings } from '../components/Provider';
 
 type ThemeKey = 'light' | 'dark' | 'midnight';
@@ -134,7 +135,9 @@ export default function Page() {
           <span style={styles.badge}>LIVE PREVIEW</span>
         </div>
         <div style={styles.previewStage}>
-          <WalletPreviewWrapper settings={settings} />
+          <Providers settings={settings}>
+            <ConnectButton />
+          </Providers>
         </div>
       </main>
     </div>

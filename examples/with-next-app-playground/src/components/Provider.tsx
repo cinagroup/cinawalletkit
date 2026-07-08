@@ -3,7 +3,6 @@
 import {
   getDefaultConfig,
   CinaWalletKitProvider,
-  ConnectButton,
   lightTheme,
   darkTheme,
   midnightTheme,
@@ -11,6 +10,7 @@ import {
 } from '@cinagroup/cinawalletkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { http, WagmiProvider } from 'wagmi';
+import type { ReactNode } from 'react';
 import { useState } from 'react';
 import {
   arbitrum,
@@ -53,11 +53,16 @@ function getConfig() {
   return _config;
 }
 
-// This component contains WagmiProvider + QueryClientProvider +
-// CinaWalletKitProvider + ConnectButton ALL in one dynamically-imported
-// module. This guarantees they share the same wagmi context, avoiding
-// WagmiProviderNotFoundError. Settings are passed as props from the page.
-export function WalletPreview({ settings }: { settings: PlaygroundSettings }) {
+// EXACT same structure as with-next-app's Provider:
+// WagmiProvider → QueryClientProvider → CinaWalletKitProvider → children
+// The page renders ConnectButton as {children}, exactly like with-next-app.
+export function Provider({
+  children,
+  settings,
+}: {
+  children: ReactNode;
+  settings: PlaygroundSettings;
+}) {
   const [config] = useState(() => getConfig());
   const [queryClient] = useState(() => new QueryClient());
 
@@ -93,7 +98,7 @@ export function WalletPreview({ settings }: { settings: PlaygroundSettings }) {
               : undefined
           }
         >
-          <ConnectButton />
+          {children}
         </CinaWalletKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
