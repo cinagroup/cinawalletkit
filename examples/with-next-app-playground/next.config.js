@@ -25,16 +25,23 @@ const nextConfig = {
       '^wagmi/(.+)$': path.join(wagmiRoot, '$1'),
     };
 
-    // CRITICAL: Disable webpack code splitting so that WagmiProvider,
-    // CinaWalletKitProvider, and ConnectButton all end up in the SAME chunk.
-    // Without this, webpack splits wagmi and cinawalletkit into separate
-    // chunks, and they end up using different React context instances at
-    // runtime → WagmiProviderNotFoundError.
-    if (config.optimization) {
-      config.optimization.splitChunks = false;
-    }
+    // Force wagmi + cinawalletkit into the SAME chunk so WagmiProvider and
+    // ConnectButton share one React context at runtime. Without this, webpack
+    // splits them → two contexts → WagmiProviderNotFoundError.
     config.optimization = config.optimization || {};
-    config.optimization.runtimeChunk = undefined;
+    const prev = config.optimization.splitChunks;
+    config.optimization.splitChunks = {
+      ...(typeof prev === 'object' ? prev : {}),
+      cacheGroups: {
+        ...(typeof prev === 'object' ? prev?.cacheGroups : {}),
+        wallet: {
+          test: /[\\/](node_modules[\\/](wagmi|@wagmi|@tanstack[\\/]react-query)|packages[\\/]cinawalletkit)[\\/]/,
+          name: 'wallet',
+          chunks: 'all',
+          enforce: true,
+        },
+      },
+    };
 
     return config;
   },
