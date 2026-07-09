@@ -1,0 +1,9 @@
+# HTML should NOT be cached aggressively — it changes on every deploy.
+# Without this, Cloudflare caches HTML for s-maxage=31536000 (1 year),
+# causing stale chunks to be served after redeploys.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Hashed static assets CAN be cached forever (content-addressed).
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
