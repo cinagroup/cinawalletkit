@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import type { PlaygroundSettings } from '../components/Provider';
+import type { PlaygroundSettings } from '../components/types';
 
 // Dynamic import Provider with ssr: false — exactly like with-next-app.
 // This ensures WagmiProvider + CinaWalletKitProvider + ConnectButton load

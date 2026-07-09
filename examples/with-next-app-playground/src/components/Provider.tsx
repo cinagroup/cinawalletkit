@@ -7,7 +7,6 @@ import {
   lightTheme,
   darkTheme,
   midnightTheme,
-  type Locale,
 } from '@cinagroup/cinawalletkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { http, WagmiProvider } from 'wagmi';
@@ -20,18 +19,8 @@ import {
   polygon,
   sepolia,
 } from 'wagmi/chains';
-
-export interface PlaygroundSettings {
-  theme: 'light' | 'dark' | 'midnight';
-  accentColor: string;
-  borderRadius: 'none' | 'small' | 'medium' | 'large';
-  locale: Locale;
-  modalSize: 'compact' | 'wide';
-  initialChainId: number;
-  showRecentTransactions: boolean;
-  coolMode: boolean;
-  showAppInfo: boolean;
-}
+import type { PlaygroundSettings } from './types';
+import { ACCENT_COLORS } from './types';
 
 const projectId =
   process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID ?? 'YOUR_PROJECT_ID';
@@ -54,9 +43,7 @@ function getConfig() {
 }
 
 // This component is dynamically imported (ssr: false) from providers.tsx.
-// That ensures WagmiProvider + CinaWalletKitProvider + ConnectButton all
-// load in a SEPARATE lazy chunk, only on the client — never during SSR.
-// The regex wagmi alias in next.config.js ensures a single wagmi context.
+// ALL wagmi + cinawalletkit imports live in THIS file only.
 export function Provider({ settings }: { settings: PlaygroundSettings }) {
   const [config] = useState(() => getConfig());
   const [queryClient] = useState(() => new QueryClient());
@@ -69,8 +56,8 @@ export function Provider({ settings }: { settings: PlaygroundSettings }) {
         : midnightTheme;
 
   const resolvedTheme = themeBuilder({
-    accentColor: settings.accentColor,
-    borderRadius: settings.borderRadius,
+    accentColor: ACCENT_COLORS[settings.accent],
+    borderRadius: settings.radius,
     overlayBlur: 'small',
   });
 
@@ -79,7 +66,7 @@ export function Provider({ settings }: { settings: PlaygroundSettings }) {
       <QueryClientProvider client={queryClient}>
         <CinaWalletKitProvider
           theme={resolvedTheme}
-          locale={settings.locale}
+          locale={settings.locale as never}
           modalSize={settings.modalSize}
           initialChain={settings.initialChainId}
           showRecentTransactions={settings.showRecentTransactions}

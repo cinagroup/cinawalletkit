@@ -1,34 +1,29 @@
 'use client';
 
-import type { Locale } from '@cinagroup/cinawalletkit';
-import type { Dispatch, SetStateAction } from 'react';
-import type { Chain } from 'wagmi/chains';
-
-type ThemeKey = 'light' | 'dark' | 'midnight';
-type AccentKey = 'blue' | 'purple' | 'green' | 'orange';
-type RadiusKey = 'none' | 'small' | 'medium' | 'large';
+import type { ThemeKey, AccentKey, RadiusKey } from './types';
 
 interface ConfigPanelProps {
   theme: ThemeKey;
-  setTheme: Dispatch<SetStateAction<ThemeKey>>;
+  setTheme: (v: ThemeKey) => void;
   accent: AccentKey;
-  setAccent: Dispatch<SetStateAction<AccentKey>>;
+  setAccent: (v: AccentKey) => void;
   radius: RadiusKey;
-  setRadius: Dispatch<SetStateAction<RadiusKey>>;
-  locale: Locale;
-  setLocale: Dispatch<SetStateAction<Locale>>;
+  setRadius: (v: RadiusKey) => void;
+  locale: string;
+  setLocale: (v: string) => void;
   modalSize: 'compact' | 'wide';
-  setModalSize: Dispatch<SetStateAction<'compact' | 'wide'>>;
+  setModalSize: (v: 'compact' | 'wide') => void;
   initialChainKey: string;
-  setInitialChainKey: Dispatch<SetStateAction<string>>;
+  setInitialChainKey: (v: string) => void;
   showRecentTxs: boolean;
-  setShowRecentTxs: Dispatch<SetStateAction<boolean>>;
+  setShowRecentTxs: (v: boolean) => void;
   coolMode: boolean;
-  setCoolMode: Dispatch<SetStateAction<boolean>>;
+  setCoolMode: (v: boolean) => void;
   showAppInfo: boolean;
-  setShowAppInfo: Dispatch<SetStateAction<boolean>>;
-  chains: Record<string, Chain>;
-  locales: { value: Locale; label: string }[];
+  setShowAppInfo: (v: boolean) => void;
+  chainOptions: readonly { key: string; label: string }[];
+  localeOptions: { value: string; label: string }[];
+  accentSwatches: { value: AccentKey; color: string }[];
 }
 
 export function ConfigPanel(props: ConfigPanelProps) {
@@ -51,8 +46,9 @@ export function ConfigPanel(props: ConfigPanelProps) {
     setCoolMode,
     showAppInfo,
     setShowAppInfo,
-    chains,
-    locales,
+    chainOptions,
+    localeOptions,
+    accentSwatches,
   } = props;
 
   return (
@@ -61,9 +57,9 @@ export function ConfigPanel(props: ConfigPanelProps) {
         <RadioRow
           name="theme"
           options={[
-            { value: 'light', label: '☀️ Light' },
-            { value: 'dark', label: '🌙 Dark' },
-            { value: 'midnight', label: '🌌 Midnight' },
+            { value: 'light', label: 'Light' },
+            { value: 'dark', label: 'Dark' },
+            { value: 'midnight', label: 'Midnight' },
           ]}
           value={theme}
           onChange={(v) => setTheme(v as ThemeKey)}
@@ -72,12 +68,7 @@ export function ConfigPanel(props: ConfigPanelProps) {
 
       <Section title="Accent color">
         <SwatchRow
-          options={[
-            { value: 'blue', color: '#0b2a4a' },
-            { value: 'purple', color: '#6e3aff' },
-            { value: 'green', color: '#0d7d4a' },
-            { value: 'orange', color: '#e0611f' },
-          ]}
+          options={accentSwatches}
           value={accent}
           onChange={(v) => setAccent(v as AccentKey)}
         />
@@ -98,11 +89,7 @@ export function ConfigPanel(props: ConfigPanelProps) {
       </Section>
 
       <Section title="Locale">
-        <Select
-          value={locale}
-          onChange={(v) => setLocale(v as Locale)}
-          options={locales.map((l) => ({ value: l.value, label: l.label }))}
-        />
+        <Select value={locale} onChange={setLocale} options={localeOptions} />
       </Section>
 
       <Section title="Modal size">
@@ -121,7 +108,7 @@ export function ConfigPanel(props: ConfigPanelProps) {
         <Select
           value={initialChainKey}
           onChange={setInitialChainKey}
-          options={Object.keys(chains).map((c) => ({ value: c, label: c }))}
+          options={chainOptions.map((c) => ({ value: c.key, label: c.label }))}
         />
       </Section>
 
@@ -132,11 +119,7 @@ export function ConfigPanel(props: ConfigPanelProps) {
             checked={showRecentTxs}
             onChange={setShowRecentTxs}
           />
-          <Check
-            label="Cool mode (🎉 confetti)"
-            checked={coolMode}
-            onChange={setCoolMode}
-          />
+          <Check label="Cool mode" checked={coolMode} onChange={setCoolMode} />
           <Check
             label="Show app info header"
             checked={showAppInfo}
@@ -147,8 +130,6 @@ export function ConfigPanel(props: ConfigPanelProps) {
     </div>
   );
 }
-
-// --- Small presentational helpers ---
 
 function Section({
   title,
@@ -209,16 +190,16 @@ function SwatchRow({
         <button
           key={o.value}
           type="button"
-          onClick={() => onChange(o.value)}
           title={o.value}
+          onClick={() => onChange(o.value)}
           style={{
             width: 28,
             height: 28,
             borderRadius: 8,
+            cursor: 'pointer',
             border:
               value === o.value ? '2px solid #111' : '2px solid transparent',
             background: o.color,
-            cursor: 'pointer',
             boxShadow: value === o.value ? '0 0 0 2px #fff inset' : 'none',
           }}
         />
