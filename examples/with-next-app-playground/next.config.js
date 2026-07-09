@@ -4,25 +4,27 @@ const path = require('path');
 const nextConfig = {
   basePath: process.env.CINA_BASE_PATH || '',
   reactStrictMode: true,
-  // Only transpile cinawalletkit — NOT wagmi. If wagmi is in transpilePackages,
-  // webpack bundles it twice (once for the app's direct imports, once inside
-  // cinawalletkit's dist), creating two React contexts and causing
-  // WagmiProviderNotFoundError.
+  // Only transpile cinawalletkit — NOT wagmi.
   transpilePackages: ['@cinagroup/cinawalletkit'],
   webpack(config) {
-    // Force ALL wagmi imports to resolve to the single copy under
-    // cinawalletkit's node_modules, eliminating module duplication.
+    // cinawalletkit's pre-built dist has its own wagmi peer dependency.
+    // pnpm isolates it to a different physical directory than the app's wagmi.
+    // If both are bundled, you get two React contexts → WagmiProviderNotFoundError.
+    //
+    // Alias ALL wagmi imports (bare + subpaths) to the exact copy under
+    // cinawalletkit's node_modules.
     const cwDir = path.dirname(require.resolve('@cinagroup/cinawalletkit'));
-    const wagmiPath = path.resolve(cwDir, '..', 'node_modules', 'wagmi');
+    const cwNodeModules = path.resolve(cwDir, '..', 'node_modules');
+    const wagmiRoot = path.join(cwNodeModules, 'wagmi');
+
     config.resolve.alias = {
       ...config.resolve.alias,
       'pino-pretty': false,
+      // Exact match for 'wagmi' and prefix match for 'wagmi/*' subpaths.
+      '^wagmi$': wagmiRoot,
+      '^wagmi/(.+)$': path.join(wagmiRoot, '$1'),
     };
-    // Use resolve.modules to prepend cinawalletkit's node_modules
-    config.resolve.modules = [
-      path.resolve(cwDir, '..', 'node_modules'),
-      ...(config.resolve.modules || ['node_modules']),
-    ];
+
     return config;
   },
 };
