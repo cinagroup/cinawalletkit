@@ -37,7 +37,7 @@ const nextConfig = {
         wallet: {
           test: /[\\/](node_modules[\\/](wagmi|@wagmi|@tanstack[\\/]react-query)|packages[\\/]cinawalletkit)[\\/]/,
           name: 'wallet',
-          chunks: 'all',
+          chunks: 'async',
           enforce: true,
         },
       },
