@@ -1,4 +1,4 @@
-name = "cinawalletkit-with-next-app-playground"
+name = "cinawalletkit-playground-v2"
 compatibility_date = "2026-06-17"
 compatibility_flags = ["nodejs_compat"]
 main = ".open-next/worker.js"
