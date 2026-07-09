@@ -11,7 +11,7 @@ import {
 } from '@cinagroup/cinawalletkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { http, WagmiProvider } from 'wagmi';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   arbitrum,
   base,
@@ -53,18 +53,13 @@ function getConfig() {
   return _config;
 }
 
-// Render everything (WagmiProvider + CinaWalletKitProvider + ConnectButton)
-// only after client-side mount, using a useEffect gate instead of dynamic().
-// This avoids webpack code-splitting wagmi and cinawalletkit into separate
-// chunks, which causes WagmiProviderNotFoundError due to context duplication.
+// This component is dynamically imported (ssr: false) from providers.tsx.
+// That ensures WagmiProvider + CinaWalletKitProvider + ConnectButton all
+// load in a SEPARATE lazy chunk, only on the client — never during SSR.
+// The regex wagmi alias in next.config.js ensures a single wagmi context.
 export function Provider({ settings }: { settings: PlaygroundSettings }) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
   const [config] = useState(() => getConfig());
   const [queryClient] = useState(() => new QueryClient());
-
-  if (!mounted) return null;
 
   const themeBuilder =
     settings.theme === 'light'
