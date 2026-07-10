@@ -1,19 +1,16 @@
 'use client';
 
+import type React from 'react';
 import dynamic from 'next/dynamic';
-import type { PlaygroundSettings } from '../components/types';
 
 // Dynamic import Provider with ssr: false — exactly like with-next-app.
-// This ensures WagmiProvider + CinaWalletKitProvider + ConnectButton load
-// in a separate lazy chunk, only on the client.
+// Provider wraps children with WagmiProvider + CinaWalletKitProvider.
 const Provider = dynamic(
   () =>
-    import('../components/Provider').then((mod) => ({
-      default: mod.Provider,
-    })),
+    import('../components/Provider').then((mod) => ({ default: mod.Provider })),
   { ssr: false, loading: () => null },
 );
 
-export function Providers({ settings }: { settings: PlaygroundSettings }) {
-  return <Provider settings={settings} />;
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <Provider>{children}</Provider>;
 }

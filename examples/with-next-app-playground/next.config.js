@@ -4,7 +4,12 @@ const path = require('path');
 const nextConfig = {
   basePath: process.env.CINA_BASE_PATH || '',
   reactStrictMode: true,
-  transpilePackages: ['@cinagroup/cinawalletkit'],
+  transpilePackages: [
+    '@cinagroup/cinawalletkit',
+    'wagmi',
+    '@wagmi/core',
+    '@wagmi/connectors',
+  ],
   headers: async () => [
     {
       source: '/',
@@ -23,24 +28,6 @@ const nextConfig = {
       'pino-pretty': false,
       '^wagmi$': wagmiRoot,
       '^wagmi/(.+)$': path.join(wagmiRoot, '$1'),
-    };
-
-    // Force wagmi + cinawalletkit into the SAME chunk so WagmiProvider and
-    // ConnectButton share one React context at runtime. Without this, webpack
-    // splits them → two contexts → WagmiProviderNotFoundError.
-    config.optimization = config.optimization || {};
-    const prev = config.optimization.splitChunks;
-    config.optimization.splitChunks = {
-      ...(typeof prev === 'object' ? prev : {}),
-      cacheGroups: {
-        ...(typeof prev === 'object' ? prev?.cacheGroups : {}),
-        wallet: {
-          test: /[\\/](node_modules[\\/](wagmi|@wagmi|@tanstack[\\/]react-query)|packages[\\/]cinawalletkit)[\\/]/,
-          name: 'wallet',
-          chunks: 'async',
-          enforce: true,
-        },
-      },
     };
 
     return config;

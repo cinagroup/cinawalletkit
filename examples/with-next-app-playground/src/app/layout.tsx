@@ -1,6 +1,7 @@
 import '../styles/global.css';
 import '@cinagroup/cinawalletkit/styles.css';
 import type { Metadata } from 'next';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
   title: 'CinaWalletKit Playground',
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

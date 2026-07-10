@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { ConnectButton } from '@cinagroup/cinawalletkit';
 import { ConfigPanel } from '../components/ConfigPanel';
-import { Providers } from './providers';
+import { usePlaygroundSettings } from '../components/Provider';
 import {
-  DEFAULT_SETTINGS,
   CHAIN_OPTIONS,
   LOCALE_OPTIONS,
   ACCENT_COLORS,
@@ -15,15 +14,13 @@ import {
 } from '../components/types';
 
 export default function Page() {
-  const [settings, setSettings] =
-    useState<PlaygroundSettings>(DEFAULT_SETTINGS);
+  const { settings, setSettings } = usePlaygroundSettings();
 
   const update = <K extends keyof PlaygroundSettings>(
     key: K,
     value: PlaygroundSettings[K],
-  ) => setSettings((prev) => ({ ...prev, [key]: value }));
+  ) => setSettings({ ...settings, [key]: value });
 
-  // Build the swatch data from ACCENT_COLORS (defined in Provider module)
   const accentSwatches = (Object.keys(ACCENT_COLORS) as AccentKey[]).map(
     (k) => ({
       value: k,
@@ -33,7 +30,6 @@ export default function Page() {
 
   return (
     <div style={styles.layout}>
-      {/* Left: configuration panel */}
       <aside style={styles.sidebar}>
         <header style={styles.sidebarHeader}>
           <h1 style={styles.title}>Playground</h1>
@@ -95,13 +91,12 @@ export default function Page() {
         </footer>
       </aside>
 
-      {/* Right: live preview */}
       <main style={styles.preview}>
         <div style={styles.previewToolbar}>
           <span style={styles.badge}>LIVE PREVIEW</span>
         </div>
         <div style={styles.previewStage}>
-          <Providers settings={settings} />
+          <ConnectButton />
         </div>
       </main>
     </div>
